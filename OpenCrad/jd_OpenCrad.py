@@ -6,7 +6,7 @@ Author: Curtin
 功能：JD入会开卡领取京豆
 CreateDate: 2021/5/4 下午1:47
 updateTime: 2021/5/6
-version: v1.0.1
+version: v1.0.2
 
 ################################ 【更新记录】################################
 环境Python3、兼容ios设备Pythonista 3(已测试正常跑，其他软件自行测试)、
