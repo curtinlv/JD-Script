@@ -66,7 +66,7 @@ pwd = repr(os.getcwd())
 pwd = pwd.replace('\'','')
 #获取用户参数
 try:
-    configinfo = configparser.ConfigParser()
+    configinfo = configparser.RawConfigParser()
     configinfo.read(pwd + "/OpenCardConfig.ini")
     cookies = configinfo.get('main', 'JD_COOKIE')
     openCardBean = configinfo.getint('main', 'openCardBean')
@@ -469,7 +469,7 @@ def start():
                     print("检测到shopid.txt文件有更新，本次记忆功能不生效。")
                     memorylabel = 1
             except Exception as e:
-                pass
+                memorylabel = 1
         starttime = time.perf_counter() #记录时间开始
         # 多线程部分
         if vip_info_all > 1:
