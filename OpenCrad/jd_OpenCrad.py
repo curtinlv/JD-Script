@@ -1,34 +1,40 @@
 #!/bin/env python3
 # -*- coding: utf-8 -*
 '''
-项目名称: test / JD_OpenCard
+项目名称: JD_OpenCard
 Author: Curtin
 功能：JD入会开卡领取京豆
 CreateDate: 2021/5/4 下午1:47
-updateTime: 2021/5/7
-version: v1.0.3
+UpdateTime: 2021/5/8
 
 ################################ 【更新记录】################################
 环境Python3、兼容ios设备Pythonista 3(已测试正常跑，其他软件自行测试)、
 依赖 pip install requests
 ！！！ 仅以学习为主，请勿商业用途，转载请注明出处，谢谢。
 
-2021.5.4：
+2021.5.4：(v1.0.0)
     * 支持多账号
     * 限制京豆数量入会，例如只入50豆以上
     * 双线程运行
     * 记录满足条件的shopid 【record= True】默认开启
-2021.5.5:
+2021.5.5: (v1.0.1)
     * 新增记忆功能，如中断后下次跑会接着力跑【memory= True】默认开启
-2021.5.6
-    * 更改参数配置方式 OpenCardConfig.ini（为了方便后续打包exe）
+    * 更改参数配置方式 OpenCardConfig.ini
     * 修复已知Bug
-2021.5.7
+2021.5.7 (v1.0.2)
     * 优化代码逻辑
+2021.5.8 (v1.0.3)
+    * 优化记忆功能逻辑：
+        - cookiek个数检测
+        - shopid个数检测
+        - 上一次中断最后记录的用户id检测不存在本次ck里面
+        - 临时文件log/memory.json是否存在
+        - 以上任意一条命中则记忆接力功能不生效。
+
 
 ################################ 【用户参数配置说明】################################
-编辑文件OpenCardConfig.ini 请保持utf-8 默认格式：
-    JD_COOKIE='pt_key=xxx;pt_pin=xxx;' (多账号&分隔)
+编辑文件[ OpenCardConfig.ini ]请保持utf-8 默认格式：
+    JD_COOKIE=pt_key=xxx;pt_pin=xxx; (多账号&分隔)
     openCardBean=30
     xxx=xxx
 或
@@ -37,21 +43,6 @@ env环境：
     export openCardBean=30
     export xxx=xxx
 '''
-################################ 【定义参数】2021.5.6 更改参数配置方式 以下参数无效 ####################
-# 请到 OpenCardConfig.ini 填写
-# #cookie (多账号&分隔)
-# cookies='pt_key=xxx;pt_pin=xxx;'
-# #只入送豆数量大于此值
-# openCardBean = 30
-# #限制速度，单位秒，如果请求过快报错适当调整0.5秒以上
-# sleepNum=0
-# #False|True 是否记录符合条件的shopid，输出文件【OpenCardlog/yes_shopid.txt】
-# record = True
-# #仅记录，不入会。入会有豆的shopid输出文件【OpenCardlog/all_shopid.txt】,需要record=True且onlyRecord=True才生效。
-# onlyRecord = False
-# #开启记忆， 需要record=True且 memory= True 才生效。
-# memory= True
-#
 ################################ 【Main】################################
 import time,os,sys,datetime
 import requests
@@ -61,8 +52,15 @@ from urllib.parse import unquote
 import threading
 import configparser
 #定义一些要用到参数
+version = 'v1.0.3'
 requests.packages.urllib3.disable_warnings()
-script_name='JD入会领取豆-PyScript'
+scriptHeader="""
+════════════════════════════════════════
+║                                      ║
+║     JD入会领豆 - 轻松日撸千豆           ║
+║                                      ║
+════════════════════════════════════════
+@Version: {}""".format(version)
 timestamp=int(round(time.time() * 1000))
 today = datetime.datetime.now().strftime('%Y-%m-%d')
 
@@ -78,6 +76,7 @@ try:
     record = configinfo.getboolean('main', 'record')
     onlyRecord = configinfo.getboolean('main', 'onlyRecord')
     memory = configinfo.getboolean('main', 'memory')
+    printlog = configinfo.getboolean('main', 'printlog')
 except Exception as e:
     OpenCardConfigLabel = 1
     print("参数配置有误，请检查OpenCardConfig.ini\nError:",e)
@@ -109,6 +108,7 @@ try:
     record
     onlyRecord
     memory
+    printlog
 except NameError as e:
     var_exists = False
     print("[OpenCardConfig.ini] 和 [Env环境] 都无法获取到您的参数或缺少，请配置!\nError:",e)
@@ -127,14 +127,24 @@ memoryJson = {}
 def nowtime():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
+def printinfo(context,label:bool):
+    if label == False:
+        print(context)
+
+
 #检测cookie格式是否正确
 def iscookie():
+    """
+    :return: cookiesList,userNameList,pinNameList
+    """
     cookiesList = []
     userNameList= []
+    pinNameList =[]
     if 'pt_key=' in cookies and 'pt_pin=' in cookies:
         r = re.compile(r"pt_key=.*?pt_pin=.*?;" ,  re.M | re.S | re.I)
         result = r.findall(cookies)
         if len(result) >= 1:
+            print("您已配置{}个账号".format(len(result)))
             for i in result:
                 r = re.compile(r"pt_pin=(.*?);")
                 pinName = r.findall(i)
@@ -144,10 +154,11 @@ def iscookie():
                 if nickname != False:
                     cookiesList.append(ck)
                     userNameList.append(nickname)
+                    pinNameList.append(pinName)
                 else:
                     continue
-            if len(cookiesList)>1 and len(userNameList)>1:
-                return cookiesList,userNameList
+            if len(cookiesList)>0 and len(userNameList)>0:
+                return cookiesList,userNameList,pinNameList
             else:
                 print("没有可用Cookie，已退出")
                 exit(9)
@@ -243,11 +254,23 @@ def outfile(filename,context,iscover):
             print(e)
 
 #记忆功能 默认双线程
-def memoryFun(startNum,threadNum):
+def memoryFun(startNum,threadNum,usernameLabel,username,getallbean,userCount):
     global memoryJson
     if memory == True:
-        memoryJson['allShopidNum'] = vip_info_all
-        memoryJson['t{}_startNum'.format(threadNum)] = startNum
+        if usernameLabel == True:
+            memoryJson['allShopidNum'] = endShopidNum
+            memoryJson['currUser{}'.format(threadNum)] = username
+            memoryJson['t{}_startNum'.format(threadNum)] = startNum
+            memoryJson['allUserCount'] = userCount
+        elif usernameLabel == False:
+            try:
+                memoryJson['{}'.format(username)]
+                memoryJson['{}'.format(username)] += getallbean
+            except:
+                memoryJson['{}'.format(username)] = getallbean
+
+        else:
+            pass
         try:
             if os.path.exists(pwd + "/log"):
                 with open(pwd + "/log/memory.json", "w", encoding="utf-8") as f:
@@ -269,7 +292,7 @@ def getMemory():
     else:
         pass
 #判断是否启用记忆功能
-def isMemory(memorylabel,startNum1,startNum2,midNum,endNum):
+def isMemory(memorylabel,startNum1,startNum2,midNum,endNum,pinNameList):
     """
     :param memorylabel: 记忆标签
     :param startNum1: 线程1默认开始位置
@@ -282,32 +305,46 @@ def isMemory(memorylabel,startNum1,startNum2,midNum,endNum):
         try:
             memoryJson = getMemory()
             if memoryJson['allShopidNum'] == endNum:
-                if memoryJson['t1_startNum'] + 1 == midNum and memoryJson['t2_startNum'] + 1 == endNum:
-                    print(
-                        f"\n上次已完成所有shopid，请输入\n0 : 退出。\n1 : 重新跑一次，以防有漏\n\n 【Ps:您可以到我CurtinLV的GitHub仓库获取最新的shopid.txt，定期更新。】\n")
-                    try:
-                        getyourNum = int(input("正在等待您的选择："))
-                        if getyourNum == 1:
-                            print("Ok,那就重新跑一次~")
-                            memorylabel = 1
-                            return startNum1,startNum2,memorylabel
-                        elif getyourNum == 0:
-                            print("Ok,已退出~")
-                            exit(0)
-                    except:
-                        print("Error: 您的输入有误！已退出。")
-                        exit(1)
+                currUserLabel = 0
+
+                if memoryJson['allUserCount'] == allUserCount:
+                    for u in pinNameList:
+                        if memoryJson['currUser1'] == u:
+                            currUserLabel +=1
+                        elif memoryJson['currUser2'] == u:
+                            currUserLabel += 1
+                    if currUserLabel >1:
+                        print("通知：检测到您配置的CK有变更，本次记忆功能不生效。")
+                        return startNum1, startNum2, memorylabel
+                    if memoryJson['t1_startNum'] + 1 == midNum and memoryJson['t2_startNum'] + 1 == endNum:
+                        print(
+                            f"\n上次已完成所有shopid，请输入\n0 : 退出。\n1 : 重新跑一次，以防有漏\n\n 【Ps:您可以到CurtinLV的GitHub仓库获取最新的shopid.txt，定期更新。】\n")
+                        try:
+                            getyourNum = int(input("正在等待您的选择："))
+                            if getyourNum == 1:
+                                print("Ok,那就重新跑一次~")
+                                memorylabel = 1
+                                return startNum1,startNum2,memorylabel
+                            elif getyourNum == 0:
+                                print("Ok,已退出~")
+                                exit(0)
+                        except:
+                            print("Error: 您的输入有误！已退出。")
+                            exit(1)
+                    else:
+                        if memoryJson['t1_startNum']:
+                            startNum1 = memoryJson['t1_startNum']
+                            print(f"已启用记忆功能 memory= True，线程1从第【{startNum1}】店铺开始")
+                        if memoryJson['t2_startNum']:
+                            startNum2 = memoryJson['t2_startNum']
+                            print(f"已启用记忆功能 memory= True，线程2从第【{startNum2}】店铺开始")
+                        memorylabel = 1
+                        return startNum1,startNum2,memorylabel
                 else:
-                    if memoryJson['t1_startNum']:
-                        startNum1 = memoryJson['t1_startNum']
-                        print(f"已启用记忆功能 memory= True，线程1从【{startNum1}】个店铺开始")
-                    if memoryJson['t2_startNum']:
-                        startNum2 = memoryJson['t2_startNum']
-                        print(f"已启用记忆功能 memory= True，线程2从【{startNum2}】个店铺开始")
-                    memorylabel = 1
-                    return startNum1,startNum2,memorylabel
+                    print("通知：检测到您配置的CK有变更，本次记忆功能不生效。")
+                    return startNum1, startNum2, memorylabel
             else:
-                print("检测到shopid.txt文件有更新，本次记忆功能不生效。")
+                print("通知：检测到shopid.txt文件有更新，本次记忆功能不生效。")
                 memorylabel = 1
                 return startNum1, startNum2, memorylabel
         except Exception as e:
@@ -346,11 +383,11 @@ def getShopOpenCardInfo(venderId,headers,shopid,userName):
     result = r.findall(resulttxt)
     cardInfo=json.loads(result[0])
     venderCardName =  cardInfo['result']['shopMemberCardInfo']['venderCardName'] # 店铺名称
-    print(f"\t╰查询入会礼包【{venderCardName}】{shopid}")
+    printinfo(f"\t╰查询入会礼包【{venderCardName}】{shopid}", printlog)
     openCardStatus = cardInfo['result']['userInfo']['openCardStatus'] # 是否会员
     interestsRuleList = cardInfo['result']['interestsRuleList']
     if interestsRuleList == None:
-        print("\t\t╰Oh,该店礼包已被领光了~")
+        printinfo("\t\t╰Oh,该店礼包已被领光了~", printlog)
         return 0,0
     try:
         if len(interestsRuleList) > 0:
@@ -361,10 +398,10 @@ def getShopOpenCardInfo(venderId,headers,shopid,userName):
                     context = "{0}".format(shopid)
                     outfile(f"shopid-{today}.txt", context,False) #记录所有送豆的shopid
                     url = 'https://shopmember.m.jd.com/member/memberCloseAccount?venderId={}'.format(venderId)
-                    context = f"[{0}]:【{1}】目前入会{2}豆，退会链接：{3}".format(nowtime(),venderCardName, getBean, url) #记录
+                    context = "[{0}]:入会{2}豆，【{1}】销卡：{3}".format(nowtime(),venderCardName, getBean, url) #记录
                     outfile("可销卡汇总.txt", context, False)
                     if getBean >= openCardBean: #判断豆是否符合您的需求
-                        print(f"\t\t╰入会赠送【{getBean}豆】，可入会")
+                        print(f"\t╰{venderCardName}:入会赠送【{getBean}豆】，可入会")
                         context = "{0}".format(shopid)
                         outfile(f"入会{openCardBean}豆以上的shopid-{today}.txt", context, False)
                         if onlyRecord == True:
@@ -372,13 +409,13 @@ def getShopOpenCardInfo(venderId,headers,shopid,userName):
                             return 2, 2
                         if openCardStatus == 1:
                             url='https://shopmember.m.jd.com/member/memberCloseAccount?venderId={}'.format(venderId)
-                            print("\t\t╰您已经是本店会员，请注销会员卡24小时后再来~\n注销链接:{}".format(url))
-                            context = "[{3}]:{0}:入会{1}豆:销卡链接：{2}".format(venderCardName, getBean, url,nowtime())
-                            outfile("可销卡用户【{0}】.txt".format(userName),context,False)
+                            print("\t\t╰[账号：{0}]:您已经是本店会员，请注销会员卡24小时后再来~\n注销链接:{1}".format(userName,url))
+                            context = "[{3}]:入会{1}豆，{0}销卡：{2}".format(venderCardName, getBean, url,nowtime())
+                            outfile("可销卡账号【{0}】.txt".format(userName),context,False)
                             return 1, 1
                         return activityId,getBean
                     else:
-                        print(f'\t\t╰入会送【{getBean}豆】少于【{openCardBean}豆】，就不入，跳过...')
+                        print(f'\t\t╰{venderCardName}:入会送【{getBean}】豆少于【{openCardBean}豆】,不入...')
                         if onlyRecord == True:
                             print("已开启仅记录，不入会。")
                             return 2, 2
@@ -386,18 +423,16 @@ def getShopOpenCardInfo(venderId,headers,shopid,userName):
 
                 else:
                     pass
-            print("\t\t╰Oh~ 该店入会京豆已被领光了")
+            printinfo("\t\t╰Oh~ 该店入会京豆已被领光了",printlog)
             return 0,0
         else:
             return 0,0
     except Exception as e:
         print(e)
 
-
 #开卡
 def bindWithVender(venderId,shopId,activityId,channel,headers):
     """
-
     :param venderId:
     :param shopId:
     :param activityId:
@@ -417,10 +452,8 @@ def bindWithVender(venderId,shopId,activityId,channel,headers):
         return result
     except Exception as e:
         print(e)
-
-
 #获取开卡结果
-def getResult(resulttxt):
+def getResult(resulttxt,userName,user_num):
     r = re.compile(r'jsonp_.*?\((.*?)\)\;', re.M | re.S | re.I)
     result = r.findall(resulttxt)
     for i in result:
@@ -430,14 +463,14 @@ def getResult(resulttxt):
             message = result_data['message']
             try:
                 result = result_data['result']['giftInfo']['giftList']
-                print(f"\t\t╰{message}")
+                print(f"\t\t╰用户{user_num}【{userName}】:{message}")
                 for i in result:
                     print("\t\t\t╰{0}:{1} ".format(i['prizeTypeName'],i['discount']))
             except:
-                print(f'\t\t╰{message}')
+                print(f'\t\t╰用户{user_num}【{userName}】:{message}')
             return busiCode
         else:
-            print("\t\t╰{}".format(result_data['message']))
+            print("\t\t╰用户{0}【{1}】:{2}".format(user_num,userName,result_data['message']))
             return busiCode
 #读取shopid.txt
 def getShopID():
@@ -454,141 +487,111 @@ def getShopID():
     except Exception as e:
         print("Error:请检查shopid.txt文件是否正常！\n",e)
         exit(9)
-
 #进度条
 def progress_bar(start,end,threadNum):
     print("\r", end="")
-    print("###[{1}]:Thread-{2}【当前进度: {0}%】".format(round(start/end*100,2),nowtime(),threadNum))
+    if threadNum == 2:
+        start2 = start - midNum
+        end2 = end - midNum
+        print("\n###[{1}]:线程{2}【当前进度: {0}%】\n".format(round(start2 / end2 * 100, 2), nowtime(), threadNum))
+    elif threadNum == 1:
+        print("\n###[{1}]:线程{2}【当前进度: {0}%】\n".format(round(start / end * 100, 2), nowtime(), threadNum))
     sys.stdout.flush()
-
-#子线程
-def threadfor(user_num,ck,vip_info,start,stop,thread_num):
-    getAllbeanCount = 0
-    headers_a, userName = setHeaders(ck, "mh5")
-    if thread_num == 1:
-        print(f"用户{user_num}：【{userName}】")
-    for i in range(start,stop):
-        try:
-            headers_b, userName = setHeaders(ck, "mall")
-            if len(vip_info[i]) > 0:
-                venderId = getVenderId(vip_info[i], headers_b)
-                time.sleep(sleepNum)
-                #新增记忆功能
-                memoryFun(userName,i,thread_num)
-                activityId, getBean = getShopOpenCardInfo(venderId, headers_a,vip_info[i],userName)
-                time.sleep(sleepNum)
-                if activityId != 0:
-                    headers, userName = setHeaders(ck, "JDApp")
-                    result = bindWithVender(venderId, vip_info[i], activityId, 208, headers)
-                    busiCode = getResult(result)
-                    if busiCode == '0':
-                        getAllbeanCount += getBean
-                        print(f"累计获得：{getAllbeanCount} 京豆")
-                        if thread_num == 1:
-                            progress_bar(i, stop)
-                        time.sleep(sleepNum)
-                if i % 20 == 0 and thread_num == 1 and i != 0:
-                    progress_bar(i, stop)
-        except Exception as e:
-            # pass
-            print(e)
-    if thread_num == 1:
-        time.sleep(1)
-        print(f"用户{user_num}：【{userName}】，本次总累计获得：{getAllbeanCount} 京豆")
-        progress_bar(stop, stop)
-
 #为多线程准备
-def OpenVipCrad(startNum: int, endNum: int,shopids,cookies,userNames,threadNum):
-    getAllbeanCount = 0
+def OpenVipCrad(startNum: int, endNum: int,shopids,cookies,userNames,pinNameList,threadNum):
     for i in range(startNum,endNum):
         user_num = 1
-        for ck, userName in zip(cookies, userNames):
-            print(f"Thread-{threadNum}:用户{user_num}：【{userName}】")
-            if len(shopids[i]) > 0:
-                try:
+        activityIdLabel = 0
+        for ck, userName,pinName in zip(cookies, userNames,pinNameList):
+            if i % 10 == 0 and i != 0:
+                progress_bar(i, endNum, threadNum)
+            try:
+                if len(shopids[i]) > 0:
                     headers_b = setHeaders(ck, "mall") #获取请求头
                     venderId = getVenderId(shopids[i], headers_b) #获取venderId
                     time.sleep(sleepNum) #根据用户需求是否限制请求速度
                     # 新增记忆功能
-                    memoryFun(i, threadNum)
-                    headers_a = setHeaders(ck, "mh5")
-                    activityId, getBean = getShopOpenCardInfo(venderId, headers_a, shopids[i], userName) #获取入会礼包结果
+                    memoryFun(i, threadNum,True,pinName,0,allUserCount)
+                    if activityIdLabel == 0:
+                        headers_a = setHeaders(ck, "mh5")
+                        activityId, getBean = getShopOpenCardInfo(venderId, headers_a, shopids[i], userName) #获取入会礼包结果
+                    #  activityId,getBean 或 返回 0:没豆 1:有豆已是会员 2:记录模式（不入会）
                     time.sleep(sleepNum) #根据用户需求是否限制请求速度
-                    if activityId != 0:
+                    if activityId == 0 or activityId == 2:
+                        break
+                    elif activityId == 1:
+                        user_num += 1
+                        continue
+                    elif activityId > 10:
+                        activityIdLabel = 1
                         headers = setHeaders(ck, "JDApp")
                         result = bindWithVender(venderId, shopids[i], activityId, 208, headers)
-                        busiCode = getResult(result)
+                        busiCode = getResult(result,userName,user_num)
                         if busiCode == '0':
-                            getAllbeanCount += getBean
-                            print(f"累计获得：{getAllbeanCount} 京豆")
+                            memoryFun(i, threadNum, False, pinName,getBean,allUserCount)
+                            memoryJson = getMemory()
+                            print(f"用户{user_num}:【{userName}】累计获得：{memoryJson['{}'.format(pinName)]} 京豆")
                             time.sleep(sleepNum)
                     else:
                         break
-                    if i % 10 == 0 and threadNum == 1 and i != 0:
-                        progress_bar(i, endNum,threadNum)
-                except Exception as e:
-                    continue
-                    print(e)
-
-
-
+            except Exception as e:
+                user_num += 1
+                print(e)
+                continue
             user_num += 1
-
-
-
-
-
 #start
 def start():
-    global vip_info_all
-    print(f"【{script_name} by Curtin】")
-    vip_info = getShopID()
-    vip_info_all = len(vip_info)
-    midNum = int(vip_info_all / 2)
-    # 获取用户
-    cookies, userNames = iscookie()
-    print("获取到店铺数量", vip_info_all)
+    global endShopidNum,midNum,allUserCount
+    print(scriptHeader)
+    allShopid = getShopID()
+    allShopid = list(set(allShopid))
+    endShopidNum = len(allShopid)
+    midNum = int(endShopidNum / 2)
+    print("从本地shopid.txt获取到店铺数量:", endShopidNum)
     print(f"您已设置入会条件：{openCardBean} 京豆")
-    user_num = 1
-    print("共{}个账号".format(len(cookies)))
+    print("获取用户...")
+    cookies, userNames,pinNameList = iscookie()
+    allUserCount = len(cookies)
+    print("共{}个有效账号".format(allUserCount))
     memorylabel=0
     startNum1 = 0
     startNum2 = midNum
-    if vip_info_all > 1:
+    if os.path.exists(pwd +"/log/可销卡汇总.txt"):
+        os.remove(pwd + "/log/可销卡汇总.txt")
+    starttime = time.perf_counter()  # 记录时间开始
+    if endShopidNum > 1:
         # 如果启用记忆功能，则获取上一次记忆位置
-        startNum1, startNum2, memorylabel = isMemory(memorylabel, startNum1, startNum2, midNum, vip_info_all)
-        starttime = time.perf_counter()  # 记录时间开始
-
-
-
-
-        for ck, userName in zip(cookies, userNames):
-            headers_a = setHeaders(ck, "mh5")
-            # 多线程部分
-            threads = []
-            t1 = threading.Thread(target=threadfor, args=(user_num, ck, vip_info, startNum1, midNum,1))
-            threads.append(t1)
-            t2 = threading.Thread(target=threadfor, args=(user_num, ck, vip_info, startNum2, vip_info_all,2))
-            threads.append(t2)
-
+        startNum1, startNum2, memorylabel = isMemory(memorylabel, startNum1, startNum2, midNum, endShopidNum,pinNameList)
+        # 多线程部分
+        threads = []
+        t1 = threading.Thread(target=OpenVipCrad, args=(startNum1, startNum2, allShopid, cookies, userNames,pinNameList,1))
+        threads.append(t1)
+        t2 = threading.Thread(target=OpenVipCrad, args=(startNum2, endShopidNum, allShopid, cookies, userNames,pinNameList,2))
+        threads.append(t2)
+        try:
             for t in threads:
                 t.setDaemon(True)
                 t.start()
             for t in threads:
                 t.join()
-    elif vip_info_all == 1:
-        threadfor(user_num,ck,vip_info,0,vip_info_all,3)
+            isSuccess = True
+        except:
+            isSuccess = False
+    elif endShopidNum == 1:
+        startNum1, startNum2, memorylabel = isMemory(memorylabel, startNum1, startNum2, midNum, endShopidNum,pinNameList)
+        OpenVipCrad(startNum1, endShopidNum, allShopid, cookies, userNames,1)
+        isSuccess = True
     else:
         print("获取到shopid数量为0")
         exit(8)
-
-        endtime = time.perf_counter()  # 记录时间结束
-        time.sleep(3)
-        print("--- 入会总耗时 : %.03f 秒 seconds ---" % (endtime - starttime))
-        outfile("log.txt","--- 入会总耗时 : %.03f 秒 seconds ---" % (endtime - starttime),False)
-        user_num += 1
-    if os.path.exists(pwd +"/log/memory.json"):
-        print("\n已跑完所有账号，清除记忆缓存")
-        os.remove(pwd + "/log/memory.json")
+    endtime = time.perf_counter()  # 记录时间结束
+    time.sleep(3)
+    print("--- 入会总耗时 : %.03f 秒 seconds ---" % (endtime - starttime))
+    context = "{}\nPs:您可以到以下途径获取最新的shopid.txt，定期更新：\n\n\tGitHub:https://github.com/curtinlv/JD-Script\n\n\tTG频道:https://t.me/TopStyle2021\n\n\t关注公众号【TopStyle】回复：shopid\n\n\n\t\t\t--By Curtin\n".format(scriptHeader)
+    print(context)
+    outfile("info.txt",context,True)
+    if isSuccess:
+        if os.path.exists(pwd +"/log/memory.json"):
+            os.remove(pwd + "/log/memory.json")
 if __name__ == '__main__':
     start()
