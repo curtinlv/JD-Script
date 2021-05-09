@@ -31,7 +31,25 @@ readmes="""
     执行：
     python jd_OpenCrad.py
 ## `【更新记录】`
-
+    2021.5.8：(v1.0.3)
+        * 优化记忆功能逻辑：
+            - cookiek个数检测
+            - shopid个数检测
+            - 上一次中断最后记录的用户id检测不存在本次ck里面
+            - 临时文件log/memory.json是否存在
+            - 以上任意一条命中则记忆接力功能不生效。
+    
+    2021.5.7：(v1.0.2)
+        * 优化代码逻辑
+        * 修复已知Bug
+		
+    2021.5.5：(v1.0.1)
+        * 新增记忆功能，如中断后下次跑会接着力跑（默认开启）
+            - memory= True
+        * 新增仅记录shopid，不入会功能（默认关闭）
+            - onlyRecord = no
+        * 修复已知Bug
+    
     2021.5.4：(v1.0.0)
         * 支持多账号
             - JD_COOKIE=pt_key=xxx;pt_pin=xxx;&pt_key=xxx;pt_pin=xxx; #多账号&分隔
@@ -43,25 +61,6 @@ readmes="""
             - log/可销卡汇总.txt #记录开卡送豆的店铺销卡链接
             - log/shopid-yyyy-mm-dd.txt #记录当天所有入会送豆的shopid
             - log/可销卡用户xxx.txt #记录用户可销卡的店铺
-    
-    2021.5.5：(v1.0.1)
-        * 新增记忆功能，如中断后下次跑会接着力跑（默认开启）
-            - memory= True
-        * 新增仅记录shopid，不入会功能（默认关闭）
-            - onlyRecord = no
-        * 修复已知Bug
-    
-    2021.5.7：(v1.0.2)
-        * 优化代码逻辑
-        * 修复已知Bug
-    
-    2021.5.8：(v1.0.3)
-        * 优化记忆功能逻辑：
-            - cookiek个数检测
-            - shopid个数检测
-            - 上一次中断最后记录的用户id检测不存在本次ck里面
-            - 临时文件log/memory.json是否存在
-            - 以上任意一条命中则记忆接力功能不生效。
 
 ### `【用户参数配置说明】`
 ### 主配置文件[ OpenCardConfig.ini ] 请保持utf-8默认格式
