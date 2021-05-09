@@ -126,7 +126,10 @@ pwd = pwd.replace('\'','')
 #获取用户参数
 try:
     configinfo = configparser.RawConfigParser()
-    configinfo.read(pwd + "/OpenCardConfig.ini")
+    try:
+        configinfo.read(pwd + "/OpenCardConfig.ini",encoding="utf-8")
+    except:
+        configinfo.read(pwd + "/OpenCardConfig.ini", encoding="gbk")
     cookies = configinfo.get('main', 'JD_COOKIE')
     openCardBean = configinfo.getint('main', 'openCardBean')
     sleepNum = configinfo.getfloat('main', 'sleepNum')
