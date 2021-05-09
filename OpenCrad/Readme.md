@@ -1,12 +1,12 @@
-#JD入会领豆 - 轻松日撸千豆
-#  目录结构
+# JD入会领豆 - 轻松日撸千豆
+##  目录结构
     JD-Script/                  #仓库
     |-- LICENSE
     |-- OpenCrad                # 主目录
-    |   |-- jd_OpenCrad.py   	# 主代码 （必要）
-    |   |-- log              	# 临时目录（可删除）
-    |   |-- OpenCardConfig.ini 	# 只配置文件（必要）
-    |   |-- Readme.md			# 说明
+    |   |-- jd_OpenCrad.py      # 主代码 （必要）
+    |   |-- log                 # 临时目录（可删除）
+    |   |-- OpenCardConfig.ini  # 只配置文件（必要）
+    |   |-- Readme.md           # 说明
     |   `-- shopid.txt          # shopid存放文件（必要）
     `-- README.md
 
