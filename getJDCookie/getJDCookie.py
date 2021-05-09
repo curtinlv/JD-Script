@@ -7,8 +7,6 @@
 Date: 2021/5/9 下午5:53
 '''
 
-#!/bin/bash/env python
-
 print('''
 ******************************************
 获取京东cookie工具_v1.1
@@ -23,7 +21,11 @@ UpdateTime：2021-05-54 18:13
 # Gitee仓库 https://gitee.com/curtinlv
 # TG频道 https://t.me/TopStyle2021 
 # 关注公众号【TopStyle】
-
+ 
+ Ps:需依赖谷歌浏览Chrome 和 驱动 chromedriver.exe  ，版本要求一致！
+ 谷歌浏览Chrome : https://www.google.cn/chrome/
+ 驱动链接: http://npm.taobao.org/mirrors/chromedriver/  (下载放在脚本同目录下)
+ 
 ******************************************
 ''')
 import datetime
@@ -46,12 +48,18 @@ chrome_options.add_argument('log-level=3')#INFO = 0 WARNING = 1 LOG_ERROR = 2 LO
 # chrome_options.add_argument('--headless')  # 浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败
 chrome_options.add_argument('user-agent="Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1"')
 
+
+def exitWait():
+    getYourCode = input("已完成,请按回车键自动退出。")
+
 try:
-    driver = webdriver.Chrome(options=chrome_options, executable_path=r'./chromedriver')
+    driver = webdriver.Chrome(options=chrome_options, executable_path=r'./chromedriver.exe')
     driver.set_window_size(375, 812)
 except:
-    print('请检查你的环境是否安装谷歌Chrome浏览器！')
+    print('请检查你的环境是否安装谷歌Chrome浏览器！或者驱动【chromedriver.exe】版本是否和Chrome浏览器版本一致！\n驱动更新链接：http://npm.taobao.org/mirrors/chromedriver/')
+    exitWait()
     exit(9)
+
 
 
 def jd_login():
@@ -66,6 +74,7 @@ def jd_login():
 
     except:
         print('超时退出')
+        exitWait()
         exit(2)
 
 def get_cookie():
@@ -102,4 +111,4 @@ def get_cookie():
 if __name__ == '__main__':
     jd_login()
     get_cookie()
-    getYourCode = input("已完成,请按回车键自动退出。")
+    exitWait()
