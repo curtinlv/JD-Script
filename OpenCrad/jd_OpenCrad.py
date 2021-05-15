@@ -7,7 +7,7 @@ Author: Curtin
 CreateDate: 2021/5/4 下午1:47
 UpdateTime: 2021/5/9
 '''
-version = 'v1.0.4 Beta'
+version = 'v1.0.5'
 readmes = """
 # JD入会领豆 - 轻松日撸千豆
 ##  目录结构
@@ -18,20 +18,28 @@ readmes = """
     |   |-- log                 # 临时目录（可删除）
     |   |-- OpenCardConfig.ini  # 只配置文件（必要）
     |   |-- Readme.md           # 说明
-    |   `-- shopid.txt          # shopid存放文件（必要）
+    |   `-- shopid.txt          # shopid存放文件
     `-- README.md
 
 ### `【兼容环境】`
     1.Python3.3+ 环境
     2.兼容ios设备软件：Pythonista 3(已测试正常跑，其他软件自行测试)   
-    3.Windows exe
+    3.Windows exe 
 
     安装依赖模块 :
     pip3 install requests
-    pip3 install configparser
     执行：
     python jd_OpenCrad.py
 ## `【更新记录】`
+    2021.5.15：(v1.0.5)
+        * 新增远程获取shopid功能
+            - isRemoteSid=yes #开启
+        * 修改已知Bug
+    
+    2021.5.9：(v1.0.4 Beta)
+        * 优化代码逻辑
+        * 打包exe版本测试
+    
     2021.5.8：(v1.0.3)
         * 优化记忆功能逻辑：
             - cookiek个数检测
@@ -90,10 +98,10 @@ readmes = """
 # 
     @Last Version: %s
 
-    @Last Time: 2021-05-09
+    @Last Time: 2021-05-15
 
     @Author: Curtin
-#### **仅以学习交流为主，请勿商业用途或违反国家法律 ，转载请注明出处，谢谢!** 
+#### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 
 
 # End.
 [回到顶部](#readme)
@@ -103,7 +111,7 @@ readmes = """
 import time, os, sys, datetime
 import requests
 import random, string
-import re, json
+import re, json,base64
 from urllib.parse import unquote
 from threading import Thread
 from configparser import RawConfigParser
@@ -145,6 +153,7 @@ try:
     onlyRecord = configinfo.getboolean('main', 'onlyRecord')
     memory = configinfo.getboolean('main', 'memory')
     printlog = configinfo.getboolean('main', 'printlog')
+    isRemoteSid = configinfo.getboolean('main', 'isRemoteSid')
 except Exception as e:
     OpenCardConfigLabel = 1
     print("参数配置有误，请检查OpenCardConfig.ini\nError:", e)
@@ -177,6 +186,7 @@ try:
     onlyRecord
     memory
     printlog
+    isRemoteSid
 except NameError as e:
     var_exists = False
     print("[OpenCardConfig.ini] 和 [Env环境] 都无法获取到您的参数或缺少，请配置!\nError:", e)
@@ -203,43 +213,14 @@ def printinfo(context, label: bool):
         print(context)
 
 
-def exitCodeFun():
+def exitCodeFun(code):
     try:
-        exitCode = input("\n已结束..")
+        exitCode = input()
+        print(exitCode)
+        exit(code)
     except:
-        pass
-
-
-# 检查是否有更新版本
-def isUpdate():
-    try:
-        url = 'http://curtin.top/TopStyle/update.json'
-        result = requests.get(url).text
-        result = json.loads(result)
-        isEnable = result['isEnable']
-        uPversion = result['version']
-        info = result['info']
-        readme1 = result['readme1']
-        if isEnable > 50 and isEnable < 150:
-            print("start")
-        else:
-            print(scriptHeader)
-            print(readme1)
-            print("!!! 无法使用，请联系作者。CurtinLV")
-            exitCodeFun()
-            exit(668)
-        if version != uPversion:
-            print(scriptHeader)
-            print(f"\n{info}，新版本：【{uPversion}】\n")
-            print(readme1)
-            exitCodeFun()
-            exit(666)
-        else:
-            print("...")
-    except:
-        print("请检查您的环境是否正常！")
-        exitCodeFun()
-        exit(668)
+        time.sleep(3)
+        exit(code)
 
 
 # 检测cookie格式是否正确
@@ -271,25 +252,62 @@ def iscookie():
                 return cookiesList, userNameList, pinNameList
             else:
                 print("没有可用Cookie，已退出")
-                exitCodeFun()
-                exit(9)
+                exitCodeFun(3)
         else:
             print("cookie 格式错误！...本次操作已退出")
-            exitCodeFun()
-            exit(1)
+            exitCodeFun(4)
     else:
         print("cookie 格式错误！...本次操作已退出")
-        exitCodeFun()
-        exit(9)
+        exitCodeFun(4)
 
+# 检查是否有更新版本
+
+def gettext(url):
+    try:
+        resp = requests.get(url,timeout=60).text
+        if '该内容无法显示' in resp:
+            gettext(url)
+        return resp
+    except Exception as e:
+        print(e)
+
+def isUpdate():
+    url = base64.decodebytes(
+        b"aHR0cHM6Ly9naXRlZS5jb20vY3VydGlubHYvUHVibGljL3Jhdy9tYXN0ZXIvT3BlbkNyYWQvdXBkYXRlLmpzb24=")
+    try:
+        result = gettext(url)
+        result = json.loads(result)
+        isEnable = result['isEnable']
+        uPversion = result['version']
+        info = result['info']
+        readme1 = result['readme1']
+        readme2 = result['readme2']
+        readme3 = result['readme3']
+        if isEnable > 50 and isEnable < 150:
+            if version != uPversion:
+                print(f"\n{info}，\n\n当前最新版本：【{uPversion}】\n")
+                print(f"{readme1}{readme2}{readme3}")
+                time.sleep(300)
+                exit(666)
+            else:
+                print(f"\n{readme1}{readme2}{readme3}")
+        else:
+            print(readme1)
+            print("!!! 无法使用，请联系作者。CurtinLV")
+            time.sleep(300)
+            exit(666)
+
+    except:
+        print("请检查您的环境是否正常！")
+        time.sleep(10)
+        exit(666)
 
 def getUserInfo(ck, pinName):
-    url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&_={}&sceneval=2&g_login_type=1&callback=GetJDUserInfoUnion&g_ty=ls'.format(
-        timestamp)
+    url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback=GetJDUserInfoUnion'
     headers = {
         'Cookie': ck,
         'Accept': '*/*',
-        'Connection': 'keep-alive',
+        'Connection': 'close',
         'Referer': 'https://home.m.jd.com/myJd/home.action',
         'Accept-Encoding': 'gzip, deflate, br',
         'Host': 'me-api.jd.com',
@@ -297,7 +315,7 @@ def getUserInfo(ck, pinName):
         'Accept-Language': 'zh-cn'
     }
     try:
-        resp = requests.get(url=url, verify=False, headers=headers, timeout=30).text
+        resp = requests.get(url=url, verify=False, headers=headers, timeout=60).text
         r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
         result = r.findall(resp)
         userInfo = json.loads(result[0])
@@ -409,6 +427,9 @@ def getMemory():
     else:
         pass
 
+def rmCount():
+    if os.path.exists(pwd + "/log/入会汇总.txt"):
+        os.remove(pwd + "/log/入会汇总.txt")
 
 # 判断是否启用记忆功能
 def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
@@ -434,24 +455,25 @@ def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
                             currUserLabel += 1
                     if currUserLabel > 1:
                         print("通知：检测到您配置的CK有变更，本次记忆功能不生效。")
+                        rmCount()
                         return startNum1, startNum2, memorylabel
                     if memoryJson['t1_startNum'] + 1 == midNum and memoryJson['t2_startNum'] + 1 == endNum:
                         print(
-                            f"\n上次已完成所有shopid，请输入\n0 : 退出。\n1 : 重新跑一次，以防有漏\n\n 【Ps:您可以到CurtinLV的GitHub仓库获取最新的shopid.txt，定期更新。】\n")
+                            f"\n上次已完成所有shopid，\n\nPs:您可以关注公众号或TG频道获取最新shopid。\n公众号: TopStyle\n电报TG:https://t.me/TopStyle2021\n\n请输入 0 或 1\n0 : 退出。\n1 : 重新跑一次，以防有漏")
                         try:
                             getyourNum = int(input("正在等待您的选择："))
                             if getyourNum == 1:
                                 print("Ok,那就重新跑一次~")
+                                rmCount()
                                 memorylabel = 1
                                 return startNum1, startNum2, memorylabel
                             elif getyourNum == 0:
                                 print("Ok,已退出~")
-                                exitCodeFun()
+                                time.sleep(10)
                                 exit(0)
                         except:
-                            print("Error: 您的输入有误！已退出。")
-                            exitCodeFun()
-                            exit(1)
+                            # print("Error: 您的输入有误！已退出。")
+                            exitCodeFun(3)
                     else:
                         if memoryJson['t1_startNum']:
                             startNum1 = memoryJson['t1_startNum']
@@ -463,9 +485,11 @@ def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
                         return startNum1, startNum2, memorylabel
                 else:
                     print("通知：检测到您配置的CK有变更，本次记忆功能不生效。")
+                    rmCount()
                     return startNum1, startNum2, memorylabel
             else:
-                print("通知：检测到shopid.txt文件有更新，本次记忆功能不生效。")
+                print("通知：检测到shopid有更新，本次记忆功能不生效。")
+                rmCount()
                 memorylabel = 1
                 return startNum1, startNum2, memorylabel
         except Exception as e:
@@ -481,7 +505,7 @@ def getVenderId(shopId, headers):
     :return: venderId
     """
     url = 'https://shop.m.jd.com/?shopId={0}'.format(shopId)
-    resp = requests.get(url=url, verify=False, headers=headers, timeout=30)
+    resp = requests.get(url=url, verify=False, headers=headers, timeout=60)
     resulttext = resp.text
     r = re.compile(r'venderId: \'(\d+)\'')
     venderId = r.findall(resulttext)
@@ -500,7 +524,7 @@ def getShopOpenCardInfo(venderId, headers, shopid, userName):
         random.sample(num1, 4))  # 随机生成一窜4位数字
     url = 'https://api.m.jd.com/client.action?appid=jd_shop_member&functionId=getShopOpenCardInfo&body=%7B%22venderId%22%3A%22{2}%22%2C%22channel%22%3A406%7D&client=H5&clientVersion=9.2.0&uuid=&jsonp=jsonp_{0}_{1}'.format(
         timestamp, v_num1, venderId)
-    resp = requests.get(url=url, verify=False, headers=headers, timeout=30)
+    resp = requests.get(url=url, verify=False, headers=headers, timeout=60)
     time.sleep(sleepNum)
     resulttxt = resp.text
     r = re.compile(r'jsonp_.*?\((.*?)\)\;', re.M | re.S | re.I)
@@ -521,9 +545,10 @@ def getShopOpenCardInfo(venderId, headers, shopid, userName):
                     activityId = i['interestsInfo']['activityId']
                     context = "{0}".format(shopid)
                     outfile(f"shopid-{today}.txt", context, False)  # 记录所有送豆的shopid
+                    in_url='https://shop.m.jd.com/?shopId={}'.format(shopid)
                     url = 'https://shopmember.m.jd.com/member/memberCloseAccount?venderId={}'.format(venderId)
-                    context = "[{0}]:入会{2}豆，【{1}】销卡：{3}".format(nowtime(), venderCardName, getBean, url)  # 记录
-                    outfile("可销卡汇总.txt", context, False)
+                    context = "[{0}]:入会{2}豆店铺【{1}】\n\t加入会员:{4}\n\t解绑会员:{3}".format(nowtime(), venderCardName, getBean, url,in_url)  # 记录
+                    outfile("入会汇总.txt", context, False)
                     if getBean >= openCardBean:  # 判断豆是否符合您的需求
                         print(f"\t╰{venderCardName}:入会赠送【{getBean}豆】，可入会")
                         context = "{0}".format(shopid)
@@ -535,7 +560,7 @@ def getShopOpenCardInfo(venderId, headers, shopid, userName):
                             url = 'https://shopmember.m.jd.com/member/memberCloseAccount?venderId={}'.format(venderId)
                             print("\t\t╰[账号：{0}]:您已经是本店会员，请注销会员卡24小时后再来~\n注销链接:{1}".format(userName, url))
                             context = "[{3}]:入会{1}豆，{0}销卡：{2}".format(venderCardName, getBean, url, nowtime())
-                            outfile("可销卡账号【{0}】.txt".format(userName), context, False)
+                            outfile("可退会账号【{0}】.txt".format(userName), context, False)
                             return 1, 1
                         return activityId, getBean
                     else:
@@ -574,7 +599,7 @@ def bindWithVender(venderId, shopId, activityId, channel, headers):
     url = 'https://api.m.jd.com/client.action?appid=jd_shop_member&functionId=bindWithVender&body=%7B%22venderId%22%3A%22{4}%22%2C%22shopId%22%3A%22{7}%22%2C%22bindByVerifyCodeFlag%22%3A1%2C%22registerExtend%22%3A%7B%22v_sex%22%3A%22%E6%9C%AA%E7%9F%A5%22%2C%22v_name%22%3A%22{0}%22%2C%22v_birthday%22%3A%221990-03-18%22%2C%22v_email%22%3A%22{6}%22%7D%2C%22writeChildFlag%22%3A0%2C%22activityId%22%3A{5}%2C%22channel%22%3A{3}%7D&client=H5&clientVersion=9.2.0&uuid=&jsonp=jsonp_{1}_{2}'.format(
         v_name, timestamp, v_num1, channel, venderId, activityId, qq_num, shopId)
     try:
-        respon = requests.get(url=url, verify=False, headers=headers, timeout=30)
+        respon = requests.get(url=url, verify=False, headers=headers, timeout=60)
         result = respon.text
         return result
     except Exception as e:
@@ -603,8 +628,20 @@ def getResult(resulttxt, userName, user_num):
             return busiCode
 
 
+def getRemoteShopid():
+    url = base64.decodebytes(
+        b"aHR0cHM6Ly9naXRlZS5jb20vY3VydGlubHYvUHVibGljL3Jhdy9tYXN0ZXIvT3BlbkNyYWQvc2hvcGlkLnR4dA==")
+    try:
+        rShopid= gettext(url)
+        rShopid=rShopid.split("\n")
+        return rShopid
+    except:
+        print("无法从远程获取shopid")
+        exitCodeFun(999)
+
 # 读取shopid.txt
 def getShopID():
+
     shopid_path = os.path.join(os.path.split(sys.argv[0])[0], "shopid.txt")
     try:
         with open(shopid_path, "r", encoding="utf-8") as f:
@@ -614,13 +651,10 @@ def getShopID():
                 return shopid
             else:
                 print("Error:请检查shopid.txt文件是否正常！\n")
-                exitCodeFun()
-                exit(9)
+                exitCodeFun(2)
     except Exception as e:
         print("Error:请检查shopid.txt文件是否正常！\n", e)
-        exitCodeFun()
-        exit(9)
-
+        exitCodeFun(2)
 
 # 进度条
 def progress_bar(start, end, threadNum):
@@ -676,17 +710,25 @@ def OpenVipCrad(startNum: int, endNum: int, shopids, cookies, userNames, pinName
                 print(e)
                 continue
             user_num += 1
-
+    time.sleep(1)
+    progress_bar(endNum, endNum, threadNum)
 
 # start
 def start():
-    global endShopidNum, midNum, allUserCount
     print(scriptHeader)
-    allShopid = getShopID()
+    outfile("Readme.md", readmes, True)
+    isUpdate()
+    global endShopidNum, midNum, allUserCount
+    if isRemoteSid:
+        print("已启用远程获取shopid")
+        allShopid = getRemoteShopid()
+    else:
+        print("从本地shopid.txt获取shopid")
+        allShopid = getShopID()
     allShopid = list(set(allShopid))
     endShopidNum = len(allShopid)
     midNum = int(endShopidNum / 2)
-    print("从本地shopid.txt获取到店铺数量:", endShopidNum)
+    print("获取到店铺数量:", endShopidNum)
     print(f"您已设置入会条件：{openCardBean} 京豆")
     print("获取用户...")
     cookies, userNames, pinNameList = iscookie()
@@ -695,8 +737,6 @@ def start():
     memorylabel = 0
     startNum1 = 0
     startNum2 = midNum
-    if os.path.exists(pwd + "/log/可销卡汇总.txt"):
-        os.remove(pwd + "/log/可销卡汇总.txt")
     starttime = time.perf_counter()  # 记录时间开始
     if endShopidNum > 1:
         # 如果启用记忆功能，则获取上一次记忆位置
@@ -724,18 +764,23 @@ def start():
         isSuccess = True
     else:
         print("获取到shopid数量为0")
-        exitCodeFun()
-        exit(8)
+        exitCodeFun(9)
     endtime = time.perf_counter()  # 记录时间结束
-    time.sleep(3)
+    if os.path.exists(pwd + "/log/memory.json"):
+        memoryJson = getMemory()
+        n = 1
+        for name,pinname in zip(userNames,pinNameList):
+            try:
+                userCountBean = memoryJson['pinname']
+                print(f"用户{n}:【{name}】:本次累计获得：{userCountBean}豆")
+            except:
+                print(f"用户{n}:【{name}】:本次累计获得：0 豆")
+            n += 1
+
+    time.sleep(1)
     print("--- 入会总耗时 : %.03f 秒 seconds ---" % (endtime - starttime))
     print("{0}\n{1}\n{2}".format("*" * 60, scriptHeader, remarks))
-    if isSuccess:
-        if os.path.exists(pwd + "/log/memory.json"):
-            os.remove(pwd + "/log/memory.json")
-
+    exitCodeFun(0)
 
 if __name__ == '__main__':
-    outfile("Readme.md", readmes, True)
-    isUpdate()
     start()
