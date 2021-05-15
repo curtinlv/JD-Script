@@ -73,6 +73,7 @@
  memory  | yes或no | 布尔值，开启记忆功能，接力上一次异常中断位置继续。(默认yes) 
  printlog  | yes或no | 布尔值，yes：只打印部分日志 no:打印所有日志 
  sleepNum  | yes或no | Float，限制速度，单位秒，如果请求过快报错适当调整0.5秒以上 
+ isRemoteSid  | yes或no | 布尔值，yes:使用作者远程仓库更新的id，no：使用本地shopid.txt的id 
 #### $\color{red}{兼容Env环境（如有配置则优先使用，适合AC、云服务环境等）}$    
         export JD_COOKIE='pt_key=xxx;pt_pin=xxx;' (多账号&分隔)
         export openCardBean=30
