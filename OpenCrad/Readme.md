@@ -1,3 +1,4 @@
+
 # JD入会领豆 - 轻松日撸千豆
 ##  目录结构
     JD-Script/                  #仓库
@@ -7,20 +8,28 @@
     |   |-- log                 # 临时目录（可删除）
     |   |-- OpenCardConfig.ini  # 只配置文件（必要）
     |   |-- Readme.md           # 说明
-    |   `-- shopid.txt          # shopid存放文件（必要）
+    |   `-- shopid.txt          # shopid存放文件
     `-- README.md
 
 ### `【兼容环境】`
     1.Python3.3+ 环境
     2.兼容ios设备软件：Pythonista 3(已测试正常跑，其他软件自行测试)   
-    3.Windows exe
+    3.Windows exe 
 
     安装依赖模块 :
     pip3 install requests
-    pip3 install configparser
     执行：
     python jd_OpenCrad.py
 ## `【更新记录】`
+    2021.5.15：(v1.0.5)
+        * 新增远程获取shopid功能
+            - isRemoteSid=yes #开启
+        * 修改已知Bug
+    
+    2021.5.9：(v1.0.4 Beta)
+        * 优化代码逻辑
+        * 打包exe版本测试
+    
     2021.5.8：(v1.0.3)
         * 优化记忆功能逻辑：
             - cookiek个数检测
@@ -28,18 +37,18 @@
             - 上一次中断最后记录的用户id检测不存在本次ck里面
             - 临时文件log/memory.json是否存在
             - 以上任意一条命中则记忆接力功能不生效。
-    
+
     2021.5.7：(v1.0.2)
         * 优化代码逻辑
         * 修复已知Bug
-		
+
     2021.5.5：(v1.0.1)
         * 新增记忆功能，如中断后下次跑会接着力跑（默认开启）
             - memory= True
         * 新增仅记录shopid，不入会功能（默认关闭）
             - onlyRecord = no
         * 修复已知Bug
-    
+
     2021.5.4：(v1.0.0)
         * 支持多账号
             - JD_COOKIE=pt_key=xxx;pt_pin=xxx;&pt_key=xxx;pt_pin=xxx; #多账号&分隔
@@ -77,12 +86,12 @@
 ###### 关注公众号【TopStyle】回复：shopid
 ![TopStyle](https://gitee.com/curtinlv/img/raw/master/gzhcode.jpg)
 # 
-    @Last Version: v1.0.3
-    
-    @Last Time: 2021-05-09
-    
+    @Last Version: v1.0.5
+
+    @Last Time: 2021-05-15
+
     @Author: Curtin
-#### **仅以学习交流为主，请勿商业用途或违反国家法律 ，转载请注明出处，谢谢!** 
+#### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 
 
 # End.
 [回到顶部](#readme)
