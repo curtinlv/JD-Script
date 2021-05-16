@@ -29,7 +29,9 @@
 <h3 style="color:#F00" >【问题4】：shopid 本地和远程    </h3> 
 
 <h3 style="color:green" >【解决4】：  </h3>   
- * 远程的shopid目前由我这边只爬有豆的shopid更新，每天07点30分更新到云端，可以在8：00后运行一次脚本即可。   
+
+ * 远程的shopid目前由我这边只爬有豆的shopid更新，每天07点30分更新到云端，可以在8：00后运行一次脚本即可。
+    
  * 本地shopid，需要把配置文件里面的 isRemoteSid = no ,并且复制你的shopid保存在与脚本同一目录下文件名一定要是【shopid.txt】 才会生效。  
  
 ![image](https://user-images.githubusercontent.com/78124261/118395869-3b7bc100-b67f-11eb-8b15-24b76f5d64a7.png)    
