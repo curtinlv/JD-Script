@@ -91,9 +91,10 @@ readmes = """
 
 #### Ps:您可以到以下途径获取最新的shopid.txt，定期更新：
 
-###### [GitHub仓库](https://github.com/curtinlv/JD-Script) 
-###### [Gitee仓库](https://gitee.com/curtinlv/JD-Script)
-###### [TG频道](https://t.me/TopStyle2021)
+###### [GitHub仓库 https://github.com/curtinlv/JD-Script](https://github.com/curtinlv/JD-Script) 
+###### [Gitee仓库 https://gitee.com/curtinlv/JD-Script](https://gitee.com/curtinlv/JD-Script)
+###### [TG频道 https://t.me/TopStyle2021](https://t.me/TopStyle2021)
+###### [TG群 https://t.me/topStyle996](https://t.me/topStyle996)
 ###### 关注公众号【TopStyle】回复：shopid
 ![TopStyle](https://gitee.com/curtinlv/img/raw/master/gzhcode.jpg)
 # 
