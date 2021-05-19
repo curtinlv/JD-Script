@@ -180,6 +180,9 @@ if "onlyRecord" in os.environ:
 # 开启记忆， 需要record=True且 memory= True 才生效
 if "memory" in os.environ:
     memory = os.environ["memory"]
+# 是否启用远程shopid
+if "isRemoteSid" in os.environ:
+    isRemoteSid = os.environ["isRemoteSid"]
 # 判断参数是否存在
 try:
     cookies
