@@ -446,7 +446,8 @@ def getMemory():
 def rmCount():
     if os.path.exists(pwd + "/log/入会汇总.txt"):
         os.remove(pwd + "/log/入会汇总.txt")
-
+    if os.path.exists(pwd + "/log/memory.json"):
+        os.remove(pwd + "/log/memory.json")
 # 判断是否启用记忆功能
 def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
     """
