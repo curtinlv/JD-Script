@@ -5,9 +5,9 @@
 Author: Curtin
 功能：JD入会开卡领取京豆
 CreateDate: 2021/5/4 下午1:47
-UpdateTime: 2021/5/15
+UpdateTime: 2021/5/21
 '''
-version = 'v1.0.5'
+version = 'v1.1.0'
 readmes = """
 # JD入会领豆 - 轻松日撸千豆
 ##  目录结构
@@ -23,7 +23,7 @@ readmes = """
 
 ### `【兼容环境】`
     1.Python3.3+ 环境
-    2.兼容ios设备软件：Pythonista 3(已测试正常跑，其他软件自行测试)   
+    2.兼容ios设备软件：Pythonista 3、Pyto(已测试正常跑，其他软件自行测试)   
     3.Windows exe 
 
     安装依赖模块 :
@@ -31,6 +31,11 @@ readmes = """
     执行：
     python jd_OpenCrad.py
 ## `【更新记录】`
+    2021.5.21：(v1.1.0)
+        * 修复一些问题及优化一些代码：
+            - 修复最后统计显示为0
+            - 修复记忆功能一些bug
+            - 等等一些小问题  
     2021.5.15：(v1.0.5)
         * 新增远程获取shopid功能
             - isRemoteSid=yes #开启
@@ -100,7 +105,7 @@ readmes = """
 # 
     @Last Version: %s
 
-    @Last Time: 2021-05-15
+    @Last Time: 2021-05-21
 
     @Author: Curtin
 #### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 
@@ -201,8 +206,8 @@ else:
     var_exists = True
 
 # 创建临时目录
-if not os.path.exists("./log"):
-    os.mkdir("./log")
+if not os.path.exists(pwd + "/log"):
+    os.mkdir(pwd + "/log")
 # 记录功能json
 memoryJson = {}
 
@@ -288,6 +293,7 @@ def isUpdate():
         readme1 = result['readme1']
         readme2 = result['readme2']
         readme3 = result['readme3']
+        getWait = result['s']
         if isEnable > 50 and isEnable < 150:
             if version != uPversion:
                 print(f"\n{info}，\n\n当前最新版本：【{uPversion}】\n")
@@ -296,6 +302,7 @@ def isUpdate():
                 exit(666)
             else:
                 print(f"\n{readme1}{readme2}{readme3}")
+                time.sleep(getWait)
         else:
             print(readme1)
             print("!!! 无法使用，请联系作者。CurtinLV")
@@ -303,7 +310,7 @@ def isUpdate():
             exit(666)
 
     except:
-        print("请检查您的环境是否正常！")
+        print("请检查您的环境/版本是否正常！")
         time.sleep(10)
         exit(666)
 
@@ -418,6 +425,10 @@ def memoryFun(startNum, threadNum, usernameLabel, username, getallbean, userCoun
         except Exception as e:
             print(e)
 
+#修复记忆功能一些问题，如记录累计京豆统计显示为0等
+def isMemoryEnable():
+    global memoryJson
+    memoryJson = getMemory()
 
 # 获取记忆配置
 def getMemory():
@@ -458,7 +469,9 @@ def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
                             currUserLabel += 1
                         elif memoryJson['currUser2'] == u:
                             currUserLabel += 1
-                    if currUserLabel > 1:
+                    if memoryJson['currUser1'] == memoryJson['currUser2']:
+                        currUserLabel = 2
+                    if currUserLabel < 2:
                         print("通知：检测到您配置的CK有变更，本次记忆功能不生效。")
                         rmCount()
                         return startNum1, startNum2, memorylabel
@@ -480,6 +493,7 @@ def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
                             # print("Error: 您的输入有误！已退出。")
                             exitCodeFun(3)
                     else:
+                        isMemoryEnable()
                         if memoryJson['t1_startNum']:
                             startNum1 = memoryJson['t1_startNum']
                             print(f"已启用记忆功能 memory= True，线程1从第【{startNum1}】店铺开始")
@@ -500,6 +514,10 @@ def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
         except Exception as e:
             memorylabel = 1
             return startNum1, startNum2, memorylabel
+    else:
+        rmCount()
+        memorylabel = 1
+        return startNum1, startNum2, memorylabel
 
 
 # 获取VenderId
@@ -646,8 +664,7 @@ def getRemoteShopid():
 
 # 读取shopid.txt
 def getShopID():
-
-    shopid_path = os.path.join(os.path.split(sys.argv[0])[0], "shopid.txt")
+    shopid_path=pwd+"/shopid.txt"
     try:
         with open(shopid_path, "r", encoding="utf-8") as f:
             shopid = f.read()
@@ -715,8 +732,6 @@ def OpenVipCrad(startNum: int, endNum: int, shopids, cookies, userNames, pinName
                 print(e)
                 continue
             user_num += 1
-    time.sleep(1)
-    progress_bar(endNum, endNum, threadNum)
 
 # start
 def start():
@@ -745,11 +760,10 @@ def start():
     starttime = time.perf_counter()  # 记录时间开始
     if endShopidNum > 1:
         # 如果启用记忆功能，则获取上一次记忆位置
-        startNum1, startNum2, memorylabel = isMemory(memorylabel, startNum1, startNum2, midNum, endShopidNum,
-                                                     pinNameList)
+        startNum1, startNum2, memorylabel = isMemory(memorylabel, startNum1, startNum2, midNum, endShopidNum,pinNameList)
         # 多线程部分
         threads = []
-        t1 = Thread(target=OpenVipCrad, args=(startNum1, startNum2, allShopid, cookies, userNames, pinNameList, 1))
+        t1 = Thread(target=OpenVipCrad, args=(startNum1, midNum, allShopid, cookies, userNames, pinNameList, 1))
         threads.append(t1)
         t2 = Thread(target=OpenVipCrad, args=(startNum2, endShopidNum, allShopid, cookies, userNames, pinNameList, 2))
         threads.append(t2)
@@ -760,6 +774,8 @@ def start():
             for t in threads:
                 t.join()
             isSuccess = True
+            progress_bar(1, 1, 1)
+            progress_bar(1, 1, 2)
         except:
             isSuccess = False
     elif endShopidNum == 1:
@@ -774,12 +790,13 @@ def start():
     if os.path.exists(pwd + "/log/memory.json"):
         memoryJson = getMemory()
         n = 1
+        print("\n\n{0}【本次统计】{0}".format("*"*20))
         for name,pinname in zip(userNames,pinNameList):
             try:
-                userCountBean = memoryJson['pinname']
-                print(f"用户{n}:【{name}】:本次累计获得：{userCountBean}豆")
-            except:
-                print(f"用户{n}:【{name}】:本次累计获得：0 豆")
+                userCountBean = memoryJson['{}'.format(pinname)]
+                print(f"用户{n}:【{name}】:累计获得：{userCountBean}豆")
+            except Exception as e:
+                print(f"用户{n}:【{name}】:累计获得：0 豆")
             n += 1
 
     time.sleep(1)
