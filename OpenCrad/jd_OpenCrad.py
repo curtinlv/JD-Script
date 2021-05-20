@@ -137,8 +137,11 @@ remarks = 'Ps:您可以到以下途径获取最新的shopid.txt，定期更新�
 timestamp = int(round(time.time() * 1000))
 today = datetime.datetime.now().strftime('%Y-%m-%d')
 #获取当前工作目录
-pwd = os.path.dirname(__file__)+"/"
-os.chdir(pwd)
+pwd = os.path.dirname(sys.argv[0])+"/"
+if pwd == '/':
+    pwd = ''
+else:
+    os.chdir(pwd)
 # 获取用户参数
 try:
     configinfo = RawConfigParser()
