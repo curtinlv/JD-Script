@@ -13,7 +13,7 @@
 
 ### `【兼容环境】`
     1.Python3.3+ 环境
-    2.兼容ios设备软件：Pythonista 3(已测试正常跑，其他软件自行测试)   
+    2.兼容ios设备软件：Pythonista 3、Pyto(已测试正常跑，其他软件自行测试)   
     3.Windows exe 
 
     安装依赖模块 :
@@ -21,6 +21,11 @@
     执行：
     python jd_OpenCrad.py
 ## `【更新记录】`
+    2021.5.21：(v1.1.0)
+        * 修复一些问题及优化一些代码：
+            - 修复最后统计显示为0
+            - 修复记忆功能一些bug
+            - 等等一些小问题  
     2021.5.15：(v1.0.5)
         * 新增远程获取shopid功能
             - isRemoteSid=yes #开启
@@ -88,9 +93,9 @@
 ###### 关注公众号【TopStyle】回复：shopid
 ![TopStyle](https://gitee.com/curtinlv/img/raw/master/gzhcode.jpg)
 # 
-    @Last Version: v1.0.5
+    @Last Version: v1.1.0
 
-    @Last Time: 2021-05-15
+    @Last Time: 2021-05-21
 
     @Author: Curtin
 #### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 
