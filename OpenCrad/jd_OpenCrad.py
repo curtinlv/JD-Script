@@ -139,6 +139,7 @@ today = datetime.datetime.now().strftime('%Y-%m-%d')
 
 pwd = repr(os.getcwd())
 pwd = pwd.replace('\'', '')
+os.chdir(pwd)
 # 获取用户参数
 try:
     configinfo = RawConfigParser()
