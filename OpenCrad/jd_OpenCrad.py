@@ -136,24 +136,24 @@ remarks = 'Ps:您可以到以下途径获取最新的shopid.txt，定期更新�
 
 timestamp = int(round(time.time() * 1000))
 today = datetime.datetime.now().strftime('%Y-%m-%d')
-
-pwd = repr(os.getcwd())
-pwd = pwd.replace('\'', '')
+#获取当前工作目录
+pwd = sys.argv[0]
+pwd = pwd.replace('jd_OpenCrad.py', '')
 os.chdir(pwd)
 # 获取用户参数
 try:
     configinfo = RawConfigParser()
     try:
-        configinfo.read(pwd + "/OpenCardConfig.ini", encoding="UTF-8")
+        configinfo.read(pwd + "OpenCardConfig.ini", encoding="UTF-8")
     except Exception as e:
-        with open(pwd + "/OpenCardConfig.ini","r",encoding="UTF-8") as config:
+        with open(pwd + "OpenCardConfig.ini","r",encoding="UTF-8") as config:
             getConfig = config.read().encode('utf-8').decode('utf-8-sig')
-        with open(pwd + "/OpenCardConfig.ini","w",encoding="UTF-8") as config:
+        with open(pwd + "OpenCardConfig.ini","w",encoding="UTF-8") as config:
             config.write(getConfig)
         try:
-            configinfo.read(pwd + "/OpenCardConfig.ini", encoding="UTF-8")
+            configinfo.read(pwd + "OpenCardConfig.ini", encoding="UTF-8")
         except:
-            configinfo.read(pwd + "/OpenCardConfig.ini", encoding="gbk")
+            configinfo.read(pwd + "OpenCardConfig.ini", encoding="gbk")
     cookies = configinfo.get('main', 'JD_COOKIE')
     openCardBean = configinfo.getint('main', 'openCardBean')
     sleepNum = configinfo.getfloat('main', 'sleepNum')
@@ -207,8 +207,8 @@ else:
     var_exists = True
 
 # 创建临时目录
-if not os.path.exists(pwd + "/log"):
-    os.mkdir(pwd + "/log")
+if not os.path.exists(pwd + "log"):
+    os.mkdir(pwd + "log")
 # 记录功能json
 memoryJson = {}
 
@@ -390,10 +390,10 @@ def outfile(filename, context, iscover):
     if record == True:
         try:
             if iscover == False:
-                with open(pwd + "/log/{0}".format(filename), "a+", encoding="utf-8") as f1:
+                with open(pwd + "log/{0}".format(filename), "a+", encoding="utf-8") as f1:
                     f1.write("{}\n".format(context))
             elif iscover == True:
-                with open(pwd + "/{0}".format(filename), "w+", encoding="utf-8") as f1:
+                with open(pwd + "{0}".format(filename), "w+", encoding="utf-8") as f1:
                     f1.write("{}".format(context))
         except Exception as e:
             print(e)
@@ -418,8 +418,8 @@ def memoryFun(startNum, threadNum, usernameLabel, username, getallbean, userCoun
         else:
             pass
         try:
-            if os.path.exists(pwd + "/log"):
-                with open(pwd + "/log/memory.json", "w", encoding="utf-8") as f:
+            if os.path.exists(pwd + "log"):
+                with open(pwd + "log/memory.json", "w", encoding="utf-8") as f:
                     json.dump(memoryJson, f, indent=4)
             else:
                 pass
@@ -436,8 +436,8 @@ def getMemory():
     """
     :return: memoryJson
     """
-    if os.path.exists(pwd + "/log/memory.json"):
-        with open(pwd + "/log/memory.json", "r", encoding="utf-8") as f:
+    if os.path.exists(pwd + "log/memory.json"):
+        with open(pwd + "log/memory.json", "r", encoding="utf-8") as f:
             memoryJson = json.load(f)
             if len(memoryJson) > 0:
                 return memoryJson
@@ -445,10 +445,10 @@ def getMemory():
         pass
 
 def rmCount():
-    if os.path.exists(pwd + "/log/入会汇总.txt"):
-        os.remove(pwd + "/log/入会汇总.txt")
-    if os.path.exists(pwd + "/log/memory.json"):
-        os.remove(pwd + "/log/memory.json")
+    if os.path.exists(pwd + "log/入会汇总.txt"):
+        os.remove(pwd + "log/入会汇总.txt")
+    if os.path.exists(pwd + "log/memory.json"):
+        os.remove(pwd + "log/memory.json")
 # 判断是否启用记忆功能
 def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
     """
@@ -666,7 +666,7 @@ def getRemoteShopid():
 
 # 读取shopid.txt
 def getShopID():
-    shopid_path=pwd+"/shopid.txt"
+    shopid_path=pwd+"shopid.txt"
     try:
         with open(shopid_path, "r", encoding="utf-8") as f:
             shopid = f.read()
@@ -789,7 +789,7 @@ def start():
         print("获取到shopid数量为0")
         exitCodeFun(9)
     endtime = time.perf_counter()  # 记录时间结束
-    if os.path.exists(pwd + "/log/memory.json"):
+    if os.path.exists(pwd + "log/memory.json"):
         memoryJson = getMemory()
         n = 1
         print("\n\n{0}【本次统计】{0}".format("*"*20))
