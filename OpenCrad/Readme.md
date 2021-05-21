@@ -1,5 +1,7 @@
 
 # JD入会领豆 - 轻松日撸千豆
+![JD入会领豆 - 轻松日撸千豆](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
+  
 ##  目录结构
     JD-Script/                  #仓库
     |-- LICENSE
@@ -19,23 +21,24 @@
     安装依赖模块 :
     pip3 install requests
     执行：
-    python jd_OpenCrad.py
+    python3 jd_OpenCrad.py
 ## `【更新记录】`
     2021.5.21：(v1.1.0)
         * 修复一些问题及优化一些代码：
-            - 修复最后统计显示为0
+            - 修复最后统计显示为0，新增开卡个数统计
             - 修复记忆功能一些bug
-            - 修复路径问题
-            - 优化
+            - 等等一些小问题
+        * 新增机器人通知
+            - 开启远程shopid、配合crontab 坐等收豆
     2021.5.15：(v1.0.5)
         * 新增远程获取shopid功能
             - isRemoteSid=yes #开启
         * 修改已知Bug
-    
+
     2021.5.9：(v1.0.4 Beta)
         * 优化代码逻辑
         * 打包exe版本测试
-    
+
     2021.5.8：(v1.0.3)
         * 优化记忆功能逻辑：
             - cookiek个数检测
