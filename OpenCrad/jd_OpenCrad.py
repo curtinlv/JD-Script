@@ -12,6 +12,10 @@ readmes = """
 # JD入会领豆 - 轻松日撸千豆
 ![JD入会领豆 - 轻松日撸千豆](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
   
+## 使用方法
+#### [手机用户（参考） https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw](https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw)
+#### [PC用户 （参考） https://mp.weixin.qq.com/s/JmLxAecZAlEc4L2sZWnn1A](https://mp.weixin.qq.com/s/JmLxAecZAlEc4L2sZWnn1A)
+
 ##  目录结构
     JD-Script/                  #仓库
     |-- LICENSE
