@@ -1,6 +1,6 @@
 
-# JD入会领豆 - 轻松日撸千豆
-![JD入会领豆 - 轻松日撸千豆](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
+# JD入会领豆小程序
+![JD入会领豆小程序](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
   
 ## 使用方法
 #### [手机用户（参考） https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw](https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw)
@@ -27,6 +27,8 @@
     执行：
     python3 jd_OpenCrad.py
 ## `【更新记录】`
+    2021.5.22：(v1.1.1)
+        * 修复一些问题及优化一些代码：
     2021.5.21：(v1.1.0)
         * 修复一些问题及优化一些代码：
             - 修复最后统计显示为0，新增开卡个数统计
@@ -47,7 +49,7 @@
         * 优化记忆功能逻辑：
             - cookiek个数检测
             - shopid个数检测
-            - 上一次中断最后记录的用户id检测不存在本次ck里面
+            - 上一次中断最后记录的账号id检测不存在本次ck里面
             - 临时文件log/memory.json是否存在
             - 以上任意一条命中则记忆接力功能不生效。
 
@@ -72,9 +74,9 @@
         * 记录满足条件的shopid 【record= True】默认开启 （./log 目录可删除）
             - log/可销卡汇总.txt #记录开卡送豆的店铺销卡链接
             - log/shopid-yyyy-mm-dd.txt #记录当天所有入会送豆的shopid
-            - log/可销卡用户xxx.txt #记录用户可销卡的店铺
+            - log/可销卡账号xxx.txt #记录账号可销卡的店铺
 
-### `【用户参数配置说明】`
+### `【账号参数配置说明】`
 ### 主配置文件[ OpenCardConfig.ini ] 请保持utf-8默认格式
 
  变量  | 值  | 说明
@@ -101,9 +103,9 @@
 ###### 关注公众号【TopStyle】回复：shopid
 ![TopStyle](https://gitee.com/curtinlv/img/raw/master/gzhcode.jpg)
 # 
-    @Last Version: v1.1.0
+    @Last Version: v1.1.1
 
-    @Last Time: 2021-05-21
+    @Last Time: 2021-05-22 18:02
 
     @Author: Curtin
 #### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 
