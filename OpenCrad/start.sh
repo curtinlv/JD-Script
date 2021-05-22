@@ -48,7 +48,7 @@ export TG_PROXY_PORT=
 
 ######## 【微信 推送加】#####
 # token
-export PUSH_PLUS_TOKEN=18cb06837fa34955b97b5ff95a99b490
+export PUSH_PLUS_TOKEN=
 ##################
 
 #主脚本路径
