@@ -27,8 +27,10 @@
     执行：
     python3 jd_OpenCrad.py
 ## `【更新记录】`
-    2021.5.22：(v1.1.1)
-        * 修复一些问题及优化一些代码：
+    2021.5.23：(v1.1.1)
+        * 修复一些问题及优化一些代码
+        * 修复Env环境读取变量问题
+        * 新增 start.sh 运行脚本（可Env环境使用）
     2021.5.21：(v1.1.0)
         * 修复一些问题及优化一些代码：
             - 修复最后统计显示为0，新增开卡个数统计
@@ -83,13 +85,13 @@
  ---- | ----- | ------  
  JD_COOKIE  | pt_key=xxx;pt_pin=xxx;  | 必要(多账号&分隔) 
  openCardBean  | 30 | int，入会送豆满足此值，否则不入会 
- record    | yes或no | 布尔值，是否记录符合条件的shopid(默认yes) 
- onlyRecord  | yes或no |布尔值， yes:仅记录，不入会(默认no) 
- memory  | yes或no | 布尔值，开启记忆功能，接力上一次异常中断位置继续。(默认yes) 
- printlog  | yes或no | 布尔值，yes：只打印部分日志 no:打印所有日志 
- sleepNum  | yes或no | Float，限制速度，单位秒，如果请求过快报错适当调整0.5秒以上 
- isRemoteSid  | yes或no | 布尔值，yes:使用作者远程仓库更新的id，no：使用本地shopid.txt的id 
-#### $\color{red}{兼容Env环境（如有配置则优先使用，适合AC、云服务环境等）}$    
+ record    | False或True | 布尔值，是否记录符合条件的shopid(默认True) 
+ onlyRecord  | False或True |布尔值， True:仅记录，不入会(默认False) 
+ memory  | False或True | 布尔值，开启记忆功能，接力上一次异常中断位置继续。(默认yes) 
+ printlog  | False或True | 布尔值，True：只打印部分日志 False:打印所有日志 
+ sleepNum  | False或True | Float，限制速度，单位秒，如果请求过快报错适当调整0.5秒以上 
+ isRemoteSid  | False或True | 布尔值，True:使用作者远程仓库更新的id，False：使用本地shopid.txt的id 
+#### 兼容Env环境（如有配置则优先使用，适合AC、云服务环境等）    
         export JD_COOKIE='pt_key=xxx;pt_pin=xxx;' (多账号&分隔)
         export openCardBean=30
         export xxx=xxx

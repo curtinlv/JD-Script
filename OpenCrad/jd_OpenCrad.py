@@ -5,7 +5,7 @@
 Author: Curtin
 功能：JD入会开卡领取京豆
 CreateDate: 2021/5/4 下午1:47
-UpdateTime: 2021/5/22
+UpdateTime: 2021/5/23
 '''
 version = 'v1.1.1'
 readmes = """
@@ -37,8 +37,10 @@ readmes = """
     执行：
     python3 jd_OpenCrad.py
 ## `【更新记录】`
-    2021.5.22：(v1.1.1)
-        * 修复一些问题及优化一些代码：
+    2021.5.23：(v1.1.1)
+        * 修复一些问题及优化一些代码
+        * 修复Env环境读取变量问题
+        * 新增 start.sh 运行脚本（可Env环境使用）
     2021.5.21：(v1.1.0)
         * 修复一些问题及优化一些代码：
             - 修复最后统计显示为0，新增开卡个数统计
@@ -93,13 +95,13 @@ readmes = """
  ---- | ----- | ------  
  JD_COOKIE  | pt_key=xxx;pt_pin=xxx;  | 必要(多账号&分隔) 
  openCardBean  | 30 | int，入会送豆满足此值，否则不入会 
- record    | yes或no | 布尔值，是否记录符合条件的shopid(默认yes) 
- onlyRecord  | yes或no |布尔值， yes:仅记录，不入会(默认no) 
- memory  | yes或no | 布尔值，开启记忆功能，接力上一次异常中断位置继续。(默认yes) 
- printlog  | yes或no | 布尔值，yes：只打印部分日志 no:打印所有日志 
- sleepNum  | yes或no | Float，限制速度，单位秒，如果请求过快报错适当调整0.5秒以上 
- isRemoteSid  | yes或no | 布尔值，yes:使用作者远程仓库更新的id，no：使用本地shopid.txt的id 
-#### $\color{red}{兼容Env环境（如有配置则优先使用，适合AC、云服务环境等）}$    
+ record    | False或True | 布尔值，是否记录符合条件的shopid(默认True) 
+ onlyRecord  | False或True |布尔值， True:仅记录，不入会(默认False) 
+ memory  | False或True | 布尔值，开启记忆功能，接力上一次异常中断位置继续。(默认yes) 
+ printlog  | False或True | 布尔值，True：只打印部分日志 False:打印所有日志 
+ sleepNum  | False或True | Float，限制速度，单位秒，如果请求过快报错适当调整0.5秒以上 
+ isRemoteSid  | False或True | 布尔值，True:使用作者远程仓库更新的id，False：使用本地shopid.txt的id 
+#### 兼容Env环境（如有配置则优先使用，适合AC、云服务环境等）    
         export JD_COOKIE='pt_key=xxx;pt_pin=xxx;' (多账号&分隔)
         export openCardBean=30
         export xxx=xxx
@@ -147,10 +149,12 @@ remarks = '\n\n\tTG交流 : https://t.me/topstyle996\n\n\tTG频道 : https://t.m
 timestamp = int(round(time.time() * 1000))
 today = datetime.datetime.now().strftime('%Y-%m-%d')
 # 获取当前工作目录
-pwd = os.path.dirname(sys.argv[0])
+pwd = repr(os.path.dirname(sys.argv[0]))
+pwd = pwd.replace('\'', '')
 if pwd:
     os.chdir(pwd)
 pwd = os.path.abspath('.') + '/'
+
 # 获取账号参数
 try:
     configinfo = RawConfigParser()
@@ -188,44 +192,58 @@ except Exception as e:
 # JD_COOKIE=cookie （多账号&分隔）
 if "JD_COOKIE" in os.environ:
     cookies = os.environ["JD_COOKIE"]
+    print("已获取并使用Env环境 Cookie")
 # 只入送豆数量大于此值
 if "openCardBean" in os.environ:
-    openCardBean = os.environ["openCardBean"]
+    openCardBean = int(os.environ["openCardBean"])
+    print("已获取并使用Env环境 openCardBean:",openCardBean)
 # 限制速度，单位秒，如果请求过快报错适当调整0.5秒以上
 if "sleepNum" in os.environ:
-    sleepNum = os.environ["sleepNum"]
+    sleepNum = float(os.environ["sleepNum"])
+    print("已获取并使用Env环境 sleepNum:",sleepNum)
 if "printlog" in os.environ:
-    printlog = os.environ["printlog"]
+    printlog = bool(os.environ["printlog"])
+    print("已获取并使用Env环境 printlog:",printlog)
 # 是否记录符合条件的shopid，输出文件【OpenCardlog/yes_shopid.txt】 False|True
 if "record" in os.environ:
-    record = os.environ["record"]
-# 仅记录，不入会。入会有豆的shopid输出文件【OpenCardlog/all_shopid.txt】,需要record=True且onlyRecord=True才生效。
+    record = bool(os.environ["record"])
+    print("已获取并使用Env环境 record:",record)
+# 仅记录，不入会。入会有豆的shopid输出文件
 if "onlyRecord" in os.environ:
-    onlyRecord = os.environ["onlyRecord"]
+    onlyRecord = bool(os.environ["onlyRecord"])
+    print("已获取并使用Env环境 onlyRecord:",onlyRecord)
 # 开启记忆， 需要record=True且 memory= True 才生效
 if "memory" in os.environ:
-    memory = os.environ["memory"]
+    memory = bool(os.environ["memory"])
+    print("已获取并使用Env环境 memory:",memory)
 # 是否启用远程shopid
 if "isRemoteSid" in os.environ:
-    isRemoteSid = os.environ["isRemoteSid"]
+    isRemoteSid = bool(os.environ["isRemoteSid"])
+    print("已获取并使用Env环境 isRemoteSid:",isRemoteSid)
 # 获取TG_BOT_TOKEN
 if "TG_BOT_TOKEN" in os.environ:
     TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
+    print("已获取并使用Env环境 TG_BOT_TOKEN")
 # 获取TG_USER_ID
 if "TG_USER_ID" in os.environ:
     TG_USER_ID = os.environ["TG_USER_ID"]
+    print("已获取并使用Env环境 TG_USER_ID")
 # 获取代理ip
 if "TG_PROXY_IP" in os.environ:
     TG_PROXY_IP = os.environ["TG_PROXY_IP"]
+    print("已获取并使用Env环境 TG_PROXY_IP")
 # 获取TG 代理端口
 if "TG_PROXY_PORT" in os.environ:
     TG_PROXY_PORT = os.environ["TG_PROXY_PORT"]
+    print("已获取并使用Env环境 TG_PROXY_PORT")
 # 获取TG TG_API_HOST
 if "TG_API_HOST" in os.environ:
     TG_API_HOST = os.environ["TG_API_HOST"]
+    print("已获取并使用Env环境 TG_API_HOST")
 # 获取pushplus+ PUSH_PLUS_TOKEN
 if "PUSH_PLUS_TOKEN" in os.environ:
     PUSH_PLUS_TOKEN = os.environ["PUSH_PLUS_TOKEN"]
+    print("已获取并使用Env环境 PUSH_PLUS_TOKEN")
 # 判断参数是否存在
 
 try:
