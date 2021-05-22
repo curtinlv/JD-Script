@@ -195,6 +195,8 @@ if "openCardBean" in os.environ:
 # 限制速度，单位秒，如果请求过快报错适当调整0.5秒以上
 if "sleepNum" in os.environ:
     sleepNum = os.environ["sleepNum"]
+if "printlog" in os.environ:
+    printlog = os.environ["printlog"]
 # 是否记录符合条件的shopid，输出文件【OpenCardlog/yes_shopid.txt】 False|True
 if "record" in os.environ:
     record = os.environ["record"]
