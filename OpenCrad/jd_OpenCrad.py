@@ -147,11 +147,10 @@ remarks = '\n\n\tTG交流 : https://t.me/topstyle996\n\n\tTG频道 : https://t.m
 timestamp = int(round(time.time() * 1000))
 today = datetime.datetime.now().strftime('%Y-%m-%d')
 # 获取当前工作目录
-pwd = os.path.dirname(sys.argv[0]) + "/"
-if pwd == '/':
-    pwd = ''
-else:
+pwd = os.path.dirname(sys.argv[0])
+if pwd:
     os.chdir(pwd)
+pwd = os.path.abspath('.') + '/'
 # 获取账号参数
 try:
     configinfo = RawConfigParser()
@@ -277,6 +276,7 @@ def message(str_msg):
     global message_info
     print(str_msg)
     message_info = "{}\n{}".format(message_info,str_msg)
+    sys.stdout.flush()
 
 #获取通知，
 if PUSH_PLUS_TOKEN:
@@ -523,14 +523,16 @@ def outfile(filename, context, iscover):
     :param iscover: 是否覆盖 False or True
     :return:
     """
-    if record:
+    if record == True:
         try:
             if iscover == False:
                 with open(pwd + "log/{0}".format(filename), "a+", encoding="utf-8") as f1:
                     f1.write("{}\n".format(context))
+                    f1.close()
             elif iscover == True:
                 with open(pwd + "{0}".format(filename), "w+", encoding="utf-8") as f1:
                     f1.write("{}".format(context))
+                    f1.close()
         except Exception as e:
             print(e)
 
@@ -707,7 +709,7 @@ def getShopOpenCardInfo(venderId, headers, shopid, userName):
     openCardStatus = cardInfo['result']['userInfo']['openCardStatus']  # 是否会员
     interestsRuleList = cardInfo['result']['interestsRuleList']
     if interestsRuleList == None:
-        printinfo("\t\t└Oh,该店礼包已被领光了~", printlog)
+        printinfo("\t\t└查询该店入会没有送豆，不入会", printlog)
         return 0, 0
     try:
         if len(interestsRuleList) > 0:
