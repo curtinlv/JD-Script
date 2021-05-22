@@ -561,7 +561,7 @@ def memoryFun(startNum, threadNum, usernameLabel, username, getallbean, userCoun
             pass
         try:
             if os.path.exists(pwd + "log"):
-                with open(pwd + "log/memory.json", "w", encoding="utf-8") as f:
+                with open(pwd + "log/memory.json", "w+", encoding="utf-8") as f:
                     json.dump(memoryJson, f, indent=4)
             else:
                 pass
