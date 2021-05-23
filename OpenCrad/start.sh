@@ -22,7 +22,7 @@ export record=True
 #True:仅记录，不入会; False:记录且还要入会。同时需要record=True才生效。
 export onlyRecord=False
 
-#True 或 False  开启记忆功能，接力上一次异常中断位置继续。 ps:如果挂crontab建议关闭记忆功能，只是建议。
+#True 或 False  开启记忆功能，接力上一次异常中断位置继续。
 export memory=True
 
 #True：只打印部分日志 False:打印所有日志
