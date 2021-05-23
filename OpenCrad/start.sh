@@ -1,7 +1,7 @@
 #!/bin/env bash
 ## 使用Env环境执行方式，OpenCradConfig.ini配置文件参数不会生效。
 ## 执行命令 ：sh start.sh
-## 2021.5.22
+## 2021.5.23
 ## By Curtin
 ## 定时任务：
 ## 0 8 * * * sh /你存放脚本的本地绝对路径/start.sh
@@ -59,25 +59,27 @@ export PUSH_PLUS_TOKEN=
 ################### ↑↑↑↑ 你需要填的参数到此结束 ↑↑↑↑ ##############################
 ######### 以下不用配置，默认就好 ##########################
 cd `dirname $0`
+workpath=`pwd`
+logfile=${workpath}/${logfile}
 _printTime(){
   echo "[`date +"%F %T"`]: $1"
 }
 PID=`ps -ef | grep "python3 ${scriptPath}" | grep -v grep| awk '{print $2}'`
 if [ ! -z $PID ];then
 	_printTime "已在后台运行 PID：$PID 如需要终止执行命令：kill $PID"
-	_printTime "查看运行日志: tail -f run_${scriptPath}.log"
+	_printTime "查看运行日志: tail -f ${logfile}"
 else
 	_printTime "开始执行入会领豆...."
-	echo "" >run_${scriptPath}.log #清空日志
-	nohup python3 ${scriptPath} >> run_${scriptPath}.log 2>&1 &
+	echo "" >${logfile} #清空日志
+	nohup python3 ${scriptPath} >> ${logfile} 2>&1 &
 	sleep 5
 	PID=`ps -ef | grep "python3 ${scriptPath}" | grep -v grep| awk '{print $2}'`
 	if [ -z ${PID} ];then
 		_printTime "执行失败!"
-		_printTime "请检查日志: tail -f run_${scriptPath}.log"
+		_printTime "请检查日志: tail -f ${logfile}"
 	else
 		_printTime "执行成功，已放在后台运行 PID：$PID"
-		_printTime "查看运行日志: tail -f run_${scriptPath}.log"
+		_printTime "查看运行日志: tail -f ${logfile}"
 	fi
 fi
 

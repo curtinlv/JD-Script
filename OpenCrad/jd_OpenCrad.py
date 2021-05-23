@@ -221,77 +221,97 @@ if "openCardBean" in os.environ:
     if len(os.environ["openCardBean"]) >0:
         openCardBean = int(os.environ["openCardBean"])
         print("已获取并使用Env环境 openCardBean:",openCardBean)
+    elif not openCardBean:
+        openCardBean = 0
 # 限制速度，单位秒，如果请求过快报错适当调整0.5秒以上
 if "sleepNum" in os.environ:
     if len(os.environ["sleepNum"]) > 0:
         sleepNum = float(os.environ["sleepNum"])
         print("已获取并使用Env环境 sleepNum:",sleepNum)
+    elif not sleepNum:
+        sleepNum = 0
 if "printlog" in os.environ:
     if len(os.environ["printlog"]) > 1:
         printlog = getBool(os.environ["printlog"])
         print("已获取并使用Env环境 printlog:",printlog)
+    elif not printlog:
+        printlog = True
     # 是否记录符合条件的shopid，输出文件【OpenCardlog/yes_shopid.txt】 False|True
 if "record" in os.environ:
     if len(os.environ["record"]) > 1:
         record = getBool(os.environ["record"])
         print("已获取并使用Env环境 record:",record)
+    elif not record:
+        record = True
 # 仅记录，不入会。入会有豆的shopid输出文件
 if "onlyRecord" in os.environ:
     if len(os.environ["onlyRecord"]) > 1:
         onlyRecord = getBool(os.environ["onlyRecord"])
         print("已获取并使用Env环境 onlyRecord:",onlyRecord)
+    elif not onlyRecord:
+        onlyRecord = False
 # 开启记忆， 需要record=True且 memory= True 才生效
 if "memory" in os.environ:
     if len(os.environ["memory"]) > 1:
         memory = getBool(os.environ["memory"])
         print("已获取并使用Env环境 memory:",memory)
+    elif not memory:
+        memory = True
 # 是否启用远程shopid
 if "isRemoteSid" in os.environ:
     if len(os.environ["isRemoteSid"]) > 1:
         isRemoteSid = getBool(os.environ["isRemoteSid"])
         print("已获取并使用Env环境 isRemoteSid:",isRemoteSid)
+    elif not isRemoteSid:
+        isRemoteSid = True
 # 获取TG_BOT_TOKEN
 if "TG_BOT_TOKEN" in os.environ:
     if len(os.environ["TG_BOT_TOKEN"]) > 1:
         TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
         print("已获取并使用Env环境 TG_BOT_TOKEN")
+    elif not TG_BOT_TOKEN:
+        TG_BOT_TOKEN = ''
 # 获取TG_USER_ID
 if "TG_USER_ID" in os.environ:
     if len(os.environ["TG_USER_ID"]) > 1:
         TG_USER_ID = os.environ["TG_USER_ID"]
         print("已获取并使用Env环境 TG_USER_ID")
+    elif not TG_USER_ID:
+        TG_USER_ID = ''
 # 获取代理ip
 if "TG_PROXY_IP" in os.environ:
     if len(os.environ["TG_PROXY_IP"]) > 1:
         TG_PROXY_IP = os.environ["TG_PROXY_IP"]
         print("已获取并使用Env环境 TG_PROXY_IP")
+    elif not TG_PROXY_IP:
+        TG_PROXY_IP = ''
 # 获取TG 代理端口
 if "TG_PROXY_PORT" in os.environ:
     if len(os.environ["TG_PROXY_PORT"]) > 1:
         TG_PROXY_PORT = os.environ["TG_PROXY_PORT"]
         print("已获取并使用Env环境 TG_PROXY_PORT")
+    elif not TG_PROXY_PORT:
+        TG_PROXY_PORT = ''
 # 获取TG TG_API_HOST
 if "TG_API_HOST" in os.environ:
     if len(os.environ["TG_API_HOST"]) > 1:
         TG_API_HOST = os.environ["TG_API_HOST"]
         print("已获取并使用Env环境 TG_API_HOST")
+    elif not TG_API_HOST:
+        TG_API_HOST = ''
 # 获取pushplus+ PUSH_PLUS_TOKEN
 if "PUSH_PLUS_TOKEN" in os.environ:
     if len(os.environ["PUSH_PLUS_TOKEN"]) > 1:
         PUSH_PLUS_TOKEN = os.environ["PUSH_PLUS_TOKEN"]
         print("已获取并使用Env环境 PUSH_PLUS_TOKEN")
+    elif not PUSH_PLUS_TOKEN:
+        PUSH_PLUS_TOKEN = ''
 # 判断参数是否存在
 try:
     cookies
-    openCardBean
-    record
-    onlyRecord
-    memory
-    printlog
-    isRemoteSid
 except NameError as e:
     var_exists = False
-    print("[OpenCardConfig.ini] 和 [Env环境] 都无法获取到您的参数或缺少，请配置!\nError:", e)
+    print("[OpenCardConfig.ini] 和 [Env环境] 都无法获取到您的cookies，请配置!\nError:", e)
     time.sleep(60)
     exit(1)
 else:
