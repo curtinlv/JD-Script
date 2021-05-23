@@ -174,6 +174,20 @@ if pwd:
     os.chdir(pwd)
 pwd = os.path.abspath('.') + '/'
 
+######
+openCardBean = ''
+sleepNum = ''
+record = ''
+onlyRecord = ''
+memory = ''
+printlog = ''
+isRemoteSid = ''
+TG_BOT_TOKEN = ''
+TG_USER_ID = ''
+PUSH_PLUS_TOKEN = ''
+TG_PROXY_IP = ''
+TG_PROXY_PORT = ''
+TG_API_HOST = ''
 # 获取账号参数
 try:
     configinfo = RawConfigParser()
