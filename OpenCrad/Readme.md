@@ -26,19 +26,22 @@
     pip3 install requests
     执行：
     python3 jd_OpenCrad.py
+    
+    start.sh 脚本运行方法：
+    1.适合定时任务或不想依赖ini配置文件。 
+    2.支持单号跑多开，如
+       cp start.sh start_2.sh
+       sh start_2.sh  #只跑里面配置的参数，如cookie
+    3.定时任务（参考）：
+       0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh
+       2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh
+               
 ## `【更新记录】`
     2021.5.23：(v1.1.1)
         * 修复一些问题及优化一些代码
         * 修复Env环境读取变量问题
         * 新增 start.sh 运行脚本（可Env环境使用）
             - 运行方式 sh start.sh
-            1.适合定时任务或不想依赖ini配置文件。 
-            2.支持单号跑多开，如
-               cp start.sh start_2.sh
-               sh start_2.sh  #只跑里面配置的参数，如cookie
-            3.定时任务（参考）：
-               0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh
-               2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_1.sh
     2021.5.21：(v1.1.0)
         * 修复一些问题及优化一些代码：
             - 修复最后统计显示为0，新增开卡个数统计
