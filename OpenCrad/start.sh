@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 ## 使用Env环境执行方式，OpenCradConfig.ini配置文件参数不会生效。
 ## 执行命令 ：sh start.sh
 ## 2021.5.23
