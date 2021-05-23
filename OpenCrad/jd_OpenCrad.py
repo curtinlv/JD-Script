@@ -618,29 +618,28 @@ def memoryFun(startNum, threadNum, usernameLabel, username, getallbean, userCoun
             memoryJson['currUser{}'.format(threadNum)] = username
             memoryJson['t{}_startNum'.format(threadNum)] = startNum
             memoryJson['allUserCount'] = userCount
-        elif usernameLabel == False:
-            try:
+    if usernameLabel == False:
+        try:
 
-                memoryJson['{}'.format(username)]
-                memoryJson['{}'.format(username)] += getallbean
-            except:
-                memoryJson['{}'.format(username)] = getallbean
-            try:
-                memoryJson['{}_ok'.format(username)]
-                memoryJson['{}_ok'.format(username)] += 1
-            except:
-                memoryJson['{}_ok'.format(username)] = 1
+            memoryJson['{}'.format(username)]
+            memoryJson['{}'.format(username)] += getallbean
+        except:
+            memoryJson['{}'.format(username)] = getallbean
+        try:
+            memoryJson['{}_ok'.format(username)]
+            memoryJson['{}_ok'.format(username)] += 1
+        except:
+            memoryJson['{}_ok'.format(username)] = 1
 
+
+    try:
+        if os.path.exists(pwd + "log"):
+            with open(pwd + "log/memory.json", "w+", encoding="utf-8") as f:
+                json.dump(memoryJson, f, indent=4)
         else:
             pass
-        try:
-            if os.path.exists(pwd + "log"):
-                with open(pwd + "log/memory.json", "w+", encoding="utf-8") as f:
-                    json.dump(memoryJson, f, indent=4)
-            else:
-                pass
-        except Exception as e:
-            print(e)
+    except Exception as e:
+        print(e)
 
 
 # 修复记忆功能一些问题，如记录累计京豆统计显示为0等
