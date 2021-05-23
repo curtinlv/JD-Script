@@ -3,7 +3,12 @@
 ## 执行命令 ：sh start.sh
 ## 2021.5.22
 ## By Curtin
-
+## 定时任务：
+## 0 8 * * * sh /你存放脚本的本地绝对路径/start.sh
+##
+#########################################
+#主脚本路径。默认和主脚本同级目录
+scriptPath='jd_OpenCrad.py'
 ################### ↓↓↓【以下需要配置的参数，代替配置文件OpenCradConfig.ini】↓↓↓ ###################
 #京东cookie 格式：pt_key=xxx;pt_pin=xxx; & pt_key=xxx;pt_pin=xxx; (多账号&分隔)
 export JD_COOKIE='你的京东Cookie放这里，单引号保留'
@@ -51,11 +56,7 @@ export TG_PROXY_PORT=
 export PUSH_PLUS_TOKEN=
 ##################
 
-#主脚本路径
-scriptPath='jd_OpenCrad.py'
-
 ################### ↑↑↑↑ 你需要填的参数到此结束 ↑↑↑↑ ##############################
-
 ######### 以下不用配置，默认就好 ##########################
 cd `dirname $0`
 _printTime(){
