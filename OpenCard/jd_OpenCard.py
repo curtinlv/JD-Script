@@ -19,8 +19,8 @@ readmes = """
 ##  目录结构
     JD-Script/                  #仓库
     |-- LICENSE
-    |-- OpenCrad                # 主目录
-    |   |-- jd_OpenCrad.py      # 主代码 （必要）
+    |-- OpenCard                # 主目录
+    |   |-- jd_OpenCard.py      # 主代码 （必要）
     |   |-- log                 # 临时目录（可删除）
     |   |-- OpenCardConfig.ini  # 只配置文件（必要）
     |   |-- Readme.md           # 说明书
@@ -35,7 +35,7 @@ readmes = """
     安装依赖模块 :
     pip3 install requests
     执行：
-    python3 jd_OpenCrad.py
+    python3 jd_OpenCard.py
     
     start.sh 脚本运行方法：
     1.适合定时任务或不想依赖ini配置文件。 
@@ -43,8 +43,8 @@ readmes = """
        cp start.sh start_2.sh
        sh start_2.sh  #只跑里面配置的参数，如cookie
     3.定时任务（参考）：
-       0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh
-       2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh
+       0 8 * * * sh /home/curtin/JD-Script/OpenCard/start.sh
+       2 8 * * * sh /home/curtin/JD-Script/OpenCard/start_2.sh
                
 ## `【更新记录】`
     2021.5.23：(v1.1.1)
