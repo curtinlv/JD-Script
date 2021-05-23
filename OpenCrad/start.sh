@@ -60,7 +60,7 @@ export PUSH_PLUS_TOKEN=
 ######### 以下不用配置，默认就好 ##########################
 cd `dirname $0`
 workpath=`pwd`
-logfile=${workpath}/${logfile}
+logfile=${workpath}/run_OpenCrad.log
 _printTime(){
   echo "[`date +"%F %T"`]: $1"
 }
