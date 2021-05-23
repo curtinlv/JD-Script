@@ -23,8 +23,8 @@ readmes = """
     |   |-- jd_OpenCrad.py      # 主代码 （必要）
     |   |-- log                 # 临时目录（可删除）
     |   |-- OpenCardConfig.ini  # 只配置文件（必要）
-    |   |-- Readme.md           # 说明
-    |   `-- shopid.txt          # shopid存放文件
+    |   |-- Readme.md           # 说明书
+    |   `-- start.sh            # shell脚本（非必要）
     `-- README.md
 
 ### `【兼容环境】`
