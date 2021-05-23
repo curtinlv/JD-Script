@@ -205,6 +205,8 @@ def getBool(label):
             return True
         elif label == 'False' or label == 'no' or label == 'false' or label == 'No':
             return False
+        else:
+            return True
     except Exception as e:
         print(e)
 
