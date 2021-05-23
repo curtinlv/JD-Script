@@ -1,6 +1,6 @@
 
 # JD入会领豆小程序
-![JD入会领豆小程序](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
+![JD入会领豆小程序](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCard/resultCount.png)
   
 ## 使用方法
 #### [手机用户（参考） https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw](https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw)
