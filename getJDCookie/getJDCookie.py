@@ -51,7 +51,7 @@ chrome_options.add_argument('user-agent="Mozilla/5.0 (iPhone; CPU iPhone OS 13_5
 
 def exitWait():
     getYourCode = input("已完成,请按回车键自动退出。")
-
+    exit(0)
 try:
     driver = webdriver.Chrome(options=chrome_options, executable_path=r'./chromedriver.exe')
     driver.set_window_size(375, 812)
