@@ -188,6 +188,7 @@ PUSH_PLUS_TOKEN = ''
 TG_PROXY_IP = ''
 TG_PROXY_PORT = ''
 TG_API_HOST = ''
+QYWX_AM = ''
 # 获取账号参数
 try:
     configinfo = RawConfigParser()
@@ -216,6 +217,7 @@ try:
     TG_PROXY_IP = configinfo.get('main', 'TG_PROXY_IP')
     TG_PROXY_PORT = configinfo.get('main', 'TG_PROXY_PORT')
     TG_API_HOST = configinfo.get('main', 'TG_API_HOST')
+    QYWX_AM = configinfo.get('main', 'QYWX_AM')
 except Exception as e:
     OpenCardConfigLabel = 1
     print("参数配置有误，请检查OpenCardConfig.ini\nError:", e)
@@ -328,6 +330,13 @@ if "PUSH_PLUS_TOKEN" in os.environ:
         print("已获取并使用Env环境 PUSH_PLUS_TOKEN")
     elif not PUSH_PLUS_TOKEN:
         PUSH_PLUS_TOKEN = ''
+# 获取企业微信应用推送 QYWX_AM
+if "QYWX_AM" in os.environ:
+    if len(os.environ["QYWX_AM"]) > 1:
+        QYWX_AM = os.environ["QYWX_AM"]
+        print("已获取并使用Env环境 QYWX_AM")
+    elif not QYWX_AM:
+        QYWX_AM = ''
 # 判断参数是否存在
 try:
     cookies
@@ -377,6 +386,8 @@ if PUSH_PLUS_TOKEN:
     notify_mode.append('pushplus')
 if TG_BOT_TOKEN and TG_USER_ID:
     notify_mode.append('telegram_bot')
+if QYWX_AM:
+    notify_mode.append('wecom_app')
 
 #tg通知
 def telegram_bot(title, content):
@@ -457,8 +468,99 @@ def send(title, content):
             else:
                 print('未启用 PUSHPLUS机器人')
             continue
+        elif i == 'wecom_app':
+            if QYWX_AM:
+                wecom_app(title=title, content=content)
+            else:
+                print('未启用企业微信应用消息推送')
+            continue
         else:
             print('此类推送方式不存在')
+
+# 企业微信 APP 推送
+
+def wecom_app(title, content):
+    try:
+        if not QYWX_AM:
+            print("QYWX_AM 并未设置！！\n取消推送")
+            return
+        QYWX_AM_AY = re.split(',',QYWX_AM)
+        if 4 < len(QYWX_AM_AY) > 5:
+            print("QYWX_AM 设置错误！！\n取消推送")
+            return
+        corpid=QYWX_AM_AY[0]
+        corpsecret=QYWX_AM_AY[1]
+        touser=QYWX_AM_AY[2]
+        agentid=QYWX_AM_AY[3]
+        try:
+            media_id=QYWX_AM_AY[4]
+        except :
+            media_id=''
+        wx=WeCom(corpid, corpsecret, agentid)
+        # 如果没有配置 media_id 默认就以 text 方式发送
+        if not media_id:
+            message=title + '\n\n' + content
+            response=wx.send_text(message, touser)
+        else:
+            response=wx.send_mpnews(title, content, media_id, touser)
+        if response == 'ok':
+            print('推送成功！')
+        else:
+            print('推送失败！错误信息如下：\n',response)
+    except Exception as e:
+        print(e)
+
+class WeCom:
+    def __init__(self, corpid, corpsecret, agentid):
+        self.CORPID = corpid
+        self.CORPSECRET = corpsecret
+        self.AGENTID = agentid
+    def get_access_token(self):
+        url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken'
+        values = {'corpid': self.CORPID,
+                  'corpsecret': self.CORPSECRET,
+                  }
+        req = requests.post(url, params=values)
+        data = json.loads(req.text)
+        return data["access_token"]
+    def send_text(self, message, touser="@all"):
+        send_url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' + self.get_access_token()
+        send_values = {
+            "touser": touser,
+            "msgtype": "text",
+            "agentid": self.AGENTID,
+            "text": {
+                "content": message
+                },
+            "safe": "0"
+            }
+        send_msges=(bytes(json.dumps(send_values), 'utf-8'))
+        respone = requests.post(send_url, send_msges)
+        respone = respone.json()
+        return respone["errmsg"]
+    def send_mpnews(self, title, message, media_id, touser="@all"):
+        send_url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' + self.get_access_token()
+        send_values = {
+            "touser": touser,
+            "msgtype": "mpnews",
+            "agentid": self.AGENTID,
+            "mpnews" : {
+               "articles":[
+                   {
+                       "title": title, 
+                       "thumb_media_id": media_id,
+                       "author": "Author",
+                       "content_source_url": "",
+                       "content": message.replace('\n','<br/>'),
+                       "digest": message
+                    }
+               ]
+            }
+        }
+        send_msges=(bytes(json.dumps(send_values), 'utf-8'))
+        respone = requests.post(send_url, send_msges)
+        respone = respone.json()
+        return respone["errmsg"]
 
 # 检测cookie格式是否正确
 def iscookie():
