@@ -265,6 +265,8 @@ if "Concurrent" in os.environ:
     if len(os.environ["Concurrent"]) > 10:
         cookies = os.environ["Concurrent"]
         print("已获取并使用Env环境 Concurrent",Concurrent)
+    elif not Concurrent:
+        Concurrent = True
 # 限制速度，单位秒，如果请求过快报错适当调整0.5秒以上
 if "sleepNum" in os.environ:
     if len(os.environ["sleepNum"]) > 0:
