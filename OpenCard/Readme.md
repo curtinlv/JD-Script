@@ -1,11 +1,11 @@
 
 # JD入会领豆小程序
-
+![JD入会领豆小程序](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
   
 ## 使用方法
 #### [手机用户（参考） https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw](https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw)
 #### [PC用户 （参考） https://mp.weixin.qq.com/s/JmLxAecZAlEc4L2sZWnn1A](https://mp.weixin.qq.com/s/JmLxAecZAlEc4L2sZWnn1A)
-#### [v4-Bot用户 (参考) https://github.com/curtinlv/JD-Script/pull/12#issue-652134788](https://github.com/curtinlv/JD-Script/pull/12#issue-652134788)
+#### [v4-bot用户 （参考） https://github.com/curtinlv/JD-Script/pull/12#issue-652134788](https://github.com/curtinlv/JD-Script/pull/12#issue-652134788)
 
 ##  目录结构
     JD-Script/                  #仓库
@@ -46,6 +46,13 @@
        2 8 * * * sh /home/curtin/JD-Script/OpenCard/start_2.sh
                
 ## `【更新记录】`
+    2021.5.28：（v1.2.0）
+        * 新增单或多账号并发
+            - Concurrent=yes #开启
+        * 新增企业微信、Bark推送
+        * 优化一些逻辑
+            - 如随机账号查询礼包，仅开启单账号时候
+            - 京豆统计
     2021.5.23：(v1.1.1)
         * 修复一些问题及优化一些代码
         * 修复Env环境读取变量问题
@@ -125,9 +132,9 @@
 ###### 关注公众号【TopStyle】回复：shopid
 ![TopStyle](https://gitee.com/curtinlv/img/raw/master/gzhcode.jpg)
 # 
-    @Last Version: v1.1.1
+    @Last Version: v1.2.0
 
-    @Last Time: 2021-05-22 18:02
+    @Last Time: 2021-05-28 22:02
 
     @Author: Curtin
 #### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 

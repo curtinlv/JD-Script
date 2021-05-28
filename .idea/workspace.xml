@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/OpenCrad/shopid.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenCrad/jd_OpenCrad.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCrad/jd_OpenCrad.py" afterDir="false" />
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="2021.5.28：（v1.2.0）&#10;        * 新增单或多账号并发&#10;            - Concurrent=yes #开启&#10;        * 新增企业微信、Bark推送&#10;        * 优化一些逻辑&#10;            - 如随机账号查询礼包，仅开启单账号时候&#10;            - 京豆统计">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenCard/OpenCardConfig.ini" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCard/OpenCardConfig.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenCard/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCard/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenCard/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCard/start.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,61 +32,159 @@
     <favorites_list name="JD-Script" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenCard/Readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="1440">
+                <caret line="96" column="14" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="14" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/OpenCrad/jd_OpenCrad.py">
+        <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="515" column="57" lean-forward="true" selection-start-line="515" selection-start-column="57" selection-end-line="515" selection-end-column="57" />
+            <state relative-caret-position="54">
+              <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
               <folding>
-                <element signature="e#1409#1436#0" expanded="true" />
+                <element signature="e#4462#4492#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpenCrad/shopid.txt">
+        <entry file="file://$PROJECT_DIR$/OpenCard/OpenCardConfig.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="10" lean-forward="true" selection-end-line="25980" selection-end-column="6" />
+            <state relative-caret-position="425">
+              <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpenCrad/OpenCardConfig.ini">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/OpenCard/start.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="69" column="28" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenCard/start-v4.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1160" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenCard/log/memory.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BlueCoin/jd_blueCoin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="74" selection-start-line="53" selection-end-line="74" />
+              <folding>
+                <element signature="e#531#551#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenCard/start.sh-jd_OpenCard.py.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider" />
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>该店礼包已被领光了</find>
-      <find>getVenderId</find>
-      <find>mh5</find>
-      <find>iscookie</find>
-      <find>iscookie()</find>
-      <find>memorylabel</find>
-      <find>vip_info_all</find>
-      <find>mall</find>
-      <find>memoryFun</find>
-      <find>headers_a</find>
-      <find>progress_bar</find>
+      <find>record</find>
+      <find>Oh,该店礼包已被领光了~</find>
+      <find>bool(</find>
+      <find>python3</find>
+      <find>进度</find>
+      <find>random</find>
+      <find>random.randint</find>
+      <find>exitCodeFun</find>
+      <find>getResult</find>
+      <find>bindWithVender</find>
+      <find>endNum</find>
+      <find>user_num</find>
+      <find>shopids</find>
+      <find>18211240373_p</find>
+      <find>Cookie</find>
+      <find>u</find>
+      <find>getUserInfo</find>
       <find>getShopOpenCardInfo</find>
-      <find>nowt</find>
-      <find>datetime.datetime.now()</find>
-      <find>nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')</find>
+      <find>已启用</find>
+      <find>50豆</find>
+      <find>入会汇总</find>
+      <find>sss</find>
+      <find>睡眠</find>
+      <find>update</find>
+      <find>activityIdLabel</find>
+      <find>推送失败</find>
+      <find>BARK</find>
+      <find>verify=False,</find>
+      <find>bark</find>
+      <find>bark_push</find>
     </findStrings>
+    <replaceStrings>
+      <replace>查询该店入会礼包中没有送豆，不入会</replace>
+      <replace>$PROJECT_DIR$/../test/venv3.7/bin/python</replace>
+      <replace>python3</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="curtinlv" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/OpenCrad/Readme.md" />
+        <option value="$PROJECT_DIR$/OpenCrad/update.json" />
+        <option value="$PROJECT_DIR$/OpenCrad/jd_OpenCrad_v1.0.4_Beta.py" />
+        <option value="$PROJECT_DIR$/OpenCrad/shopid.txt" />
+        <option value="$PROJECT_DIR$/BuleCoin/jd_buleCoin.py" />
+        <option value="$PROJECT_DIR$/OpenCrad/History/jd_OpenCrad_v1.0.4_Beta.py" />
+        <option value="$PROJECT_DIR$/OpenCrad/updateRemoteShopid.sh" />
+        <option value="$PROJECT_DIR$/getJDCookie/getJDCookie.py" />
+        <option value="$PROJECT_DIR$/OpenCrad/OpenCardConfig-utf-8.ini" />
+        <option value="$PROJECT_DIR$/OpenCrad/log/memory.json" />
+        <option value="$PROJECT_DIR$/OpenCrad/OpenCardConfig.ini" />
         <option value="$PROJECT_DIR$/OpenCrad/jd_OpenCrad.py" />
+        <option value="$PROJECT_DIR$/OpenCrad/start.sh" />
+        <option value="$PROJECT_DIR$/OpenCard/start.sh-jd_OpenCard.py.log" />
+        <option value="$PROJECT_DIR$/OpenCard/start.sh" />
+        <option value="$PROJECT_DIR$/OpenCard/log/memory.json" />
+        <option value="$PROJECT_DIR$/OpenCard/OpenCardConfig.ini" />
+        <option value="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" />
       </list>
     </option>
   </component>
@@ -93,19 +194,9 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/JD-Script.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="39" />
-    <option name="y" value="81" />
-    <option name="width" value="1407" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="25" />
+    <option name="width" value="1440" />
     <option name="height" value="822" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -114,7 +205,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="JD-Script" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PycharmProjects/JD-Script" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -125,7 +226,7 @@
             <path>
               <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
               <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
-              <item name="OpenCrad" type="462c0819:PsiDirectoryNode" />
+              <item name="OpenCard" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -136,17 +237,24 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/OpenCrad" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/OpenCard" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/OpenCrad" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/OpenCrad/History" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/OpenCrad" />
       <recent name="$PROJECT_DIR$/.." />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/OpenCard" />
+      <recent name="$PROJECT_DIR$/OpenCrad/log" />
+      <recent name="$PROJECT_DIR$/OpenCrad/History" />
+      <recent name="$PROJECT_DIR$/OpenCrad" />
+      <recent name="$PROJECT_DIR$/OpenCrad/dist" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -161,7 +269,73 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.jd_OpenCard">
+    <configuration name="start.sh (1)" type="BashConfigurationType" factoryName="Bash" temporary="true">
+      <module name="JD-Script" />
+      <option name="INTERPRETER_OPTIONS" value="bash" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/env" />
+      <option name="PROJECT_INTERPRETER" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OpenCard" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OpenCard/start.sh" />
+      <option name="PARAMETERS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="start.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
+      <module name="JD-Script" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="PROJECT_INTERPRETER" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OpenCrad" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OpenCrad/start.sh" />
+      <option name="PARAMETERS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="getJDCookie" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="JD-Script" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/getJDCookie" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/getJDCookie/getJDCookie.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="jd_OpenCard" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="JD-Script" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OpenCard" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="jd_OpenCrad" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="JD-Script" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -186,6 +360,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.jd_OpenCard" />
+        <item itemvalue="Python.getJDCookie" />
+        <item itemvalue="Bash.start.sh (1)" />
+        <item itemvalue="Bash.start.sh" />
         <item itemvalue="Python.jd_OpenCrad" />
       </list>
     </recent_temporary>
@@ -202,33 +380,412 @@
       <updated>1620387978288</updated>
       <workItem from="1620387984437" duration="113000" />
       <workItem from="1620388110011" duration="281000" />
-      <workItem from="1620388526116" duration="12807000" />
+      <workItem from="1620388526116" duration="13548000" />
+      <workItem from="1620481870251" duration="23161000" />
+      <workItem from="1620523455984" duration="1498000" />
+      <workItem from="1620525395923" duration="17000" />
+      <workItem from="1620525562965" duration="471000" />
+      <workItem from="1620526582779" duration="878000" />
+      <workItem from="1620527721563" duration="301000" />
+      <workItem from="1620528160686" duration="336000" />
+      <workItem from="1620528596742" duration="1558000" />
+      <workItem from="1620532483126" duration="20350000" />
+      <workItem from="1621043246381" duration="25079000" />
+      <workItem from="1621132749507" duration="3831000" />
+      <workItem from="1621254212319" duration="1094000" />
+      <workItem from="1621266002083" duration="124000" />
+      <workItem from="1621266720305" duration="238000" />
+      <workItem from="1621431019262" duration="368000" />
+      <workItem from="1621436435351" duration="542000" />
+      <workItem from="1621522143992" duration="29239000" />
+      <workItem from="1621739521675" duration="11757000" />
+      <workItem from="1621871614313" duration="2448000" />
+      <workItem from="1622004185448" duration="487000" />
+      <workItem from="1622013322017" duration="1387000" />
+      <workItem from="1622119876943" duration="2734000" />
+      <workItem from="1622170194030" duration="569000" />
+      <workItem from="1622172345009" duration="635000" />
+      <workItem from="1622196973455" duration="14435000" />
     </task>
+    <task id="LOCAL-00017" summary="获取Cookie工具">
+      <created>1620555405065</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1620555405065</updated>
+    </task>
+    <task id="LOCAL-00018" summary="修复已知Bug">
+      <created>1620555475266</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1620555475266</updated>
+    </task>
+    <task id="LOCAL-00019" summary="优化cookie获取方式">
+      <created>1620567434974</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1620567434974</updated>
+    </task>
+    <task id="LOCAL-00020" summary="当前最新版v1.0.4_beta">
+      <created>1620567497451</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1620567497451</updated>
+    </task>
+    <task id="LOCAL-00021" summary="更新优化: 支持远程shopid">
+      <created>1621062488533</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1621062488533</updated>
+    </task>
+    <task id="LOCAL-00022" summary="新增isRemoteSid=yes/no，控制是否启用远程shopid">
+      <created>1621062546800</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1621062546800</updated>
+    </task>
+    <task id="LOCAL-00023" summary="更新">
+      <created>1621062573262</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1621062573262</updated>
+    </task>
+    <task id="LOCAL-00024" summary="更新优化: 支持远程shopid、当前版本v1.0.5">
+      <created>1621063611464</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1621063611464</updated>
+    </task>
+    <task id="LOCAL-00025" summary="更新2021-05-15">
+      <created>1621063727225</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1621063727225</updated>
+    </task>
+    <task id="LOCAL-00026" summary="东东超市兑换">
+      <created>1621063959170</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1621063959170</updated>
+    </task>
+    <task id="LOCAL-00027" summary="更新">
+      <created>1621095777588</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1621095777588</updated>
+    </task>
+    <task id="LOCAL-00028" summary="新增isRemoteSid=yes/no，控制是否启用远程shopid">
+      <created>1621157526688</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1621157526688</updated>
+    </task>
+    <task id="LOCAL-00029" summary="update">
+      <created>1621157672604</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1621157672604</updated>
+    </task>
+    <task id="LOCAL-00030" summary="更新">
+      <created>1621437139836</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1621437139836</updated>
+    </task>
+    <task id="LOCAL-00031" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
+      <created>1621528066349</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1621528066349</updated>
+    </task>
+    <task id="LOCAL-00032" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
+      <created>1621528462079</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1621528462079</updated>
+    </task>
+    <task id="LOCAL-00033" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
+      <created>1621528586318</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1621528586318</updated>
+    </task>
+    <task id="LOCAL-00034" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
+      <created>1621528969411</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1621528969411</updated>
+    </task>
+    <task id="LOCAL-00035" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
+      <created>1621529299420</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1621529299420</updated>
+    </task>
+    <task id="LOCAL-00036" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
+      <created>1621530480282</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1621530480282</updated>
+    </task>
+    <task id="LOCAL-00037" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
+      <created>1621531125115</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1621531125115</updated>
+    </task>
+    <task id="LOCAL-00038" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
+      <created>1621532119685</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1621532119685</updated>
+    </task>
+    <task id="LOCAL-00039" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 修复路径问题&#10;            - 优化">
+      <created>1621533127326</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1621533127326</updated>
+    </task>
+    <task id="LOCAL-00040" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
+      <created>1621533198944</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1621533198944</updated>
+    </task>
+    <task id="LOCAL-00041" summary="修复一些问题及优化一下代码">
+      <created>1621685578080</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1621685578080</updated>
+    </task>
+    <task id="LOCAL-00042" summary="修复一些问题及优化一下代码">
+      <created>1621685681096</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1621685681096</updated>
+    </task>
+    <task id="LOCAL-00043" summary="修复一些问题及优化一下代码">
+      <created>1621689640820</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1621689640820</updated>
+    </task>
+    <task id="LOCAL-00044" summary="修复一些问题及优化一下代码">
+      <created>1621690009625</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1621690009625</updated>
+    </task>
+    <task id="LOCAL-00045" summary="修复一些问题及优化一下代码">
+      <created>1621696870084</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1621696870084</updated>
+    </task>
+    <task id="LOCAL-00046" summary="新增shtart.sh执行脚本，使用Env环境执行方式，则ini配置文件参数不会生效。">
+      <created>1621706482702</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1621706482702</updated>
+    </task>
+    <task id="LOCAL-00047" summary="(v1.1.1)&#10;        * 修复一些问题及优化一些代码&#10;        * 修复Env环境读取变量问题&#10;        * 新增 start.sh 运行脚本（Linux Env环境使用）">
+      <created>1621706581149</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1621706581149</updated>
+    </task>
+    <task id="LOCAL-00048" summary="新增shtart.sh执行脚本，使用Env环境参数，则ini配置文件参数不会生效。">
+      <created>1621706880420</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1621706880420</updated>
+    </task>
+    <task id="LOCAL-00049" summary="新增shtart.sh执行脚本，使用Env环境参数，则ini配置文件参数不会生效。">
+      <created>1621706953559</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1621706953559</updated>
+    </task>
+    <task id="LOCAL-00050" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_1.sh">
+      <created>1621740649102</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1621740649103</updated>
+    </task>
+    <task id="LOCAL-00051" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_1.sh">
+      <created>1621740853531</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1621740853531</updated>
+    </task>
+    <task id="LOCAL-00052" summary="新增start.sh，脚本运行方法：&#10;    1.适合定时任务或不想依赖ini配置文件。&#10;       sh start.sh  &#10;    2.支持单号跑多开，如&#10;       cp start.sh start_2.sh&#10;       sh start_2.sh  #只跑里面配置的参数，如cookie&#10;    3.定时任务（参考）：&#10;       0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;       2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621741490183</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1621741490183</updated>
+    </task>
+    <task id="LOCAL-00053" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_1.sh">
+      <created>1621743820226</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1621743820226</updated>
+    </task>
+    <task id="LOCAL-00054" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621743944854</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1621743944854</updated>
+    </task>
+    <task id="LOCAL-00055" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621745226314</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1621745226314</updated>
+    </task>
+    <task id="LOCAL-00056" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621745245247</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1621745245247</updated>
+    </task>
+    <task id="LOCAL-00057" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621750033608</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1621750033608</updated>
+    </task>
+    <task id="LOCAL-00058" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621750223052</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1621750223052</updated>
+    </task>
+    <task id="LOCAL-00059" summary="* 新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh&#10;* 修复一些Bug">
+      <created>1621750809581</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1621750809582</updated>
+    </task>
+    <task id="LOCAL-00060" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621750930488</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1621750930488</updated>
+    </task>
+    <task id="LOCAL-00061" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621751070257</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1621751070257</updated>
+    </task>
+    <task id="LOCAL-00062" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621768868150</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1621768868150</updated>
+    </task>
+    <task id="LOCAL-00063" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621769083349</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1621769083349</updated>
+    </task>
+    <task id="LOCAL-00064" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
+      <created>1621772446053</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1621772446053</updated>
+    </task>
+    <task id="LOCAL-00065" summary="修复一些参数获取不到或者未定义的问题">
+      <created>1621772771278</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1621772771278</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13201000" />
+    <option name="totallyTimeSpent" value="157479000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="25" width="1440" height="822" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.25107297" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.23319027" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.036144577" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4985694" weight="0.32872927" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6738197" visible="true" weight="0.49447513" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4985694" weight="0.66574585" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49785408" weight="0.32891566" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49284694" weight="0.2845304" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32872927" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.32618025" side_tool="true" visible="true" weight="0.49447513" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.7947067" weight="0.36878452" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.795422" weight="0.32596686" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49928468" weight="0.32872927" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -239,20 +796,53 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="京东logo打包用" />
+    <MESSAGE value="获取Cookie工具" />
+    <MESSAGE value="修复已知Bug" />
+    <MESSAGE value="优化cookie获取方式" />
+    <MESSAGE value="当前最新版v1.0.4_beta" />
+    <MESSAGE value="更新优化: 支持远程shopid,当前版本v1.0.5" />
+    <MESSAGE value="更新优化: 支持远程shopid，当前版本v1.0.5" />
+    <MESSAGE value="更新优化: 支持远程shopid" />
+    <MESSAGE value="更新优化: 支持远程shopid、当前版本v1.0.5" />
+    <MESSAGE value="更新2021-05-15" />
+    <MESSAGE value="东东超市兑换" />
+    <MESSAGE value="新增isRemoteSid=yes/no，控制是否启用远程shopid" />
+    <MESSAGE value="update" />
+    <MESSAGE value="更新" />
+    <MESSAGE value="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 修复路径问题&#10;            - 优化" />
+    <MESSAGE value="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题" />
+    <MESSAGE value="修复一些问题及优化一下代码" />
+    <MESSAGE value="新增shtart.sh执行脚本，使用Env环境执行方式，则ini配置文件参数不会生效。" />
+    <MESSAGE value="(v1.1.1)&#10;        * 修复一些问题及优化一些代码&#10;        * 修复Env环境读取变量问题&#10;        * 新增 start.sh 运行脚本（Linux Env环境使用）" />
+    <MESSAGE value="新增shtart.sh执行脚本，使用Env环境参数，则ini配置文件参数不会生效。" />
+    <MESSAGE value="新增start.sh，脚本运行方法：&#10;    1.适合定时任务或不想依赖ini配置文件。&#10;       sh start.sh  &#10;    2.支持单号跑多开，如&#10;       cp start.sh start_2.sh&#10;       sh start_2.sh  #只跑里面配置的参数，如cookie&#10;    3.定时任务（参考）：&#10;       0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;       2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh" />
+    <MESSAGE value="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_1.sh" />
+    <MESSAGE value="* 新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh&#10;* 修复一些Bug" />
+    <MESSAGE value="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh" />
+    <MESSAGE value="修复一些参数获取不到或者未定义的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复一些参数获取不到或者未定义的问题" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad.coverage" NAME="jd_OpenCrad Coverage Results" MODIFIED="1620393286765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad" />
+    <SUITE FILE_PATH="coverage/JD_Script$getJDCookie.coverage" NAME="getJDCookie Coverage Results" MODIFIED="1622170393957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getJDCookie" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard.coverage" NAME="jd_OpenCard Coverage Results" MODIFIED="1622212063970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_buleCoin.coverage" NAME="jd_buleCoin Coverage Results" MODIFIED="1621062166911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuleCoin" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad_v1_0_2.coverage" NAME="jd_OpenCrad_v1.0.2 Coverage Results" MODIFIED="1621063108766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad/History" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad_v1_0_4_Beta.coverage" NAME="jd_OpenCrad_v1.0.4_Beta Coverage Results" MODIFIED="1621100489726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad.coverage" NAME="jd_OpenCrad Coverage Results" MODIFIED="1621747998682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="11" selection-start-column="11" selection-end-column="11" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -260,22 +850,187 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpenCrad/shopid.txt">
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/入会0豆以上的shopid-2021-05-08.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/log.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/入会20豆以上的shopid-2021-05-08.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/可销卡用户【linxiangy92】.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/可销卡用户【今晚月亮真好看】.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/shopid-2021-05-08.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/info.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/入会10豆以上的shopid-2021-05-09.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/update.json" />
+    <entry file="file://$PROJECT_DIR$/jd_logo.ico" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/dist/shopid.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/dist/jd_OpenCrad_v1.0.4_Beta.py" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/dist/OpenCardConfig.ini" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/可销卡汇总.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/shopid-2021-05-09.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCard/History/jd_OpenCrad_v1.0.2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="10" lean-forward="true" selection-end-line="25980" selection-end-column="6" />
+        <state relative-caret-position="95">
+          <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpenCrad/OpenCardConfig.ini">
+    <entry file="file://$PROJECT_DIR$/OpenCard/History/jd_OpenCrad_v1.0.3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/History/OpenCardConfig.ini">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpenCrad/jd_OpenCrad.py">
+    <entry file="file://$PROJECT_DIR$/OpenCard/History/jd_OpenCrad_v1.0.4_Beta.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="515" column="57" lean-forward="true" selection-start-line="515" selection-start-column="57" selection-end-line="515" selection-end-column="57" />
+        <state relative-caret-position="329">
+          <caret line="121" selection-start-line="121" selection-end-line="121" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/History/jd_OpenCrad_v1.0.5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="115" selection-start-line="115" selection-end-line="115" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/Question.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="300">
+            <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/shopid-2021-05-19.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【Curtinlv】.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【张轩滟】.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【大灏lll】.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【加顿龟粮】.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCard/log/可退会账号【cyp1820】.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/shopid-2021-05-15.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/log/memory_test.json" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/shopid.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCard/log/入会5豆以上的shopid-2021-05-23.txt" />
+    <entry file="file://$PROJECT_DIR$/OpenCrad/OpenCardConfig-utf-8.ini" />
+    <entry file="file://$PROJECT_DIR$/OpenCard/updateRemoteShopid.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/run_OpenCrad.log" />
+    <entry file="file://$PROJECT_DIR$/BlueCoin/jd_blueCoin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="74" selection-start-line="53" selection-end-line="74" />
           <folding>
-            <element signature="e#1409#1436#0" expanded="true" />
+            <element signature="e#531#551#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/log/shopid-2021-05-23.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="925" selection-start-line="925" selection-end-line="925" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/log/入会汇总.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="11360" column="82" lean-forward="true" selection-start-line="11358" selection-start-column="22" selection-end-line="11360" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard_v1.1.2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="1083" column="25" lean-forward="true" selection-start-line="1046" selection-start-column="8" selection-end-line="1083" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getJDCookie/getJDCookie.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/log/memory.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/OpenCardConfig.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getJDCookie/JDCookies.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="107" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/start-v4.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1160" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/start.sh-jd_OpenCard.py.log">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/start.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="69" column="28" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/Readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1440">
+            <caret line="96" column="14" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="14" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="e#4462#4492#0" expanded="true" />
           </folding>
         </state>
       </provider>
