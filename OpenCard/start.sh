@@ -55,9 +55,9 @@ export TG_PROXY_PORT=
 # token
 export PUSH_PLUS_TOKEN=
 ####### 【企业微信推 推送方法： http://note.youdao.com/s/HMiudGkb 】
-QYWX_AM=""
+export QYWX_AM=""
 ###### Bark  推送 iOS用户下载App获取码
-BARK=""
+export BARK=""
 
 ################### ↑↑↑↑ 你需要填的参数到此结束 ↑↑↑↑ ##############################
 ######### 以下不用配置，默认就好 ##########################

@@ -158,7 +158,7 @@ import time, os, sys, datetime
 import requests
 import random, string
 import re, json, base64
-from urllib.parse import unquote
+from urllib.parse import unquote,quote_plus
 from threading import Thread
 from configparser import RawConfigParser
 
@@ -262,8 +262,8 @@ if "openCardBean" in os.environ:
         openCardBean = 0
 #多账号并发
 if "Concurrent" in os.environ:
-    if len(os.environ["Concurrent"]) > 10:
-        cookies = os.environ["Concurrent"]
+    if len(os.environ["Concurrent"]) > 1:
+        cookies = getBool(os.environ["Concurrent"])
         print("已获取并使用Env环境 Concurrent",Concurrent)
     elif not Concurrent:
         Concurrent = True
@@ -313,22 +313,16 @@ if "TG_BOT_TOKEN" in os.environ:
     if len(os.environ["TG_BOT_TOKEN"]) > 1:
         TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
         print("已获取并使用Env环境 TG_BOT_TOKEN")
-    elif not TG_BOT_TOKEN:
-        TG_BOT_TOKEN = ''
 # 获取TG_USER_ID
 if "TG_USER_ID" in os.environ:
     if len(os.environ["TG_USER_ID"]) > 1:
         TG_USER_ID = os.environ["TG_USER_ID"]
         print("已获取并使用Env环境 TG_USER_ID")
-    elif not TG_USER_ID:
-        TG_USER_ID = ''
 # 获取代理ip
 if "TG_PROXY_IP" in os.environ:
     if len(os.environ["TG_PROXY_IP"]) > 1:
         TG_PROXY_IP = os.environ["TG_PROXY_IP"]
         print("已获取并使用Env环境 TG_PROXY_IP")
-    elif not TG_PROXY_IP:
-        TG_PROXY_IP = ''
 # 获取TG 代理端口
 if "TG_PROXY_PORT" in os.environ:
     if len(os.environ["TG_PROXY_PORT"]) > 1:
@@ -341,29 +335,21 @@ if "TG_API_HOST" in os.environ:
     if len(os.environ["TG_API_HOST"]) > 1:
         TG_API_HOST = os.environ["TG_API_HOST"]
         print("已获取并使用Env环境 TG_API_HOST")
-    elif not TG_API_HOST:
-        TG_API_HOST = ''
 # 获取pushplus+ PUSH_PLUS_TOKEN
 if "PUSH_PLUS_TOKEN" in os.environ:
     if len(os.environ["PUSH_PLUS_TOKEN"]) > 1:
         PUSH_PLUS_TOKEN = os.environ["PUSH_PLUS_TOKEN"]
         print("已获取并使用Env环境 PUSH_PLUS_TOKEN")
-    elif not PUSH_PLUS_TOKEN:
-        PUSH_PLUS_TOKEN = ''
 # 获取企业微信应用推送 QYWX_AM
 if "QYWX_AM" in os.environ:
     if len(os.environ["QYWX_AM"]) > 1:
         QYWX_AM = os.environ["QYWX_AM"]
         print("已获取并使用Env环境 QYWX_AM")
-    elif not QYWX_AM:
-        QYWX_AM = ''
 # 获取企业微信应用推送 QYWX_AM
 if "BARK" in os.environ:
     if len(os.environ["BARK"]) > 1:
         BARK = os.environ["BARK"]
         print("已获取并使用Env环境 BARK")
-    elif not BARK:
-        BARK = ''
 # 判断参数是否存在
 try:
     cookies
@@ -502,12 +488,13 @@ def bark_push(title, content):
         return
     print("bark服务启动")
     try:
-        response = requests.get(f"https://api.day.app/{BARK}/{title}/{content}").json()
+        response = requests.get('''https://api.day.app/{0}/{1}/{2}'''.format(BARK,title,quote_plus(content))).json()
         if response['code'] == 200:
             print('推送成功！')
         else:
             print('推送失败！')
-    except:
+    except Exception as e:
+        print(e)
         print('Bark推送失败！')
 
 def send(title, content):
