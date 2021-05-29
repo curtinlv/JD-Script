@@ -141,18 +141,22 @@ def getAllUserInfo():
 #查询商品
 def smtg_queryPrize(headers,coinToBeans):
 
-    url='https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_queryPrize&clientVersion=8.0.0&client=m&body=%7B%22channel%22:%2218%22%7D&t={}'.format(timestamp)
+    # url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_queryPrize&clientVersion=8.0.0&client=m&body=%7B%22channel%22:%2218%22%7D&t={}'.format(timestamp)
+    url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smt_queryPrizeAreas&clientVersion=8.0.0&client=m&body=%7B%22channel%22:%2218%22%7D&t={}'.format(timestamp)
     try:
         respone = requests.get(url=url, verify=False, headers=headers)
         result = respone.json()
-        titleLists=result['data']['result']['prizeList']
+
+        titleLists=result['data']['result']['areas'][0]['prizes']
         for i in titleLists:
-            title = i['title']
+            title = i['name']
             if coinToBeans in title:
                 prizeId = i['prizeId']
-                blueCost = i['blueCost']
-                inStock = i['inStock']
+                blueCost = i['cost']
+                inStock = i['amount']
+                # print(title,prizeId,blueCost,inStock)
                 return title,prizeId,blueCost,inStock
+
         print("请检查设置的兑换商品名称是否正确？")
     except Exception as e:
         print(e)
@@ -166,6 +170,7 @@ def isCoinToBeans(coinToBeans,headers):
             title,prizeId,blueCost,inStock = smtg_queryPrize(headers,coinToBeans)
             return title,prizeId,blueCost,inStock
         except Exception as e:
+            print(e)
             pass
     else:
         print("1.请检查设置的兑换商品名称是否正确?")
@@ -249,6 +254,7 @@ def checkUser(cookies): #返回符合条件的ck list
         try:
             totalBlue, shopName = getBlueCoinInfo(headers)
             title,prizeId,blueCost,inStock = isCoinToBeans(coinToBeans,headers)
+
             totalBlueW = totalBlue / 10000
             if user_num == 1:
                 print("您已设置兑换的商品：【{0}】 需要{1}w蓝币".format(title, blueCost / 10000))
