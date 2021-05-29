@@ -263,7 +263,7 @@ if "openCardBean" in os.environ:
 #多账号并发
 if "Concurrent" in os.environ:
     if len(os.environ["Concurrent"]) > 1:
-        cookies = getBool(os.environ["Concurrent"])
+        Concurrent = getBool(os.environ["Concurrent"])
         print("已获取并使用Env环境 Concurrent",Concurrent)
     elif not Concurrent:
         Concurrent = True
