@@ -402,8 +402,9 @@ def printinfo(context, label: bool):
 def exitCodeFun(code):
     try:
         # exitCode = input()
-        print("进程睡眠10分钟后自动退出（作用：临时解决exe运行完成后会闪退，可以 kill掉）")
-        time.sleep(600)
+        if sys.platform != 'linux':
+            print("进程睡眠10分钟后自动退出（作用：临时解决exe运行完成后会闪退，可以 kill掉）")
+            time.sleep(600)
         exit(code)
     except:
         time.sleep(3)
