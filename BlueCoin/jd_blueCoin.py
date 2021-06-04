@@ -29,7 +29,7 @@ dd_thread=30
 #开始抢兑时间
 starttime='23:59:59.00000000'
 #结束时间
-endtime='00:00:55.00000000'
+endtime='00:00:30.00000000'
 
 ###############################################
 import time,datetime
@@ -139,25 +139,26 @@ def getAllUserInfo():
             print(f"账号{id_num}【{userName}】异常请检查ck是否正常~")
         id_num += 1
 #查询商品
-def smtg_queryPrize(headers,coinToBeans):
-
-    # url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_queryPrize&clientVersion=8.0.0&client=m&body=%7B%22channel%22:%2218%22%7D&t={}'.format(timestamp)
+def smtg_queryPrize(headers, coinToBeans):
     url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smt_queryPrizeAreas&clientVersion=8.0.0&client=m&body=%7B%22channel%22:%2218%22%7D&t={}'.format(timestamp)
     try:
         respone = requests.get(url=url, verify=False, headers=headers)
         result = respone.json()
-
-        titleLists=result['data']['result']['areas'][0]['prizes']
-        for i in titleLists:
-            title = i['name']
-            if coinToBeans in title:
-                prizeId = i['prizeId']
-                blueCost = i['cost']
-                inStock = i['amount']
-                # print(title,prizeId,blueCost,inStock)
-                return title,prizeId,blueCost,inStock
-
-        print("请检查设置的兑换商品名称是否正确？")
+        allAreas = result['data']['result']['areas']
+        for alist in allAreas:
+            for x in alist['prizes']:
+                if coinToBeans in x['name']:
+                    if alist['areaId'] != 6:
+                        skuId = x['skuId']
+                    else:
+                        skuId = 0
+                    title = x['name']
+                    prizeId = x['prizeId']
+                    blueCost = x['cost']
+                    status = x['status']
+                    return title, prizeId, blueCost, status, skuId
+        # print("请检查设置的兑换商品名称是否正确？")
+        # return 0, 0, 0, 0, 0
     except Exception as e:
         print(e)
 
@@ -167,8 +168,8 @@ def isCoinToBeans(coinToBeans,headers):
     global title, prizeId
     if coinToBeans.strip() != '':
         try:
-            title,prizeId,blueCost,inStock = smtg_queryPrize(headers,coinToBeans)
-            return title,prizeId,blueCost,inStock
+            title, prizeId, blueCost, inStock, skuId = smtg_queryPrize(headers,coinToBeans)
+            return title, prizeId, blueCost, inStock, skuId
         except Exception as e:
             print(e)
             pass
@@ -177,7 +178,7 @@ def isCoinToBeans(coinToBeans,headers):
 #抢兑换
 def smtg_obtainPrize(prizeId,headers):
     timestamp = int(round(time.time() * 1000))
-    url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_obtainPrize&clientVersion=8.0.0&client=m&body=%7B%22prizeId%22:%22{0}%22,%22channel%22:%221%22%7D&t={1}'.format(prizeId,timestamp)
+    url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_obtainPrize&clientVersion=8.0.0&client=m&body=%7B%22prizeId%22:%22{0}%22,%22channel%22:%221%22%7D&t={1}'.format(prizeId, timestamp)
     try:
         respon = requests.post(url=url, verify=False, headers=headers)
         result=respon.json()
@@ -198,7 +199,7 @@ def issmtg_obtainPrize(headers,userName,user_num,maxNum):
 
     try:
         maxNum=int(maxNum)
-        title,prizeId,blueCost,inStock = isCoinToBeans(coinToBeans,headers)
+        title, prizeId, blueCost, inStock, skuId = isCoinToBeans(coinToBeans,headers)
         totalBlue, shopName = getBlueCoinInfo(headers)
         if totalBlue > blueCost:
             qgtime = '{} {}'.format(today, starttime)
@@ -223,8 +224,8 @@ def issmtg_obtainPrize(headers,userName,user_num,maxNum):
                             print(f"账号{user_num}：{userName} 成功兑换【{title}】")
                             return 0
                     if nowtime > qgendtime:
-                        title, prizeId, blueCost, inStock = isCoinToBeans(coinToBeans, headers)
-                        if inStock == 506:
+                        title, prizeId, blueCost, inStock, skuId = isCoinToBeans(coinToBeans, headers)
+                        if inStock == 2:
                             print("\n{1}:【{0}】 当前没货了......".format(title, userName))
                             exit(1)
                     elif num > maxNum:
@@ -253,8 +254,7 @@ def checkUser(cookies): #返回符合条件的ck list
         headers,userName = setHeaders(i)
         try:
             totalBlue, shopName = getBlueCoinInfo(headers)
-            title,prizeId,blueCost,inStock = isCoinToBeans(coinToBeans,headers)
-
+            title,prizeId,blueCost,inStock, skuId = isCoinToBeans(coinToBeans,headers)
             totalBlueW = totalBlue / 10000
             if user_num == 1:
                 print("您已设置兑换的商品：【{0}】 需要{1}w蓝币".format(title, blueCost / 10000))
