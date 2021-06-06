@@ -66,15 +66,17 @@ getCookie(){
 getCookieNum(){
     echo $(eval echo '$Cookie'$1)
 }
+fixCookie(){
+    local cookieElement=($(sed 's/;/ /g' <<<$1))
+    echo "${cookieElement[1]};${cookieElement[0]};"
+    _printTime ""
+}
 
 if [ -f "$JD_DIR/config/config.sh" ];then
 
     source $JD_DIR/config/config.sh
-    # 修复有些大佬用浏览器获取 cookie 的时候顺序错导致 python 脚本报错
-    local cookieElement=($(sed 's/;/ /g' <<<$1))
-    echo "${cookieElement[1]};${cookieElement[0]};"
-    _printTime ""
-     支持参数传入 start-v4.sh 1 就是玩第一个账号
+    fixCookie
+    # 支持参数传入 start-v4.sh 1 就是玩第一个账号
     if [[ $# -eq 0 ]]; then
         export JD_COOKIE=$(getCookie ${OpenCardUserList[@]})
     elif [[ $# -eq 1 ]]; then
