@@ -427,7 +427,7 @@ def drawShopGift(cookie, data):
             'Referer': '',
             'Accept-Language': 'zh-Hans-CN;q=1'
         }
-        response = post(url, headers=headers, data=body, timeout=60)
+        response = post(url, headers=headers, verify=False, data=body, timeout=60)
         if 'isSuccess' in response.text:
             return response.json()
         else:
