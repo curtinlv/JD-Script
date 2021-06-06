@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" beforeDir="false" afterPath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="214" column="15" lean-forward="true" selection-end-line="501" />
+            <state relative-caret-position="135">
+              <caret line="125" column="25" lean-forward="true" selection-start-line="125" selection-start-column="25" selection-end-line="125" selection-end-column="25" />
               <folding>
                 <element signature="e#1642#1672#0" expanded="true" />
               </folding>
@@ -87,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="165" selection-start-line="165" selection-end-line="165" selection-end-column="44" />
+            <state relative-caret-position="171">
+              <caret line="310" selection-start-line="310" selection-end-line="351" selection-end-column="33" />
               <folding>
                 <element signature="e#4777#4807#0" expanded="true" />
               </folding>
@@ -101,6 +101,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="44">
               <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="45">
+                <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -127,7 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jcap_dvzw_fp</find>
       <find>K-w86wABAAABebt1GjYAgPcHoRCKJOMgDeSSl1NyZy3uDvxLajPVcFoOwxP0HHsoNPPCQSpKCjyPSph-Dio8t0ub2wsAwnseM1OPxcRX_YiI87Nieup7OPGwaLdwz0Xco439a7-zf6X6llXs5kY2gImxwLFq-3MpTqupY5KiRpdIUX_igI11TfVwajw_Rf6f</find>
       <find>js_url</find>
       <find>;</find>
@@ -155,8 +166,9 @@
       <find>getCookieNum</find>
       <find>cookieElement</find>
       <find>verify=False,</find>
-      <find>remarks</find>
       <find>post(</find>
+      <find>remarks</find>
+      <find>get(</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -164,6 +176,7 @@
       <replace>python3</replace>
       <replace>'</replace>
       <replace>{venderId}</replace>
+      <replace>requests.get(</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -216,6 +229,7 @@
         <option value="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" />
         <option value="$PROJECT_DIR$/getFollowGifts/start.sh" />
         <option value="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -226,8 +240,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-20" />
-    <option name="y" value="25" />
+    <option name="x" value="23" />
+    <option name="y" value="26" />
     <option name="width" value="1460" />
     <option name="height" value="744" />
   </component>
@@ -243,21 +257,6 @@
             <path>
               <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
               <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
-              <item name="BlueCoin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
-              <item name="getFollowGifts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
-              <item name="OpenCard" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -451,21 +450,7 @@
       <workItem from="1622809666568" duration="1409000" />
       <workItem from="1622811376344" duration="9642000" />
       <workItem from="1622851296970" duration="6108000" />
-      <workItem from="1622936862544" duration="21281000" />
-    </task>
-    <task id="LOCAL-00031" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
-      <created>1621528066349</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1621528066349</updated>
-    </task>
-    <task id="LOCAL-00032" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
-      <created>1621528462079</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1621528462079</updated>
+      <workItem from="1622936862544" duration="22580000" />
     </task>
     <task id="LOCAL-00033" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
       <created>1621528586318</created>
@@ -796,11 +781,25 @@
       <option name="project" value="LOCAL" />
       <updated>1622965597256</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="关注有礼测试，&#10;1.新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。&#10;2.修复手机开着代理跑0豆。">
+      <created>1622966401872</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1622966401872</updated>
+    </task>
+    <task id="LOCAL-00081" summary="关注有礼测试，&#10;1.新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。&#10;2.修复手机开着代理跑0豆。&#10;3.新增env环境读取通知变量">
+      <created>1622974280667</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1622974280667</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236315000" />
+    <option name="totallyTimeSpent" value="237614000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -812,15 +811,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-20" y="25" width="1460" height="744" extended-state="0" />
+    <frame x="23" y="26" width="1460" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49861878" weight="0.28490832" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.28490832" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.5386997" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.04643963" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.45856354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -877,8 +876,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="当前最新版v1.0.4_beta" />
-    <MESSAGE value="更新优化: 支持远程shopid,当前版本v1.0.5" />
     <MESSAGE value="更新优化: 支持远程shopid，当前版本v1.0.5" />
     <MESSAGE value="更新优化: 支持远程shopid" />
     <MESSAGE value="更新优化: 支持远程shopid、当前版本v1.0.5" />
@@ -902,7 +899,9 @@
     <MESSAGE value="Test" />
     <MESSAGE value="关注有礼测试" />
     <MESSAGE value="关注有礼测试，新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。" />
-    <option name="LAST_COMMIT_MESSAGE" value="关注有礼测试，新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。" />
+    <MESSAGE value="关注有礼测试，&#10;1.新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。&#10;2.修复手机开着代理跑0豆。" />
+    <MESSAGE value="关注有礼测试，&#10;1.新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。&#10;2.修复手机开着代理跑0豆。&#10;3.新增env环境读取通知变量" />
+    <option name="LAST_COMMIT_MESSAGE" value="关注有礼测试，&#10;1.新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。&#10;2.修复手机开着代理跑0豆。&#10;3.新增env环境读取通知变量" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JD_Script$getJDCookie.coverage" NAME="getJDCookie Coverage Results" MODIFIED="1622214772735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getJDCookie" />
@@ -918,7 +917,6 @@
     <SUITE FILE_PATH="coverage/JD_Script$jd_blueCoin.coverage" NAME="jd_blueCoin Coverage Results" MODIFIED="1622822850955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BlueCoin" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OpenCrad/log/shopid-2021-05-19.txt" />
     <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【Curtinlv】.txt" />
     <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【张轩滟】.txt" />
     <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【大灏lll】.txt" />
@@ -1140,21 +1138,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getFollowGifts/test.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/getFollowGifts/Readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BlueCoin/jd_blueCoin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -1181,8 +1169,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="165" selection-start-line="165" selection-end-line="165" selection-end-column="44" />
+        <state relative-caret-position="171">
+          <caret line="310" selection-start-line="310" selection-end-line="351" selection-end-column="33" />
           <folding>
             <element signature="e#4777#4807#0" expanded="true" />
           </folding>
@@ -1191,11 +1179,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="214" column="15" lean-forward="true" selection-end-line="501" />
+        <state relative-caret-position="135">
+          <caret line="125" column="25" lean-forward="true" selection-start-line="125" selection-start-column="25" selection-end-line="125" selection-end-column="25" />
           <folding>
             <element signature="e#1642#1672#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getFollowGifts/test.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BlueCoin/jd_blueCoin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="45">
+            <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
