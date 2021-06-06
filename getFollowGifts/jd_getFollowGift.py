@@ -72,12 +72,12 @@ readmes = """
 
 ################################ 【Main】################################
 import time, os, sys, datetime
-from requests import post, get, packages
+import requests
 import re, json, base64
 from urllib.parse import unquote, quote_plus
 
 # 定义一些要用到参数
-packages.urllib3.disable_warnings()
+requests.packages.urllib3.disable_warnings()
 scriptHeader = """
 
 ════════════════════════════════════════
@@ -177,7 +177,7 @@ def telegram_bot(title, content):
             proxyStr = "http://{}:{}".format(TG_PROXY_IP, TG_PROXY_PORT)
             proxies = {"http": proxyStr, "https": proxyStr}
         try:
-            response = post(url=url, headers=headers, params=payload, proxies=proxies).json()
+            response = requests.post(url=url, headers=headers, params=payload, proxies=proxies).json()
         except:
             print('推送失败！')
         if response['ok']:
@@ -203,7 +203,7 @@ def pushplus_bot(title, content):
         }
         body = json.dumps(data).encode(encoding='utf-8')
         headers = {'Content-Type':'application/json'}
-        response = post(url=url, data=body, headers=headers).json()
+        response = requests.post(url=url, data=body, headers=headers).json()
         if response['code'] == 200:
             print('推送成功！')
         else:
@@ -218,7 +218,7 @@ def bark_push(title, content):
         return
     print("bark服务启动")
     try:
-        response = get('''https://api.day.app/{0}/{1}/{2}'''.format(BARK,title,quote_plus(content))).json()
+        response = requests.get('''https://api.day.app/{0}/{1}/{2}'''.format(BARK,title,quote_plus(content))).json()
         if response['code'] == 200:
             print('推送成功！')
         else:
@@ -304,7 +304,7 @@ def iscookie():
 
 def gettext(url):
     try:
-        resp = get(url, timeout=60).text
+        resp = requests.get(url, timeout=60).text
         if '该内容无法显示' in resp or '违规' in resp:
             return gettext(url)
         return resp
@@ -362,7 +362,7 @@ def getUserInfo(ck, pinName,userNum):
         'Accept-Language': 'zh-cn'
     }
     try:
-        resp = get(url=url, verify=False, headers=headers, timeout=60).text
+        resp = requests.get(url=url, verify=False, headers=headers, timeout=60).text
         r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
         result = r.findall(resp)
         userInfo = json.loads(result[0])
@@ -427,7 +427,7 @@ def drawShopGift(cookie, data):
             'Referer': '',
             'Accept-Language': 'zh-Hans-CN;q=1'
         }
-        response = post(url, headers=headers, verify=False, data=body, timeout=60)
+        response = requests.post(url, headers=headers, verify=False, data=body, timeout=60)
         if 'isSuccess' in response.text:
             return response.json()
         else:
