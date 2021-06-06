@@ -523,10 +523,10 @@ def start():
     for name, pinname in zip(userNameList, pinNameList):
         try:
             userCountBean = usergetGiftinfo['{}'.format(pinname)]
-            message(f"账号{n}:【{name}】\n\t└收获【{userCountBean}】京豆")
+            message(f"账号{n}:【{name}】\n\t└收获 {userCountBean} 京豆")
             all_get_bean += userCountBean
         except Exception as e:
-            message(f"账号{n}:【{name}】\n\t└收获【0】京豆")
+            message(f"账号{n}:【{name}】\n\t└收获 0 京豆")
         n += 1
     message(f"\n本次总累计获得：{all_get_bean} 京豆")
     message("\n------- 总耗时 : %.03f 秒 seconds -------" % (endtime - starttime))
