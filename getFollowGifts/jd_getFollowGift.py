@@ -126,6 +126,43 @@ if "JD_COOKIE" in os.environ:
     if len(os.environ["JD_COOKIE"]) > 10:
         cookies = os.environ["JD_COOKIE"]
         print("已获取并使用Env环境 Cookie")
+# 获取TG_BOT_TOKEN
+if "TG_BOT_TOKEN" in os.environ:
+    if len(os.environ["TG_BOT_TOKEN"]) > 1:
+        TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
+        print("已获取并使用Env环境 TG_BOT_TOKEN")
+# 获取TG_USER_ID
+if "TG_USER_ID" in os.environ:
+    if len(os.environ["TG_USER_ID"]) > 1:
+        TG_USER_ID = os.environ["TG_USER_ID"]
+        print("已获取并使用Env环境 TG_USER_ID")
+# 获取代理ip
+if "TG_PROXY_IP" in os.environ:
+    if len(os.environ["TG_PROXY_IP"]) > 1:
+        TG_PROXY_IP = os.environ["TG_PROXY_IP"]
+        print("已获取并使用Env环境 TG_PROXY_IP")
+# 获取TG 代理端口
+if "TG_PROXY_PORT" in os.environ:
+    if len(os.environ["TG_PROXY_PORT"]) > 1:
+        TG_PROXY_PORT = os.environ["TG_PROXY_PORT"]
+        print("已获取并使用Env环境 TG_PROXY_PORT")
+    elif not TG_PROXY_PORT:
+        TG_PROXY_PORT = ''
+# 获取TG TG_API_HOST
+if "TG_API_HOST" in os.environ:
+    if len(os.environ["TG_API_HOST"]) > 1:
+        TG_API_HOST = os.environ["TG_API_HOST"]
+        print("已获取并使用Env环境 TG_API_HOST")
+# 获取pushplus+ PUSH_PLUS_TOKEN
+if "PUSH_PLUS_TOKEN" in os.environ:
+    if len(os.environ["PUSH_PLUS_TOKEN"]) > 1:
+        PUSH_PLUS_TOKEN = os.environ["PUSH_PLUS_TOKEN"]
+        print("已获取并使用Env环境 PUSH_PLUS_TOKEN")
+# 获取企业微信应用推送 QYWX_AM
+if "BARK" in os.environ:
+    if len(os.environ["BARK"]) > 1:
+        BARK = os.environ["BARK"]
+        print("已获取并使用Env环境 BARK")
 
 def message(str_msg):
     global message_info
