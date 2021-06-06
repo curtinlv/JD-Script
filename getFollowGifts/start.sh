@@ -43,6 +43,10 @@ _printTime(){
 }
 
 ##################↓↓↓↓↓↓ 获取v4-bot用户cookie↓↓↓↓↓↓ ###################################
+# 随机 cookie
+randomCookie(){
+    echo $(sed 's/\s/\n/g' <<<$@ | shuf)
+}
 getCookie(){
     local NUM
     [[ ${OpenCardRandomCK} == "true" ]] && NUM=($(randomCookie $@)) || NUM=$@

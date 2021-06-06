@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/getFollowGifts/start.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getFollowGifts/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/getFollowGifts/start.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/getFollowGifts/start.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="90" column="44" lean-forward="true" selection-start-line="90" selection-start-column="44" selection-end-line="90" selection-end-column="44" />
+            <state relative-caret-position="231">
+              <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -63,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpenCard/start-v4.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="66" selection-start-line="66" selection-end-line="73" selection-end-column="2" />
+            <state relative-caret-position="309">
+              <caret line="30" selection-start-line="30" selection-end-line="33" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -136,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ontent-Type</find>
       <find>Content-Type</find>
       <find>maanXMmpQ5DXXq0jy-GrtFWX-1feU-l5QfGeCU</find>
       <find>jcap_dvzw_fp</find>
@@ -166,6 +165,7 @@
       <find>remarks</find>
       <find>getCookie</find>
       <find>getCookieNum</find>
+      <find>cookieElement</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -460,21 +460,7 @@
       <workItem from="1622809666568" duration="1409000" />
       <workItem from="1622811376344" duration="9642000" />
       <workItem from="1622851296970" duration="6108000" />
-      <workItem from="1622936862544" duration="19171000" />
-    </task>
-    <task id="LOCAL-00027" summary="更新">
-      <created>1621095777588</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1621095777588</updated>
-    </task>
-    <task id="LOCAL-00028" summary="新增isRemoteSid=yes/no，控制是否启用远程shopid">
-      <created>1621157526688</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1621157526688</updated>
+      <workItem from="1622936862544" duration="20094000" />
     </task>
     <task id="LOCAL-00029" summary="update">
       <created>1621157672604</created>
@@ -805,11 +791,25 @@
       <option name="project" value="LOCAL" />
       <updated>1622957677728</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="关注有礼测试，新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。">
+      <created>1622963941648</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1622963941648</updated>
+    </task>
+    <task id="LOCAL-00077" summary="关注有礼测试，新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。">
+      <created>1622964581167</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1622964581167</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="234205000" />
+    <option name="totallyTimeSpent" value="235128000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -862,7 +862,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="优化cookie获取方式" />
     <MESSAGE value="当前最新版v1.0.4_beta" />
     <MESSAGE value="更新优化: 支持远程shopid,当前版本v1.0.5" />
     <MESSAGE value="更新优化: 支持远程shopid，当前版本v1.0.5" />
@@ -887,7 +886,8 @@
     <MESSAGE value="2021.5.28：（v1.2.0）&#10;        * 新增单或多账号并发&#10;            - Concurrent=yes #开启&#10;        * 新增企业微信、Bark推送&#10;        * 优化一些逻辑&#10;            - 如随机账号查询礼包，仅开启单账号时候&#10;            - 京豆统计" />
     <MESSAGE value="Test" />
     <MESSAGE value="关注有礼测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="关注有礼测试" />
+    <MESSAGE value="关注有礼测试，新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。" />
+    <option name="LAST_COMMIT_MESSAGE" value="关注有礼测试，新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JD_Script$getJDCookie.coverage" NAME="getJDCookie Coverage Results" MODIFIED="1622214772735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getJDCookie" />
@@ -1172,15 +1172,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/start-v4.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="66" selection-start-line="66" selection-end-line="73" selection-end-column="2" />
+        <state relative-caret-position="309">
+          <caret line="30" selection-start-line="30" selection-end-line="33" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getFollowGifts/start.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="90" column="44" lean-forward="true" selection-start-line="90" selection-start-column="44" selection-end-line="90" selection-end-column="44" />
+        <state relative-caret-position="231">
+          <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
         </state>
       </provider>
     </entry>
