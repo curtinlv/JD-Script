@@ -8,7 +8,7 @@
 ##
 #########################################
 #主脚本路径。默认和主脚本同级目录
-scriptPath='jd_getFollowGift.py'
+scriptPath="${BASH_SOURCE%/*}/jd_getFollowGift.py"
 ################### ↓↓↓【以下需要配置的参数，代替配置文件OpenCradConfig.ini】↓↓↓ ###################
 #京东cookie 格式：pt_key=xxx;pt_pin=xxx; & pt_key=xxx;pt_pin=xxx; (多账号&分隔)
 export JD_COOKIE=''
@@ -77,9 +77,7 @@ fixCookie(){
 }
 
 if [ -f "$JD_DIR/config/config.sh" ];then
-
     source $JD_DIR/config/config.sh
-    fixCookie
     # 支持参数传入 start-v4.sh 1 就是玩第一个账号
     if [[ $# -eq 0 ]]; then
         export JD_COOKIE=$(getCookie ${OpenCardUserList[@]})
@@ -89,12 +87,10 @@ if [ -f "$JD_DIR/config/config.sh" ];then
         _printTime "参数错误脚本退出!"
         exit 1
     fi
-
 fi
 ##################↑↑↑↑↑ 获取v4-bot用户cookie↑↑↑↑↑ ####################################################
 ##############################3
-workpath=`pwd`
-logfile=${workpath}/run_jd_getFollowGift.log
+logfile=${BASH_SOURCE%/*}/run_jd_getFollowGift.log
 
 
 PID=`ps -ef | grep "python3 ${scriptPath}" | grep -v grep| awk '{print $2}'`
