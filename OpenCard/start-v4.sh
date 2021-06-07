@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 ## 使用Env环境执行方式，OpenCradConfig.ini配置文件参数不会生效。
-## 执行命令 ：bash start.sh
-## 2021.5.25
+## 执行命令 ：bash start-v4.sh
+## 2021.6.7
 ## By Curtin
 ## 定时任务：
-## 0 8 * * * bash /你存放脚本的本地绝对路径/start.sh
+## 0 8 * * * bash /你存放脚本的本地绝对路径/start-v4.sh
 ##
 #########################################
 source $JD_DIR/config/config.sh
@@ -59,7 +59,7 @@ getCookieNum(){
 
 
 #主脚本路径。V4 建议在 config.sh 文件添加 OwnRawFile 
-scriptPath='/jd/own/raw/jd_OpenCard.py'
+scriptPath=${BASH_SOURCE%/*}/jd_OpenCard.py
 ################### ↓↓↓【以下需要配置的参数，代替配置文件OpenCradConfig.ini】↓↓↓ ###################
 #京东cookie 格式：pt_key=xxx;pt_pin=xxx; & pt_key=xxx;pt_pin=xxx; (多账号&分隔)
 
@@ -72,48 +72,6 @@ else
     _printTime "参数错误脚本退出!"
     exit 1
 fi
-#只入送豆数量大于此值
-[[ -z ${openCardBean} ]] && export openCardBean=5
-
-#False|True 是否记录符合条件的shopid，输出文件【log/shopid-yyyy-mm-dd.txt】
-[[ -z ${record} ]] && export record=True
-
-#True:仅记录，不入会; False:记录且还要入会。同时需要record=True才生效。
-[[ -z ${onlyRecord} ]] && export onlyRecord=False
-
-#True 或 False  开启记忆功能，接力上一次异常中断位置继续。
-[[ -z ${memory} ]] && export memory=True
-
-#True：只打印部分日志 False:打印所有日志
-[[ -z ${printlog} ]] && export printlog=False
-
-#限制速度，单位秒，如果请求过快报错适当调整0.5秒以上
-[[ -z ${sleepNum} ]] && export sleepNum=0
-
-#是否启用远程shopid，True:使用作者远程仓库更新的id，False：使用本地shopid.txt的id
-[[ -z ${isRemoteSid} ]] && export isRemoteSid=True
-
-############【通知参数】############
-
-####### TG 机器人 #######
-# TG token
-[[ -z ${TG_BOT_TOKEN} ]] && export TG_BOT_TOKEN=
-# UserId
-[[ -z ${TG_USER_ID} ]] && export TG_USER_ID=
-
-##### 如果你的网络能正常打开TG 以下参数不用配置 ↓↓↓
-# TG_API_HOST
-[[ -z ${TG_API_HOST} ]] && export TG_API_HOST=
-# TG代理ip 和端口
-[[ -z ${TG_PROXY_IP} ]] && export TG_PROXY_IP=
-# TG代理端口
-[[ -z ${TG_PROXY_PORT} ]] && export TG_PROXY_PORT=
-############################### ↑↑↑
-
-######## 【微信 推送加】#####
-# token
-[[ -z ${PUSH_PLUS_TOKEN} ]] && export PUSH_PLUS_TOKEN=
-##################
 
 ################### ↑↑↑↑ 你需要填的参数到此结束 ↑↑↑↑ ##############################
 ######### 以下不用配置，默认就好 ##########################
