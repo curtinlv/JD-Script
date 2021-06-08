@@ -187,7 +187,7 @@ def message(str_msg):
 def exitCodeFun(code):
     try:
         # exitCode = input()
-        if sys.platform != 'linux':
+        if sys.platform == 'win32' or sys.platform == 'cygwin':
             print("进程睡眠10分钟后自动退出。")
             time.sleep(600)
         exit(code)
