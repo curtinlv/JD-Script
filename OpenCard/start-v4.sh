@@ -58,8 +58,10 @@ getCookieNum(){
 }
 
 
-#主脚本路径。V4 建议在 config.sh 文件添加 OwnRawFile 
-scriptPath=${BASH_SOURCE%/*}/jd_OpenCard.py
+#主脚本路径。V4 建议在 config.sh 文件添加 OwnRawFile
+cd `dirname $0`
+cucrpwd=`pwd`
+scriptPath=${cucrpwd}/jd_OpenCard.py
 ################### ↓↓↓【以下需要配置的参数，代替配置文件OpenCradConfig.ini】↓↓↓ ###################
 #京东cookie 格式：pt_key=xxx;pt_pin=xxx; & pt_key=xxx;pt_pin=xxx; (多账号&分隔)
 

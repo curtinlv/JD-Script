@@ -183,13 +183,14 @@ if pwd:
 pwd = os.path.abspath('.') + '/'
 
 ######
-openCardBean = ''
-sleepNum = ''
-record = ''
-onlyRecord = ''
-memory = ''
-printlog = ''
-isRemoteSid = ''
+openCardBean = 0
+sleepNum = 0.0
+record = True
+onlyRecord = False
+memory = True
+printlog = True
+isRemoteSid = True
+Concurrent=True
 TG_BOT_TOKEN = ''
 TG_USER_ID = ''
 PUSH_PLUS_TOKEN = ''
@@ -198,7 +199,6 @@ TG_PROXY_PORT = ''
 TG_API_HOST = ''
 QYWX_AM = ''
 BARK=''
-Concurrent=''
 
 # 获取账号参数
 try:
