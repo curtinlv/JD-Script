@@ -8,7 +8,9 @@
 ##
 #########################################
 #主脚本路径。默认和主脚本同级目录
-scriptPath="${BASH_SOURCE%/*}/jd_getFollowGift.py"
+cd `dirname $0`
+curpwd=`pwd`
+scriptPath="${curpwd}/jd_getFollowGift.py"
 ################### ↓↓↓【以下需要配置的参数，代替配置文件OpenCradConfig.ini】↓↓↓ ###################
 #京东cookie 格式：pt_key=xxx;pt_pin=xxx; & pt_key=xxx;pt_pin=xxx; (多账号&分隔)
 export JD_COOKIE=''
@@ -37,7 +39,7 @@ export BARK=
 
 ################### ↑↑↑↑ 你需要填的参数到此结束 ↑↑↑↑ ##############################
 ######### 以下不用配置，默认就好 ##########################
-cd `dirname $0`
+
 _printTime(){
   echo "[`date +"%F %T"`]: $1"
 }
