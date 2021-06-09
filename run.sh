@@ -30,7 +30,7 @@ export QYWX_AM=
 ######### 以下不用配置，默认就好 ##########################
 
 # 脚本绝对路径
-SCRIPT_PATH="$(realpath $(basename $BASH_SOURCE))"
+SCRIPT_PATH=$(readlink -f "$0")
 SCRIPT_NAME=${SCRIPT_PATH##*/}
 SHELL_FOLDER="${SCRIPT_PATH%/*}"
 # python 脚本目录名称数组
@@ -195,6 +195,8 @@ getOption(){
                 shift
                 if [[ -f $1 ]]; then
                     PYTHON_SCRIPT_PATH+=($(realpath $1))
+                elif [[ -f "${SHELL_FOLDER}/${1##*/}" ]]; then
+                    PYTHON_SCRIPT_PATH+=($(realpath ${SHELL_FOLDER}/${1##*/}))
                 else
                     warn "脚本路径：$1 当前脚本不存在，跳过不执行！"
                 fi
