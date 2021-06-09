@@ -149,10 +149,10 @@ runPythonScript(){
     for value in $*; do
         if [[ -f ${value} ]]; then
             scriptPath="${value}"
-            scriptName=$(awk -F '/' '{print $(NF-1)}' <<<${value})
+            scriptName=$(awk -F '.' '{print $1}' <<<${value##*/})
         elif [[ -d ${value} ]]; then
             scriptPath=$(getPythonScriptPath ${value})
-            scriptName="${value}"
+            scriptName=$(awk -F '.' '{print $1}' <<<${scriptPath##*/})
         else
             warn "未找到 ${value} 跳过执行！"
             return
