@@ -87,9 +87,8 @@ else
     _printTime "开始执行入会领豆...."
     nohup python3 ${scriptPath} 2>&1 > ${logfile} &
     PID=$!
-    echo > /tmp/openCard_$PID
     sleep 5
-    if ! ps | grep -q $PID ;then
+    if ! ps | grep -v grep | grep -q $PID ;then
         _printTime "执行失败!"
         _printTime "请检查日志: tail -f ${logfile}"
     else
