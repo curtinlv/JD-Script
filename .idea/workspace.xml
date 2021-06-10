@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" afterDir="false" />
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="修复默认参数问题">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" beforeDir="false" afterPath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,32 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="191" column="27" lean-forward="true" selection-start-line="191" selection-start-column="27" selection-end-line="191" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/getFollowGifts/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="53" column="18" lean-forward="true" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
-              <folding>
-                <element signature="e#117#132#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="400" lean-forward="true" selection-start-line="400" selection-end-line="400" />
-              <folding>
-                <element signature="e#4777#4807#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="241">
+              <caret line="207" column="11" lean-forward="true" selection-start-line="207" selection-start-column="11" selection-end-line="207" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -167,8 +143,8 @@
         <option value="$PROJECT_DIR$/getFollowGifts/start.sh" />
         <option value="$PROJECT_DIR$/OpenCard/start-v4.sh" />
         <option value="$PROJECT_DIR$/getFollowGifts/test.py" />
-        <option value="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" />
         <option value="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" />
+        <option value="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" />
       </list>
     </option>
   </component>
@@ -195,16 +171,6 @@
             <path>
               <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
               <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
-              <item name="getFollowGifts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
-              <item name="OpenCard" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -418,21 +384,8 @@
       <workItem from="1622811376344" duration="9642000" />
       <workItem from="1622851296970" duration="6108000" />
       <workItem from="1622936862544" duration="24096000" />
-      <workItem from="1623163182466" duration="1643000" />
-    </task>
-    <task id="LOCAL-00038" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
-      <created>1621532119685</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1621532119685</updated>
-    </task>
-    <task id="LOCAL-00039" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 修复路径问题&#10;            - 优化">
-      <created>1621533127326</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1621533127326</updated>
+      <workItem from="1623163182466" duration="1813000" />
+      <workItem from="1623340187334" duration="110000" />
     </task>
     <task id="LOCAL-00040" summary="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题">
       <created>1621533198944</created>
@@ -763,11 +716,25 @@
       <option name="project" value="LOCAL" />
       <updated>1623164161216</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="修复默认参数问题">
+      <created>1623164946386</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1623164946386</updated>
+    </task>
+    <task id="LOCAL-00088" summary="修复默认参数问题">
+      <created>1623164961021</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1623164961022</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240773000" />
+    <option name="totallyTimeSpent" value="241053000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -782,18 +749,18 @@
     <frame x="0" y="26" width="1440" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.28898427" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.2932761" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.5758514" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" weight="0.3126935" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.45856354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49785408" weight="0.32891566" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49213162" weight="0.3126935" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49213162" visible="true" weight="0.3126935" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.33619457" side_tool="true" weight="0.37292817" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" weight="0.4558011" />
@@ -885,7 +852,6 @@
     <SUITE FILE_PATH="coverage/JD_Script$jd_blueCoin.coverage" NAME="jd_blueCoin Coverage Results" MODIFIED="1622822850955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BlueCoin" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【Curtinlv】.txt" />
     <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【张轩滟】.txt" />
     <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【大灏lll】.txt" />
     <entry file="file://$PROJECT_DIR$/OpenCrad/log/可退会账号【加顿龟粮】.txt" />
@@ -963,12 +929,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/start.sh-jd_OpenCard.py.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/OpenCardConfig.ini">
       <provider selected="true" editor-type-id="text-editor">
@@ -1141,23 +1107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpenCard/start-v4.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="16" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getFollowGifts/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="18" lean-forward="true" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
-          <folding>
-            <element signature="e#117#132#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -1168,10 +1117,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/getFollowGifts/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="53" column="18" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+          <folding>
+            <element signature="e#117#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/start-v4.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="16" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="191" column="27" lean-forward="true" selection-start-line="191" selection-start-column="27" selection-end-line="191" selection-end-column="27" />
+        <state relative-caret-position="241">
+          <caret line="207" column="11" lean-forward="true" selection-start-line="207" selection-start-column="11" selection-end-line="207" selection-end-column="11" />
         </state>
       </provider>
     </entry>

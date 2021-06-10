@@ -205,7 +205,8 @@ if TG_BOT_TOKEN and TG_USER_ID:
     notify_mode.append('telegram_bot')
 if BARK:
     notify_mode.append('bark')
-
+if QYWX_AM:
+    notify_mode.append('wecom_app')
 #tg通知
 def telegram_bot(title, content):
     try:
