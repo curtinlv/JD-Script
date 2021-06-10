@@ -52,10 +52,11 @@ help(){
     echo "${SCRIPT_NAME} 脚本使用说明."
     echo "    使用语法1: ${SCRIPT_NAME} OpenCard getFollowGifts"
     echo "    使用语法2: ${SCRIPT_NAME} -c 1 OpenCard getFollowGifts"
-    echo "    使用语法2: ${SCRIPT_NAME} -c 1 -r <python 脚本绝对路径1> -r <python 脚本绝对路径2>"
+    echo "    使用语法3: ${SCRIPT_NAME} -r <python 脚本绝对路径1> -r <python 脚本绝对路径2>"
+    echo "    使用语法4: ${SCRIPT_NAME} -r <脚本同一目录python脚本名字> -r <python 脚本绝对路径>"
     echo "    选项:"
     echo "          -c        (--cookie_num) <num>                 V4 专用参数，跑单独的 cookie"
-    echo "          -r        (--run_script) <pythonScriptPath>    指定 python 脚本文件绝对路径"
+    echo "          -r        (--run_script) <pythonScriptPath>    指定 python 脚本文件绝对路径或当前目录下python脚本名字"
 }
 
 # 根据脚本当前目录获得 python 脚本路径
