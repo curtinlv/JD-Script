@@ -221,12 +221,13 @@ getOption(){
 }
 
 # Main
+# 解析脚本传入参数
+getOption $*
+
 # 检查是否 V4 环境，加载 v4 config.sh
 if is_v4; then
     getV4Cookie
 fi
 
-# 解析脚本传入参数
-getOption $*
 [[ ${#PYTHON_SCRIPT_NAME[@]} -ne 0 ]] && runPythonScript ${PYTHON_SCRIPT_NAME[@]}
 [[ ${#PYTHON_SCRIPT_PATH[@]} -ne 0 ]] && runPythonScript ${PYTHON_SCRIPT_PATH[@]}
