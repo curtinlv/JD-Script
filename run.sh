@@ -1,29 +1,29 @@
 #!/usr/bin/env bash
 ################### ↓↓↓【以下需要配置的参数，代替配置文件OpenCradConfig.ini】↓↓↓ ###################
 #京东cookie 格式：pt_key=xxx;pt_pin=xxx; & pt_key=xxx;pt_pin=xxx; (多账号&分隔)
-export JD_COOKIE=''
+[[ -z JD_COOKIE ]] && export JD_COOKIE=''
 
 ############【通知参数】############
 ####### TG 机器人 #######
 # TG token
-export TG_BOT_TOKEN=
+[[ -z TG_BOT_TOKEN ]] && export TG_BOT_TOKEN=
 # UserId
-export TG_USER_ID=
+[[ -z TG_USER_ID ]] && export TG_USER_ID=
 
 ##### 如果你的网络能正常打开TG 以下参数不用配置 ↓↓↓ #####
 # TG_API_HOST
-export TG_API_HOST=
+[[ -z TG_API_HOST ]] && export TG_API_HOST=
 # TG代理ip 和端口
-export TG_PROXY_IP=
+[[ -z TG_PROXY_IP ]] && export TG_PROXY_IP=
 # TG代理端口
-export TG_PROXY_PORT=
+[[ -z TG_PROXY_PORT ]] && export TG_PROXY_PORT=
 ############################### ↓↓↓ 【微信 推送加】 #####
 # token
-export PUSH_PLUS_TOKEN=
+[[ -z PUSH_PLUS_TOKEN ]] && export PUSH_PLUS_TOKEN=
 #Bark 推送
-export BARK=
+[[ -z BARK ]] && export BARK=
 # 企业微信推送
-export QYWX_AM=
+[[ -z QYWX_AM ]] && export QYWX_AM=
 ##################
 
 ################### ↑↑↑↑ 你需要填的参数到此结束 ↑↑↑↑ ##############################
