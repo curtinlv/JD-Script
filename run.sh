@@ -151,12 +151,12 @@ runPythonScript(){
         if [[ -f ${value} ]]; then
             scriptPath="${value}"
             scriptName=$(awk -F '.' '{print $1}' <<<${value##*/})
-        elif [[ -d ${value} ]]; then
+        elif [[ -f $(getPythonScriptPath ${value}) ]]; then
             scriptPath=$(getPythonScriptPath ${value})
             scriptName=$(awk -F '.' '{print $1}' <<<${scriptPath##*/})
         else
             warn "未找到 ${value} 跳过执行！"
-            return
+            continue
         fi
         info "######## 开始执行 ${scriptName} ########"
         # 日志默认存放在脚本根目录,每次执行被覆盖
