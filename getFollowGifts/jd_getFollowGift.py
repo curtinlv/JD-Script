@@ -79,11 +79,7 @@ import re, json, base64
 from urllib.parse import unquote, quote_plus
 
 # 获取当前工作目录
-pwd = repr(os.path.dirname(sys.argv[0]))
-pwd = pwd.replace('\'', '')
-if pwd:
-    os.chdir(pwd)
-pwd = os.path.abspath('.') + '/'
+pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
 
 # 定义一些要用到参数
 requests.packages.urllib3.disable_warnings()

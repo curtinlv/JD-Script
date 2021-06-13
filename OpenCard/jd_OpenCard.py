@@ -176,11 +176,7 @@ remarks = '\n\n\tTG交流 : https://t.me/topstyle996\n\n\tTG频道 : https://t.m
 timestamp = int(round(time.time() * 1000))
 today = datetime.datetime.now().strftime('%Y-%m-%d')
 # 获取当前工作目录
-pwd = repr(os.path.dirname(sys.argv[0]))
-pwd = pwd.replace('\'', '')
-if pwd:
-    os.chdir(pwd)
-pwd = os.path.abspath('.') + '/'
+pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
 
 ######
 openCardBean = 0
