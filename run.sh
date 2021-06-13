@@ -78,43 +78,43 @@ is_v4(){
     [[ -f $JD_DIR/config/config.sh ]] && return 0 || return 1
 }
 
+# 获取指定账号的 Cookie
+getCookieNum(){
+    export JD_COOKIE=$(eval echo '$Cookie'$1)
+}
+
+# 修复有些大佬用浏览器获取 cookie 的时候顺序错导致 python 脚本报错
+fixCookie(){
+    local cookieElement=($(sed 's/;/ /g' <<<$1))
+    echo "${cookieElement[1]};${cookieElement[0]};"
+}
+
+# 随机 cookie
+randomCookie(){
+    echo $(sed 's/\s/\n/g' <<<$@ | shuf)
+}
+
+# 获取传入
+getCookie(){
+    local NUM
+    [[ ${OpenCardRandomCK} == "true" ]] && NUM=($(randomCookie $@)) || NUM=$@
+    local jdCookie
+    local tmpCookie
+    if ! echo "${NUM[@]}" | sed 's/\s//g' | grep -q '^[[:digit:]]*$' ; then
+        error "错误！ OpenCardUserList 只能输入数字\n$(echo "${NUM[@]}" | sed 's/\s//')"
+    fi
+    for i in ${NUM[@]}; do
+        tmpCookie=$(eval echo '$Cookie'$i)
+        [[ ${tmpCookie} == "" ]] && warn "Cookie$i 为空,跳过不执行！" && break
+        # 如果 pt_pin 开始的需要调转为 pt_key 开头
+        grep -q '^pt_pin.*' <<<${tmpCookie} && tmpCookie=$(fixCookie ${tmpCookie})
+        [[ ${jdCookie} == "" ]] && jdCookie="${tmpCookie}" || jdCookie="${jdCookie} & ${tmpCookie}"
+    done
+    export JD_COOKIE="${jdCookie}"
+}
+
 # v4 环境获取 cookie
 getV4Cookie(){
-    # 修复有些大佬用浏览器获取 cookie 的时候顺序错导致 python 脚本报错
-    fixCookie(){
-        local cookieElement=($(sed 's/;/ /g' <<<$1))
-        echo "${cookieElement[1]};${cookieElement[0]};"
-    }
-
-    # 随机 cookie
-    randomCookie(){
-        echo $(sed 's/\s/\n/g' <<<$@ | shuf)
-    }
-
-    # 获取传入
-    getCookie(){
-        local NUM
-        [[ ${OpenCardRandomCK} == "true" ]] && NUM=($(randomCookie $@)) || NUM=$@
-        local jdCookie
-        local tmpCookie
-        if ! echo "${NUM[@]}" | sed 's/\s//g' | grep -q '^[[:digit:]]*$' ; then
-            error "错误！ OpenCardUserList 只能输入数字\n$(echo "${NUM[@]}" | sed 's/\s//')"
-        fi
-        for i in ${NUM[@]}; do
-            tmpCookie=$(eval echo '$Cookie'$i)
-            [[ ${tmpCookie} == "" ]] && warn "Cookie$i 为空,跳过不执行！" && break
-            # 如果 pt_pin 开始的需要调转为 pt_key 开头
-            grep -q '^pt_pin.*' <<<${tmpCookie} && tmpCookie=$(fixCookie ${tmpCookie})
-            [[ ${jdCookie} == "" ]] && jdCookie="${tmpCookie}" || jdCookie="${jdCookie} & ${tmpCookie}"
-        done
-        export JD_COOKIE="${jdCookie}"
-    }
-
-    # 获取指定账号的 Cookie
-    getCookieNum(){
-        export JD_COOKIE=$(eval echo '$Cookie'$1)
-    }
-
     source $JD_DIR/config/config.sh
     # 支持参数传入，如果 V4_COOKIE_NUM 定义了数字就只跑这个数字的 Cookie
     if [[ -z ${V4_COOKIE_NUM} ]]; then
@@ -132,6 +132,9 @@ getLogPath(){
     local logPath
     if is_v4 ; then
         logDir="$JD_DIR/log/${scriptName}"
+        logPath="${logDir}/$(date '+%Y-%m-%d-%H-%M-%S').log"
+    elif is_ql ; then
+        logDir="$QL_DIR/log/${scriptName}"
         logPath="${logDir}/$(date '+%Y-%m-%d-%H-%M-%S').log"
     else
         logDir=$SHELL_FOLDER/curtinlv_JD-Script_log
@@ -151,12 +154,12 @@ runPythonScript(){
         if [[ -f ${value} ]]; then
             scriptPath="${value}"
             scriptName=$(awk -F '.' '{print $1}' <<<${value##*/})
-        elif [[ -d ${value} ]]; then
+        elif [[ -f $(getPythonScriptPath ${value}) ]]; then
             scriptPath=$(getPythonScriptPath ${value})
             scriptName=$(awk -F '.' '{print $1}' <<<${scriptPath##*/})
         else
             warn "未找到 ${value} 跳过执行！"
-            return
+            continue
         fi
         info "######## 开始执行 ${scriptName} ########"
         # 日志默认存放在脚本根目录,每次执行被覆盖
@@ -184,7 +187,7 @@ getOption(){
         case $1 in
             # -c 参数，只支持 V4 环境，可以指定哪个 cookie 跑脚本
             "-c"|"--cookie_num")
-                is_v4 || error "-c 参数只支持 v4 环境下使用"
+                is_v4 || is_ql || error "-c 参数只支持 v4 环境下使用"
                 shift
                 if ! grep -q '^[[:digit:]]*$' <<<"${1}"; then
                     error "--cookie 只能传入数字\n $(help)"
@@ -221,6 +224,33 @@ getOption(){
         error "没有找到可用的脚本！"
 }
 
+# 检查是否为青龙环境
+is_ql(){
+    [[ -f /ql/config/config.sh ]] && return 0 || return 1
+}
+
+getQlCookie(){
+    # 获取青龙的  cookie
+    loadCookie(){
+        local i=1
+        for cookie in $(cat /ql/config/cookie.sh); do
+            cookie=$(sed 's/=/\\=/g' <<<$cookie)
+            cookie=$(sed 's/;/\\;/g' <<<$cookie)
+            eval Cookie$i=$cookie
+            (( i++ ))
+        done
+    }
+
+    # 获取微信推送 TG 推送等配置
+    source /ql/config/config.sh
+    loadCookie
+    if [[ -z ${V4_COOKIE_NUM} ]]; then
+        getCookie ${OpenCardUserList[@]}
+    else
+        getCookieNum ${V4_COOKIE_NUM}
+    fi
+}
+
 # Main
 # 解析脚本传入参数
 getOption $*
@@ -228,6 +258,11 @@ getOption $*
 # 检查是否 V4 环境，加载 v4 config.sh
 if is_v4; then
     getV4Cookie
+fi
+
+# 检查是否青龙环境，加载青龙配置
+if is_ql; then
+    getQlCookie
 fi
 
 [[ ${#PYTHON_SCRIPT_NAME[@]} -ne 0 ]] && runPythonScript ${PYTHON_SCRIPT_NAME[@]}
