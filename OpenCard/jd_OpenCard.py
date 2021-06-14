@@ -164,6 +164,7 @@ from configparser import RawConfigParser
 
 # 定义一些要用到参数
 requests.packages.urllib3.disable_warnings()
+
 scriptHeader = """
 ════════════════════════════════════════
 ║                                      ║
@@ -195,6 +196,7 @@ TG_PROXY_PORT = ''
 TG_API_HOST = ''
 QYWX_AM = ''
 BARK=''
+DoubleThread = True
 
 # 获取账号参数
 try:
@@ -256,6 +258,11 @@ if "openCardBean" in os.environ:
         print("已获取并使用Env环境 openCardBean:",openCardBean)
     elif not openCardBean:
         openCardBean = 0
+#是否开启双线程
+if "DoubleThread" in os.environ:
+    if len(os.environ["DoubleThread"]) > 1:
+        DoubleThread = getBool(os.environ["DoubleThread"])
+        print("已获取并使用Env环境 DoubleThread",DoubleThread)
 #多账号并发
 if "Concurrent" in os.environ:
     if len(os.environ["Concurrent"]) > 1:
@@ -1137,13 +1144,16 @@ def sss(ii,ck,userName,pinName,endNum,user_num,shopids,threadNum):
 
 
 # 为多线程准备
-def OpenVipCrad(startNum: int, endNum: int, shopids, cookies, userNames, pinNameList, threadNum):
+def OpenVipCard(startNum: int, endNum: int, shopids, cookies, userNames, pinNameList, threadNum):
     sssLabel = 0
     for i in range(startNum, endNum):
         user_num = 1
         if Concurrent:
             if sssLabel == 0 and threadNum ==1:
-                message("当前模式: 双线程，多账号并发运行")
+                if DoubleThread:
+                    message("当前模式: 双线程，多账号并发运行")
+                else:
+                    message("当前模式: 单线程，多账号并发运行")
                 sssLabel = 1
             threads = []
             for ck, userName, pinName in zip(cookies, userNames, pinNameList):
@@ -1157,7 +1167,10 @@ def OpenVipCrad(startNum: int, endNum: int, shopids, cookies, userNames, pinName
                 time.sleep(sleepNum)
         else:
             if sssLabel == 0 and threadNum ==1:
-                message("当前模式: 双线程，单账号运行")
+                if DoubleThread:
+                    message("当前模式: 双线程，单账号运行")
+                else:
+                    message("当前模式: 单线程，单账号运行")
                 sssLabel = 1
             activityIdLabel = 0
             for ck, userName, pinName in zip(cookies, userNames, pinNameList):
@@ -1227,15 +1240,15 @@ def start():
     startNum1 = 0
     startNum2 = midNum
     starttime = time.perf_counter()  # 记录时间开始
-    if endShopidNum > 1:
+    if endShopidNum > 1 and DoubleThread:
         # 如果启用记忆功能，则获取上一次记忆位置
         startNum1, startNum2, memorylabel = isMemory(memorylabel, startNum1, startNum2, midNum, endShopidNum,
                                                      pinNameList)
         # 多线程部分
         threads = []
-        t1 = Thread(target=OpenVipCrad, args=(startNum1, midNum, allShopid, cookies, userNames, pinNameList, 1))
+        t1 = Thread(target=OpenVipCard, args=(startNum1, midNum, allShopid, cookies, userNames, pinNameList, 1))
         threads.append(t1)
-        t2 = Thread(target=OpenVipCrad, args=(startNum2, endShopidNum, allShopid, cookies, userNames, pinNameList, 2))
+        t2 = Thread(target=OpenVipCard, args=(startNum2, endShopidNum, allShopid, cookies, userNames, pinNameList, 2))
         threads.append(t2)
         try:
             for t in threads:
@@ -1248,10 +1261,10 @@ def start():
             progress_bar(1, 1, 2)
         except:
             isSuccess = False
-    elif endShopidNum == 1:
+    elif endShopidNum == 1 or not DoubleThread:
         startNum1, startNum2, memorylabel = isMemory(memorylabel, startNum1, startNum2, midNum, endShopidNum,
                                                      pinNameList)
-        OpenVipCrad(startNum1, endShopidNum, allShopid, cookies, userNames, 1)
+        OpenVipCard(startNum1, endShopidNum, allShopid, cookies, userNames, pinNameList, 1)
         isSuccess = True
     else:
         message("获取到shopid数量为0")
