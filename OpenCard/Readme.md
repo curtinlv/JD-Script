@@ -1,7 +1,7 @@
 
 # JD入会领豆小程序
 ![JD入会领豆小程序](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
-  
+
 ## 使用方法
 #### [手机用户（参考） https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw](https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw)
 #### [PC用户 （参考） https://mp.weixin.qq.com/s/JmLxAecZAlEc4L2sZWnn1A](https://mp.weixin.qq.com/s/JmLxAecZAlEc4L2sZWnn1A)
@@ -17,7 +17,7 @@
     |   |-- Readme.md           # 说明书
     |   `-- start.sh            # shell脚本（非必要）
     `-- README.md
-        
+
     log目录结构、临时目录（可删除）：
     log
     ├── memory.json                        # 记忆、统计功能临时存放参数
@@ -35,7 +35,7 @@
     pip3 install requests
     执行：
     python3 jd_OpenCard.py
-    
+
     start.sh 脚本运行方法：
     1.适合定时任务或不想依赖ini配置文件。 
     2.支持单号跑多开，如
@@ -44,8 +44,11 @@
     3.定时任务（参考）：
        0 8 * * * sh /home/curtin/JD-Script/OpenCard/start.sh
        2 8 * * * sh /home/curtin/JD-Script/OpenCard/start_2.sh
-               
+
 ## `【更新记录】`
+    2021.6.14: (v1.2.1)
+        * 新增单双线程控制
+        * 修复一些问题，如腾讯云跑异常报错。
     2021.5.28：（v1.2.0）
         * 新增单或多账号并发
             - Concurrent=yes #开启
@@ -132,9 +135,9 @@
 ###### 关注公众号【TopStyle】回复：shopid
 ![TopStyle](https://gitee.com/curtinlv/img/raw/master/gzhcode.jpg)
 # 
-    @Last Version: v1.2.0
+    @Last Version: v1.2.1
 
-    @Last Time: 2021-05-28 22:02
+    @Last Time: 2021-06-14 10:27
 
     @Author: Curtin
 #### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 

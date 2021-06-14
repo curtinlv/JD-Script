@@ -5,13 +5,13 @@
 Author: Curtin
 功能：JD入会开卡领取京豆
 CreateDate: 2021/5/4 下午1:47
-UpdateTime: 2021/5/28
+UpdateTime: 2021/6/14
 '''
-version = 'v1.2.0'
+version = 'v1.2.1'
 readmes = """
 # JD入会领豆小程序
 ![JD入会领豆小程序](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
-  
+
 ## 使用方法
 #### [手机用户（参考） https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw](https://mp.weixin.qq.com/s/ih6aOURXWM-iKrhvMyR3mw)
 #### [PC用户 （参考） https://mp.weixin.qq.com/s/JmLxAecZAlEc4L2sZWnn1A](https://mp.weixin.qq.com/s/JmLxAecZAlEc4L2sZWnn1A)
@@ -27,7 +27,7 @@ readmes = """
     |   |-- Readme.md           # 说明书
     |   `-- start.sh            # shell脚本（非必要）
     `-- README.md
-        
+
     log目录结构、临时目录（可删除）：
     log
     ├── memory.json                        # 记忆、统计功能临时存放参数
@@ -45,7 +45,7 @@ readmes = """
     pip3 install requests
     执行：
     python3 jd_OpenCard.py
-    
+
     start.sh 脚本运行方法：
     1.适合定时任务或不想依赖ini配置文件。 
     2.支持单号跑多开，如
@@ -54,8 +54,11 @@ readmes = """
     3.定时任务（参考）：
        0 8 * * * sh /home/curtin/JD-Script/OpenCard/start.sh
        2 8 * * * sh /home/curtin/JD-Script/OpenCard/start_2.sh
-               
+
 ## `【更新记录】`
+    2021.6.14: (v1.2.1)
+        * 新增单双线程控制
+        * 修复一些问题，如腾讯云跑异常报错。
     2021.5.28：（v1.2.0）
         * 新增单或多账号并发
             - Concurrent=yes #开启
@@ -144,7 +147,7 @@ readmes = """
 # 
     @Last Version: %s
 
-    @Last Time: 2021-05-28 22:02
+    @Last Time: 2021-06-14 10:27
 
     @Author: Curtin
 #### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 
@@ -158,13 +161,12 @@ import time, os, sys, datetime
 import requests
 import random, string
 import re, json, base64
-from urllib.parse import unquote,quote_plus
+from urllib.parse import unquote, quote_plus
 from threading import Thread
 from configparser import RawConfigParser
 
 # 定义一些要用到参数
 requests.packages.urllib3.disable_warnings()
-
 scriptHeader = """
 ════════════════════════════════════════
 ║                                      ║
@@ -187,7 +189,7 @@ onlyRecord = False
 memory = True
 printlog = True
 isRemoteSid = True
-Concurrent=True
+Concurrent = True
 TG_BOT_TOKEN = ''
 TG_USER_ID = ''
 PUSH_PLUS_TOKEN = ''
@@ -195,7 +197,7 @@ TG_PROXY_IP = ''
 TG_PROXY_PORT = ''
 TG_API_HOST = ''
 QYWX_AM = ''
-BARK=''
+BARK = ''
 DoubleThread = True
 
 # 获取账号参数
@@ -254,62 +256,62 @@ if "JD_COOKIE" in os.environ:
         print("已获取并使用Env环境 Cookie")
 # 只入送豆数量大于此值
 if "openCardBean" in os.environ:
-    if len(os.environ["openCardBean"]) >0:
+    if len(os.environ["openCardBean"]) > 0:
         openCardBean = int(os.environ["openCardBean"])
-        print("已获取并使用Env环境 openCardBean:",openCardBean)
+        print("已获取并使用Env环境 openCardBean:", openCardBean)
     elif not openCardBean:
         openCardBean = 0
-#是否开启双线程
+# 是否开启双线程
 if "DoubleThread" in os.environ:
     if len(os.environ["DoubleThread"]) > 1:
         DoubleThread = getBool(os.environ["DoubleThread"])
-        print("已获取并使用Env环境 DoubleThread",DoubleThread)
-#多账号并发
+        print("已获取并使用Env环境 DoubleThread", DoubleThread)
+# 多账号并发
 if "Concurrent" in os.environ:
     if len(os.environ["Concurrent"]) > 1:
         Concurrent = getBool(os.environ["Concurrent"])
-        print("已获取并使用Env环境 Concurrent",Concurrent)
+        print("已获取并使用Env环境 Concurrent", Concurrent)
     elif not Concurrent:
         Concurrent = True
 # 限制速度，单位秒，如果请求过快报错适当调整0.5秒以上
 if "sleepNum" in os.environ:
     if len(os.environ["sleepNum"]) > 0:
         sleepNum = float(os.environ["sleepNum"])
-        print("已获取并使用Env环境 sleepNum:",sleepNum)
+        print("已获取并使用Env环境 sleepNum:", sleepNum)
     elif not sleepNum:
         sleepNum = 0
 if "printlog" in os.environ:
     if len(os.environ["printlog"]) > 1:
         printlog = getBool(os.environ["printlog"])
-        print("已获取并使用Env环境 printlog:",printlog)
+        print("已获取并使用Env环境 printlog:", printlog)
     elif not printlog:
         printlog = True
     # 是否记录符合条件的shopid，输出文件【OpenCardlog/yes_shopid.txt】 False|True
 if "record" in os.environ:
     if len(os.environ["record"]) > 1:
         record = getBool(os.environ["record"])
-        print("已获取并使用Env环境 record:",record)
+        print("已获取并使用Env环境 record:", record)
     elif not record:
         record = True
 # 仅记录，不入会。入会有豆的shopid输出文件
 if "onlyRecord" in os.environ:
     if len(os.environ["onlyRecord"]) > 1:
         onlyRecord = getBool(os.environ["onlyRecord"])
-        print("已获取并使用Env环境 onlyRecord:",onlyRecord)
+        print("已获取并使用Env环境 onlyRecord:", onlyRecord)
     elif not onlyRecord:
         onlyRecord = False
 # 开启记忆， 需要record=True且 memory= True 才生效
 if "memory" in os.environ:
     if len(os.environ["memory"]) > 1:
         memory = getBool(os.environ["memory"])
-        print("已获取并使用Env环境 memory:",memory)
+        print("已获取并使用Env环境 memory:", memory)
     elif not memory:
         memory = True
 # 是否启用远程shopid
 if "isRemoteSid" in os.environ:
     if len(os.environ["isRemoteSid"]) > 1:
         isRemoteSid = getBool(os.environ["isRemoteSid"])
-        print("已获取并使用Env环境 isRemoteSid:",isRemoteSid)
+        print("已获取并使用Env环境 isRemoteSid:", isRemoteSid)
     elif not isRemoteSid:
         isRemoteSid = True
 # 获取TG_BOT_TOKEN
@@ -378,6 +380,7 @@ class TaskThread(Thread):
     """
     处理task相关的线程类
     """
+
     def __init__(self, func, args=()):
         super(TaskThread, self).__init__()
         self.func = func  # 要执行的task类型
@@ -394,14 +397,13 @@ class TaskThread(Thread):
             print(ex)
             return "ERROR"
 
-
 def nowtime():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
 
 def printinfo(context, label: bool):
     if label == False:
         print(context)
-
 
 def exitCodeFun(code):
     try:
@@ -417,10 +419,10 @@ def exitCodeFun(code):
 def message(str_msg):
     global message_info
     print(str_msg)
-    message_info = "{}\n{}".format(message_info,str_msg)
+    message_info = "{}\n{}".format(message_info, str_msg)
     sys.stdout.flush()
 
-#获取通知，
+# 获取通知，
 if PUSH_PLUS_TOKEN:
     notify_mode.append('pushplus')
 if TG_BOT_TOKEN and TG_USER_ID:
@@ -430,7 +432,7 @@ if QYWX_AM:
 if BARK:
     notify_mode.append('bark')
 
-#tg通知
+# tg通知
 def telegram_bot(title, content):
     try:
         print("\n")
@@ -462,7 +464,7 @@ def telegram_bot(title, content):
     except Exception as e:
         print(e)
 
-#push推送
+# push推送
 def pushplus_bot(title, content):
     try:
         print("\n")
@@ -477,7 +479,7 @@ def pushplus_bot(title, content):
             "content": content
         }
         body = json.dumps(data).encode(encoding='utf-8')
-        headers = {'Content-Type':'application/json'}
+        headers = {'Content-Type': 'application/json'}
         response = requests.post(url=url, data=body, headers=headers).json()
         if response['code'] == 200:
             print('推送成功！')
@@ -485,6 +487,7 @@ def pushplus_bot(title, content):
             print('推送失败！')
     except Exception as e:
         print(e)
+
 # BARK
 def bark_push(title, content):
     print("\n")
@@ -493,7 +496,7 @@ def bark_push(title, content):
         return
     print("bark服务启动")
     try:
-        response = requests.get('''https://api.day.app/{0}/{1}/{2}'''.format(BARK,title,quote_plus(content))).json()
+        response = requests.get('''https://api.day.app/{0}/{1}/{2}'''.format(BARK, title, quote_plus(content))).json()
         if response['code'] == 200:
             print('推送成功！')
         else:
@@ -545,29 +548,29 @@ def wecom_app(title, content):
         if not QYWX_AM:
             print("QYWX_AM 并未设置！！\n取消推送")
             return
-        QYWX_AM_AY = re.split(',',QYWX_AM)
+        QYWX_AM_AY = re.split(',', QYWX_AM)
         if 4 < len(QYWX_AM_AY) > 5:
             print("QYWX_AM 设置错误！！\n取消推送")
             return
-        corpid=QYWX_AM_AY[0]
-        corpsecret=QYWX_AM_AY[1]
-        touser=QYWX_AM_AY[2]
-        agentid=QYWX_AM_AY[3]
+        corpid = QYWX_AM_AY[0]
+        corpsecret = QYWX_AM_AY[1]
+        touser = QYWX_AM_AY[2]
+        agentid = QYWX_AM_AY[3]
         try:
-            media_id=QYWX_AM_AY[4]
-        except :
-            media_id=''
-        wx=WeCom(corpid, corpsecret, agentid)
+            media_id = QYWX_AM_AY[4]
+        except:
+            media_id = ''
+        wx = WeCom(corpid, corpsecret, agentid)
         # 如果没有配置 media_id 默认就以 text 方式发送
         if not media_id:
-            message=title + '\n\n' + content
-            response=wx.send_text(message, touser)
+            message = title + '\n\n' + content
+            response = wx.send_text(message, touser)
         else:
-            response=wx.send_mpnews(title, content, media_id, touser)
+            response = wx.send_mpnews(title, content, media_id, touser)
         if response == 'ok':
             print('推送成功！')
         else:
-            print('推送失败！错误信息如下：\n',response)
+            print('推送失败！错误信息如下：\n', response)
     except Exception as e:
         print(e)
 
@@ -576,6 +579,7 @@ class WeCom:
         self.CORPID = corpid
         self.CORPSECRET = corpsecret
         self.AGENTID = agentid
+
     def get_access_token(self):
         url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken'
         values = {'corpid': self.CORPID,
@@ -584,6 +588,7 @@ class WeCom:
         req = requests.post(url, params=values)
         data = json.loads(req.text)
         return data["access_token"]
+
     def send_text(self, message, touser="@all"):
         send_url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' + self.get_access_token()
         send_values = {
@@ -592,13 +597,14 @@ class WeCom:
             "agentid": self.AGENTID,
             "text": {
                 "content": message
-                },
+            },
             "safe": "0"
-            }
-        send_msges=(bytes(json.dumps(send_values), 'utf-8'))
+        }
+        send_msges = (bytes(json.dumps(send_values), 'utf-8'))
         respone = requests.post(send_url, send_msges)
         respone = respone.json()
         return respone["errmsg"]
+
     def send_mpnews(self, title, message, media_id, touser="@all"):
         send_url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' + self.get_access_token()
         send_values = {
@@ -606,19 +612,19 @@ class WeCom:
             "msgtype": "mpnews",
             "agentid": self.AGENTID,
             "mpnews": {
-               "articles":[
-                   {
-                       "title": title, 
-                       "thumb_media_id": media_id,
-                       "author": "Author",
-                       "content_source_url": "",
-                       "content": message.replace('\n','<br/>'),
-                       "digest": message
+                "articles": [
+                    {
+                        "title": title,
+                        "thumb_media_id": media_id,
+                        "author": "Author",
+                        "content_source_url": "",
+                        "content": message.replace('\n', '<br/>'),
+                        "digest": message
                     }
-               ]
+                ]
             }
         }
-        send_msges=(bytes(json.dumps(send_values), 'utf-8'))
+        send_msges = (bytes(json.dumps(send_values), 'utf-8'))
         respone = requests.post(send_url, send_msges)
         respone = respone.json()
         return respone["errmsg"]
@@ -642,7 +648,7 @@ def iscookie():
                 pinName = r.findall(i)
                 pinName = unquote(pinName[0])
                 # 获取账号名
-                ck, nickname = getUserInfo(i, pinName,u)
+                ck, nickname = getUserInfo(i, pinName, u)
                 if nickname != False:
                     cookiesList.append(ck)
                     userNameList.append(nickname)
@@ -663,7 +669,6 @@ def iscookie():
         message("cookie 格式错误！...本次操作已退出")
         exitCodeFun(4)
 
-
 # 检查是否有更新版本
 
 def gettext(url):
@@ -675,9 +680,8 @@ def gettext(url):
     except Exception as e:
         print(e)
 
-
 def isUpdate():
-    global footer,readme1,readme2,readme3,uPversion
+    global footer, readme1, readme2, readme3, uPversion
     url = base64.decodebytes(
         b"aHR0cHM6Ly9naXRlZS5jb20vY3VydGlubHYvUHVibGljL3Jhdy9tYXN0ZXIvT3BlbkNyYWQvdXBkYXRlLmpzb24=")
     try:
@@ -710,8 +714,7 @@ def isUpdate():
         time.sleep(10)
         exit(666)
 
-
-def getUserInfo(ck, pinName,userNum):
+def getUserInfo(ck, pinName, userNum):
     url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback=GetJDUserInfoUnion'
     headers = {
         'Cookie': ck,
@@ -736,17 +739,16 @@ def getUserInfo(ck, pinName,userNum):
         send("【JD入会领豆】Cookie 已失效！", context)
         return ck, False
 
-
 # 设置Headers
 def setHeaders(cookie, intype):
     if intype == 'mall':
         headers = {
+
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "Host": "shop.m.jd.com",
+            "Host": "mall.jd.com",
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15",
             "Accept-Language": "zh-cn",
             "Accept-Encoding": "gzip, deflate, br",
-            # "Connection": "keep-alive"
             "Connection": "close"
         }
         return headers
@@ -797,7 +799,6 @@ def outfile(filename, context, iscover):
         except Exception as e:
             print(e)
 
-
 # 记忆功能 默认双线程
 def memoryFun(startNum, threadNum, usernameLabel, username, getallbean, userCount):
     global memoryJson
@@ -820,7 +821,6 @@ def memoryFun(startNum, threadNum, usernameLabel, username, getallbean, userCoun
         except:
             memoryJson['{}_ok'.format(username)] = 1
 
-
     try:
         if os.path.exists(pwd + "log"):
             with open(pwd + "log/memory.json", "w+", encoding="utf-8") as f:
@@ -835,7 +835,6 @@ def memoryFun(startNum, threadNum, usernameLabel, username, getallbean, userCoun
 def isMemoryEnable():
     global memoryJson
     memoryJson = getMemory()
-
 
 # 获取记忆配置
 def getMemory():
@@ -856,7 +855,6 @@ def rmCount():
         os.remove(pwd + "log/入会汇总.txt")
     if os.path.exists(pwd + "log/memory.json"):
         os.remove(pwd + "log/memory.json")
-
 
 # 判断是否启用记忆功能
 def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
@@ -930,7 +928,6 @@ def isMemory(memorylabel, startNum1, startNum2, midNum, endNum, pinNameList):
         memorylabel = 1
         return startNum1, startNum2, memorylabel
 
-
 # 获取VenderId
 def getVenderId(shopId, headers):
     """
@@ -938,16 +935,15 @@ def getVenderId(shopId, headers):
     :param headers
     :return: venderId
     """
-    url = 'https://shop.m.jd.com/?shopId={0}'.format(shopId)
+    url = 'https://mall.jd.com/index-{0}.html'.format(shopId)
     resp = requests.get(url=url, verify=False, headers=headers, timeout=60)
     resulttext = resp.text
-    r = re.compile(r'venderId: \'(\d+)\'')
+    r = re.compile(r'shopId=\d+&id=(\d+)"')
     venderId = r.findall(resulttext)
     return venderId[0]
 
-
 # 查询礼包
-def getShopOpenCardInfo(venderId, headers, shopid, userName,user_num):
+def getShopOpenCardInfo(venderId, headers, shopid, userName, user_num):
     """
     :param venderId:
     :param headers:
@@ -992,7 +988,7 @@ def getShopOpenCardInfo(venderId, headers, shopid, userName,user_num):
                         context = "{0}".format(shopid)
                         outfile(f"入会{openCardBean}豆以上的shopid-{today}.txt", context, False)
                         if onlyRecord == True:
-                            if user_num ==1:
+                            if user_num == 1:
                                 print("已开启仅记录，不入会。")
                             return 2, 2
                         if openCardStatus == 1:
@@ -1003,7 +999,7 @@ def getShopOpenCardInfo(venderId, headers, shopid, userName,user_num):
                             return 1, 1
                         return activityId, getBean
                     else:
-                        if user_num ==1:
+                        if user_num == 1:
                             print(f'\t\t└{venderCardName}:入会送【{getBean}】豆少于【{openCardBean}豆】,不入...')
                         if onlyRecord == True:
                             if user_num == 1:
@@ -1020,7 +1016,6 @@ def getShopOpenCardInfo(venderId, headers, shopid, userName,user_num):
             return 0, 0
     except Exception as e:
         print(e)
-
 
 # 开卡
 def bindWithVender(venderId, shopId, activityId, channel, headers):
@@ -1046,7 +1041,6 @@ def bindWithVender(venderId, shopId, activityId, channel, headers):
         return result
     except Exception as e:
         print(e)
-
 
 # 获取开卡结果
 def getResult(resulttxt, userName, user_num):
@@ -1098,7 +1092,6 @@ def getShopID():
         print("Error:请检查shopid.txt文件是否正常！\n", e)
         exitCodeFun(2)
 
-
 # 进度条
 def progress_bar(start, end, threadNum):
     print("\r", end="")
@@ -1111,8 +1104,8 @@ def progress_bar(start, end, threadNum):
     sys.stdout.flush()
 
 ## 多账号并发
-def sss(ii,ck,userName,pinName,endNum,user_num,shopids,threadNum):
-    if ii % 10 == 0 and ii != 0 and user_num ==1:
+def sss(ii, ck, userName, pinName, endNum, user_num, shopids, threadNum):
+    if ii % 10 == 0 and ii != 0 and user_num == 1:
         progress_bar(ii, endNum, threadNum)
     try:
         if len(shopids[ii]) > 0:
@@ -1122,7 +1115,7 @@ def sss(ii,ck,userName,pinName,endNum,user_num,shopids,threadNum):
             # 新增记忆功能
             memoryFun(ii, threadNum, True, pinName, 0, allUserCount)
             headers_a = setHeaders(ck, "mh5")
-            activityId, getBean = getShopOpenCardInfo(venderId, headers_a, shopids[ii], userName,user_num)  # 获取入会礼包结果
+            activityId, getBean = getShopOpenCardInfo(venderId, headers_a, shopids[ii], userName, user_num)  # 获取入会礼包结果
             #  activityId,getBean 或 返回 0:没豆 1:有豆已是会员 2:记录模式（不入会）
             time.sleep(sleepNum)  # 根据账号需求是否限制请求速度
             if activityId == 0 or activityId == 2:
@@ -1143,14 +1136,13 @@ def sss(ii,ck,userName,pinName,endNum,user_num,shopids,threadNum):
         if user_num == 1:
             print(f"【Error】：多账号并发报错，请求过快建议适当调整 sleepNum 参数限制速度 \n{e}")
 
-
 # 为多线程准备
 def OpenVipCard(startNum: int, endNum: int, shopids, cookies, userNames, pinNameList, threadNum):
     sssLabel = 0
     for i in range(startNum, endNum):
         user_num = 1
         if Concurrent:
-            if sssLabel == 0 and threadNum ==1:
+            if sssLabel == 0 and threadNum == 1:
                 if DoubleThread:
                     message("当前模式: 双线程，多账号并发运行")
                 else:
@@ -1167,7 +1159,7 @@ def OpenVipCard(startNum: int, endNum: int, shopids, cookies, userNames, pinName
                 t.join()
                 time.sleep(sleepNum)
         else:
-            if sssLabel == 0 and threadNum ==1:
+            if sssLabel == 0 and threadNum == 1:
                 if DoubleThread:
                     message("当前模式: 双线程，单账号运行")
                 else:
@@ -1185,9 +1177,10 @@ def OpenVipCard(startNum: int, endNum: int, shopids, cookies, userNames, pinName
                         # 新增记忆功能
                         memoryFun(i, threadNum, True, pinName, 0, allUserCount)
                         if activityIdLabel == 0:
-                            s = random.randint(0, allUserCount-1)
+                            s = random.randint(0, allUserCount - 1)
                             headers_a = setHeaders(cookies[s], "mh5")
-                            activityId, getBean = getShopOpenCardInfo(venderId, headers_a, shopids[i], userName,user_num)  # 获取入会礼包结果
+                            activityId, getBean = getShopOpenCardInfo(venderId, headers_a, shopids[i], userName,
+                                                                      user_num)  # 获取入会礼包结果
                         #  activityId,getBean 或 返回 0:没豆 1:有豆已是会员 2:记录模式（不入会）
                         time.sleep(sleepNum)  # 根据账号需求是否限制请求速度
                         if activityId == 0 or activityId == 2:
@@ -1212,9 +1205,6 @@ def OpenVipCard(startNum: int, endNum: int, shopids, cookies, userNames, pinName
                     print(e)
                     continue
                 user_num += 1
-
-
-
 # start
 def start():
     global allUserCount
@@ -1231,7 +1221,7 @@ def start():
     allShopid = list(set(allShopid))
     endShopidNum = len(allShopid)
     midNum = int(endShopidNum / 2)
-    message("获取到店铺数量: {}".format(endShopidNum-1))
+    message("获取到店铺数量: {}".format(endShopidNum - 1))
     message(f"您已设置入会条件：{openCardBean} 京豆")
     print("获取账号...")
     cookies, userNames, pinNameList = iscookie()
@@ -1275,7 +1265,7 @@ def start():
         memoryJson = getMemory()
         n = 1
         message("\n###【本次统计 {}】###\n".format(nowtime()))
-        all_get_bean=0
+        all_get_bean = 0
         for name, pinname in zip(userNames, pinNameList):
             try:
                 userCountBean = memoryJson['{}'.format(pinname)]
@@ -1293,3 +1283,4 @@ def start():
     exitCodeFun(0)
 if __name__ == '__main__':
     start()
+
