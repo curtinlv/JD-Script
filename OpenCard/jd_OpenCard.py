@@ -228,6 +228,7 @@ try:
     TG_API_HOST = configinfo.get('main', 'TG_API_HOST')
     QYWX_AM = configinfo.get('main', 'QYWX_AM')
     Concurrent = configinfo.getboolean('main', 'Concurrent')
+    DoubleThread = configinfo.getboolean('main', 'DoubleThread')
     BARK = configinfo.get('main', 'BARK')
 except Exception as e:
     OpenCardConfigLabel = 1
