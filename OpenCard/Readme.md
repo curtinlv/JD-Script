@@ -46,6 +46,8 @@
        2 8 * * * sh /home/curtin/JD-Script/OpenCard/start_2.sh
 
 ## `【更新记录】`
+    2021.6.19: (v1.2.2)
+        * 修复多线程报错
     2021.6.14: (v1.2.1)
         * 新增单双线程控制
         * 修复一些问题，如腾讯云跑异常报错。
@@ -135,9 +137,9 @@
 ###### 关注公众号【TopStyle】回复：shopid
 ![TopStyle](https://gitee.com/curtinlv/img/raw/master/gzhcode.jpg)
 # 
-    @Last Version: v1.2.1
+    @Last Version: v1.2.2
 
-    @Last Time: 2021-06-14 10:27
+    @Last Time: 2021-06-19 13:55
 
     @Author: Curtin
 #### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 

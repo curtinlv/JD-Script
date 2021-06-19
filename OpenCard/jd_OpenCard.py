@@ -5,9 +5,9 @@
 Author: Curtin
 功能：JD入会开卡领取京豆
 CreateDate: 2021/5/4 下午1:47
-UpdateTime: 2021/6/14
+UpdateTime: 2021/6/19
 '''
-version = 'v1.2.1'
+version = 'v1.2.2'
 readmes = """
 # JD入会领豆小程序
 ![JD入会领豆小程序](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
@@ -56,6 +56,8 @@ readmes = """
        2 8 * * * sh /home/curtin/JD-Script/OpenCard/start_2.sh
 
 ## `【更新记录】`
+    2021.6.19: (v1.2.2)
+        * 修复多线程报错
     2021.6.14: (v1.2.1)
         * 新增单双线程控制
         * 修复一些问题，如腾讯云跑异常报错。
@@ -147,7 +149,7 @@ readmes = """
 # 
     @Last Version: %s
 
-    @Last Time: 2021-06-14 10:27
+    @Last Time: 2021-06-19 13:55
 
     @Author: Curtin
 #### **仅以学习交流为主，请勿商业用途、禁止违反国家法律 ，转载请留个名字，谢谢!** 
@@ -675,7 +677,7 @@ def gettext(url):
     try:
         resp = requests.get(url, timeout=60).text
         if '该内容无法显示' in resp:
-            gettext(url)
+            return gettext(url)
         return resp
     except Exception as e:
         print(e)
@@ -683,7 +685,7 @@ def gettext(url):
 def isUpdate():
     global footer, readme1, readme2, readme3, uPversion
     url = base64.decodebytes(
-        b"aHR0cHM6Ly9naXRlZS5jb20vY3VydGlubHYvUHVibGljL3Jhdy9tYXN0ZXIvT3BlbkNyYWQvdXBkYXRlLmpzb24=")
+        b"aHR0cHM6Ly9naXRlZS5jb20vY3VydGlubHYvUHVibGljL3Jhdy9tYXN0ZXIvT3BlbkNhcmQvdXBkYXRlLmpzb24=")
     try:
         result = gettext(url)
         result = json.loads(result)
@@ -1065,12 +1067,19 @@ def getResult(resulttxt, userName, user_num):
 
 
 def getRemoteShopid():
+    global shopidList, venderidList
+    shopidList = []
+    venderidList = []
     url = base64.decodebytes(
-        b"aHR0cHM6Ly9naXRlZS5jb20vY3VydGlubHYvUHVibGljL3Jhdy9tYXN0ZXIvT3BlbkNyYWQvc2hvcGlkLnR4dA==")
+        b"aHR0cHM6Ly9naXRlZS5jb20vY3VydGlubHYvUHVibGljL3Jhdy9tYXN0ZXIvT3BlbkNhcmQvc2hvcGlkLnR4dA==")
     try:
         rShopid = gettext(url)
         rShopid = rShopid.split("\n")
-        return rShopid
+        for i in rShopid:
+            if len(i) > 0:
+                shopidList.append(i.split(':')[0])
+                venderidList.append(i.split(':')[1])
+        return shopidList, venderidList
     except:
         print("无法从远程获取shopid")
         exitCodeFun(999)
@@ -1110,7 +1119,10 @@ def sss(ii, ck, userName, pinName, endNum, user_num, shopids, threadNum):
     try:
         if len(shopids[ii]) > 0:
             headers_b = setHeaders(ck, "mall")  # 获取请求头
-            venderId = getVenderId(shopids[ii], headers_b)  # 获取venderId
+            if isRemoteSid:
+                venderId = venderidList[shopidList.index(shopids[ii])]
+            else:
+                venderId = getVenderId(shopids[ii], headers_b)  # 获取venderId
             time.sleep(sleepNum)  # 根据您需求是否限制请求速度
             # 新增记忆功能
             memoryFun(ii, threadNum, True, pinName, 0, allUserCount)
@@ -1214,14 +1226,14 @@ def start():
     global endShopidNum, midNum, allUserCount
     if isRemoteSid:
         message("已启用远程获取shopid")
-        allShopid = getRemoteShopid()
+        allShopid, venderidList = getRemoteShopid()
     else:
         message("从本地shopid.txt获取shopid")
         allShopid = getShopID()
     allShopid = list(set(allShopid))
     endShopidNum = len(allShopid)
     midNum = int(endShopidNum / 2)
-    message("获取到店铺数量: {}".format(endShopidNum - 1))
+    message("获取到店铺数量: {}".format(endShopidNum))
     message(f"您已设置入会条件：{openCardBean} 京豆")
     print("获取账号...")
     cookies, userNames, pinNameList = iscookie()
