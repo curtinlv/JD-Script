@@ -409,10 +409,9 @@ def printinfo(context, label: bool):
 
 def exitCodeFun(code):
     try:
-        # exitCode = input()
         if sys.platform == 'win32' or sys.platform == 'cygwin':
-            print("进程睡眠10分钟后自动退出（作用：临时解决exe运行完成后会闪退，可以 kill掉）")
-            time.sleep(600)
+            print("连按回车键即可退出窗口！")
+            exitCode = input()
         exit(code)
     except:
         time.sleep(3)
