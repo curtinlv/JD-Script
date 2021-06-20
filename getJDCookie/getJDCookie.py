@@ -9,20 +9,20 @@ Date: 2021/5/9 下午5:53
 
 print('''
 ******************************************
-获取京东cookie工具_v1.1
+获取京东cookie工具_v1.2
 
 Author: Curtin
 
 Date: 2021-01-24 17:43
 
-UpdateTime：2021-05-54 18:13
+UpdateTime：2021-06-20 10:55
 
 # GitHub https://github.com/curtinlv
-# Gitee仓库 https://gitee.com/curtinlv
+# TG交流 https://t.me/topstyle996
 # TG频道 https://t.me/TopStyle2021 
 # 关注公众号【TopStyle】
  
- Ps:需依赖谷歌浏览Chrome 和 驱动 chromedriver.exe  ，版本要求一致！
+ Ps:需依赖谷歌浏览Chrome 和 驱动 chromedriver  ，版本要求一致！
  谷歌浏览Chrome : https://www.google.cn/chrome/
  驱动链接: http://npm.taobao.org/mirrors/chromedriver/  (下载放在脚本同目录下)
  
@@ -32,7 +32,7 @@ import datetime
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-import json , os
+import json, os, sys
 
 # 加启动配置
 chrome_options = webdriver.ChromeOptions()
@@ -50,13 +50,16 @@ chrome_options.add_argument('user-agent="Mozilla/5.0 (iPhone; CPU iPhone OS 13_5
 
 
 def exitWait():
-    getYourCode = input("已完成,请按回车键自动退出。")
+    getYourCode = input("请按回车键自动退出。")
     exit(0)
 try:
-    driver = webdriver.Chrome(options=chrome_options, executable_path=r'./chromedriver.exe')
+    if sys.platform == 'win32' or sys.platform == 'cygwin':
+        driver = webdriver.Chrome(options=chrome_options, executable_path=r'./chromedriver.exe')
+    else:
+        driver = webdriver.Chrome(options=chrome_options, executable_path=r'./chromedriver')
     driver.set_window_size(375, 812)
 except:
-    print('请检查你的环境是否安装谷歌Chrome浏览器！或者驱动【chromedriver.exe】版本是否和Chrome浏览器版本一致！\n驱动更新链接：http://npm.taobao.org/mirrors/chromedriver/')
+    print('报错了!请检查你的环境是否安装谷歌Chrome浏览器！或者驱动【chromedriver.exe】版本是否和Chrome浏览器版本一致！\n驱动更新链接：http://npm.taobao.org/mirrors/chromedriver/')
     exitWait()
     exit(9)
 
@@ -65,7 +68,7 @@ except:
 def jd_login():
 
     driver.get('https://bean.m.jd.com/bean/signIndex.action')
-    print('【请登录您的账号，此次登录模拟手机登录，不会记录您任何信息，获取的cookie最长有效期为31天。】')
+    print('【请使用验证码方式登录您的账号，此次登录模拟手机登录，不会记录您任何信息，获取的cookie最长有效期为30天。】')
     try:
         if WebDriverWait(driver, 600, poll_frequency=0.2, ignored_exceptions=None).until(EC.title_is(u"签到日历")):
             '''判断title,返回布尔值'''
@@ -109,6 +112,10 @@ def get_cookie():
 
 
 if __name__ == '__main__':
-    jd_login()
-    get_cookie()
-    exitWait()
+    try:
+        jd_login()
+        get_cookie()
+    except:
+        pass
+    finally:
+        exitWait()

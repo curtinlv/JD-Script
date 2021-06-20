@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenCard/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCard/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getJDCookie/getJDCookie.py" beforeDir="false" afterPath="$PROJECT_DIR$/getJDCookie/getJDCookie.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,38 +39,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="1298" selection-start-line="1298" selection-end-line="1298" />
+            <state relative-caret-position="42">
+              <caret line="411" column="63" selection-start-line="411" selection-start-column="8" selection-end-line="411" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard_test.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/getJDCookie/getJDCookie.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="148">
-              <caret line="58" column="23" lean-forward="true" selection-end-line="1298" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard_shopid.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3166">
-              <caret line="204" column="34" lean-forward="true" selection-start-line="204" selection-start-column="34" selection-end-line="204" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpenCard/shopid.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="10" selection-start-column="10" selection-end-column="10" />
+              <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+              <folding>
+                <element signature="e#602#617#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,9 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>京豆包</find>
-      <find>smtg_queryPrize</find>
-      <find>用户异常，查不到商品关键词</find>
       <find>resolve</find>
       <find>1000003157</find>
       <find>isUpdate</find>
@@ -119,6 +100,9 @@
       <find>getVender</find>
       <find>gettext</find>
       <find>无法从远程获取shopid</find>
+      <find>exitCodeFun</find>
+      <find>cookie 格式错误</find>
+      <find>exit</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -153,7 +137,6 @@
         <option value="$PROJECT_DIR$/OpenCrad/jd_OpenCrad.py" />
         <option value="$PROJECT_DIR$/OpenCrad/start.sh" />
         <option value="$PROJECT_DIR$/OpenCard/start.sh-jd_OpenCard.py.log" />
-        <option value="$PROJECT_DIR$/getJDCookie/getJDCookie.py" />
         <option value="$PROJECT_DIR$/OpenCard/log/memory.json" />
         <option value="$PROJECT_DIR$/OpenCard/start.sh" />
         <option value="$PROJECT_DIR$/OpenCard/History/jd_OpenCard_v1.1.2.py" />
@@ -185,6 +168,7 @@
         <option value="$PROJECT_DIR$/OpenCard/shopid.txt" />
         <option value="$PROJECT_DIR$/OpenCard/jd_OpenCard_test.py" />
         <option value="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" />
+        <option value="$PROJECT_DIR$/getJDCookie/getJDCookie.py" />
       </list>
     </option>
   </component>
@@ -205,17 +189,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="JD-Script" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PycharmProjects/JD-Script" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -226,7 +199,29 @@
             <path>
               <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
               <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
+              <item name="getJDCookie" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
+              <item name="getJDCookie" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
               <item name="OpenCard" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="JD-Script" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PycharmProjects/JD-Script" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
           </expand>
           <select />
@@ -239,26 +234,26 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.17.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/OpenCard" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/getJDCookie/dist" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/OpenCard" />
-      <recent name="$PROJECT_DIR$/gzyl" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/OpenCrad/log" />
-      <recent name="$PROJECT_DIR$/OpenCrad/History" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/OpenCard/History" />
       <recent name="$PROJECT_DIR$/OpenCrad/History" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/OpenCrad" />
       <recent name="$PROJECT_DIR$/.." />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/getJDCookie/dist" />
+      <recent name="$PROJECT_DIR$/OpenCard/dist" />
+      <recent name="$PROJECT_DIR$/OpenCard" />
+      <recent name="$PROJECT_DIR$/gzyl" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -273,8 +268,27 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.jd_OpenCard_test">
-    <configuration name="drawShopGift.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/getFollowGifts/drawShopGift.js" working-dir="$PROJECT_DIR$/getFollowGifts">
+  <component name="RunManager" selected="Python.getJDCookie">
+    <configuration name="getJDCookie" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="JD-Script" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/getJDCookie" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/getJDCookie/getJDCookie.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="jd_OpenCard" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -367,11 +381,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.getJDCookie" />
         <item itemvalue="Python.jd_OpenCard_test" />
         <item itemvalue="Python.jd_OpenCard" />
         <item itemvalue="Python.jd_getFollowGift" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Node.js.drawShopGift.js" />
       </list>
     </recent_temporary>
   </component>
@@ -433,21 +447,8 @@
       <workItem from="1623340187334" duration="244000" />
       <workItem from="1623468055555" duration="1375000" />
       <workItem from="1623572224994" duration="10898000" />
-      <workItem from="1624076927017" duration="7397000" />
-    </task>
-    <task id="LOCAL-00045" summary="修复一些问题及优化一下代码">
-      <created>1621696870084</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1621696870084</updated>
-    </task>
-    <task id="LOCAL-00046" summary="新增shtart.sh执行脚本，使用Env环境执行方式，则ini配置文件参数不会生效。">
-      <created>1621706482702</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1621706482702</updated>
+      <workItem from="1624076927017" duration="12975000" />
+      <workItem from="1624156453066" duration="1855000" />
     </task>
     <task id="LOCAL-00047" summary="(v1.1.1)&#10;        * 修复一些问题及优化一些代码&#10;        * 修复Env环境读取变量问题&#10;        * 新增 start.sh 运行脚本（Linux Env环境使用）">
       <created>1621706581149</created>
@@ -778,11 +779,25 @@
       <option name="project" value="LOCAL" />
       <updated>1623637966720</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="* 修复多线程报错">
+      <created>1624087694059</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1624087694060</updated>
+    </task>
+    <task id="LOCAL-00095" summary="* 修复多线程报错">
+      <created>1624097251098</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1624097251098</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260857000" />
+    <option name="totallyTimeSpent" value="268290000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -795,14 +810,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="26" width="1440" height="744" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.30615166" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.3104435" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.38235295" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" weight="0.58513933" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.45856354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -811,7 +825,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49213162" weight="0.125387" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.33619457" side_tool="true" weight="0.37292817" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" weight="0.4473684" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" visible="true" weight="0.4643963" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.795422" weight="0.32596686" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49928468" weight="0.32872927" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -859,7 +873,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="更新" />
     <MESSAGE value="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 修复路径问题&#10;            - 优化" />
     <MESSAGE value="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题" />
     <MESSAGE value="修复一些问题及优化一下代码" />
@@ -884,10 +897,11 @@
     <MESSAGE value="修复绝对路径问题" />
     <MESSAGE value="新增单/双线程控制开关，export DoubleThread=&quot;false&quot; #默认开启true" />
     <MESSAGE value="新增单/双线程控制开关，&#10;    export DoubleThread=&quot;false&quot; #默认开启true&#10;修复请求异常问题：&#10;    如腾讯云服务器环境跑报错。" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增单/双线程控制开关，&#10;    export DoubleThread=&quot;false&quot; #默认开启true&#10;修复请求异常问题：&#10;    如腾讯云服务器环境跑报错。" />
+    <MESSAGE value="* 修复多线程报错" />
+    <option name="LAST_COMMIT_MESSAGE" value="* 修复多线程报错" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JD_Script$getJDCookie.coverage" NAME="getJDCookie Coverage Results" MODIFIED="1622214772735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getJDCookie" />
+    <SUITE FILE_PATH="coverage/JD_Script$getJDCookie.coverage" NAME="getJDCookie Coverage Results" MODIFIED="1624157684693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getJDCookie" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard.coverage" NAME="jd_OpenCard Coverage Results" MODIFIED="1623637833510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_buleCoin.coverage" NAME="jd_buleCoin Coverage Results" MODIFIED="1621062166911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuleCoin" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard_v1_1_2.coverage" NAME="jd_OpenCard_v1.1.2 Coverage Results" MODIFIED="1622254390986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard/History" />
@@ -901,7 +915,6 @@
     <SUITE FILE_PATH="coverage/JD_Script$jd_blueCoin.coverage" NAME="jd_blueCoin Coverage Results" MODIFIED="1622822850955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BlueCoin" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OpenCard/log/可退会账号【cyp1820】.txt" />
     <entry file="file://$PROJECT_DIR$/OpenCrad/log/shopid-2021-05-15.txt" />
     <entry file="file://$PROJECT_DIR$/OpenCrad/log/memory_test.json" />
     <entry file="file://$PROJECT_DIR$/OpenCrad/shopid.txt" />
@@ -1167,23 +1180,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/unBindCard/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2670">
-          <caret line="179" column="4" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getJDCookie/getJDCookie.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-          <folding>
-            <element signature="e#602#617#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/OpenCardConfig.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -1212,10 +1208,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/dist/OpenCardConfig.ini" />
+    <entry file="file://$PROJECT_DIR$/unBindCard/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2670">
+          <caret line="179" column="4" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="1298" selection-start-line="1298" selection-end-line="1298" />
+        <state relative-caret-position="42">
+          <caret line="411" column="63" selection-start-line="411" selection-start-column="8" selection-end-line="411" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getJDCookie/getJDCookie.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+          <folding>
+            <element signature="e#602#617#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
