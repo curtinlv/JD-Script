@@ -108,7 +108,6 @@ def getCookie():
     ckfile = pwd + 'JDCookies.txt'
     try:
         if os.path.exists(ckfile):
-            cookies = ''
             with open(ckfile, "r", encoding="utf-8") as f:
                 cks = f.read()
                 f.close()
@@ -116,11 +115,12 @@ def getCookie():
                 r = re.compile(r"pt_key=.*?pt_pin=.*?;", re.M | re.S | re.I)
                 cks = r.findall(cks)
                 if len(cks) > 0:
+                    cookies = ''
                     for i in cks:
                         cookies += i
         else:
             with open(ckfile, "w", encoding="utf-8") as f:
-                cks = "#多账号换行，以下示例：\npt_key=xxx;pt_pin=jd_xxx;\npt_key=yyy;pt_pin=jd_yyy;"
+                cks = "#多账号换行，以下示例：\ncookie1\ncookie2"
                 f.write(cks)
                 f.close()
             pass
