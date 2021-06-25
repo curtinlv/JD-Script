@@ -1,0 +1,3 @@
+#多账号换行，以下示例：（通过正则获取此文件的ck，理论上可以自定义名字标记ck，也可以随意摆放ck）
+账号1【Curtinlv】cookie1;
+账号2【TopStyle】cookie2;
