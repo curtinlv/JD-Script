@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="* 优化">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Curtin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vagrant.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JDCookies.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jd_zjd.py" afterDir="false" />
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" beforeDir="false" afterPath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JDCookies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/JDCookies.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_zjd.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_zjd.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,53 +40,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="183" selection-start-line="183" selection-end-line="183" selection-end-column="57" />
-              <folding>
-                <element signature="e#4861#4891#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/getJDCookie/getJDCookie.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="128" column="11" lean-forward="true" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_zjd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-              <folding>
-                <element signature="e#2657#2670#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zjd.js">
+        <entry file="file://$PROJECT_DIR$/JDCookies.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="42" column="239" selection-start-line="42" selection-start-column="205" selection-end-line="42" selection-end-column="239" />
+            <state relative-caret-position="60">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -219,7 +183,7 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="26" />
+    <option name="y" value="39" />
     <option name="width" value="1440" />
     <option name="height" value="744" />
   </component>
@@ -229,17 +193,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="JD-Script" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PycharmProjects/JD-Script" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -256,6 +209,17 @@
               <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
               <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
               <item name="OpenCard" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="JD-Script" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PycharmProjects/JD-Script" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
           </expand>
           <select />
@@ -483,21 +447,9 @@
       <workItem from="1623572224994" duration="10898000" />
       <workItem from="1624076927017" duration="12975000" />
       <workItem from="1624156453066" duration="2521000" />
-      <workItem from="1624626407935" duration="10783000" />
-    </task>
-    <task id="LOCAL-00048" summary="新增shtart.sh执行脚本，使用Env环境参数，则ini配置文件参数不会生效。">
-      <created>1621706880420</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1621706880420</updated>
-    </task>
-    <task id="LOCAL-00049" summary="新增shtart.sh执行脚本，使用Env环境参数，则ini配置文件参数不会生效。">
-      <created>1621706953559</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1621706953559</updated>
+      <workItem from="1624626407935" duration="11926000" />
+      <workItem from="1624642194303" duration="433000" />
+      <workItem from="1624666709323" duration="996000" />
     </task>
     <task id="LOCAL-00050" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_1.sh">
       <created>1621740649102</created>
@@ -828,11 +780,25 @@
       <option name="project" value="LOCAL" />
       <updated>1624180974739</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="新增赚京豆瓜分活动-自动助力">
+      <created>1624637511291</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1624637511291</updated>
+    </task>
+    <task id="LOCAL-00098" summary="* 优化ck获取">
+      <created>1624637539873</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1624637539873</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279739000" />
+    <option name="totallyTimeSpent" value="282311000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -844,15 +810,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1440" height="744" extended-state="0" />
+    <frame x="0" y="39" width="1440" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.31402004" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.32260373" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.42105263" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.5108359" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.45856354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -885,8 +851,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="修复一些问题及优化一些代码：&#10;            - 修复最后统计显示为0&#10;            - 修复记忆功能一些bug&#10;            - 等等一些小问题" />
-    <MESSAGE value="修复一些问题及优化一下代码" />
     <MESSAGE value="新增shtart.sh执行脚本，使用Env环境执行方式，则ini配置文件参数不会生效。" />
     <MESSAGE value="(v1.1.1)&#10;        * 修复一些问题及优化一些代码&#10;        * 修复Env环境读取变量问题&#10;        * 新增 start.sh 运行脚本（Linux Env环境使用）" />
     <MESSAGE value="新增shtart.sh执行脚本，使用Env环境参数，则ini配置文件参数不会生效。" />
@@ -910,10 +874,12 @@
     <MESSAGE value="新增单/双线程控制开关，&#10;    export DoubleThread=&quot;false&quot; #默认开启true&#10;修复请求异常问题：&#10;    如腾讯云服务器环境跑报错。" />
     <MESSAGE value="* 修复多线程报错" />
     <MESSAGE value="* 优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="* 优化" />
+    <MESSAGE value="新增赚京豆瓜分活动-自动助力" />
+    <MESSAGE value="* 优化ck获取" />
+    <option name="LAST_COMMIT_MESSAGE" value="* 优化ck获取" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JD_Script$jd_zjd.coverage" NAME="jd_zjd Coverage Results" MODIFIED="1624637318913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_zjd.coverage" NAME="jd_zjd Coverage Results" MODIFIED="1624667647316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1622809928089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gzyl" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_getFollowGift.coverage" NAME="jd_getFollowGift Coverage Results" MODIFIED="1623586527490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getFollowGifts" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard_test.coverage" NAME="jd_OpenCard_test Coverage Results" MODIFIED="1624087581162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard" />
@@ -1204,20 +1170,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/dist/OpenCardConfig.ini" />
-    <entry file="file://$PROJECT_DIR$/unBindCard/test.py">
+    <entry file="file://$PROJECT_DIR$/jd_gfjd.py" />
+    <entry file="file://$PROJECT_DIR$/getJDCookie/getJDCookie.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2670">
-          <caret line="179" column="4" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="12" />
+        <state relative-caret-position="570">
+          <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jd_gfjd.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zjd.js">
+    <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="42" column="239" selection-start-line="42" selection-start-column="205" selection-end-line="42" selection-end-column="239" />
+        <state relative-caret-position="1875">
+          <caret line="128" column="11" lean-forward="true" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1225,6 +1189,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="6" selection-start-line="1" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zjd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="239" selection-start-line="42" selection-start-column="205" selection-end-line="42" selection-end-column="239" />
         </state>
       </provider>
     </entry>
@@ -1238,34 +1209,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getJDCookie/getJDCookie.py">
+    <entry file="file://$PROJECT_DIR$/unBindCard/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+        <state relative-caret-position="2670">
+          <caret line="179" column="4" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JDCookies.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="2365" selection-start-line="3" selection-start-column="2365" selection-end-line="3" selection-end-column="2365" />
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_zjd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-          <folding>
-            <element signature="e#2657#2670#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="128" column="11" lean-forward="true" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
+        <state relative-caret-position="150">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
         </state>
       </provider>
     </entry>

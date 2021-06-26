@@ -7,13 +7,14 @@ Author: Curtin
 Date: 2021/6/25 下午9:16
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
+updateTime: 2021.6.26 8:34
 '''
 
 #####
 #ck 优先读取ENV的 变量 JD_COOKIE='ck1&ck2'  再到 【JDCookies.txt】 文件内的ck 最后才到脚本内 cookies=ck
 cookies=''
-#助力账号，如给账号1助力，则填1
-zlzh = 1
+#助力账号，如给账号1 2 10助力，则填 zlzh = [1,2,10]
+zlzh = [1, ]
 #####
 
 
@@ -25,6 +26,7 @@ import json
 import time
 requests.packages.urllib3.disable_warnings()
 t = time.time()
+aNum = 0
 
 def getCookie():
     global cookies
@@ -125,18 +127,26 @@ def iscookie():
 
 # 开启助力任务
 def starAssist(sid, headers):
+    global aNum
     try:
         timestamp = int(round(t * 1000))
         url = 'https://api.m.jd.com/api?functionId=vvipclub_distributeBean_startAssist&body={%22activityIdEncrypted%22:%22' + sid + '%22,%22channel%22:%22FISSION_BEAN%22}&appid=swat_miniprogram&client=tjj_m&screen=1920*1080&osVersion=5.0.0&networkType=wifi&sdkName=orderDetail&sdkVersion=1.0.0&clientVersion=3.1.3&area=11&fromType=wxapp&timestamp=' + str(timestamp)
         resp = requests.get(url=url, headers=headers, verify=False, timeout=30).json()
         # if resp['success']:
         #     print(resp)
+        aNum = 0
     except Exception as e:
-        return starAssist(sid, headers)
+        if aNum < 5:
+            aNum += 1
+            return starAssist(sid, headers)
+        else:
+            print("starAssist Error", e)
+            exit(1)
+
 
 #获取助力码
 def getShareCode(headers):
-    global assistStartRecordId, encPin, sid
+    global assistStartRecordId, encPin, sid, aNum
     try:
         url = f'https://api.m.jd.com/api?functionId=distributeBeanActivityInfo&fromType=wxapp&timestamp={int(round(t * 1000))}'
         body = 'body=%7B%22paramData%22%3A%7B%22channel%22%3A%22FISSION_BEAN%22%7D%7D&appid=swat_miniprogram&client=tjj_m&screen=1920*1080&osVersion=5.0.0&networkType=wifi&sdkName=orderDetail&sdkVersion=1.0.0&clientVersion=3.1.3&area=11'
@@ -148,8 +158,12 @@ def getShareCode(headers):
             sid = data['id']
             return assistStartRecordId, encPin, sid
     except Exception as e:
-        print("getShareCode Error", e)
-        # return getShareCode(headers)
+        if aNum < 5:
+            aNum += 1
+            return getShareCode(headers)
+        else:
+            print("getShareCode Error", e)
+            exit(2)
 
 #设置请求头
 def setHeaders(cookie):
@@ -181,29 +195,34 @@ def assist(ck, sid, eid, aid, user, name, a):
     url = 'https://api.m.jd.com/api?functionId=vvipclub_distributeBean_assist&body=%7B%22activityIdEncrypted%22:%22' + sid + '%5Cn%22,%22assistStartRecordId%22:%22' + str(aid) + '%22,%22assistedPinEncrypted%22:%22' + eid + '%5Cn%22,%22channel%22:%22FISSION_BEAN%22%7D&appid=swat_miniprogram&client=tjj_m&screen=1920*1080&osVersion=5.0.0&networkType=wifi&sdkName=orderDetail&sdkVersion=1.0.0&clientVersion=3.1.3&area=1_72_4137_0&fromType=wxapp&timestamp=' + str(timestamp)
     resp = requests.get(url, headers=headers, verify=False, timeout=30).json()
     if resp['success']:
-        print(f"用户{a}【{user}】助力用户【{name}】成功~")
+        print(f"用户{a}【{user}】助力【{name}】成功~")
         if resp['data']['assistedNum'] == 4:
             print("开启下一轮助力")
             starAssist(sid, header)
             getShareCode(header)
+    else:
+        print(f"用户{a}【{user}】助力【{name}】失败！！！")
 
 
 
 #开始互助
 def start():
     global header
-    cookiesList,userNameList,pinNameList = iscookie()
-    header = setHeaders(cookiesList[zlzh-1])
-    getShareCode(header)
-    starAssist(sid, header)
-    getShareCode(header)
-    a = 1
-    for i, name in zip(cookiesList, userNameList):
-        if a == zlzh:
-            a += 1
-        else:
-            assist(i, sid, encPin, assistStartRecordId, name, userNameList[zlzh-1], a)
-            a += 1
+    print("微信小程序-赚京豆-瓜分助力")
+    cookiesList, userNameList, pinNameList = iscookie()
+    for ckNum in zlzh:
+        print(f"开始助力账号【{userNameList[ckNum-1]}】")
+        header = setHeaders(cookiesList[ckNum-1])
+        getShareCode(header)
+        starAssist(sid, header)
+        getShareCode(header)
+        a = 1
+        for i, name in zip(cookiesList, userNameList):
+            if a == ckNum:
+                a += 1
+            else:
+                assist(i, sid, encPin, assistStartRecordId, name, userNameList[ckNum-1], a)
+                a += 1
 
 if __name__ == '__main__':
     start()
