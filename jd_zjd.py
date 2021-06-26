@@ -64,8 +64,6 @@ if "zlzh" in os.environ:
     if len(os.environ["zlzh"]) > 1:
         zlzh = os.environ["zlzh"]
         zlzh = zlzh.replace('[', '').replace(']', '').split(',')
-        print(type(zlzh))
-        print(zlzh)
         print("已获取并使用Env环境 zlzh")
 
 

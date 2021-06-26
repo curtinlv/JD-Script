@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JDCookies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/JDCookies.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jd_zjd.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_zjd.py" afterDir="false" />
     </list>
@@ -43,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_zjd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+            <state relative-caret-position="100">
+              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -71,7 +70,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>alreadyReceivedGifts</find>
       <find>endtime</find>
       <find>getGiftresult Error</find>
       <find>getCookie</find>
@@ -101,6 +99,7 @@
       <find>me-api.jd.co</find>
       <find>cookie 格式错误！...本次操作已退出</find>
       <find>getU</find>
+      <find>zlzh</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -449,14 +448,7 @@
       <workItem from="1624156453066" duration="2521000" />
       <workItem from="1624626407935" duration="11926000" />
       <workItem from="1624642194303" duration="433000" />
-      <workItem from="1624666709323" duration="996000" />
-    </task>
-    <task id="LOCAL-00050" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_1.sh">
-      <created>1621740649102</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1621740649103</updated>
+      <workItem from="1624666709323" duration="2534000" />
     </task>
     <task id="LOCAL-00051" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_1.sh">
       <created>1621740853531</created>
@@ -794,11 +786,18 @@
       <option name="project" value="LOCAL" />
       <updated>1624637539873</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="新增赚京豆瓜分任务">
+      <created>1624667744877</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1624667744878</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282311000" />
+    <option name="totallyTimeSpent" value="283849000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -818,7 +817,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.5108359" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" weight="0.34055728" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.45856354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -827,8 +826,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49213162" weight="0.125387" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.33619457" side_tool="true" weight="0.37292817" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" weight="0.04643963" />
-      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.795422" weight="0.32596686" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" visible="true" weight="0.51547986" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.795422" weight="0.32507738" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49928468" weight="0.32872927" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -851,7 +850,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="新增shtart.sh执行脚本，使用Env环境执行方式，则ini配置文件参数不会生效。" />
     <MESSAGE value="(v1.1.1)&#10;        * 修复一些问题及优化一些代码&#10;        * 修复Env环境读取变量问题&#10;        * 新增 start.sh 运行脚本（Linux Env环境使用）" />
     <MESSAGE value="新增shtart.sh执行脚本，使用Env环境参数，则ini配置文件参数不会生效。" />
     <MESSAGE value="新增start.sh，脚本运行方法：&#10;    1.适合定时任务或不想依赖ini配置文件。&#10;       sh start.sh  &#10;    2.支持单号跑多开，如&#10;       cp start.sh start_2.sh&#10;       sh start_2.sh  #只跑里面配置的参数，如cookie&#10;    3.定时任务（参考）：&#10;       0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;       2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh" />
@@ -876,7 +874,8 @@
     <MESSAGE value="* 优化" />
     <MESSAGE value="新增赚京豆瓜分活动-自动助力" />
     <MESSAGE value="* 优化ck获取" />
-    <option name="LAST_COMMIT_MESSAGE" value="* 优化ck获取" />
+    <MESSAGE value="新增赚京豆瓜分任务" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增赚京豆瓜分任务" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JD_Script$jd_zjd.coverage" NAME="jd_zjd Coverage Results" MODIFIED="1624667647316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -1225,8 +1224,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_zjd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        <state relative-caret-position="100">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
