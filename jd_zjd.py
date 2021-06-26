@@ -13,7 +13,7 @@ updateTime: 2021.6.26 8:34
 #####
 #ck 优先读取ENV的 变量 JD_COOKIE='ck1&ck2'  再到 【JDCookies.txt】 文件内的ck 最后才到脚本内 cookies=ck
 cookies=''
-#助力账号，如给账号1 2 10助力，则填 zlzh = [1,2,10]
+#助力账号，如给账号1 2 10助力，则填 zlzh = [1,2,10] ,支持ENV export zlzh=[1,2,10]
 zlzh = [1, ]
 #####
 
@@ -59,7 +59,14 @@ if "JD_COOKIE" in os.environ:
     if len(os.environ["JD_COOKIE"]) > 10:
         cookies = os.environ["JD_COOKIE"]
         print("已获取并使用Env环境 Cookie")
-
+# JD_COOKIE=cookie （多账号&分隔）
+if "zlzh" in os.environ:
+    if len(os.environ["zlzh"]) > 1:
+        zlzh = os.environ["zlzh"]
+        zlzh = zlzh.replace('[', '').replace(']', '').split(',')
+        print(type(zlzh))
+        print(zlzh)
+        print("已获取并使用Env环境 zlzh")
 
 
 # 检测cookie格式是否正确
@@ -211,8 +218,8 @@ def start():
     print("微信小程序-赚京豆-瓜分助力")
     cookiesList, userNameList, pinNameList = iscookie()
     for ckNum in zlzh:
-        print(f"开始助力账号【{userNameList[ckNum-1]}】")
-        header = setHeaders(cookiesList[ckNum-1])
+        print(f"### 开始助力账号【{userNameList[int(ckNum)-1]}】###")
+        header = setHeaders(cookiesList[int(ckNum)-1])
         getShareCode(header)
         starAssist(sid, header)
         getShareCode(header)
@@ -221,7 +228,7 @@ def start():
             if a == ckNum:
                 a += 1
             else:
-                assist(i, sid, encPin, assistStartRecordId, name, userNameList[ckNum-1], a)
+                assist(i, sid, encPin, assistStartRecordId, name, userNameList[int(ckNum)-1], a)
                 a += 1
 
 if __name__ == '__main__':
