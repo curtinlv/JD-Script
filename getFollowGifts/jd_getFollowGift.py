@@ -7,7 +7,7 @@ Author: Curtin
 Date: 2021/6/6 上午7:57
 '''
 ##################################
-#cookie填写，注意：ck优先读取ENV > JDCookies.txt > 再到此值
+#cookie填写，注意：#ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
 cookies = ''
 #TG 推送
 # tg机器人token

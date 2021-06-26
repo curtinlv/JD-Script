@@ -43,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_zjd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="134" column="19" lean-forward="true" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
+            <state relative-caret-position="195">
+              <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="81" />
               <folding>
                 <element signature="e#684#4906#0" />
               </folding>
@@ -55,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="618" column="14" selection-start-line="618" selection-start-column="14" selection-end-line="618" selection-end-column="14" />
+            <state relative-caret-position="120">
+              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding>
                 <element signature="e#2370#6522#0" />
               </folding>
@@ -77,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/getFollowGifts/JDCookies.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+              <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -193,9 +193,9 @@
         <option value="$PROJECT_DIR$/getJDCookie/getJDCookie.py" />
         <option value="$PROJECT_DIR$/jd_gfjd.py" />
         <option value="$PROJECT_DIR$/zjd.js" />
-        <option value="$PROJECT_DIR$/jd_zjd.py" />
         <option value="$PROJECT_DIR$/JDCookies.txt" />
         <option value="$PROJECT_DIR$/getFollowGifts/JDCookies.txt" />
+        <option value="$PROJECT_DIR$/jd_zjd.py" />
         <option value="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" />
       </list>
     </option>
@@ -209,7 +209,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="39" />
     <option name="width" value="1440" />
-    <option name="height" value="744" />
+    <option name="height" value="807" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -474,21 +474,7 @@
       <workItem from="1624626407935" duration="11926000" />
       <workItem from="1624642194303" duration="433000" />
       <workItem from="1624666709323" duration="3578000" />
-      <workItem from="1624707435044" duration="4047000" />
-    </task>
-    <task id="LOCAL-00056" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
-      <created>1621745245247</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1621745245247</updated>
-    </task>
-    <task id="LOCAL-00057" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
-      <created>1621750033608</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1621750033608</updated>
+      <workItem from="1624707435044" duration="4713000" />
     </task>
     <task id="LOCAL-00058" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
       <created>1621750223052</created>
@@ -819,11 +805,25 @@
       <option name="project" value="LOCAL" />
       <updated>1624710157142</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="适配各种平台ck">
+      <created>1624713649715</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1624713649715</updated>
+    </task>
+    <task id="LOCAL-00106" summary="适配各种平台ck">
+      <created>1624722296607</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1624722296607</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288940000" />
+    <option name="totallyTimeSpent" value="289606000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -835,7 +835,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="39" width="1440" height="744" extended-state="0" />
+    <frame x="0" y="39" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.32689556" />
@@ -843,7 +843,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.58513933" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.19605078" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.45856354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -906,7 +906,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JD_Script$jd_zjd.coverage" NAME="jd_zjd Coverage Results" MODIFIED="1624713522778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1622809928089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gzyl" />
-    <SUITE FILE_PATH="coverage/JD_Script$jd_getFollowGift.coverage" NAME="jd_getFollowGift Coverage Results" MODIFIED="1624713631847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getFollowGifts" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_getFollowGift.coverage" NAME="jd_getFollowGift Coverage Results" MODIFIED="1624722379038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getFollowGifts" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard_test.coverage" NAME="jd_OpenCard_test Coverage Results" MODIFIED="1624087581162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad.coverage" NAME="jd_OpenCrad Coverage Results" MODIFIED="1621747998682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_blueCoin.coverage" NAME="jd_blueCoin Coverage Results" MODIFIED="1622822850955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BlueCoin" />
@@ -1233,16 +1233,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jd_zjd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="134" column="19" lean-forward="true" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
-          <folding>
-            <element signature="e#684#4906#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JDCookies.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1253,14 +1243,24 @@
     <entry file="file://$PROJECT_DIR$/getFollowGifts/JDCookies.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_zjd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="81" />
+          <folding>
+            <element signature="e#684#4906#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="618" column="14" selection-start-line="618" selection-start-column="14" selection-end-line="618" selection-end-column="14" />
+        <state relative-caret-position="120">
+          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding>
             <element signature="e#2370#6522#0" />
           </folding>
