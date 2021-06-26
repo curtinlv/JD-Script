@@ -161,6 +161,7 @@ def getShareCode(headers):
             assistStartRecordId = data['assistStartRecordId']
             encPin = data['encPin']
             sid = data['id']
+            aNum = 0
             return assistStartRecordId, encPin, sid
     except Exception as e:
         if aNum < 5:
