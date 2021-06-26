@@ -134,8 +134,6 @@ class getJDCookie(object):
             print("cookie 格式错误！...本次操作已退出")
             exit(4)
 
-getCk = getJDCookie()
-getCk.getCookie()
 
 
 # 获取系统ENV环境参数优先使用 适合Ac、云服务等环境
@@ -150,7 +148,8 @@ if "zlzh" in os.environ:
         zlzh = zlzh.replace('[', '').replace(']', '').split(',')
         print("已获取并使用Env环境 zlzh")
 
-
+getCk = getJDCookie()
+getCk.getCookie()
 
 # 开启助力任务
 def starAssist(sid, headers):

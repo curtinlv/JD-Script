@@ -208,8 +208,6 @@ class getJDCookie(object):
             print("cookie 格式错误！...本次操作已退出")
             exit(4)
 
-getCk = getJDCookie()
-getCk.getCookie()
 
 #  取ENV环境Ck 设置方法：export JD_COOKIE="你的ck"（多账号&分隔）
 if "JD_COOKIE" in os.environ:
@@ -257,6 +255,9 @@ if "BARK" in os.environ:
     if len(os.environ["BARK"]) > 1:
         BARK = os.environ["BARK"]
         print("已获取并使用Env环境 BARK")
+
+getCk = getJDCookie()
+getCk.getCookie()
 
 def message(str_msg):
     global message_info
