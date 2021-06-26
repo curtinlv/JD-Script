@@ -117,6 +117,8 @@ class getJDCookie(object):
             return '/jd/config/config.sh'
         elif os.path.exists(pwd + 'JDCookies.txt'):
             return pwd + 'JDCookies.txt'
+        else:
+            return pwd + 'JDCookies.txt'
     # 获取cookie
     def getCookie(self):
         global cookies
@@ -134,7 +136,7 @@ class getJDCookie(object):
                         for i in cks:
                             cookies += i
             else:
-                with open(ckfile, "w", encoding="utf-8") as f:
+                with open(pwd + 'JDCookies.txt', "w", encoding="utf-8") as f:
                     cks = "#多账号换行，以下示例：（通过正则获取此文件的ck，理论上可以自定义名字标记ck，也可以随意摆放ck）\n账号1【Curtinlv】cookie1;\n账号2【TopStyle】cookie2;"
                     f.write(cks)
                     f.close()
@@ -614,6 +616,7 @@ def getGiftresult(result, nickname, pinName, uNum):
 
 def start():
     print(scriptHeader)
+    isUpdate()
     outfile("Readme.md", readmes)
     cookiesList, userNameList, pinNameList = getCk.iscookie()
     userNum = len(cookiesList)
