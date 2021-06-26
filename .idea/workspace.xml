@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="适配各种平台ck">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" beforeDir="false" afterPath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jd_zjd.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_zjd.py" afterDir="false" />
-    </list>
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_zjd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="81" />
+            <state relative-caret-position="226">
+              <caret line="221" column="52" lean-forward="true" selection-start-line="221" selection-start-column="52" selection-end-line="221" selection-end-column="52" />
               <folding>
                 <element signature="e#684#4906#0" />
               </folding>
@@ -52,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+            <state relative-caret-position="330">
+              <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
               <folding>
                 <element signature="e#2370#6522#0" />
               </folding>
@@ -195,8 +191,8 @@
         <option value="$PROJECT_DIR$/zjd.js" />
         <option value="$PROJECT_DIR$/JDCookies.txt" />
         <option value="$PROJECT_DIR$/getFollowGifts/JDCookies.txt" />
-        <option value="$PROJECT_DIR$/jd_zjd.py" />
         <option value="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" />
+        <option value="$PROJECT_DIR$/jd_zjd.py" />
       </list>
     </option>
   </component>
@@ -474,14 +470,7 @@
       <workItem from="1624626407935" duration="11926000" />
       <workItem from="1624642194303" duration="433000" />
       <workItem from="1624666709323" duration="3578000" />
-      <workItem from="1624707435044" duration="4713000" />
-    </task>
-    <task id="LOCAL-00058" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
-      <created>1621750223052</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1621750223052</updated>
+      <workItem from="1624707435044" duration="4840000" />
     </task>
     <task id="LOCAL-00059" summary="* 新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh&#10;* 修复一些Bug">
       <created>1621750809581</created>
@@ -819,11 +808,18 @@
       <option name="project" value="LOCAL" />
       <updated>1624722296607</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="适配各种平台ck">
+      <created>1624722473909</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1624722473909</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289606000" />
+    <option name="totallyTimeSpent" value="289733000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -838,12 +834,12 @@
     <frame x="0" y="39" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.32689556" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.32689556" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.19605078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.19605078" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.45856354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -906,7 +902,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JD_Script$jd_zjd.coverage" NAME="jd_zjd Coverage Results" MODIFIED="1624713522778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1622809928089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gzyl" />
-    <SUITE FILE_PATH="coverage/JD_Script$jd_getFollowGift.coverage" NAME="jd_getFollowGift Coverage Results" MODIFIED="1624722379038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getFollowGifts" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_getFollowGift.coverage" NAME="jd_getFollowGift Coverage Results" MODIFIED="1624722726250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getFollowGifts" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard_test.coverage" NAME="jd_OpenCard_test Coverage Results" MODIFIED="1624087581162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad.coverage" NAME="jd_OpenCrad Coverage Results" MODIFIED="1621747998682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_blueCoin.coverage" NAME="jd_blueCoin Coverage Results" MODIFIED="1622822850955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BlueCoin" />
@@ -1247,22 +1243,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jd_zjd.py">
+    <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="81" />
+        <state relative-caret-position="330">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
           <folding>
-            <element signature="e#684#4906#0" />
+            <element signature="e#2370#6522#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
+    <entry file="file://$PROJECT_DIR$/jd_zjd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        <state relative-caret-position="226">
+          <caret line="221" column="52" lean-forward="true" selection-start-line="221" selection-start-column="52" selection-end-line="221" selection-end-column="52" />
           <folding>
-            <element signature="e#2370#6522#0" />
+            <element signature="e#684#4906#0" />
           </folding>
         </state>
       </provider>
