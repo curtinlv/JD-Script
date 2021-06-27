@@ -145,7 +145,7 @@ if "JD_COOKIE" in os.environ:
 if "zlzh" in os.environ:
     if len(os.environ["zlzh"]) > 1:
         zlzh = os.environ["zlzh"]
-        zlzh = zlzh.replace('[', '').replace(']', '').replace('\'', '').split(',')
+        zlzh = zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 zlzh")
 
 getCk = getJDCookie()
