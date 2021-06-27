@@ -7,14 +7,14 @@ Author: Curtin
 Date: 2021/6/25 下午9:16
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-updateTime: 2021.6.26 20:09
+updateTime: 2021.6.27 18:03
 '''
 
 #####
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
 cookies=''
-#助力账号，如给账号1 2 10助力，则填 zlzh = [1,2,10] ,支持ENV export zlzh=[1,2,10]
-zlzh = [1, ]
+#助力账号，填写pt_pin或用户名的值，如 zlzh = ['aaaa','xxxx','yyyy'] ,支持ENV export zlzh=['CurtinLV','xxxx','yyyy']
+zlzh = ['aaaaa', 'xxxx', 'yyyy']
 #####
 
 
@@ -28,7 +28,7 @@ requests.packages.urllib3.disable_warnings()
 pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
 t = time.time()
 aNum = 0
-
+beanCount = 0
 class getJDCookie(object):
     # 适配各种平台环境ck
     def getckfile(self):
@@ -207,6 +207,7 @@ def setHeaders(cookie):
     return headers
 
 def assist(ck, sid, eid, aid, user, name, a):
+    global beanCount
     timestamp = int(round(t * 1000))
     headers = {
         'Cookie': ck + 'wxclient=gxhwx;ie_ai=1;',
@@ -224,32 +225,47 @@ def assist(ck, sid, eid, aid, user, name, a):
     if resp['success']:
         print(f"用户{a}【{user}】助力【{name}】成功~")
         if resp['data']['assistedNum'] == 4:
-            print("开启下一轮助力")
+            beanCount += 80
+            print(f"{name}, 恭喜获得8毛京豆，以到账为准。")
+            print("## 开启下一轮助力")
             starAssist(sid, header)
             getShareCode(header)
     else:
-        print(f"用户{a}【{user}】助力【{name}】失败！！！")
+        print(f"用户{a}【{userNameList[a-1]}】没有助力次数了。")
+
 
 
 
 #开始互助
 def start():
-    global header
+    global header,cookiesList, userNameList, pinNameList
     print("微信小程序-赚京豆-瓜分助力")
     cookiesList, userNameList, pinNameList = getCk.iscookie()
-    for ckNum in zlzh:
-        print(f"### 开始助力账号【{userNameList[int(ckNum)-1]}】###")
-        header = setHeaders(cookiesList[int(ckNum)-1])
+    for ckname in zlzh:
+        try:
+            ckNum = userNameList.index(ckname)
+        except Exception as e:
+            try:
+                ckNum = pinNameList.index(ckname)
+            except:
+                print("请检查助力账号名称是否正确？提示：助力名字可填pt_pin的值、也可以填用户名。")
+                exit(9)
+
+        print(f"### 开始助力账号【{userNameList[int(ckNum)]}】###")
+
+        header = setHeaders(cookiesList[int(ckNum)])
         getShareCode(header)
         starAssist(sid, header)
         getShareCode(header)
         a = 1
         for i, name in zip(cookiesList, userNameList):
-            if a == ckNum:
+            if a == ckNum+1:
                 a += 1
             else:
-                assist(i, sid, encPin, assistStartRecordId, name, userNameList[int(ckNum)-1], a)
+                assist(i, sid, encPin, assistStartRecordId, name, userNameList[int(ckNum)], a)
                 a += 1
+        if beanCount > 0:
+            print(f'\n### 本次累计获得{beanCount}京豆')
 
 if __name__ == '__main__':
     start()
