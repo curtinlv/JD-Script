@@ -7,20 +7,24 @@ Author: Curtin
 Date: 2021/6/25 下午9:16
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-updateTime: 2021.6.27 20:06
+updateTime: 2021.7.1 11:22
 '''
 
 #####
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
 cookies=''
 #助力账号，填写pt_pin或用户名的值，如 zlzh = ['aaaa','xxxx','yyyy'] ,支持ENV export zlzh=['CurtinLV','xxxx','yyyy']
-zlzh = ['aaaaa', '买买买', '东哥']
+zlzh = ['Curtinlv', '买买买', '东哥']
 #####
 
 
 
 import os, re
-import requests
+try:
+    import requests
+except Exception as e:
+    print(e, "\n缺少requests 模块，请执行命令安装：python3 -m pip install requests")
+    exit(3)
 from urllib.parse import unquote
 import json
 import time
@@ -146,7 +150,7 @@ if "zlzh" in os.environ:
     if len(os.environ["zlzh"]) > 1:
         zlzh = os.environ["zlzh"]
         zlzh = zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
-        print("已获取并使用Env环境 zlzh")
+        print("已获取并使用Env环境 zlzh:", zlzh)
 
 getCk = getJDCookie()
 getCk.getCookie()
@@ -157,9 +161,7 @@ def starAssist(sid, headers):
     try:
         timestamp = int(round(t * 1000))
         url = 'https://api.m.jd.com/api?functionId=vvipclub_distributeBean_startAssist&body={%22activityIdEncrypted%22:%22' + sid + '%22,%22channel%22:%22FISSION_BEAN%22}&appid=swat_miniprogram&client=tjj_m&screen=1920*1080&osVersion=5.0.0&networkType=wifi&sdkName=orderDetail&sdkVersion=1.0.0&clientVersion=3.1.3&area=11&fromType=wxapp&timestamp=' + str(timestamp)
-        resp = requests.get(url=url, headers=headers, verify=False, timeout=30).json()
-        # if resp['success']:
-        #     print(resp)
+        requests.get(url=url, headers=headers, verify=False, timeout=30).json()
         aNum = 0
     except Exception as e:
         if aNum < 5:
@@ -179,9 +181,13 @@ def getShareCode(headers):
         responses = requests.post(url, headers=headers, data=body, verify=False, timeout=30).json()
         if responses['success']:
             data = responses['data']
-            assistStartRecordId = data['assistStartRecordId']
-            encPin = data['encPin']
             sid = data['id']
+            encPin = data['encPin']
+            try:
+                assistStartRecordId = data['assistStartRecordId']
+            except:
+                starAssist(sid, header)
+                return getShareCode(headers)
             aNum = 0
             return assistStartRecordId, encPin, sid
     except Exception as e:
