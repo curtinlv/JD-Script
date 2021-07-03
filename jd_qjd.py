@@ -8,6 +8,7 @@ Author: Curtin
 Date: 2021/7/3 上午10:02
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
+update: 2021.7.3 14:05
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
@@ -162,6 +163,7 @@ getCk = getJDCookie()
 getCk.getCookie()
 
 def getShareCode(ck):
+    global aNum
     try:
         v_num1 = ''.join(random.sample(["1", "2", "3", "4", "5", "6", "7", "8", "9"], 1)) + ''.join(random.sample(string.digits, 4))
         url = 'https://api.m.jd.com/client.action?functionId=signBeanGroupStageIndex&body=%7B%22monitor_refer%22%3A%22%22%2C%22rnVersion%22%3A%223.9%22%2C%22fp%22%3A%22-1%22%2C%22shshshfp%22%3A%22-1%22%2C%22shshshfpa%22%3A%22-1%22%2C%22referUrl%22%3A%22-1%22%2C%22userAgent%22%3A%22-1%22%2C%22jda%22%3A%22-1%22%2C%22monitor_source%22%3A%22bean_m_bean_index%22%7D&appid=ld&client=apple&clientVersion=null&networkType=&osVersion=&uuid=&jsonp=jsonp_' + str(int(round(t * 1000))) + '_' + v_num1
@@ -184,9 +186,15 @@ def getShareCode(ck):
             shareCode = jsonp['data']['shareCode']
             sumBeanNumStr = int(jsonp['data']['sumBeanNumStr'])
         except:
-            groupCode = 0
-            shareCode = 0
-            sumBeanNumStr = 0
+            if aNum < 5:
+                aNum += 1
+                return getShareCode(ck)
+            else:
+                groupCode = 0
+                shareCode = 0
+                sumBeanNumStr = 0
+                aNum = 0
+        aNum = 0
         return groupCode, shareCode, sumBeanNumStr
     except Exception as e:
         print(f"getShareCode Error", e)
