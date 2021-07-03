@@ -181,7 +181,10 @@ def getShareCode(ck):
         jsonp = json.loads(result[0])
         groupCode = jsonp['data']['groupCode']
         shareCode = jsonp['data']['shareCode']
-        sumBeanNumStr = int(jsonp['data']['sumBeanNumStr'])
+        try:
+            sumBeanNumStr = int(jsonp['data']['sumBeanNumStr'])
+        except:
+            sumBeanNumStr = 0
         return groupCode, shareCode, sumBeanNumStr
     except Exception as e:
         print(f"getShareCode Error", e)
@@ -213,7 +216,7 @@ def helpCode(ck, groupCode, shareCode,u, unum, user):
                 return True
             return False
         else:
-            print(f"账号{unum}【{u}】{helpToast} 您也获得1豆哦~")
+            print(f"账号{unum}【{u}】{helpToast}")
             return False
     except Exception as e:
         print(f"helpCode Error ", e)
