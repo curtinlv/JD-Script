@@ -8,7 +8,7 @@ Author: Curtin
 Date: 2021/7/3 上午10:02
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update: 2021.7.3 15:13
+update: 2021.7.3 15:41
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
@@ -19,7 +19,7 @@ qjd_zlzh = ['Your JD_User', '买买买', '东哥']
 # UA 可自定义你的，注意格式
 UserAgent = 'jdappiPhone10.0.413.7ca6eb91a888be488f194b9d9216cf711dd1b221anetwork/wifiADID/8679C062-A41A-4A25-88F1-50A7A3EEF34Amodel/iPhone8,1addressid/3723896896appBuild/167707jdSupportDarkMode/0Mozilla/5.0 (iPhone CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148supportJDSHWK/1'
 # 限制速度 （秒）
-sleepNum=0.1
+sleepNum = 0.1
 
 
 import os, re
@@ -41,10 +41,13 @@ t = time.time()
 aNum = 0
 beanCount = 0
 userCount = {}
+
 class getJDCookie(object):
     # 适配各种平台环境ck
     def getckfile(self):
-        if os.path.exists('/ql/config/env.sh'):
+        if os.path.exists(pwd + 'JDCookies.txt'):
+            return pwd + 'JDCookies.txt'
+        elif os.path.exists('/ql/config/env.sh'):
             print("当前环境青龙面板新版")
             return '/ql/config/env.sh'
         elif os.path.exists('/ql/config/cookie.sh'):
@@ -55,8 +58,8 @@ class getJDCookie(object):
             return '/jd/config/config.sh'
         elif os.path.exists(pwd + 'JDCookies.txt'):
             return pwd + 'JDCookies.txt'
-        else:
-            return pwd + 'JDCookies.txt'
+        return pwd + 'JDCookies.txt'
+
     # 获取cookie
     def getCookie(self):
         global cookies
@@ -70,15 +73,21 @@ class getJDCookie(object):
                     r = re.compile(r"pt_key=.*?pt_pin=.*?;", re.M | re.S | re.I)
                     cks = r.findall(cks)
                     if len(cks) > 0:
+                        if 'JDCookies.txt' in ckfile:
+                            print("当前获取使用 JDCookies.txt 的cookie")
                         cookies = ''
                         for i in cks:
                             cookies += i
+                        return
             else:
                 with open(pwd + 'JDCookies.txt', "w", encoding="utf-8") as f:
                     cks = "#多账号换行，以下示例：（通过正则获取此文件的ck，理论上可以自定义名字标记ck，也可以随意摆放ck）\n账号1【Curtinlv】cookie1;\n账号2【TopStyle】cookie2;"
                     f.write(cks)
                     f.close()
-                pass
+            if "JD_COOKIE" in os.environ:
+                if len(os.environ["JD_COOKIE"]) > 10:
+                    cookies = os.environ["JD_COOKIE"]
+                    print("已获取并使用Env环境 Cookie")
         except Exception as e:
             print(f"【getCookie Error】{e}")
 
@@ -145,13 +154,8 @@ class getJDCookie(object):
         else:
             print("cookie 格式错误！...本次操作已退出")
             exit(4)
-
-# 获取系统ENV环境参数优先使用 适合Ac、云服务等环境
-# JD_COOKIE=cookie （多账号&分隔）
-if "JD_COOKIE" in os.environ:
-    if len(os.environ["JD_COOKIE"]) > 10:
-        cookies = os.environ["JD_COOKIE"]
-        print("已获取并使用Env环境 Cookie")
+getCk = getJDCookie()
+getCk.getCookie()
 
 if "qjd_zlzh" in os.environ:
     if len(os.environ["qjd_zlzh"]) > 1:
@@ -159,8 +163,6 @@ if "qjd_zlzh" in os.environ:
         qjd_zlzh = qjd_zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 qjd_zlzh:", qjd_zlzh)
 
-getCk = getJDCookie()
-getCk.getCookie()
 
 def getShareCode(ck):
     global aNum
