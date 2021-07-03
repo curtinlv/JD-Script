@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/jd_qjd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_qjd.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_qjd.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_qjd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="230">
+              <caret line="221" column="59" selection-start-line="221" selection-start-column="59" selection-end-line="221" selection-end-column="59" />
               <folding>
                 <element signature="e#818#831#0" expanded="true" />
                 <element signature="e#563#4785#0" />
@@ -135,7 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get(</find>
       <find>remarks</find>
       <find>cookieElement</find>
       <find>shop.m.jd.com</find>
@@ -165,6 +163,7 @@
       <find>sid</find>
       <find>随机</find>
       <find>jsonp</find>
+      <find>1豆</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -514,21 +513,7 @@
       <workItem from="1624707435044" duration="4840000" />
       <workItem from="1624796098450" duration="2374000" />
       <workItem from="1625108353553" duration="3568000" />
-      <workItem from="1625277213953" duration="10937000" />
-    </task>
-    <task id="LOCAL-00062" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
-      <created>1621768868150</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1621768868150</updated>
-    </task>
-    <task id="LOCAL-00063" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
-      <created>1621769083349</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1621769083349</updated>
+      <workItem from="1625277213953" duration="11996000" />
     </task>
     <task id="LOCAL-00064" summary="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh">
       <created>1621772446053</created>
@@ -859,11 +844,25 @@
       <option name="project" value="LOCAL" />
       <updated>1625109870926</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="全民抢京豆（7.2-7.15）">
+      <created>1625290060485</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1625290060487</updated>
+    </task>
+    <task id="LOCAL-00112" summary="全民抢京豆（7.2-7.15）">
+      <created>1625291238185</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1625291238186</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306612000" />
+    <option name="totallyTimeSpent" value="307671000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -878,12 +877,12 @@
     <frame x="0" y="39" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.3404864" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.3404864" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" weight="0.42313117" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" weight="0.4090268" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.4583921" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -892,7 +891,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49213162" weight="0.125387" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.33619457" side_tool="true" weight="0.37292817" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" visible="true" weight="0.13399154" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" visible="true" weight="0.438646" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.795422" weight="0.32507738" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49928468" weight="0.32872927" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -916,7 +915,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_1.sh" />
     <MESSAGE value="* 新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh&#10;* 修复一些Bug" />
     <MESSAGE value="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh" />
     <MESSAGE value="修复一些参数获取不到或者未定义的问题" />
@@ -941,7 +939,8 @@
     <MESSAGE value="适配各种平台ck" />
     <MESSAGE value="修复env填写变量问题" />
     <MESSAGE value="已修复首次不能开团Bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="已修复首次不能开团Bug" />
+    <MESSAGE value="全民抢京豆（7.2-7.15）" />
+    <option name="LAST_COMMIT_MESSAGE" value="全民抢京豆（7.2-7.15）" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JD_Script$jd_zjd.coverage" NAME="jd_zjd Coverage Results" MODIFIED="1625110621369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -958,7 +957,7 @@
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad_v1_0_2.coverage" NAME="jd_OpenCrad_v1.0.2 Coverage Results" MODIFIED="1621063108766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad/History" />
     <SUITE FILE_PATH="coverage/JD_Script$test.coverage" NAME="test Coverage Results" MODIFIED="1623164748379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getFollowGifts" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad_v1_0_4_Beta.coverage" NAME="jd_OpenCrad_v1.0.4_Beta Coverage Results" MODIFIED="1621100489726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad" />
-    <SUITE FILE_PATH="coverage/JD_Script$jd_qjd.coverage" NAME="jd_qjd Coverage Results" MODIFIED="1625289992588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_qjd.coverage" NAME="jd_qjd Coverage Results" MODIFIED="1625291562460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/OpenCard/log/memory.json" />
@@ -1295,8 +1294,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_qjd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="230">
+          <caret line="221" column="59" selection-start-line="221" selection-start-column="59" selection-end-line="221" selection-end-column="59" />
           <folding>
             <element signature="e#818#831#0" expanded="true" />
             <element signature="e#563#4785#0" />

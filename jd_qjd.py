@@ -179,11 +179,13 @@ def getShareCode(ck):
         r = re.compile(r'jsonp_.*?\((.*?)\)\;', re.M | re.S | re.I)
         result = r.findall(resp)
         jsonp = json.loads(result[0])
-        groupCode = jsonp['data']['groupCode']
-        shareCode = jsonp['data']['shareCode']
         try:
+            groupCode = jsonp['data']['groupCode']
+            shareCode = jsonp['data']['shareCode']
             sumBeanNumStr = int(jsonp['data']['sumBeanNumStr'])
         except:
+            groupCode = 0
+            shareCode = 0
             sumBeanNumStr = 0
         return groupCode, shareCode, sumBeanNumStr
     except Exception as e:
@@ -216,7 +218,10 @@ def helpCode(ck, groupCode, shareCode,u, unum, user):
                 return True
             return False
         else:
-            print(f"账号{unum}【{u}】{helpToast}")
+            if '火' in helpToast:
+                print(f"账号{unum}【{u}】助力失败! 原因：{helpToast}")
+            else:
+                print(f"账号{unum}【{u}】{helpToast} , 您也获得1豆哦~")
             return False
     except Exception as e:
         print(f"helpCode Error ", e)
@@ -237,6 +242,9 @@ def start():
 
         print(f"### 开始助力账号【{userNameList[int(ckNum)]}】###")
         groupCode, shareCode, sumBeanNumStr = getShareCode(cookiesList[ckNum])
+        if groupCode == 0:
+            print(f"## {userNameList[int(ckNum)]}  黑号？？？？")
+            break
         u = 0
         for i in cookiesList:
             result = helpCode(i, groupCode, shareCode,userNameList[u], u+1, userNameList[int(ckNum)])
