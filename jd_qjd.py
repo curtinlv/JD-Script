@@ -8,7 +8,7 @@ Author: Curtin
 Date: 2021/7/3 上午10:02
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update: 2021.7.3 14:05
+update: 2021.7.3 15:13
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
@@ -252,7 +252,7 @@ def start():
         groupCode, shareCode, sumBeanNumStr = getShareCode(cookiesList[ckNum])
         if groupCode == 0:
             print(f"## {userNameList[int(ckNum)]}  黑号？？？？")
-            break
+            continue
         u = 0
         for i in cookiesList:
             result = helpCode(i, groupCode, shareCode,userNameList[u], u+1, userNameList[int(ckNum)])
