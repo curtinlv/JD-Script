@@ -103,10 +103,14 @@ notify_mode = []
 message_info = ''''''
 usergetGiftinfo = {}
 
+
+
 class getJDCookie(object):
     # 适配各种平台环境ck
     def getckfile(self):
-        if os.path.exists('/ql/config/env.sh'):
+        if os.path.exists(pwd + 'JDCookies.txt'):
+            return pwd + 'JDCookies.txt'
+        elif os.path.exists('/ql/config/env.sh'):
             print("当前环境青龙面板新版")
             return '/ql/config/env.sh'
         elif os.path.exists('/ql/config/cookie.sh'):
@@ -117,8 +121,8 @@ class getJDCookie(object):
             return '/jd/config/config.sh'
         elif os.path.exists(pwd + 'JDCookies.txt'):
             return pwd + 'JDCookies.txt'
-        else:
-            return pwd + 'JDCookies.txt'
+        return pwd + 'JDCookies.txt'
+
     # 获取cookie
     def getCookie(self):
         global cookies
@@ -132,15 +136,21 @@ class getJDCookie(object):
                     r = re.compile(r"pt_key=.*?pt_pin=.*?;", re.M | re.S | re.I)
                     cks = r.findall(cks)
                     if len(cks) > 0:
+                        if 'JDCookies.txt' in ckfile:
+                            print("当前获取使用 JDCookies.txt 的cookie")
                         cookies = ''
                         for i in cks:
                             cookies += i
+                        return
             else:
                 with open(pwd + 'JDCookies.txt', "w", encoding="utf-8") as f:
                     cks = "#多账号换行，以下示例：（通过正则获取此文件的ck，理论上可以自定义名字标记ck，也可以随意摆放ck）\n账号1【Curtinlv】cookie1;\n账号2【TopStyle】cookie2;"
                     f.write(cks)
                     f.close()
-                pass
+            if "JD_COOKIE" in os.environ:
+                if len(os.environ["JD_COOKIE"]) > 10:
+                    cookies = os.environ["JD_COOKIE"]
+                    print("已获取并使用Env环境 Cookie")
         except Exception as e:
             print(f"【getCookie Error】{e}")
 
@@ -207,13 +217,10 @@ class getJDCookie(object):
         else:
             print("cookie 格式错误！...本次操作已退出")
             exit(4)
+getCk = getJDCookie()
+getCk.getCookie()
 
 
-#  取ENV环境Ck 设置方法：export JD_COOKIE="你的ck"（多账号&分隔）
-if "JD_COOKIE" in os.environ:
-    if len(os.environ["JD_COOKIE"]) > 10:
-        cookies = os.environ["JD_COOKIE"]
-        print("已获取并使用Env环境 Cookie")
 # 获取TG_BOT_TOKEN
 if "TG_BOT_TOKEN" in os.environ:
     if len(os.environ["TG_BOT_TOKEN"]) > 1:
@@ -256,8 +263,7 @@ if "BARK" in os.environ:
         BARK = os.environ["BARK"]
         print("已获取并使用Env环境 BARK")
 
-getCk = getJDCookie()
-getCk.getCookie()
+
 
 def message(str_msg):
     global message_info
