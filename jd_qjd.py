@@ -324,7 +324,7 @@ def start():
         print(f"### 开始助力账号【{userNameList[int(ckNum)]}】###")
         groupCode, shareCode, sumBeanNumStr, activityId = getShareCode(cookiesList[ckNum])
         if groupCode == 0:
-            print(f"## {userNameList[int(ckNum)]}  获取互助码失败。请稍后再试！")
+            print(f"## {userNameList[int(ckNum)]}  获取互助码失败。请手动分享后再试！")
             continue
         u = 0
         for i in cookiesList:
