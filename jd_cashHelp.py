@@ -3,10 +3,11 @@
 '''
 项目名称: JD-Script / jd_cash
 Author: Curtin
-功能：签到领现金-助力
+功能：签到领现金-助力, 仅助力拿cash
 Date: 2021/7/4 上午09:35
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
+update 2021.7.4 18:26
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
@@ -14,19 +15,22 @@ cookies = ''
 # 设置被助力的账号可填用户名 或 pin的值不要;
 cash_zlzh = ['Your JD_User', '买买买']
 
-### 推送参数设置
-# TG 机器人token
-TG_BOT_TOKEN = ''
-# TG用户id
-TG_USER_ID = ''
-# TG代理ip
-TG_PROXY_IP = ''
-# TG代理端口
-TG_PROXY_PORT = ''
-# TG 代理api
-TG_API_HOST = ''
-# 微信推送加+
-PUSH_PLUS_TOKEN = ''
+# Env环境设置 通知服务
+# export BARK=''                   # bark服务,苹果商店自行搜索;
+# export SCKEY=''                  # Server酱的SCKEY;
+# export TG_BOT_TOKEN=''           # tg机器人的TG_BOT_TOKEN;
+# export TG_USER_ID=''             # tg机器人的TG_USER_ID;
+# export TG_API_HOST=''            # tg 代理api
+# export TG_PROXY_IP=''            # tg机器人的TG_PROXY_IP;
+# export TG_PROXY_PORT=''          # tg机器人的TG_PROXY_PORT;
+# export DD_BOT_ACCESS_TOKEN=''    # 钉钉机器人的DD_BOT_ACCESS_TOKEN;
+# export DD_BOT_SECRET=''          # 钉钉机器人的DD_BOT_SECRET;
+# export QQ_SKEY=''                # qq机器人的QQ_SKEY;
+# export QQ_MODE=''                # qq机器人的QQ_MODE;
+# export QYWX_AM=''                # 企业微信；http://note.youdao.com/s/HMiudGkb
+# export PUSH_PLUS_TOKEN=''        # 微信推送Plus+ ；
+
+#####
 
 # 建议调整一下的参数
 # UA 可自定义你的，注意格式: 【 jdapp;iPhone;10.0.4;14.2;9fb54498b32e17dfc5717744b5eaecda8366223c;network/wifi;ADID/2CF597D0-10D8-4DF8-C5A2-61FD79AC8035;model/iPhone11,1;addressid/7785283669;appBuild/167707;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/null;supportJDSHWK/1 】
@@ -51,14 +55,6 @@ t = time.time()
 aNum = 0
 cashCount = 0
 cashCountdict = {}
-message_info = ''''''
-
-def message(str_msg):
-    global message_info
-    print(str_msg)
-    message_info = "{}\n{}".format(message_info, str_msg)
-    sys.stdout.flush()
-
 class getJDCookie(object):
     # 适配各种平台环境ck
     def getckfile(self):
@@ -179,127 +175,45 @@ if "cash_zlzh" in os.environ:
         cash_zlzh = os.environ["cash_zlzh"]
         cash_zlzh = cash_zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 cash_zlzh:", cash_zlzh)
-# 获取TG_BOT_TOKEN
-if "TG_BOT_TOKEN" in os.environ:
-    if len(os.environ["TG_BOT_TOKEN"]) > 1:
-        TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
-        print("已获取并使用Env环境 TG_BOT_TOKEN")
-# 获取TG_USER_ID
-if "TG_USER_ID" in os.environ:
-    if len(os.environ["TG_USER_ID"]) > 1:
-        TG_USER_ID = os.environ["TG_USER_ID"]
-        print("已获取并使用Env环境 TG_USER_ID")
-# 获取代理ip
-if "TG_PROXY_IP" in os.environ:
-    if len(os.environ["TG_PROXY_IP"]) > 1:
-        TG_PROXY_IP = os.environ["TG_PROXY_IP"]
-        print("已获取并使用Env环境 TG_PROXY_IP")
-# 获取TG 代理端口
-if "TG_PROXY_PORT" in os.environ:
-    if len(os.environ["TG_PROXY_PORT"]) > 1:
-        TG_PROXY_PORT = os.environ["TG_PROXY_PORT"]
-        print("已获取并使用Env环境 TG_PROXY_PORT")
-    elif not TG_PROXY_PORT:
-        TG_PROXY_PORT = ''
-# 获取TG TG_API_HOST
-if "TG_API_HOST" in os.environ:
-    if len(os.environ["TG_API_HOST"]) > 1:
-        TG_API_HOST = os.environ["TG_API_HOST"]
-        print("已获取并使用Env环境 TG_API_HOST")
-# 获取pushplus+ PUSH_PLUS_TOKEN
-if "PUSH_PLUS_TOKEN" in os.environ:
-    if len(os.environ["PUSH_PLUS_TOKEN"]) > 1:
-        PUSH_PLUS_TOKEN = os.environ["PUSH_PLUS_TOKEN"]
-        print("已获取并使用Env环境 PUSH_PLUS_TOKEN")
 
-# 获取通知，
-notify_mode = []
-if PUSH_PLUS_TOKEN:
-    notify_mode.append('pushplus')
-if TG_BOT_TOKEN and TG_USER_ID:
-    notify_mode.append('telegram_bot')
-
-# tg通知
-def telegram_bot(title, content):
+######## 获取通知模块
+message_info = ''''''
+def message(str_msg):
+    global message_info
+    print(str_msg)
+    message_info = "{}\n{}".format(message_info, str_msg)
+    sys.stdout.flush()
+def getsendNotify(a=0):
+    if a == 0:
+        a += 1
     try:
-        print("\n")
-        bot_token = TG_BOT_TOKEN
-        user_id = TG_USER_ID
-        if not bot_token or not user_id:
-            print("tg服务的bot_token或者user_id未设置!!\n取消推送")
-            return
-        print("tg服务启动")
-        if TG_API_HOST:
-            url = f"{TG_API_HOST}/bot{TG_BOT_TOKEN}/sendMessage"
+        url = 'https://gitee.com/curtinlv/Public/raw/master/sendNotify.py'
+        response = requests.get(url)
+        if 'main' in response.text:
+            with open('sendNotify.py', "w+", encoding="utf-8") as f:
+                f.write(response.text)
         else:
-            url = f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage"
-
-        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        payload = {'chat_id': str(TG_USER_ID), 'text': f'{title}\n\n{content}', 'disable_web_page_preview': 'true'}
-        proxies = None
-        if TG_PROXY_IP and TG_PROXY_PORT:
-            proxyStr = "http://{}:{}".format(TG_PROXY_IP, TG_PROXY_PORT)
-            proxies = {"http": proxyStr, "https": proxyStr}
-        try:
-            response = requests.post(url=url, headers=headers, params=payload, proxies=proxies).json()
-        except:
-            print('推送失败！')
-        if response['ok']:
-            print('推送成功！')
-        else:
-            print('推送失败！')
-    except Exception as e:
-        print(e)
-
-# push推送
-def pushplus_bot(title, content):
-    try:
-        print("\n")
-        if not PUSH_PLUS_TOKEN:
-            print("PUSHPLUS服务的token未设置!!\n取消推送")
-            return
-        print("PUSHPLUS服务启动")
-        url = 'http://www.pushplus.plus/send'
-        data = {
-            "token": PUSH_PLUS_TOKEN,
-            "title": title,
-            "content": content
-        }
-        body = json.dumps(data).encode(encoding='utf-8')
-        headers = {'Content-Type': 'application/json'}
-        response = requests.post(url=url, data=body, headers=headers).json()
-        if response['code'] == 200:
-            print('推送成功！')
-        else:
-            print('推送失败！')
-    except Exception as e:
-        print(e)
-
-def send(title, content):
-    """
-    使用 bark, telegram bot, dingding bot, serverJ 发送手机推送
-    :param title:
-    :param content:
-    :return:
-    """
-    footer = '开源免费使用：https://github.com/curtinlv/JD-Script'
-    content = content + "\n" + footer
-    for i in notify_mode:
-
-        if i == 'telegram_bot':
-            if TG_BOT_TOKEN and TG_USER_ID:
-                telegram_bot(title=title, content=content)
+            if a < 5:
+                a += 1
+                print("1",a)
+                return getsendNotify(a)
             else:
-                print('未启用 telegram机器人')
-            continue
-        elif i == 'pushplus':
-            if PUSH_PLUS_TOKEN:
-                pushplus_bot(title=title, content=content)
-            else:
-                print('未启用 PUSHPLUS机器人')
-            continue
+                pass
+    except:
+        if a < 5:
+            a += 1
+            print("2", a)
+            return getsendNotify(a)
         else:
-            print('此类推送方式不存在')
+            pass
+cur_path = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(cur_path)
+if os.path.exists(cur_path + "/sendNotify.py"):
+    from sendNotify import send
+else:
+    getsendNotify()
+    from sendNotify import send
+###################
 
 def userAgent():
     """
@@ -389,7 +303,8 @@ def cash_exchangePage(ck):
         return 0
 
 def start():
-    print("### 签到领现金-助力 ###")
+    scriptName = '### 签到领现金-助力 ###'
+    print(scriptName)
     global cookiesList, userNameList, pinNameList, ckNum, cashCount, cashCountdict
     cookiesList, userNameList, pinNameList = getCk.iscookie()
     for ckname in cash_zlzh:
@@ -419,11 +334,14 @@ def start():
         cashCount += totalMoney
         cashCountdict[userNameList[ckNum]] = totalMoney
 
-    message("\n-------------------------")
+    print("\n-------------------------")
     for i in cashCountdict.keys():
         message(f"账号【{i}】当前现金: ￥{cashCountdict[i]}")
     message("## 总累计获得 ￥%.2f" % cashCount)
-    send("### 签到领现金-助力 ###", message_info)
+    try:
+        send(scriptName, message_info)
+    except:
+        pass
 
 
 if __name__ == '__main__':

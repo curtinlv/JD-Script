@@ -8,14 +8,31 @@ Author: Curtin
 Date: 2021/7/3 上午10:02
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update: 2021.7.4 08:36
+update: 2021.7.4 18:26
 * 修复了助力活动不存在、增加了随机UA（如果未定义ua则启用随机UA）
-
+* 新增推送
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
 cookies = ''
 qjd_zlzh = ['Your JD_User', '买买买']
+
+# Env环境设置 通知服务
+# export BARK=''                   # bark服务,苹果商店自行搜索;
+# export SCKEY=''                  # Server酱的SCKEY;
+# export TG_BOT_TOKEN=''           # tg机器人的TG_BOT_TOKEN;
+# export TG_USER_ID=''             # tg机器人的TG_USER_ID;
+# export TG_API_HOST=''            # tg 代理api
+# export TG_PROXY_IP=''            # tg机器人的TG_PROXY_IP;
+# export TG_PROXY_PORT=''          # tg机器人的TG_PROXY_PORT;
+# export DD_BOT_ACCESS_TOKEN=''    # 钉钉机器人的DD_BOT_ACCESS_TOKEN;
+# export DD_BOT_SECRET=''          # 钉钉机器人的DD_BOT_SECRET;
+# export QQ_SKEY=''                # qq机器人的QQ_SKEY;
+# export QQ_MODE=''                # qq机器人的QQ_MODE;
+# export QYWX_AM=''                # 企业微信；http://note.youdao.com/s/HMiudGkb
+# export PUSH_PLUS_TOKEN=''        # 微信推送Plus+ ；
+
+#####
 
 # 建议调整一下的参数
 # UA 可自定义你的，注意格式: jdapp;iPhone;10.0.4;13.1.1;93b4243eeb1af72d142991d85cba75c66873dca5;network/wifi;ADID/8679C062-A41A-4A25-88F1-50A7A3EEF34A;model/iPhone13,1;addressid/3723896896;appBuild/167707;jdSupportDarkMode/0
@@ -23,19 +40,17 @@ UserAgent = ''
 # 限制速度 （秒）
 sleepNum = 0.1
 
-import os, re
+import os, re, sys
 import random, string
 try:
     import requests
 except Exception as e:
     print(e, "\n缺少requests 模块，请执行命令安装：python3 -m pip install requests")
     exit(3)
-from urllib.parse import unquote, quote
+from urllib.parse import unquote
 import json
 import time
 requests.packages.urllib3.disable_warnings()
-
-ss = requests.session()
 
 pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
 t = time.time()
@@ -43,6 +58,46 @@ aNum = 0
 beanCount = 0
 userCount = {}
 
+######## 获取通知模块
+message_info = ''''''
+def message(str_msg):
+    global message_info
+    print(str_msg)
+    message_info = "{}\n{}".format(message_info, str_msg)
+    sys.stdout.flush()
+def getsendNotify(a=0):
+    if a == 0:
+        a += 1
+    try:
+        url = 'https://gitee.com/curtinlv/Public/raw/master/sendNotify.py'
+        response = requests.get(url)
+        if 'main' in response.text:
+            with open('sendNotify.py', "w+", encoding="utf-8") as f:
+                f.write(response.text)
+        else:
+            if a < 5:
+                a += 1
+                print("1",a)
+                return getsendNotify(a)
+            else:
+                pass
+    except:
+        if a < 5:
+            a += 1
+            print("2", a)
+            return getsendNotify(a)
+        else:
+            pass
+cur_path = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(cur_path)
+if os.path.exists(cur_path + "/sendNotify.py"):
+    from sendNotify import send
+else:
+    getsendNotify()
+    from sendNotify import send
+###################
+
+###### 获取cookie
 class getJDCookie(object):
     # 适配各种平台环境ck
     def getckfile(self):
@@ -254,7 +309,8 @@ def helpCode(ck, groupCode, shareCode,u, unum, user, activityId):
         print(f"helpCode Error ", e)
 
 def start():
-    print("### 全民抢京豆-助力 ###")
+    scriptName='### 全民抢京豆-助力 ###'
+    print(scriptName)
     global cookiesList, userNameList, pinNameList, ckNum, beanCount, userCount
     cookiesList, userNameList, pinNameList = getCk.iscookie()
     for ckname in qjd_zlzh:
@@ -287,8 +343,12 @@ def start():
         beanCount += sumBeanNumStr
     print("\n-------------------------")
     for i in userCount.keys():
-        print(f"账号【{i}】已抢京豆: {userCount[i]}")
-    print(f"## 今日累计获得 {beanCount} 京豆")
+        message(f"账号【{i}】已抢京豆: {userCount[i]}")
+    message(f"## 今日累计获得 {beanCount} 京豆")
+    try:
+        send(scriptName, message_info)
+    except:
+        pass
 
 
 if __name__ == '__main__':
