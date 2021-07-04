@@ -77,14 +77,12 @@ def getsendNotify(a=0):
         else:
             if a < 5:
                 a += 1
-                print("1",a)
                 return getsendNotify(a)
             else:
                 pass
     except:
         if a < 5:
             a += 1
-            print("2", a)
             return getsendNotify(a)
         else:
             pass
