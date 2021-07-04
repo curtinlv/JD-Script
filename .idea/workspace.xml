@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="全民抢京豆（7.2-7.15）:已修复一些问题">
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" beforeDir="false" afterPath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jd_qjd.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_qjd.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +33,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/unBindCard/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2670">
+            <state>
               <caret line="179" column="4" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="12" />
             </state>
           </provider>
@@ -43,11 +42,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_qjd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+            <state relative-caret-position="379">
+              <caret line="277" column="22" selection-start-line="277" selection-start-column="22" selection-end-line="277" selection-end-column="22" />
               <folding>
-                <element signature="e#818#831#0" expanded="true" />
+                <element signature="e#771#784#0" expanded="true" />
                 <element signature="e#1294#6397#0" />
+                <element signature="e#5996#6230#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-747">
+              <caret line="1034" column="34" selection-start-line="1034" selection-start-column="28" selection-end-line="1034" selection-end-column="34" />
+              <folding>
+                <element signature="e#4861#4891#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,10 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cookieElement</find>
-      <find>shop.m.jd.com</find>
-      <find>ven</find>
-      <find>getRemoteShopid</find>
       <find>getVenderId</find>
       <find>isRemoteSid</find>
       <find>venderidL</find>
@@ -108,6 +116,10 @@
       <find>1豆</find>
       <find>getCookie</find>
       <find>cookie 格式错误！...本次操作已退出</find>
+      <find>qq</find>
+      <find>User-Agent</find>
+      <find>getShareCode(</find>
+      <find>helpCode</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -209,6 +221,11 @@
               <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
               <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
+              <item name="OpenCard" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -265,7 +282,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.jd_getFollowGift">
+  <component name="RunManager" selected="Python.jd_qjd">
     <configuration name="getJDCookie" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="JD-Script" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -378,8 +395,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.jd_getFollowGift" />
         <item itemvalue="Python.jd_qjd" />
+        <item itemvalue="Python.jd_getFollowGift" />
         <item itemvalue="Python.jd_zjd_test" />
         <item itemvalue="Python.jd_zjd" />
         <item itemvalue="Python.getJDCookie" />
@@ -452,28 +469,7 @@
       <workItem from="1624707435044" duration="4840000" />
       <workItem from="1624796098450" duration="2374000" />
       <workItem from="1625108353553" duration="3568000" />
-      <workItem from="1625277213953" duration="15162000" />
-    </task>
-    <task id="LOCAL-00067" summary="2021.5.28：（v1.2.0）&#10;        * 新增单或多账号并发&#10;            - Concurrent=yes #开启&#10;        * 新增企业微信、Bark推送&#10;        * 优化一些逻辑&#10;            - 如随机账号查询礼包，仅开启单账号时候&#10;            - 京豆统计">
-      <created>1622213505728</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1622213505728</updated>
-    </task>
-    <task id="LOCAL-00068" summary="2021.5.28：（v1.2.0）&#10;        * 新增单或多账号并发&#10;            - Concurrent=yes #开启&#10;        * 新增企业微信、Bark推送&#10;        * 优化一些逻辑&#10;            - 如随机账号查询礼包，仅开启单账号时候&#10;            - 京豆统计">
-      <created>1622219636544</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1622219636544</updated>
-    </task>
-    <task id="LOCAL-00069" summary="2021.5.28：（v1.2.0）&#10;        * 新增单或多账号并发&#10;            - Concurrent=yes #开启&#10;        * 新增企业微信、Bark推送&#10;        * 优化一些逻辑&#10;            - 如随机账号查询礼包，仅开启单账号时候&#10;            - 京豆统计">
-      <created>1622248145670</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1622248145671</updated>
+      <workItem from="1625277213953" duration="22951000" />
     </task>
     <task id="LOCAL-00070" summary="2021.5.28：（v1.2.0）&#10;        * 新增单或多账号并发&#10;            - Concurrent=yes #开启&#10;        * 新增企业微信、Bark推送&#10;        * 优化一些逻辑&#10;            - 如随机账号查询礼包，仅开启单账号时候&#10;            - 京豆统计">
       <created>1622259114103</created>
@@ -797,11 +793,32 @@
       <option name="project" value="LOCAL" />
       <updated>1625296449414</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="全民抢京豆（7.2-7.15）:已修复一些问题">
+      <created>1625298089954</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1625298089954</updated>
+    </task>
+    <task id="LOCAL-00117" summary="修复获取cookie获取顺序为txt优先">
+      <created>1625298133502</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1625298133502</updated>
+    </task>
+    <task id="LOCAL-00118" summary="修复了助力活动不存在、增加了随机UA（如果定义ua则启用随机UA）">
+      <created>1625359144135</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1625359144136</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310837000" />
+    <option name="totallyTimeSpent" value="318626000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -816,9 +833,9 @@
     <frame x="0" y="39" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49861878" visible="true" weight="0.3404864" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49761525" visible="true" weight="0.3404864" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
-      <window_info id="Favorites" order="2" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
+      <window_info id="Favorites" order="2" sideWeight="0.5023847" side_tool="true" visible="true" weight="0.3404864" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" weight="0.63751763" />
@@ -830,7 +847,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49213162" weight="0.125387" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.33619457" side_tool="true" weight="0.37292817" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" visible="true" weight="0.46262342" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" visible="true" weight="0.112834975" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.795422" weight="0.32507738" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49928468" weight="0.32872927" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -854,8 +871,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="新增start.sh，说明：&#10;运行方式 sh start.sh&#10;1.适合定时任务或不想依赖ini配置文件。 &#10;2.支持单号跑多开，如&#10;   cp start.sh start_2.sh&#10;   sh start_2.sh  #只跑里面配置cookie&#10;3.定时任务（参考）：&#10;   0 8 * * * sh /home/curtin/JD-Script/OpenCrad/start.sh&#10;   2 8 * * * sh /home/curtin/JD-Script/OpenCrad/start_2.sh" />
-    <MESSAGE value="修复一些参数获取不到或者未定义的问题" />
     <MESSAGE value="2021.5.28：（v1.2.0）&#10;        * 新增单或多账号并发&#10;            - Concurrent=yes #开启&#10;        * 新增企业微信、Bark推送&#10;        * 优化一些逻辑&#10;            - 如随机账号查询礼包，仅开启单账号时候&#10;            - 京豆统计" />
     <MESSAGE value="Test" />
     <MESSAGE value="关注有礼测试" />
@@ -879,14 +894,16 @@
     <MESSAGE value="已修复首次不能开团Bug" />
     <MESSAGE value="全民抢京豆（7.2-7.15）" />
     <MESSAGE value="全民抢京豆（7.2-7.15）:已修复一些问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="全民抢京豆（7.2-7.15）:已修复一些问题" />
+    <MESSAGE value="修复获取cookie获取顺序为txt优先" />
+    <MESSAGE value="修复了助力活动不存在、增加了随机UA（如果定义ua则启用随机UA）" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了助力活动不存在、增加了随机UA（如果定义ua则启用随机UA）" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/jd_qjd.py</url>
-          <line>44</line>
+          <line>45</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -907,10 +924,9 @@
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad_v1_0_2.coverage" NAME="jd_OpenCrad_v1.0.2 Coverage Results" MODIFIED="1621063108766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad/History" />
     <SUITE FILE_PATH="coverage/JD_Script$test.coverage" NAME="test Coverage Results" MODIFIED="1623164748379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getFollowGifts" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad_v1_0_4_Beta.coverage" NAME="jd_OpenCrad_v1.0.4_Beta Coverage Results" MODIFIED="1621100489726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad" />
-    <SUITE FILE_PATH="coverage/JD_Script$jd_qjd.coverage" NAME="jd_qjd Coverage Results" MODIFIED="1625297849820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_qjd.coverage" NAME="jd_qjd Coverage Results" MODIFIED="1625335468197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OpenCard/log/memory.json" />
     <entry file="file://$PROJECT_DIR$/OpenCard/History/OpenCardConfig.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1168,7 +1184,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/unBindCard/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2670">
+        <state>
           <caret line="179" column="4" selection-start-line="179" selection-start-column="4" selection-end-line="179" selection-end-column="12" />
         </state>
       </provider>
@@ -1198,16 +1214,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1013">
           <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="957" column="33" lean-forward="true" selection-start-line="957" selection-start-column="33" selection-end-line="957" selection-end-column="47" />
-          <folding>
-            <element signature="e#4861#4891#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1241,13 +1247,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-747">
+          <caret line="1034" column="34" selection-start-line="1034" selection-start-column="28" selection-end-line="1034" selection-end-column="34" />
+          <folding>
+            <element signature="e#4861#4891#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="320" column="74" selection-start-line="320" selection-start-column="30" selection-end-line="320" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jd_qjd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        <state relative-caret-position="379">
+          <caret line="277" column="22" selection-start-line="277" selection-start-column="22" selection-end-line="277" selection-end-column="22" />
           <folding>
-            <element signature="e#818#831#0" expanded="true" />
+            <element signature="e#771#784#0" expanded="true" />
             <element signature="e#1294#6397#0" />
+            <element signature="e#5996#6230#0" />
           </folding>
         </state>
       </provider>

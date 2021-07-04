@@ -9,7 +9,7 @@ Date: 2021/7/3 上午10:02
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 update: 2021.7.4 08:36
-* 修复了助力活动不存在、增加了随机UA（如果定义ua则启用随机UA）
+* 修复了助力活动不存在、增加了随机UA（如果未定义ua则启用随机UA）
 
 '''
 
@@ -275,6 +275,7 @@ def start():
         u = 0
         for i in cookiesList:
             if i == cookiesList[ckNum]:
+                u += 1
                 continue
             result = helpCode(i, groupCode, shareCode, userNameList[u], u+1, userNameList[int(ckNum)], activityId)
             time.sleep(sleepNum)
