@@ -8,19 +8,20 @@ Author: Curtin
 Date: 2021/7/3 上午10:02
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update: 2021.7.3 15:41
+update: 2021.7.4 08:36
+* 修复了助力活动不存在、增加了随机UA（如果定义ua则启用随机UA）
+
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
 cookies = ''
-qjd_zlzh = ['Your JD_User', '买买买', '东哥']
+qjd_zlzh = ['Your JD_User', '买买买']
 
 # 建议调整一下的参数
-# UA 可自定义你的，注意格式
-UserAgent = 'jdappiPhone10.0.413.7ca6eb91a888be488f194b9d9216cf711dd1b221anetwork/wifiADID/8679C062-A41A-4A25-88F1-50A7A3EEF34Amodel/iPhone8,1addressid/3723896896appBuild/167707jdSupportDarkMode/0Mozilla/5.0 (iPhone CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148supportJDSHWK/1'
+# UA 可自定义你的，注意格式: jdapp;iPhone;10.0.4;13.1.1;93b4243eeb1af72d142991d85cba75c66873dca5;network/wifi;ADID/8679C062-A41A-4A25-88F1-50A7A3EEF34A;model/iPhone13,1;addressid/3723896896;appBuild/167707;jdSupportDarkMode/0
+UserAgent = ''
 # 限制速度 （秒）
 sleepNum = 0.1
-
 
 import os, re
 import random, string
@@ -163,12 +164,24 @@ if "qjd_zlzh" in os.environ:
         qjd_zlzh = qjd_zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 qjd_zlzh:", qjd_zlzh)
 
+def userAgent():
+    """
+    随机生成一个UA
+    :return:
+    """
+    if not UserAgent:
+        uuid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 40))
+        iosVer = ''.join(random.sample(["14.5.1", "14.4", "14.3", "14.2", "14.1", "14.0.1", "13.7", "13.1.2", "13.1.1"], 1))
+        iPhone = ''.join(random.sample(["8", "9", "10", "11", "12", "13"], 1))
+        return f'jdapp;iPhone;10.0.4;{iosVer};{uuid};network/wifi;ADID/8679C062-A41A-4A25-88F1-50A7A3EEF34A;model/iPhone{iPhone},1;addressid/3723896896;appBuild/167707;jdSupportDarkMode/0'
+    else:
+        return UserAgent
 
 def getShareCode(ck):
     global aNum
     try:
         v_num1 = ''.join(random.sample(["1", "2", "3", "4", "5", "6", "7", "8", "9"], 1)) + ''.join(random.sample(string.digits, 4))
-        url = 'https://api.m.jd.com/client.action?functionId=signBeanGroupStageIndex&body=%7B%22monitor_refer%22%3A%22%22%2C%22rnVersion%22%3A%223.9%22%2C%22fp%22%3A%22-1%22%2C%22shshshfp%22%3A%22-1%22%2C%22shshshfpa%22%3A%22-1%22%2C%22referUrl%22%3A%22-1%22%2C%22userAgent%22%3A%22-1%22%2C%22jda%22%3A%22-1%22%2C%22monitor_source%22%3A%22bean_m_bean_index%22%7D&appid=ld&client=apple&clientVersion=null&networkType=&osVersion=&uuid=&jsonp=jsonp_' + str(int(round(t * 1000))) + '_' + v_num1
+        url = 'https://api.m.jd.com/client.action?functionId=signBeanGroupStageIndex&body=%7B%22monitor_refer%22%3A%22%22%2C%22rnVersion%22%3A%223.9%22%2C%22fp%22%3A%22-1%22%2C%22shshshfp%22%3A%22-1%22%2C%22shshshfpa%22%3A%22-1%22%2C%22referUrl%22%3A%22-1%22%2C%22userAgent%22%3A%22-1%22%2C%22jda%22%3A%22-1%22%2C%22monitor_source%22%3A%22bean_m_bean_index%22%7D&appid=ld&client=apple&clientVersion=&networkType=&osVersion=&uuid=&jsonp=jsonp_' + str(int(round(t * 1000))) + '_' + v_num1
         head = {
             'Cookie': ck,
             'Accept': '*/*',
@@ -176,9 +189,11 @@ def getShareCode(ck):
             'Referer': 'https://h5.m.jd.com/rn/3MQXMdRUTeat9xqBSZDSCCAE9Eqz/index.html?has_native=0',
             'Accept-Encoding': 'gzip, deflate, br',
             'Host': 'api.m.jd.com',
-            'User-Agent': 'Mozilla/5.0 (iPhone CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Mobile/15E148 Safari/604.1',
+            # 'User-Agent': 'Mozilla/5.0 (iPhone CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Mobile/15E148 Safari/604.1',
+            'User-Agent': userAgent(),
             'Accept-Language': 'zh-cn'
         }
+        requests.get(url='https://h5.m.jd.com/rn/3MQXMdRUTeat9xqBSZDSCCAE9Eqz/index.html?has_native=0&tttparams=&lng=&lat=&sid=&un_area=',  headers=head, verify=False, timeout=30)
         resp = requests.get(url=url, headers=head, verify=False, timeout=30).text
         r = re.compile(r'jsonp_.*?\((.*?)\)\;', re.M | re.S | re.I)
         result = r.findall(resp)
@@ -186,6 +201,7 @@ def getShareCode(ck):
         try:
             groupCode = jsonp['data']['groupCode']
             shareCode = jsonp['data']['shareCode']
+            activityId = jsonp['data']['activityMsg']['activityId']
             sumBeanNumStr = int(jsonp['data']['sumBeanNumStr'])
         except:
             if aNum < 5:
@@ -196,12 +212,13 @@ def getShareCode(ck):
                 shareCode = 0
                 sumBeanNumStr = 0
                 aNum = 0
+                activityId = 0
         aNum = 0
-        return groupCode, shareCode, sumBeanNumStr
+        return groupCode, shareCode, sumBeanNumStr, activityId
     except Exception as e:
         print(f"getShareCode Error", e)
 
-def helpCode(ck, groupCode, shareCode,u, unum, user):
+def helpCode(ck, groupCode, shareCode,u, unum, user, activityId):
     try:
         v_num1 = ''.join(random.sample(["1", "2", "3", "4", "5", "6", "7", "8", "9"], 1)) + ''.join(random.sample(string.digits, 4))
         headers = {
@@ -211,10 +228,10 @@ def helpCode(ck, groupCode, shareCode,u, unum, user):
             'Referer': f'https://h5.m.jd.com/rn/42yjy8na6pFsq1cx9MJQ5aTgu3kX/index.html?jklActivityId=115&source=SignSuccess&jklGroupCode={groupCode}&ad_od=1&jklShareCode={shareCode}',
             'Accept-Encoding': 'gzip, deflate, br',
             'Host': 'api.m.jd.com',
-            'User-Agent': UserAgent,
+            'User-Agent': userAgent(),
             'Accept-Language': 'zh-cn'
         }
-        url = 'https://api.m.jd.com/client.action?functionId=signGroupHelp&body=%7B%22activeType%22%3A2%2C%22groupCode%22%3A%22' + str(groupCode) + '%22%2C%22shareCode%22%3A%22' + shareCode + f'%22%2C%22activeId%22%3A%22115%22%2C%22source%22%3A%22guest%22%7D&appid=ld&client=apple&clientVersion=10.0.4&networkType=wifi&osVersion=13.7&uuid=&openudid=&jsonp=jsonp_{int(round(t * 1000))}_{v_num1}'
+        url = 'https://api.m.jd.com/client.action?functionId=signGroupHelp&body=%7B%22activeType%22%3A2%2C%22groupCode%22%3A%22' + str(groupCode) + '%22%2C%22shareCode%22%3A%22' + shareCode + f'%22%2C%22activeId%22%3A%22{activityId}%22%2C%22source%22%3A%22guest%22%7D&appid=ld&client=apple&clientVersion=10.0.4&networkType=wifi&osVersion=13.7&uuid=&openudid=&jsonp=jsonp_{int(round(t * 1000))}_{v_num1}'
         resp = requests.get(url=url, headers=headers, verify=False, timeout=30).text
         r = re.compile(r'jsonp_.*?\((.*?)\)\;', re.M | re.S | re.I)
         result = r.findall(resp)
@@ -251,18 +268,20 @@ def start():
                 continue
 
         print(f"### 开始助力账号【{userNameList[int(ckNum)]}】###")
-        groupCode, shareCode, sumBeanNumStr = getShareCode(cookiesList[ckNum])
+        groupCode, shareCode, sumBeanNumStr, activityId = getShareCode(cookiesList[ckNum])
         if groupCode == 0:
-            print(f"## {userNameList[int(ckNum)]}  黑号？？？？")
+            print(f"## {userNameList[int(ckNum)]}  获取互助码失败。请稍后再试！")
             continue
         u = 0
         for i in cookiesList:
-            result = helpCode(i, groupCode, shareCode,userNameList[u], u+1, userNameList[int(ckNum)])
+            if i == cookiesList[ckNum]:
+                continue
+            result = helpCode(i, groupCode, shareCode, userNameList[u], u+1, userNameList[int(ckNum)], activityId)
             time.sleep(sleepNum)
             if result:
                 break
             u += 1
-        groupCode, shareCode, sumBeanNumStr = getShareCode(cookiesList[ckNum])
+        groupCode, shareCode, sumBeanNumStr, activityId = getShareCode(cookiesList[ckNum])
         userCount[f'{userNameList[ckNum]}'] = sumBeanNumStr
         beanCount += sumBeanNumStr
     print("\n-------------------------")
