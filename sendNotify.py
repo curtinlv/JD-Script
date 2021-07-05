@@ -189,26 +189,29 @@ def coolpush_bot(title, content):
         print('推送成功！')
     else:
         print('推送失败！')
-
+# push推送
 def pushplus_bot(title, content):
-    print("\n")
-    if not PUSH_PLUS_TOKEN:
-        print("PUSHPLUS服务的token未设置!!\n取消推送")
-        return
-    print("PUSHPLUS服务启动")
-    url = 'http://pushplus.hxtrip.com/send'
-    data = {
-        "token": PUSH_PLUS_TOKEN,
-        "title": title,
-        "content": content
-    }
-    body = json.dumps(data).encode(encoding='utf-8')
-    headers = {'Content-Type':'application/json'}
-    response = requests.post(url=url, data=body, headers=headers).json()
-    if response['code'] == 200:
-        print('推送成功！')
-    else:
-        print('推送失败！')
+    try:
+        print("\n")
+        if not PUSH_PLUS_TOKEN:
+            print("PUSHPLUS服务的token未设置!!\n取消推送")
+            return
+        print("PUSHPLUS服务启动")
+        url = 'http://www.pushplus.plus/send'
+        data = {
+            "token": PUSH_PLUS_TOKEN,
+            "title": title,
+            "content": content
+        }
+        body = json.dumps(data).encode(encoding='utf-8')
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(url=url, data=body, headers=headers).json()
+        if response['code'] == 200:
+            print('推送成功！')
+        else:
+            print('推送失败！')
+    except Exception as e:
+        print(e)
 # 企业微信 APP 推送
 def wecom_app(title, content):
     try:
