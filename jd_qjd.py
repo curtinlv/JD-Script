@@ -8,9 +8,10 @@ Author: Curtin
 Date: 2021/7/3 上午10:02
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update: 2021.7.4 18:26
+update: 2021.7.6 00:34
 * 修复了助力活动不存在、增加了随机UA（如果未定义ua则启用随机UA）
 * 新增推送
+* 修复0点不能开团
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
@@ -236,7 +237,9 @@ def userAgent():
 def getShareCode(ck):
     global aNum
     try:
+        # uuid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 40))
         v_num1 = ''.join(random.sample(["1", "2", "3", "4", "5", "6", "7", "8", "9"], 1)) + ''.join(random.sample(string.digits, 4))
+        url1 = f'https://api.m.jd.com/client.action?functionId=signGroupHit&body=%7B%22activeType%22%3A2%7D&appid=ld&client=apple&clientVersion=10.0.6&networkType=wifi&osVersion=14.3&uuid=&jsonp=jsonp_' + str(int(round(t * 1000))) + '_' + v_num1
         url = 'https://api.m.jd.com/client.action?functionId=signBeanGroupStageIndex&body=%7B%22monitor_refer%22%3A%22%22%2C%22rnVersion%22%3A%223.9%22%2C%22fp%22%3A%22-1%22%2C%22shshshfp%22%3A%22-1%22%2C%22shshshfpa%22%3A%22-1%22%2C%22referUrl%22%3A%22-1%22%2C%22userAgent%22%3A%22-1%22%2C%22jda%22%3A%22-1%22%2C%22monitor_source%22%3A%22bean_m_bean_index%22%7D&appid=ld&client=apple&clientVersion=&networkType=&osVersion=&uuid=&jsonp=jsonp_' + str(int(round(t * 1000))) + '_' + v_num1
         head = {
             'Cookie': ck,
@@ -249,7 +252,7 @@ def getShareCode(ck):
             'User-Agent': userAgent(),
             'Accept-Language': 'zh-cn'
         }
-        requests.get(url='https://h5.m.jd.com/rn/3MQXMdRUTeat9xqBSZDSCCAE9Eqz/index.html?has_native=0&tttparams=&lng=&lat=&sid=&un_area=',  headers=head, verify=False, timeout=30)
+        requests.get(url1,  headers=head, verify=False, timeout=30)
         resp = requests.get(url=url, headers=head, verify=False, timeout=30).text
         r = re.compile(r'jsonp_.*?\((.*?)\)\;', re.M | re.S | re.I)
         result = r.findall(resp)

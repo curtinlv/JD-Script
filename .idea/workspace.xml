@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="修复pushplus 推送加">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jd_cashHelp.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_cashHelp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jd_qjd.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_qjd.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +42,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_qjd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="329" column="72" selection-start-line="329" selection-start-column="72" selection-end-line="329" selection-end-column="72" />
+            <state relative-caret-position="99">
+              <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+              <folding>
+                <element signature="e#3013#7639#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jd_zjd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="17" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="17" />
+              <folding>
+                <element signature="e#865#5087#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,8 +66,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sendNotify.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="66" column="24" lean-forward="true" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+            <state relative-caret-position="188">
+              <caret line="364" column="21" lean-forward="true" selection-start-line="364" selection-start-column="21" selection-end-line="364" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6570">
+              <caret line="467" selection-start-line="467" selection-end-line="489" selection-end-column="16" />
+              <folding>
+                <element signature="e#4861#4891#0" expanded="true" />
+                <element signature="e#13653#14743#0" />
+                <element signature="e#14792#15453#0" />
+                <element signature="e#15943#16963#0" />
+                <element signature="e#17014#17925#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_cashHelp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="344" column="12" lean-forward="true" selection-start-line="344" selection-start-column="12" selection-end-line="344" selection-end-column="12" />
+            <state relative-caret-position="3120">
+              <caret line="320" column="28" selection-start-line="320" selection-start-column="28" selection-end-line="320" selection-end-column="28" />
               <folding>
                 <element signature="e#1952#6578#0" />
               </folding>
@@ -136,7 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BuleCoin/jd_buleCoin.py" />
         <option value="$PROJECT_DIR$/OpenCrad/History/jd_OpenCrad_v1.0.4_Beta.py" />
         <option value="$PROJECT_DIR$/OpenCrad/updateRemoteShopid.sh" />
         <option value="$PROJECT_DIR$/OpenCrad/OpenCardConfig-utf-8.ini" />
@@ -186,6 +215,7 @@
         <option value="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" />
         <option value="$PROJECT_DIR$/jd_cash.py" />
         <option value="$PROJECT_DIR$/jd_cashHelp.py" />
+        <option value="$PROJECT_DIR$/sendNotify.py" />
         <option value="$PROJECT_DIR$/jd_qjd.py" />
       </list>
     </option>
@@ -207,6 +237,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="JD-Script" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/PycharmProjects/JD-Script" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,16 +255,10 @@
               <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
               <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
             <path>
-              <item name="JD-Script" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/PycharmProjects/JD-Script" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
+              <item name="OpenCard" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -458,21 +493,8 @@
       <workItem from="1624796098450" duration="2374000" />
       <workItem from="1625108353553" duration="3568000" />
       <workItem from="1625277213953" duration="33469000" />
-      <workItem from="1625493912265" duration="601000" />
-    </task>
-    <task id="LOCAL-00073" summary="Test">
-      <created>1622822583965</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1622822583966</updated>
-    </task>
-    <task id="LOCAL-00074" summary="关注有礼测试">
-      <created>1622955658856</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1622955658857</updated>
+      <workItem from="1625493912265" duration="3211000" />
+      <workItem from="1625502512578" duration="393000" />
     </task>
     <task id="LOCAL-00075" summary="关注有礼测试">
       <created>1622957677728</created>
@@ -803,11 +825,25 @@
       <option name="project" value="LOCAL" />
       <updated>1625397139652</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="新增通知服务">
+      <created>1625494594102</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1625494594105</updated>
+    </task>
+    <task id="LOCAL-00123" summary="修复pushplus 推送加">
+      <created>1625496716232</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1625496716232</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="332253000" />
+    <option name="totallyTimeSpent" value="335256000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -822,7 +858,7 @@
     <frame x="0" y="39" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.3505007" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.35550788" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.17512691" side_tool="true" weight="0.3404864" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -836,7 +872,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49213162" weight="0.125387" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.33619457" side_tool="true" weight="0.37292817" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" visible="true" weight="0.33991536" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" visible="true" weight="0.6784203" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.795422" weight="0.32507738" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49928468" weight="0.32872927" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -860,7 +896,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Test" />
     <MESSAGE value="关注有礼测试" />
     <MESSAGE value="关注有礼测试，新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。" />
     <MESSAGE value="关注有礼测试，&#10;1.新增start.sh，理论兼容v4-bot环境，自行测试，有问题请反馈。&#10;2.修复手机开着代理跑0豆。" />
@@ -885,7 +920,8 @@
     <MESSAGE value="修复获取cookie获取顺序为txt优先" />
     <MESSAGE value="修复了助力活动不存在、增加了随机UA（如果定义ua则启用随机UA）" />
     <MESSAGE value="新增通知服务" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增通知服务" />
+    <MESSAGE value="修复pushplus 推送加" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复pushplus 推送加" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1178,16 +1214,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jd_zjd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="17" />
-          <folding>
-            <element signature="e#865#5087#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/getFollowGifts/JDCookies.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1226,19 +1252,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="508" selection-start-line="508" selection-end-line="543" selection-end-column="30" />
-          <folding>
-            <element signature="e#4861#4891#0" expanded="true" />
-            <element signature="e#13653#14743#0" />
-            <element signature="e#14792#15453#0" />
-            <element signature="e#15943#16963#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/run_OpenCard.log">
       <provider selected="true" editor-type-id="LogFileEditorProvider" />
     </entry>
@@ -1250,27 +1263,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sendNotify.py">
+    <entry file="file://$PROJECT_DIR$/jd_zjd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="66" column="24" lean-forward="true" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+        <state relative-caret-position="240">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="17" />
+          <folding>
+            <element signature="e#865#5087#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6570">
+          <caret line="467" selection-start-line="467" selection-end-line="489" selection-end-column="16" />
+          <folding>
+            <element signature="e#4861#4891#0" expanded="true" />
+            <element signature="e#13653#14743#0" />
+            <element signature="e#14792#15453#0" />
+            <element signature="e#15943#16963#0" />
+            <element signature="e#17014#17925#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_cashHelp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="344" column="12" lean-forward="true" selection-start-line="344" selection-start-column="12" selection-end-line="344" selection-end-column="12" />
+        <state relative-caret-position="3120">
+          <caret line="320" column="28" selection-start-line="320" selection-start-column="28" selection-end-line="320" selection-end-column="28" />
           <folding>
             <element signature="e#1952#6578#0" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sendNotify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="364" column="21" lean-forward="true" selection-start-line="364" selection-start-column="21" selection-end-line="364" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jd_qjd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="329" column="72" selection-start-line="329" selection-start-column="72" selection-end-line="329" selection-end-column="72" />
+        <state relative-caret-position="99">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+          <folding>
+            <element signature="e#3013#7639#0" />
+          </folding>
         </state>
       </provider>
     </entry>
