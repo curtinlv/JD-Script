@@ -210,7 +210,10 @@ if os.path.exists(cur_path + "/sendNotify.py"):
     from sendNotify import send
 else:
     getsendNotify()
-    from sendNotify import send
+    try:
+        from sendNotify import send
+    except:
+        print("加载通知服务失败~")
 ###################
 
 def userAgent():

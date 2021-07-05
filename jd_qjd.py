@@ -92,7 +92,10 @@ if os.path.exists(cur_path + "/sendNotify.py"):
     from sendNotify import send
 else:
     getsendNotify()
-    from sendNotify import send
+    try:
+        from sendNotify import send
+    except:
+        print("加载通知服务失败~")
 ###################
 
 ###### 获取cookie
@@ -324,7 +327,7 @@ def start():
         print(f"### 开始助力账号【{userNameList[int(ckNum)]}】###")
         groupCode, shareCode, sumBeanNumStr, activityId = getShareCode(cookiesList[ckNum])
         if groupCode == 0:
-            print(f"## {userNameList[int(ckNum)]}  获取互助码失败。请手动分享后再试！")
+            message(f"## {userNameList[int(ckNum)]}  获取互助码失败。请手动分享后再试~ 或建议早上再跑。")
             continue
         u = 0
         for i in cookiesList:
