@@ -1,0 +1,210 @@
+name: 2部署到腾讯云函数
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '50 */4 * * *'
+  watch:
+    types: started
+  repository_dispatch:
+    types: deploy_tencent_scf
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+      TZ: Asia/Shanghai
+      JD_COOKIE: ${{ secrets.JD_COOKIE}}
+      JD_DEBUG: ${{ secrets.JD_DEBUG}}
+      JD_USER_AGENT: ${{ secrets.JD_USER_AGENT}}
+      TENCENTSCF_SOURCE_TYPE: ${{ secrets.TENCENTSCF_SOURCE_TYPE}}
+      TENCENTSCF_SOURCE_URL: ${{ secrets.TENCENTSCF_SOURCE_URL}}
+      PUSH_KEY: ${{ secrets.PUSH_KEY}}
+      BARK_PUSH: ${{ secrets.BARK_PUSH}}
+      BARK_SOUND: ${{ secrets.BARK_SOUND}}
+      TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN}}
+      TG_USER_ID: ${{ secrets.TG_USER_ID}}
+      DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN}}
+      DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET}}
+      QYWX_KEY: ${{ secrets.QYWX_KEY}}
+      QYWX_AM: ${{ secrets.QYWX_AM}}
+      IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY}}
+      PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN}}
+      PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER}}
+      TG_PROXY_HOST: ${{ secrets.TG_PROXY_HOST}}
+      TG_PROXY_PORT: ${{ secrets.TG_PROXY_PORT}}
+      TG_PROXY_AUTH: ${{ secrets.TG_PROXY_AUTH}}
+      TG_API_HOST: ${{ secrets.TG_API_HOST}}
+      FRUITSHARECODES: ${{ secrets.FRUITSHARECODES}}
+      PETSHARECODES: ${{ secrets.PETSHARECODES}}
+      PLANT_BEAN_SHARECODES: ${{ secrets.PLANT_BEAN_SHARECODES}}
+      DDFACTORY_SHARECODES: ${{ secrets.DDFACTORY_SHARECODES}}
+      DREAM_FACTORY_SHARE_CODES: ${{ secrets.DREAM_FACTORY_SHARE_CODES}}
+      JDZZ_SHARECODES: ${{ secrets.JDZZ_SHARECODES}}
+      JDJOY_SHARECODES: ${{ secrets.JDJOY_SHARECODES}}
+      BOOKSHOP_SHARECODES: ${{ secrets.BOOKSHOP_SHARECODES}}
+      JD_CASH_SHARECODES: ${{ secrets.JD_CASH_SHARECODES}}
+      JXNC_SHARECODES: ${{ secrets.JXNC_SHARECODES}}
+      JDSGMH_SHARECODES: ${{ secrets.JDSGMH_SHARECODES}}
+      JDCFD_SHARECODES: ${{ secrets.JDCFD_SHARECODES }}
+      JD818_SHARECODES: ${{ secrets.JD818_SHARECODES}}
+      JD_BEAN_STOP: ${{ secrets.JD_BEAN_STOP}}
+      JD_BEAN_SIGN_STOP_NOTIFY: ${{ secrets.JD_BEAN_SIGN_STOP_NOTIFY}}
+      JD_BEAN_SIGN_NOTIFY_SIMPLE: ${{ secrets.JD_BEAN_SIGN_NOTIFY_SIMPLE}}
+      PET_NOTIFY_CONTROL: ${{ secrets.PET_NOTIFY_CONTROL}}
+      FRUIT_NOTIFY_CONTROL: ${{ secrets.FRUIT_NOTIFY_CONTROL}}
+      CASH_NOTIFY_CONTROL: ${{ secrets.CASH_NOTIFY_CONTROL}}
+      DDQ_NOTIFY_CONTROL: ${{ secrets.DDQ_NOTIFY_CONTROL}}
+      JDZZ_NOTIFY_CONTROL: ${{ secrets.JDZZ_NOTIFY_CONTROL}}
+      JD_JOY_REWARD_NOTIFY: ${{ secrets.JD_JOY_REWARD_NOTIFY}}
+      JOY_FEED_COUNT: ${{ secrets.JOY_FEED_COUNT}}
+      JOY_HELP_FEED: ${{ secrets.JOY_HELP_FEED}}
+      JOY_RUN_FLAG: ${{ secrets.JOY_RUN_FLAG}}
+      JOY_TEAM_LEVEL: ${{ secrets.JOY_TEAM_LEVEL}}
+      JOY_RUN_NOTIFY: ${{ secrets.JOY_RUN_NOTIFY}}
+      JOY_RUN_HELP_MYSELF: ${{ secrets.JOY_RUN_HELP_MYSELF}}
+      JD_JOY_REWARD_NAME: ${{ secrets.JD_JOY_REWARD_NAME}}
+      MARKET_COIN_TO_BEANS: ${{ secrets.MARKET_COIN_TO_BEANS}}
+      MARKET_REWARD_NOTIFY: ${{ secrets.MARKET_REWARD_NOTIFY}}
+      JOIN_PK_TEAM: ${{ secrets.JOIN_PK_TEAM}}
+      SUPERMARKET_LOTTERY: ${{ secrets.SUPERMARKET_LOTTERY}}
+      FRUIT_BEAN_CARD: ${{ secrets.FRUIT_BEAN_CARD}}
+      UN_SUBSCRIBES: ${{ secrets.UN_SUBSCRIBES}}
+      JDJOY_HELPSELF: ${{ secrets.JDJOY_HELPSELF}}
+      JDJOY_APPLYJDBEAN: ${{ secrets.JDJOY_APPLYJDBEAN}}
+      BUY_JOY_LEVEL: ${{ secrets.BUY_JOY_LEVEL}}
+      MONEY_TREE_SELL_FRUIT: ${{ secrets.MONEY_TREE_SELL_FRUIT}}
+      FACTORAY_WANTPRODUCT_NAME: ${{ secrets.FACTORAY_WANTPRODUCT_NAME}}
+      DREAMFACTORY_FORBID_ACCOUNT: ${{ secrets.DREAMFACTORY_FORBID_ACCOUNT}}
+      JDFACTORY_FORBID_ACCOUNT: ${{ secrets.JDFACTORY_FORBID_ACCOUNT}}
+      CFD_NOTIFY_CONTROL: ${{ secrets.CFD_NOTIFY_CONTROL}}
+      JD_JXD_EXCHANGE: ${{ secrets.JD_JXD_EXCHANGE}}
+      DYJ_PACKETID: ${{ secrets.DYJ_PACKETID}}
+      DYJ_INVITER: ${{ secrets.DYJ_INVITER}}
+      InviterPin: ${{ secrets.InviterPin}}
+      JD_TRY: ${{ secrets.JD_TRY}}
+      JD_WXJ: ${{ secrets.JD_WXJ}}
+      SHARECODE_WXJ: ${{ secrets.SHARECODE_WXJ}}
+      HELPAUTHOR_WXJ: ${{ secrets.HELPAUTHOR_WXJ}}
+      JXNC_NOTIFY_LEVEL: ${{ secrets.JXNC_NOTIFY_LEVEL}}
+      
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: "安装依赖"
+        run: |
+          npm install
+          npm install got
+          npm install tough-cookie
+          npm install js-yaml
+          npm install promises
+          npm install png-js
+
+      - name: "将Secrets里面配置的变量添加到severless.yml里面作为环境变量"
+        run: |
+          if [ $TZ ]; then sed -i "/variables/a\      TZ: $TZ" serverless.yml; fi
+          if [ $JD_COOKIE ]; then sed -i "/variables/a\      JD_COOKIE: $JD_COOKIE" serverless.yml; fi;
+          if [ $JD_DEBUG ]; then sed -i "/variables/a\      JD_DEBUG: $JD_DEBUG" serverless.yml; fi;
+          if [ $JD_USER_AGENT ]; then sed -i "/variables/a\      JD_USER_AGENT: $JD_USER_AGENT" serverless.yml; fi;
+          if [ $TENCENTSCF_SOURCE_TYPE ]; then sed -i "/variables/a\      TENCENTSCF_SOURCE_TYPE: $TENCENTSCF_SOURCE_TYPE" serverless.yml; fi;
+          if [ $TENCENTSCF_SOURCE_URL ]; then sed -i "/variables/a\      TENCENTSCF_SOURCE_URL: $TENCENTSCF_SOURCE_URL" serverless.yml; fi;
+          if [ $PUSH_KEY ]; then sed -i "/variables/a\      PUSH_KEY: $PUSH_KEY" serverless.yml; fi;
+          if [ $BARK_PUSH ]; then sed -i "/variables/a\      BARK_PUSH: $BARK_PUSH" serverless.yml; fi;
+          if [ $BARK_SOUND ]; then sed -i "/variables/a\      BARK_SOUND: $BARK_SOUND" serverless.yml; fi;
+          if [ $TG_BOT_TOKEN ]; then sed -i "/variables/a\      TG_BOT_TOKEN: $TG_BOT_TOKEN" serverless.yml; fi;
+          if [ $TG_USER_ID ]; then sed -i "/variables/a\      TG_USER_ID: $TG_USER_ID" serverless.yml; fi;
+          if [ $DD_BOT_TOKEN ]; then sed -i "/variables/a\      DD_BOT_TOKEN: $DD_BOT_TOKEN" serverless.yml; fi;
+          if [ $DD_BOT_SECRET ]; then sed -i "/variables/a\      DD_BOT_SECRET: $DD_BOT_SECRET" serverless.yml; fi;
+          if [ $QYWX_KEY ]; then sed -i "/variables/a\      QYWX_KEY: $QYWX_KEY" serverless.yml; fi;
+          if [ $QYWX_AM ]; then sed -i "/variables/a\      QYWX_AM: $QYWX_AM" serverless.yml; fi;
+          if [ $IGOT_PUSH_KEY ]; then sed -i "/variables/a\      IGOT_PUSH_KEY: $IGOT_PUSH_KEY" serverless.yml; fi;
+          if [ $PUSH_PLUS_TOKEN ]; then sed -i "/variables/a\      PUSH_PLUS_TOKEN: $PUSH_PLUS_TOKEN" serverless.yml; fi;
+          if [ $PUSH_PLUS_USER ]; then sed -i "/variables/a\      PUSH_PLUS_USER: $PUSH_PLUS_USER" serverless.yml; fi;
+          if [ $TG_PROXY_HOST ]; then sed -i "/variables/a\      TG_PROXY_HOST: $TG_PROXY_HOST" serverless.yml; fi;
+          if [ $TG_PROXY_PORT ]; then sed -i "/variables/a\      TG_PROXY_PORT: $TG_PROXY_PORT" serverless.yml; fi;
+          if [ $TG_PROXY_AUTH ]; then sed -i "/variables/a\      TG_PROXY_AUTH: $TG_PROXY_AUTH" serverless.yml; fi;
+          if [ $TG_API_HOST ]; then sed -i "/variables/a\      TG_API_HOST: $TG_API_HOST" serverless.yml; fi;
+          if [ $FRUITSHARECODES ]; then sed -i "/variables/a\      FRUITSHARECODES: $FRUITSHARECODES" serverless.yml; fi;
+          if [ $PETSHARECODES ]; then sed -i "/variables/a\      PETSHARECODES: $PETSHARECODES" serverless.yml; fi;
+          if [ $PLANT_BEAN_SHARECODES ]; then sed -i "/variables/a\      PLANT_BEAN_SHARECODES: $PLANT_BEAN_SHARECODES" serverless.yml; fi;
+          if [ $DDFACTORY_SHARECODES ]; then sed -i "/variables/a\      DDFACTORY_SHARECODES: $DDFACTORY_SHARECODES" serverless.yml; fi;
+          if [ $DREAM_FACTORY_SHARE_CODES ]; then sed -i "/variables/a\      DREAM_FACTORY_SHARE_CODES: $DREAM_FACTORY_SHARE_CODES" serverless.yml; fi;
+          if [ $JDZZ_SHARECODES ]; then sed -i "/variables/a\      JDZZ_SHARECODES: $JDZZ_SHARECODES" serverless.yml; fi;
+          if [ $JDJOY_SHARECODES ]; then sed -i "/variables/a\      JDJOY_SHARECODES: $JDJOY_SHARECODES" serverless.yml; fi;
+          if [ $BOOKSHOP_SHARECODES ]; then sed -i "/variables/a\      BOOKSHOP_SHARECODES: $BOOKSHOP_SHARECODES" serverless.yml; fi;
+          if [ $JD_CASH_SHARECODES ]; then sed -i "/variables/a\      JD_CASH_SHARECODES: $JD_CASH_SHARECODES" serverless.yml; fi;
+          if [ $JXNC_SHARECODES ]; then sed -i "/variables/a\      JXNC_SHARECODES: $JXNC_SHARECODES" serverless.yml; fi;
+          if [ $JDSGMH_SHARECODES ]; then sed -i "/variables/a\      JDSGMH_SHARECODES: $JDSGMH_SHARECODES" serverless.yml; fi;
+          if [ $JDCFD_SHARECODES ]; then sed -i "/variables/a\      JDCFD_SHARECODES: $JDCFD_SHARECODES" serverless.yml; fi;
+          if [ $JD818_SHARECODES ]; then sed -i "/variables/a\      JD818_SHARECODES: $JD818_SHARECODES" serverless.yml; fi;
+          if [ $JD_BEAN_STOP ]; then sed -i "/variables/a\      JD_BEAN_STOP: $JD_BEAN_STOP" serverless.yml; fi;
+          if [ $JD_BEAN_SIGN_STOP_NOTIFY ]; then sed -i "/variables/a\      JD_BEAN_SIGN_STOP_NOTIFY: $JD_BEAN_SIGN_STOP_NOTIFY" serverless.yml; fi;
+          if [ $JD_BEAN_SIGN_NOTIFY_SIMPLE ]; then sed -i "/variables/a\      JD_BEAN_SIGN_NOTIFY_SIMPLE: $JD_BEAN_SIGN_NOTIFY_SIMPLE" serverless.yml; fi;
+          if [ $PET_NOTIFY_CONTROL ]; then sed -i "/variables/a\      PET_NOTIFY_CONTROL: $PET_NOTIFY_CONTROL" serverless.yml; fi;
+          if [ $FRUIT_NOTIFY_CONTROL ]; then sed -i "/variables/a\      FRUIT_NOTIFY_CONTROL: $FRUIT_NOTIFY_CONTROL" serverless.yml; fi;
+          if [ $CASH_NOTIFY_CONTROL ]; then sed -i "/variables/a\      CASH_NOTIFY_CONTROL: $CASH_NOTIFY_CONTROL" serverless.yml; fi;
+          if [ $DDQ_NOTIFY_CONTROL ]; then sed -i "/variables/a\      DDQ_NOTIFY_CONTROL: $DDQ_NOTIFY_CONTROL" serverless.yml; fi;
+          if [ $JDZZ_NOTIFY_CONTROL ]; then sed -i "/variables/a\      JDZZ_NOTIFY_CONTROL: $JDZZ_NOTIFY_CONTROL" serverless.yml; fi;
+          if [ $JD_JOY_REWARD_NOTIFY ]; then sed -i "/variables/a\      JD_JOY_REWARD_NOTIFY: $JD_JOY_REWARD_NOTIFY" serverless.yml; fi;
+          if [ $JOY_FEED_COUNT ]; then sed -i "/variables/a\      JOY_FEED_COUNT: $JOY_FEED_COUNT" serverless.yml; fi;
+          if [ $JOY_HELP_FEED ]; then sed -i "/variables/a\      JOY_HELP_FEED: $JOY_HELP_FEED" serverless.yml; fi;
+          if [ $JOY_RUN_FLAG ]; then sed -i "/variables/a\      JOY_RUN_FLAG: $JOY_RUN_FLAG" serverless.yml; fi;
+          if [ $JOY_TEAM_LEVEL ]; then sed -i "/variables/a\      JOY_TEAM_LEVEL: $JOY_TEAM_LEVEL" serverless.yml; fi;
+          if [ $JOY_RUN_NOTIFY ]; then sed -i "/variables/a\      JOY_RUN_NOTIFY: $JOY_RUN_NOTIFY" serverless.yml; fi;
+          if [ $JOY_RUN_HELP_MYSELF ]; then sed -i "/variables/a\      JOY_RUN_HELP_MYSELF: $JOY_RUN_HELP_MYSELF" serverless.yml; fi;
+          if [ $JD_JOY_REWARD_NAME ]; then sed -i "/variables/a\      JD_JOY_REWARD_NAME: $JD_JOY_REWARD_NAME" serverless.yml; fi;
+          if [ $MARKET_COIN_TO_BEANS ]; then sed -i "/variables/a\      MARKET_COIN_TO_BEANS: $MARKET_COIN_TO_BEANS" serverless.yml; fi;
+          if [ $MARKET_REWARD_NOTIFY ]; then sed -i "/variables/a\      MARKET_REWARD_NOTIFY: $MARKET_REWARD_NOTIFY" serverless.yml; fi;
+          if [ $JOIN_PK_TEAM ]; then sed -i "/variables/a\      JOIN_PK_TEAM: $JOIN_PK_TEAM" serverless.yml; fi;
+          if [ $SUPERMARKET_LOTTERY ]; then sed -i "/variables/a\      SUPERMARKET_LOTTERY: $SUPERMARKET_LOTTERY" serverless.yml; fi;
+          if [ $FRUIT_BEAN_CARD ]; then sed -i "/variables/a\      FRUIT_BEAN_CARD: $FRUIT_BEAN_CARD" serverless.yml; fi;
+          if [ $UN_SUBSCRIBES ]; then sed -i "/variables/a\      UN_SUBSCRIBES: $UN_SUBSCRIBES" serverless.yml; fi;
+          if [ $JDJOY_HELPSELF ]; then sed -i "/variables/a\      JDJOY_HELPSELF: $JDJOY_HELPSELF" serverless.yml; fi;
+          if [ $JDJOY_APPLYJDBEAN ]; then sed -i "/variables/a\      JDJOY_APPLYJDBEAN: $JDJOY_APPLYJDBEAN" serverless.yml; fi;
+          if [ $BUY_JOY_LEVEL ]; then sed -i "/variables/a\      BUY_JOY_LEVEL: $BUY_JOY_LEVEL" serverless.yml; fi;
+          if [ $MONEY_TREE_SELL_FRUIT ]; then sed -i "/variables/a\      MONEY_TREE_SELL_FRUIT: $MONEY_TREE_SELL_FRUIT" serverless.yml; fi;
+          if [ $FACTORAY_WANTPRODUCT_NAME ]; then sed -i "/variables/a\      FACTORAY_WANTPRODUCT_NAME: $FACTORAY_WANTPRODUCT_NAME" serverless.yml; fi;
+          if [ $DREAMFACTORY_FORBID_ACCOUNT ]; then sed -i "/variables/a\      DREAMFACTORY_FORBID_ACCOUNT: $DREAMFACTORY_FORBID_ACCOUNT" serverless.yml; fi;
+          if [ $JDFACTORY_FORBID_ACCOUNT ]; then sed -i "/variables/a\      JDFACTORY_FORBID_ACCOUNT: $JDFACTORY_FORBID_ACCOUNT" serverless.yml; fi;
+          if [ $CFD_NOTIFY_CONTROL ]; then sed -i "/variables/a\      CFD_NOTIFY_CONTROL: $CFD_NOTIFY_CONTROL" serverless.yml; fi;
+          if [ $JD_JXD_EXCHANGE ]; then sed -i "/variables/a\      JD_JXD_EXCHANGE: $JD_JXD_EXCHANGE" serverless.yml; fi;
+          if [ $JXNC_NOTIFY_LEVEL ]; then sed -i "/variables/a\      JXNC_NOTIFY_LEVEL: $JXNC_NOTIFY_LEVEL" serverless.yml; fi;
+          if [ $InviterPin ]; then sed -i "/variables/a\      InviterPin: $InviterPin" serverless.yml; fi;
+          if [ $DYJ_PACKETID ]; then sed -i "/variables/a\      DYJ_PACKETID: $DYJ_PACKETID" serverless.yml; fi;
+          if [ $DYJ_INVITER ]; then sed -i "/variables/a\      DYJ_INVITER: $DYJ_INVITER" serverless.yml; fi;
+          if [ $JD_TRY ]; then sed -i "/variables/a\      JD_TRY: $JD_TRY" serverless.yml; fi;
+          if [ $JD_WXJ ]; then sed -i "/variables/a\      JD_WXJ: $JD_WXJ" serverless.yml; fi;
+          if [ $SHARECODE_WXJ ]; then sed -i "/variables/a\      SHARECODE_WXJ: $SHARECODE_WXJ" serverless.yml; fi;
+          if [ $HELPAUTHOR_WXJ ]; then sed -i "/variables/a\      HELPAUTHOR_WXJ: $HELPAUTHOR_WXJ" serverless.yml; fi;
+          cat serverless.yml
+          env
+
+      - name: "压缩文件夹"
+        run: zip -r myfile.zip ./*
+
+      - name: "安装依赖"
+        run: |
+          npm install
+          npm install canvas
+          npm install tencentcloud-sdk-nodejs
+
+      - name: "部署到腾讯云函数"
+        run: node tencentscf.js
+        env:
+          STAGE: dev
+          SERVERLESS_PLATFORM_VENDOR: tencent
+          TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+          TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+          TENCENT_REGION: ${{ secrets.SCF_REGION }}
+          TENCENT_FUNCTION_NAME: ${{ secrets.TENCENT_FUNCTION_NAME }}
+          TENCENT_MemorySize: ${{ secrets.TENCENT_MemorySize }}
+        
+      - name: "部署失败通知"
+        run: node action.js
