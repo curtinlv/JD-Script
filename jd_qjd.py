@@ -101,7 +101,10 @@ class msg(object):
                 from sendNotify import send
             except:
                 self.getsendNotify()
-                from sendNotify import send
+                try:
+                    from sendNotify import send
+                except:
+                    print("加载通知服务失败~")
         else:
             self.getsendNotify()
             try:
