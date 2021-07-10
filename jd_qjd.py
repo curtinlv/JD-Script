@@ -58,48 +58,61 @@ t = time.time()
 aNum = 0
 beanCount = 0
 userCount = {}
-
-######## 获取通知模块
-message_info = ''''''
-def message(str_msg):
-    global message_info
-    print(str_msg)
-    message_info = "{}\n{}".format(message_info, str_msg)
-    sys.stdout.flush()
-def getsendNotify(a=0):
-    if a == 0:
-        a += 1
-    try:
-        url = 'https://gitee.com/curtinlv/Public/raw/master/sendNotify.py'
-        response = requests.get(url)
-        if 'main' in response.text:
-            with open('sendNotify.py', "w+", encoding="utf-8") as f:
-                f.write(response.text)
-        else:
+## 获取通知服务
+class msg(object):
+    def __init__(self, m):
+        self.str_msg = m
+        self.message()
+    def message(self):
+        global msg_info
+        print(self.str_msg)
+        try:
+            msg_info = "{}\n{}".format(msg_info, self.str_msg)
+        except:
+            msg_info = "{}".format(self.str_msg)
+        sys.stdout.flush()
+    def getsendNotify(self, a=0):
+        if a == 0:
+            a += 1
+        try:
+            url = 'https://gitee.com/curtinlv/Public/raw/master/sendNotify.py'
+            response = requests.get(url)
+            if 'curtinlv' in response.text:
+                with open('sendNotify.py', "w+", encoding="utf-8") as f:
+                    f.write(response.text)
+            else:
+                if a < 5:
+                    a += 1
+                    return self.getsendNotify(a)
+                else:
+                    pass
+        except:
             if a < 5:
                 a += 1
-                return getsendNotify(a)
+                return self.getsendNotify(a)
             else:
                 pass
-    except:
-        if a < 5:
-            a += 1
-            return getsendNotify(a)
+    def main(self):
+        global send
+        cur_path = os.path.abspath(os.path.dirname(__file__))
+        sys.path.append(cur_path)
+        if os.path.exists(cur_path + "/sendNotify.py"):
+            try:
+                from sendNotify import send
+            except:
+                self.getsendNotify()
+                from sendNotify import send
         else:
-            pass
-cur_path = os.path.abspath(os.path.dirname(__file__))
-sys.path.append(cur_path)
-if os.path.exists(cur_path + "/sendNotify.py"):
-    from sendNotify import send
-else:
-    getsendNotify()
-    try:
-        from sendNotify import send
-    except:
-        print("加载通知服务失败~")
-###################
+            self.getsendNotify()
+            try:
+                from sendNotify import send
+            except:
+                print("加载通知服务失败~")
+        ###################
+msg("").main()
+##############
 
-###### 获取cookie
+## 获取cookie
 class getJDCookie(object):
     # 适配各种平台环境ck
     def getckfile(self):
@@ -214,6 +227,7 @@ class getJDCookie(object):
             exit(4)
 getCk = getJDCookie()
 getCk.getCookie()
+##############
 
 if "qjd_zlzh" in os.environ:
     if len(os.environ["qjd_zlzh"]) > 1:
@@ -347,10 +361,10 @@ def start():
         beanCount += sumBeanNumStr
     print("\n-------------------------")
     for i in userCount.keys():
-        message(f"账号【{i}】已抢京豆: {userCount[i]}")
-    message(f"## 今日累计获得 {beanCount} 京豆")
+        msg(f"账号【{i}】已抢京豆: {userCount[i]}")
+    msg(f"## 今日累计获得 {beanCount} 京豆")
     try:
-        send(scriptName, message_info)
+        send(scriptName, msg_info)
     except:
         pass
 

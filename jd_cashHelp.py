@@ -176,45 +176,59 @@ if "cash_zlzh" in os.environ:
         cash_zlzh = cash_zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 cash_zlzh:", cash_zlzh)
 
-######## 获取通知模块
-message_info = ''''''
-def message(str_msg):
-    global message_info
-    print(str_msg)
-    message_info = "{}\n{}".format(message_info, str_msg)
-    sys.stdout.flush()
-def getsendNotify(a=0):
-    if a == 0:
-        a += 1
-    try:
-        url = 'https://gitee.com/curtinlv/Public/raw/master/sendNotify.py'
-        response = requests.get(url)
-        if 'main' in response.text:
-            with open('sendNotify.py', "w+", encoding="utf-8") as f:
-                f.write(response.text)
-        else:
+## 获取通知服务
+class msg(object):
+    def __init__(self, m):
+        self.str_msg = m
+        self.message()
+    def message(self):
+        global msg_info
+        print(self.str_msg)
+        try:
+            msg_info = "{}\n{}".format(msg_info, self.str_msg)
+        except:
+            msg_info = "{}".format(self.str_msg)
+        sys.stdout.flush()
+    def getsendNotify(self, a=0):
+        if a == 0:
+            a += 1
+        try:
+            url = 'https://gitee.com/curtinlv/Public/raw/master/sendNotify.py'
+            response = requests.get(url)
+            if 'curtinlv' in response.text:
+                with open('sendNotify.py', "w+", encoding="utf-8") as f:
+                    f.write(response.text)
+            else:
+                if a < 5:
+                    a += 1
+                    return self.getsendNotify(a)
+                else:
+                    pass
+        except:
             if a < 5:
                 a += 1
-                return getsendNotify(a)
+                return self.getsendNotify(a)
             else:
                 pass
-    except:
-        if a < 5:
-            a += 1
-            return getsendNotify(a)
+    def main(self):
+        global send
+        cur_path = os.path.abspath(os.path.dirname(__file__))
+        sys.path.append(cur_path)
+        if os.path.exists(cur_path + "/sendNotify.py"):
+            try:
+                from sendNotify import send
+            except:
+                self.getsendNotify()
+                from sendNotify import send
         else:
-            pass
-cur_path = os.path.abspath(os.path.dirname(__file__))
-sys.path.append(cur_path)
-if os.path.exists(cur_path + "/sendNotify.py"):
-    from sendNotify import send
-else:
-    getsendNotify()
-    try:
-        from sendNotify import send
-    except:
-        print("加载通知服务失败~")
-###################
+            self.getsendNotify()
+            try:
+                from sendNotify import send
+            except:
+                print("加载通知服务失败~")
+        ###################
+msg("").main()
+##############
 
 def userAgent():
     """
@@ -337,10 +351,10 @@ def start():
 
     print("\n-------------------------")
     for i in cashCountdict.keys():
-        message(f"账号【{i}】当前现金: ￥{cashCountdict[i]}")
-    message("## 总累计获得 ￥%.2f" % cashCount)
+        msg(f"账号【{i}】当前现金: ￥{cashCountdict[i]}")
+    msg("## 总累计获得 ￥%.2f" % cashCount)
     try:
-        send(scriptName, message_info)
+        send(scriptName, msg_info)
     except:
         pass
 
