@@ -353,26 +353,6 @@ def send(title, content):
         else:
             print('此类推送方式不存在')
 
-def requests_session(
-    retries=3,
-    backoff_factor=0.3,
-    status_forcelist=(500, 502, 504),
-    session=None,
-):
-    session = session or requests.Session()
-    retry = Retry(
-        total=retries,
-        read=retries,
-        connect=retries,
-        backoff_factor=backoff_factor,
-        status_forcelist=status_forcelist,
-        method_whitelist=frozenset(['GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS'])  # urllib3 默认对除 GET 以外的方法，不设置自动重试功能，所以要主动添加白名单
-    )
-    adapter = HTTPAdapter(max_retries=retry)
-    session.mount('http://', adapter)
-    session.mount('https://', adapter)
-
-    return session
 
 def main():
     send('title', 'content')
