@@ -7,7 +7,7 @@ Author: Curtin
 Date: 2021/7/4 上午09:35
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update 2021.7.13 22:21
+update 2021.7.15 23:21
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
@@ -292,11 +292,18 @@ def helpCode(header, inviteCode, shareDate, uNUm, user, name):
         resp = requests.post(url=url, headers=header,  verify=False, timeout=30).json()
         if resp['data']['success']:
             print(f'用户{uNUm}【{user}】助力【{name}】{resp["data"]["bizMsg"]} -> 您也获得{resp["data"]["result"]["cashStr"]}现金')
+            return False
         else:
             print(f'用户{uNUm}【{user}】助力【{name}】{resp["data"]["bizMsg"]}')
+            if '晚' in resp["data"]["bizMsg"]:
+                return True
+            else:
+                return False
+
     except Exception as e:
         print("helpCode Error", e)
         print(f'用户{uNUm}【{user}】助力【{name}】报错了！')
+        return False
 
 def cash_exchangePage(ck):
     try:
@@ -345,7 +352,9 @@ def start():
             if i == cookiesList[ckNum]:
                 u += 1
                 continue
-            helpCode(buildHeader(i), inviteCode, shareDate, u+1, userNameList[u], userNameList[ckNum])
+            result = helpCode(buildHeader(i), inviteCode, shareDate, u+1, userNameList[u], userNameList[ckNum])
+            if result:
+                break
             time.sleep(sleepNum)
             u += 1
         totalMoney = cash_exchangePage(cookiesList[ckNum])
