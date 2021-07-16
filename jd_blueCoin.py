@@ -60,11 +60,11 @@ def printT(s):
 if "coinToBeans" in os.environ:
     if len(os.environ["coinToBeans"]) > 1:
         coinToBeans = os.environ["coinToBeans"]
-        printT("已获取并使用Env环境 coinToBeans:", coinToBeans)
+        printT(f"已获取并使用Env环境 coinToBeans:{coinToBeans}")
 if "blueCoin_Cc" in os.environ:
     if len(os.environ["blueCoin_Cc"]) > 1:
         blueCoin_Cc = getBool(os.environ["blueCoin_Cc"])
-        printT("已获取并使用Env环境 blueCoin_Cc:", blueCoin_Cc)
+        printT(f"已获取并使用Env环境 blueCoin_Cc:{blueCoin_Cc}")
 
 class TaskThread(threading.Thread):
     """
