@@ -5,7 +5,7 @@
 Author: Curtin
 功能: 东东超市商品兑换
 Date: 2021/4/17 上午11:22
-update: 2021/7/16 23:30
+update: 2021/7/17 01:15
 建议cron: 59 23 * * *  python3 jd_blueCoin.py
 '''
 ################【参数】######################
@@ -20,7 +20,7 @@ blueCoin_Cc = False
 dd_thread = 3
 
 #开始抢兑时间
-starttime='23:59:59.00000000'
+# starttime='23:59:59.00000000'
 #结束时间
 endtime='00:00:30.00000000'
 
@@ -31,8 +31,8 @@ from urllib.parse import quote, unquote
 import threading
 requests.packages.urllib3.disable_warnings()
 pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
-timestamp=int(round(time.time() * 1000))
-script_name='东东超市商品兑换-Python'
+# timestamp = int(round(time.time() * 1000))
+script_name = '东东超市商品兑换'
 title = ''
 prizeId = ''
 blueCost = ''
@@ -40,8 +40,9 @@ inStock = ''
 UserAgent = ''
 periodId = ''
 today = datetime.datetime.now().strftime('%Y-%m-%d')
+unstartTime = datetime.datetime.now().strftime('%Y-%m-%d 23:55:00.00000000')
 tomorrow = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime('%Y-%m-%d')
-
+starttime = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00.00000000')
 def getBool(label):
     try:
         if label == 'True' or label == 'yes' or label == 'true' or label == 'Yes':
@@ -286,7 +287,7 @@ def setHeaders(cookie):
         'Cookie': cookie,
         'Connection': 'keep-alive',
         'Accept': 'application/json, text/plain, */*',
-        'Referer': 'https://jdsupermarket.jd.com/game/?tt={}'.format(timestamp-314),
+        'Referer': 'https://jdsupermarket.jd.com/game/?tt={}'.format(int(round(time.time() * 1000))-314),
         'Host': 'api.m.jd.com',
         'User-Agent': userAgent(),
         'Accept-Encoding': 'gzip, deflate, br',
@@ -297,7 +298,7 @@ def setHeaders(cookie):
 #查询东东超市蓝币数量
 def getBlueCoinInfo(headers):
     try:
-        url='https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_newHome&clientVersion=8.0.0&client=m&body=%7B%22channel%22:%2218%22%7D&t={0}'.format(timestamp)
+        url='https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_newHome&clientVersion=8.0.0&client=m&body=%7B%22channel%22:%2218%22%7D&t={0}'.format(int(round(time.time() * 1000)))
         respon = requests.get(url=url, verify=False, headers=headers)
         result = respon.json()
         if result['data']['bizCode'] == 0:
@@ -319,7 +320,7 @@ def getAllUserInfo(userName):
         headers = setHeaders(ck)
         try:
             totalBlue,shopName = getBlueCoinInfo(headers)
-            url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_receiveCoin&clientVersion=8.0.0&client=m&body=%7B%22type%22:4,%22channel%22:%2218%22%7D&t={0}'.format(timestamp)
+            url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smtg_receiveCoin&clientVersion=8.0.0&client=m&body=%7B%22type%22:4,%22channel%22:%2218%22%7D&t={0}'.format(int(round(time.time() * 1000)))
             respon = requests.get(url=url, verify=False,  headers=headers)
             result = respon.json()
             level = result['data']['result']['level']
@@ -330,7 +331,7 @@ def getAllUserInfo(userName):
         id_num += 1
 #查询商品
 def smtg_queryPrize(headers, coinToBeans):
-    url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smt_queryPrizeAreas&clientVersion=8.0.0&client=m&body=%7B%22channel%22:%2218%22%7D&t={}'.format(timestamp)
+    url = 'https://api.m.jd.com/api?appid=jdsupermarket&functionId=smt_queryPrizeAreas&clientVersion=8.0.0&client=m&body=%7B%22channel%22:%2218%22%7D&t={}'.format(int(round(time.time() * 1000)))
     try:
         respone = requests.get(url=url, verify=False, headers=headers)
         result = respone.json()
@@ -368,7 +369,7 @@ def isCoinToBeans(coinToBeans,headers):
         printT("1.请检查设置的兑换商品名称是否正确?")
         exit(0)
 #抢兑换
-def smtg_obtainPrize(prizeId, areaId, periodId, headers):
+def smtg_obtainPrize(prizeId, areaId, periodId, headers, username):
     body = {
         "connectId": prizeId,
         "areaId": areaId,
@@ -397,10 +398,10 @@ def smtg_obtainPrize(prizeId, areaId, periodId, headers):
         bizMsg = result['data']['bizMsg']
         if success == True:
             printT(result)
-            printT("╰{0}...恭喜兑换成功！".format(bizMsg))
+            printT(f"【{username}】{bizMsg}...恭喜兑换成功！")
             return 0
         else:
-            printT(f"\t╰{bizMsg}")
+            printT(f"【{username}】{bizMsg}")
             return 999
     except Exception as e:
         printT(e)
@@ -413,7 +414,7 @@ def issmtg_obtainPrize(ck, user_num, prizeId, areaId, periodId, title):
         t_num = range(dd_thread)
         threads = []
         for t in t_num:
-            thread = TaskThread(smtg_obtainPrize, args=(prizeId, areaId, periodId, setHeaders(ck)))
+            thread = TaskThread(smtg_obtainPrize, args=(prizeId, areaId, periodId, setHeaders(ck), userName))
             threads.append(thread)
             thread.start()
         for thread in threads:
@@ -424,14 +425,14 @@ def issmtg_obtainPrize(ck, user_num, prizeId, areaId, periodId, title):
                 return 0
         nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f8')
         if nowtime > qgendtime:
-            title, prizeId, blueCost, status, skuId, areaId, periodId = isCoinToBeans(coinToBeans, setHeaders(ck))
-            if status == 2:
-                printT("\n{1}:【{0}】 当前没货了......".format(title, userName))
-                return 2
-            else:
-                return 0
+            return 2
+        title, prizeId, blueCost, status, skuId, areaId, periodId = isCoinToBeans(coinToBeans, setHeaders(ck))
+        if status == 2:
+            printT("{1}, 你好呀~【{0}】 当前没货了......".format(title, userName))
+            return 2
         else:
             return 0
+
     except Exception as e:
         printT(e)
         return 1
@@ -474,19 +475,19 @@ def checkUser(cookies,): #返回符合条件的ck list
 def start():
     try:
         global  cookiesList, userNameList, pinNameList, cookies, qgendtime
-        printT("【{}】".format(script_name))
+        printT("{} Start".format(script_name))
         cookiesList, userNameList, pinNameList = getCk.iscookie()
         cookies = checkUser(cookiesList)
-        qgtime = '{} {}'.format(today, starttime)
         qgendtime = '{} {}'.format(tomorrow, endtime)
-        num = 1
-        nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f8')
-        printT(f"开始抢兑时间[{qgtime}]\n正在等待，请勿终止退出...")
+        if blueCoin_Cc:
+            msg("并发模式：多账号")
+        else:
+            msg("并发模式：单账号")
+        printT(f"开始抢兑时间[{starttime}]\n正在等待，请勿终止退出...")
         while True:
             nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f8')
-            if nowtime > qgtime:
+            if nowtime > starttime:
                 if blueCoin_Cc:
-                    msg("并发模式：多账号")
                     ttt = []
                     user_num = 1
                     for ck in cookies:
@@ -497,18 +498,21 @@ def start():
                     for thread in ttt:
                         thread.join()
                         result = thread.get_result()
-                        if result == 2:
-                            break
+                    if result == 2:
+                        break
                 else:
-                    msg("并发模式：单账号")
                     user_num = 1
                     for ck in cookies:
                         response = issmtg_obtainPrize(ck, user_num, prizeId, areaId, periodId, title)
-                        if response == 2:
-                            break
                         user_num += 1
-            else:
-                pass
+                    if response == 2:
+                        break
+            elif nowtime > qgendtime:
+                break
+            elif nowtime > unstartTime:
+                printT("Sorry，还没到时间。")
+                printT("【皮卡丘】建议cron: 59 23 * * *  python3 jd_blueCoin.py")
+                break
     except Exception as e:
         printT(e)
 if __name__ == '__main__':
