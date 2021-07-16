@@ -110,7 +110,7 @@ def userAgent():
 
 ## 获取通知服务
 class msg(object):
-    def __init__(self, m):
+    def __init__(self, m=''):
         self.str_msg = m
         self.message()
     def message(self):
@@ -162,7 +162,7 @@ class msg(object):
             except:
                 printT("加载通知服务失败~")
         ###################
-msg("").main()
+msg().main()
 
 ## 获取cookie
 class getJDCookie(object):
@@ -509,7 +509,7 @@ def start():
                         break
             elif nowtime > qgendtime:
                 break
-            elif nowtime > unstartTime:
+            elif nowtime < unstartTime:
                 printT("Sorry，还没到时间。")
                 printT("【皮卡丘】建议cron: 59 23 * * *  python3 jd_blueCoin.py")
                 break
