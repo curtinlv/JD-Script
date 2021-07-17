@@ -5,7 +5,7 @@
 Author: Curtin
 功能: 东东超市商品兑换
 Date: 2021/4/17 上午11:22
-update: 2021/7/17 01:15
+update: 2021/7/18 00:30
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 建议cron: 59 23 * * *  python3 jd_blueCoin.py
@@ -20,7 +20,7 @@ coinToBeans = ''
 #多账号并发，默认关闭 ENV设置开启： export blueCoin_Cc=True
 blueCoin_Cc = False
 #单击次数
-dd_thread = 3
+dd_thread = 5
 ###############################################
 
 import time, datetime, os, sys, random
@@ -38,11 +38,11 @@ inStock = ''
 UserAgent = ''
 periodId = ''
 #最长抢兑结束时间
-endtime='00:00:30.00000000'
+endtime='00:00:10.00000000'
 today = datetime.datetime.now().strftime('%Y-%m-%d')
 unstartTime = datetime.datetime.now().strftime('%Y-%m-%d 23:55:00.00000000')
 tomorrow = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime('%Y-%m-%d')
-starttime = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00.00000000')
+starttime = (datetime.datetime.now() + datetime.timedelta(days=0)).strftime('%Y-%m-%d 23:59:59.00000000')
 
 
 def printT(s):
@@ -469,13 +469,15 @@ def issmtg_obtainPrize(ck, user_num, prizeId, areaId, periodId, title):
                 return 0
         nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f8')
         if nowtime > qgendtime:
-            return 2
-        title, prizeId, blueCost, status, skuId, areaId, periodId = isCoinToBeans(coinToBeans, setHeaders(ck))
-        if status == 2:
-            printT("{1}, 你好呀~【{0}】 当前没货了......".format(title, userName))
-            return 2
+            title, prizeId, blueCost, status, skuId, areaId, periodId = isCoinToBeans(coinToBeans, setHeaders(ck))
+            if status == 2:
+                printT("{1}, 你好呀~【{0}】 当前没货了......".format(title, userName))
+                return 2
+            else:
+                return 0
         else:
             return 0
+
 
     except Exception as e:
         printT(e)
@@ -527,7 +529,8 @@ def start():
             msg("并发模式：多账号")
         else:
             msg("并发模式：单账号")
-        printT(f"开始抢兑时间[{starttime}]\n正在等待，请勿终止退出...")
+        printT(f"开始抢兑时间[{starttime}]")
+        a = 0
         while True:
             nowtime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f8')
             if nowtime > starttime:
@@ -561,6 +564,10 @@ def start():
                 printT("Sorry，还没到时间。")
                 printT("【皮卡丘】建议cron: 59 23 * * *  python3 jd_blueCoin.py")
                 break
+            else:
+                if a == 0:
+                    a = 1
+                    printT(f"正在等待，请勿终止退出...")
     except Exception as e:
         printT(e)
 if __name__ == '__main__':
