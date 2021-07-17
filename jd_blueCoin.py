@@ -440,8 +440,7 @@ def smtg_obtainPrize(prizeId, areaId, periodId, headers, username):
         printT(result)
         success = result['data']['success']
         bizMsg = result['data']['bizMsg']
-        if success == True:
-            printT(result)
+        if success:
             printT(f"【{username}】{bizMsg}...恭喜兑换成功！")
             return 0
         else:
@@ -449,6 +448,7 @@ def smtg_obtainPrize(prizeId, areaId, periodId, headers, username):
             return 999
     except Exception as e:
         printT(e)
+        return 999
 
 
 def issmtg_obtainPrize(ck, user_num, prizeId, areaId, periodId, title):
@@ -542,6 +542,8 @@ def start():
                     for thread in ttt:
                         thread.join()
                         result = thread.get_result()
+                        if result == 2:
+                            break
                     if result == 2:
                         break
                 else:
@@ -549,6 +551,8 @@ def start():
                     for ck in cookies:
                         response = issmtg_obtainPrize(ck, user_num, prizeId, areaId, periodId, title)
                         user_num += 1
+                        if response == 2:
+                            break
                     if response == 2:
                         break
             elif nowtime > qgendtime:
