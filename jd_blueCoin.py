@@ -201,8 +201,8 @@ getCk.getCookie()
 
 # 获取v4环境 特殊处理
 try:
-    with open(v4f, 'r', encoding='utf-8') as v4f:
-        v4Env = v4f.read()
+    with open(v4f, 'r', encoding='utf-8') as f:
+        v4Env = f.read()
     r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$',
                    re.M | re.S | re.I)
     r = r.findall(v4Env)

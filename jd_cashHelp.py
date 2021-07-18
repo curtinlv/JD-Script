@@ -209,8 +209,8 @@ getCk.getCookie()
 
 # 获取v4环境 特殊处理
 try:
-    with open(v4f, 'r', encoding='utf-8') as v4f:
-        v4Env = v4f.read()
+    with open(v4f, 'r', encoding='utf-8') as f:
+        v4Env = f.read()
     r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$',
                    re.M | re.S | re.I)
     r = r.findall(v4Env)
@@ -229,7 +229,8 @@ if "cash_zlzh" in os.environ:
         elif ',' in cash_zlzh:
             cash_zlzh = cash_zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 cash_zlzh:", cash_zlzh)
-
+if not isinstance(cash_zlzh, list):
+    cash_zlzh = cash_zlzh.split(" ")
 
 
 ## 获取通知服务
