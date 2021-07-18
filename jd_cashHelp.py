@@ -225,6 +225,8 @@ if "cash_zlzh" in os.environ:
     if len(os.environ["cash_zlzh"]) > 1:
         cash_zlzh = os.environ["cash_zlzh"]
         cash_zlzh = cash_zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split('&')
+        if len(cash_zlzh) < 1:
+            cash_zlzh = cash_zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 cash_zlzh:", cash_zlzh)
 
 
