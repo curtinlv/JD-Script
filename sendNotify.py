@@ -17,7 +17,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util import Retry
 
 # 通知服务
-BARK = ''                   # bark服务,自行搜索; secrets可填;
+BARK = ''                   # bark服务,自行搜索;,此参数如果以http或者https开头则判定为自建bark服务;secrets可填;
 SCKEY = ''                  # Server酱的SCKEY; secrets可填
 TG_BOT_TOKEN = ''           # tg机器人的TG_BOT_TOKEN; secrets可填1407203283:AAG9rt-6RDaaX0HBLZQq0laNOh898iFYaRQ
 TG_USER_ID = ''             # tg机器人的TG_USER_ID; secrets可填 1434078534
@@ -30,7 +30,9 @@ QQ_SKEY = ''                # qq机器人的QQ_SKEY; secrets可填
 QQ_MODE = ''                # qq机器人的QQ_MODE; secrets可填
 QYWX_AM = ''                # 企业微信
 PUSH_PLUS_TOKEN = ''        # 微信推送Plus+
-
+GOBOT_URL=""                # go-cqhttp 例如:推送到个人QQ: http://127.0.0.1/send_private_msg  群：http://127.0.0.1/send_group_msg 
+GOBOT_TOKEN=""              # go-cqhttp的access_token 可不填
+GOBOT_QQ=""                 # go-cqhttp的推送群或者用户 GOBOT_URL设置 /send_private_msg 则需要填入 user_id=个人QQ 相反如果是 /send_group_msg 则需要填入 group_id=QQ群
 notify_mode = []
 
 message_info = ''''''
@@ -61,6 +63,11 @@ if "QYWX_AM" in os.environ:
     if len(os.environ["QYWX_AM"]) > 1:
         QYWX_AM = os.environ["QYWX_AM"]
         # print("已获取并使用Env环境 QYWX_AM")
+#获取go-cqhttp
+if "GOBOT_URL" in os.environ and os.environ["GOBOT_URL"]:
+    GOBOT_URL = os.environ["GOBOT_URL"]
+    GOBOT_TOKEN = os.environ["GOBOT_TOKEN"]
+    GOBOT_QQ = os.environ["GOBOT_QQ"]
 
 if BARK:
     notify_mode.append('bark')
@@ -77,7 +84,9 @@ if DD_BOT_ACCESS_TOKEN and DD_BOT_SECRET:
 if QQ_SKEY and QQ_MODE:
     notify_mode.append('coolpush_bot')
     # print("QQ机器人 推送打开")
-
+if GOBOT_URL and GOBOT_QQ:
+    notify_mode.append('go_cqhttp')
+    #print("go-cqhttp机器人 推送打开")
 if PUSH_PLUS_TOKEN:
     notify_mode.append('pushplus_bot')
     # print("微信推送Plus机器人 推送打开")
@@ -98,14 +107,29 @@ def bark(title, content):
         print("bark服务的bark_token未设置!!\n取消推送")
         return
     print("bark服务启动")
-    try:
-        response = requests.get(
-            f"""https://api.day.app/{BARK}/{title}/{urllib.parse.quote_plus(content)}""").json()
-        if response['code'] == 200:
-            print('推送成功！')
-        else:
-            print('推送失败！')
-    except:
+    url = None
+    if BARK.startswith('http'):
+      url = f"""{BARK}/{title}/{content}"""
+    else:
+      url = f"""https://api.day.app/{BARK}/{title}/{content}"""
+    response = requests.get(url).json()
+    if response['code'] == 200:
+        print('推送成功！')
+    else:
+        print('推送失败！')
+
+#go-cqhttp
+def go_cqhttp(title, content):
+    print("\n")
+    if not GOBOT_URL or not GOBOT_QQ:
+        print("go-cqhttp服务的GOBOT_URL或GOBOT_QQ未设置!!\n取消推送")
+        return
+    print("go-cqhttp服务启动")
+    url = f"""{GOBOT_URL}?access_token={GOBOT_TOKEN}&{GOBOT_QQ}&message=标题:{title}\n内容:{content}"""
+    response = requests.get(url).json()
+    if response['status'] == 'ok':
+        print('推送成功！')
+    else:
         print('推送失败！')
 
 def serverJ(title, content):
@@ -319,6 +343,12 @@ def send(title, content):
                 serverJ(title=title, content=content)
             else:
                 print('未启用 Server酱')
+            continue
+        elif i == 'go_cqhttp':
+            if GOBOT_URL and GOBOT_QQ:
+                go_cqhttp(title=title, content=content)
+            else:
+                print('未启用 go-cqhttp')
             continue
         elif i == 'dingding_bot':
             if DD_BOT_ACCESS_TOKEN and DD_BOT_SECRET:
