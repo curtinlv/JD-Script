@@ -201,6 +201,7 @@ TG_API_HOST = ''
 QYWX_AM = ''
 BARK = ''
 DoubleThread = True
+UserAgent = ''
 
 # 获取账号参数
 try:
@@ -455,12 +456,12 @@ def telegram_bot(title, content):
             proxyStr = "http://{}:{}".format(TG_PROXY_IP, TG_PROXY_PORT)
             proxies = {"http": proxyStr, "https": proxyStr}
         try:
-            response = requests.post(url=url, headers=headers, params=payload, proxies=proxies).json()
+            tgr = requests.post(url=url, headers=headers, params=payload, proxies=proxies).json()
+            if tgr['ok']:
+                print('推送成功！')
+            else:
+                print('推送失败！')
         except:
-            print('推送失败！')
-        if response['ok']:
-            print('推送成功！')
-        else:
             print('推送失败！')
     except Exception as e:
         print(e)
@@ -740,6 +741,25 @@ def getUserInfo(ck, pinName, userNum):
         send("【JD入会领豆】Cookie 已失效！", context)
         return ck, False
 
+def userAgent():
+    """
+    随机生成一个UA
+    :return: jdapp;iPhone;9.4.8;14.3;xxxx;network/wifi;ADID/201EDE7F-5111-49E8-9F0D-CCF9677CD6FE;supportApplePay/0;hasUPPay/0;hasOCPay/0;model/iPhone13,4;addressid/2455696156;supportBestPay/0;appBuild/167629;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1
+    """
+    if not UserAgent:
+        uuid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 40))
+        addressid = ''.join(random.sample('1234567898647', 10))
+        iosVer = ''.join(
+            random.sample(["14.5.1", "14.4", "14.3", "14.2", "14.1", "14.0.1", "13.7", "13.1.2", "13.1.1"], 1))
+        iosV = iosVer.replace('.', '_')
+        iPhone = ''.join(random.sample(["8", "9", "10", "11", "12", "13"], 1))
+        ADID = ''.join(random.sample('0987654321ABCDEF', 8)) + '-' + ''.join(
+            random.sample('0987654321ABCDEF', 4)) + '-' + ''.join(random.sample('0987654321ABCDEF', 4)) + '-' + ''.join(
+            random.sample('0987654321ABCDEF', 4)) + '-' + ''.join(random.sample('0987654321ABCDEF', 12))
+        return f'jdapp;iPhone;10.0.4;{iosVer};{uuid};network/wifi;ADID/{ADID};supportApplePay/0;hasUPPay/0;hasOCPay/0;model/iPhone{iPhone},1;addressid/{addressid};supportBestPay/0;appBuild/167629;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS {iosV} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1'
+    else:
+        return UserAgent
+
 # 设置Headers
 def setHeaders(cookie, intype):
     if intype == 'mall':
@@ -761,7 +781,7 @@ def setHeaders(cookie, intype):
             'Referer': "https://shopmember.m.jd.com/shopcard/?",
             'Accept-Encoding': "gzip, deflate, br",
             'Host': "api.m.jd.com",
-            'User-Agent': "jdapp;iPhone;9.4.8;14.3;809409cbd5bb8a0fa8fff41378c1afe91b8075ad;network/wifi;ADID/201EDE7F-5111-49E8-9F0D-CCF9677CD6FE;supportApplePay/0;hasUPPay/0;hasOCPay/0;model/iPhone13,4;addressid/;supportBestPay/0;appBuild/167629;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1",
+            'User-Agent': userAgent(),
             'Accept-Language': "zh-cn"
         }
         return headers
