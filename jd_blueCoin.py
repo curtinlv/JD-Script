@@ -5,7 +5,7 @@
 Author: Curtin
 功能: 东东超市商品兑换
 Date: 2021/4/17 上午11:22
-update: 2021/7/18 00:30
+update: 2021/7/24 14:30
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 建议cron: 59 23 * * *  python3 jd_blueCoin.py
@@ -199,19 +199,19 @@ getCk = getJDCookie()
 getCk.getCookie()
 
 # 获取v4环境 特殊处理
-try:
-    with open(v4f, 'r', encoding='utf-8') as f:
-        curenv = locals()
-        for i in f.readlines():
-            r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$', re.M | re.S | re.I)
-            r = r.findall(i)
-            if len(r) > 0:
-                for i in r:
-                    if i[0] != 'JD_COOKIE':
-                        curenv[i[0]] = getEnvs(i[1])
-except:
-    pass
-
+if os.path.exists('/jd/config/config.sh'):
+    try:
+        with open('/jd/config/config.sh', 'r', encoding='utf-8') as f:
+            curenv = locals()
+            for i in f.readlines():
+                r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$', re.M | re.S | re.I)
+                r = r.findall(i)
+                if len(r) > 0:
+                    for i in r:
+                        if i[0] != 'JD_COOKIE':
+                            curenv[i[0]] = getEnvs(i[1])
+    except:
+        pass
 
 
 if "coinToBeans" in os.environ:
