@@ -7,7 +7,7 @@ Author: Curtin
 Date: 2021/7/17 下午9:40
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update 2021.7.20 00:30
+update 2021.7.24 14:30
 '''
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
 cookies = ''
@@ -35,6 +35,8 @@ import hmac
 
 appId = 10001
 activeId = 'T_zZaWP6by9yA1wehxM4mg%3D%3D'
+
+countElectric = {}
 def userAgent():
     global iosV
     """
@@ -203,18 +205,19 @@ getCk = getJDCookie()
 getCk.getCookie()
 
 # 获取v4环境 特殊处理
-try:
-    with open(v4f, 'r', encoding='utf-8') as f:
-        curenv = locals()
-        for i in f.readlines():
-            r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$', re.M | re.S | re.I)
-            r = r.findall(i)
-            if len(r) > 0:
-                for i in r:
-                    if i[0] != 'JD_COOKIE':
-                        curenv[i[0]] = getEnvs(i[1])
-except:
-    pass
+if os.path.exists('/jd/config/config.sh'):
+    try:
+        with open('/jd/config/config.sh', 'r', encoding='utf-8') as f:
+            curenv = locals()
+            for i in f.readlines():
+                r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$', re.M | re.S | re.I)
+                r = r.findall(i)
+                if len(r) > 0:
+                    for i in r:
+                        if i[0] != 'JD_COOKIE':
+                            curenv[i[0]] = getEnvs(i[1])
+    except:
+        pass
 
 if "jxgc_kaituan" in os.environ:
     if len(os.environ["jxgc_kaituan"]) > 1:
@@ -228,6 +231,21 @@ if "jxgc_kaituan" in os.environ:
         print("已获取并使用Env环境 jxgc_kaituan:", jxgc_kaituan)
 if not isinstance(jxgc_kaituan, list):
     jxgc_kaituan = jxgc_kaituan.split(" ")
+
+def getactiveId():
+    global activeId
+    url = 'https://wqsd.jd.com/pingou/dream_factory/index.html'
+    headers = {
+        "Upgrade-Insecure-Requests": 1,
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Mobile Safari/537.36"
+    }
+    result = requests.get(url, headers, timeout=30).text
+    r = re.compile(r'activeId=(T_.*?),')
+    r = r.findall(result)
+    if len(r) > 0:
+        activeId = r[0]
+        print(f"当前最新activeId【{activeId}】")
+
 
 def get_sign(algo, data, key):
     key = key.encode('utf-8')
@@ -414,6 +432,23 @@ def buildURL(ck, url):
         print("buildURL Error", e)
         return headers, url
 
+def QueryAllTuan(ck):
+    try:
+        AllTuan = []
+        _time = stimestamp()
+        url = f'https://m.jingxi.com/dreamfactory/tuan/QueryAllTuan?activeId={activeId}&pageNo=1&pageSize=10&_time={_time}&_stk=_time%2CactiveId%2CpageNo%2CpageSize&_ste=1&h5st=20210724105729296%3B2467674280075162%3B10001%3Btk01wd39c1d7da8nL1htbzNBcHNnmnd2bEuQS%2FQohlxJNFyOR90QddNilWUQmE0YQnLVcpFrNUjse9fV6hmDawaHelzp%3Be247245ec2f99f76e05cdc80187dc718c90d3ae409ad9dee55dd412e350a64f6&_={int(_time)+12}&sceneval=2&g_login_type=1&callback=jsonpCBKF&g_ty=ls'
+        headers, url = buildURL(ck, url)
+        r = requests.get(url, headers=headers, timeout=30, verify=False).text
+        data = getResult(r)
+        for i in data['tuanInfo']:
+            AllTuan.append(i['tuanId'])
+        if len(AllTuan) > 0:
+            return AllTuan
+        else:
+            return False
+    except Exception as e:
+        print(e)
+        return False
 def QueryActiveConfig(ck):
     try:
         _time = stimestamp()
@@ -431,28 +466,39 @@ def QueryActiveConfig(ck):
         print("QueryActiveConfig Errpr", e)
 
 def Award(ck, tuanId):
+    global countElectric
     try:
         _time = stimestamp()
-        url = f'https://m.jingxi.com/dreamfactory/tuan/Award?activeId={activeId}&tuanId={tuanId}&_time={_time}&_stk=_time%2CactiveId%2CtuanId&_ste=1&h5st=20210718191447407%3B7117923136170161%3B10001%3Btk01wbabf1c6fa8nVWEzUnhGbkVXu%2BU5JvIH0sBY5KdtN%2FeUVwp%2FzPwCL7k9379OjujqfoLqoyJBK57podKunhi70f1O%3B434f9d888ab5f727dc6bae9fd0122d18165bc800f3de4ce70b0fd9b4bc23561d&_={int(_time)+12}&sceneval=2&g_login_type=1&callback=jsonpCBKF&g_ty=ls'
-        headers, url = buildURL(ck, url)
-        r = requests.get(url, headers=headers, timeout=30, verify=False).text
-        data = getResult(r)
-        if data['msg'] == 'OK':
-            electric = data['data']['electric']
-            msg(f"账号【{userNameList[ckNum]}】:{data['msg']},获取电力 :{electric}")
-        else:
-            msg(f"账号【{userNameList[ckNum]}】:{data['msg']}")
+        tuanIdList = QueryAllTuan(ck)
+        if tuanIdList:
+            for i in tuanIdList:
+                url = f'https://m.jingxi.com/dreamfactory/tuan/Award?activeId={activeId}&tuanId={i}&_time={_time}&_stk=_time%2CactiveId%2CtuanId&_ste=1&h5st=20210718191447407%3B7117923136170161%3B10001%3Btk01wbabf1c6fa8nVWEzUnhGbkVXu%2BU5JvIH0sBY5KdtN%2FeUVwp%2FzPwCL7k9379OjujqfoLqoyJBK57podKunhi70f1O%3B434f9d888ab5f727dc6bae9fd0122d18165bc800f3de4ce70b0fd9b4bc23561d&_={int(_time)+12}&sceneval=2&g_login_type=1&callback=jsonpCBKF&g_ty=ls'
+                headers, url = buildURL(ck, url)
+                r = requests.get(url, headers=headers, timeout=30, verify=False).text
+                data = getResult(r)
+                if data['msg'] == 'OK':
+                    electric = data['data']['electric']
+                    print(f"账号【{userNameList[ckNum]}】:获取电力 :{electric}")
+                    try:
+                        countElectric['{0}'.format(userNameList[ckNum])] += electric
+                    except:
+                        countElectric['{0}'.format(userNameList[ckNum])] = electric
+                else:
+                    print(f"账号【{userNameList[ckNum]}】:{data['msg']}")
     except Exception as e:
         print("Award Error ", e)
 def CreateTuan(ck):
     try:
-        _time = stimestamp()
-        url = f'https://m.jingxi.com/dreamfactory/tuan/CreateTuan?activeId={activeId}&isOpenApp=1&_time={_time}&_stk=_time%2CactiveId%2CisOpenApp&_ste=1&h5st=20210717213421615%3B4316088645437162%3B10001%3Btk01w692e1a35a8nelBVM0N0NEliPUhE8RRHmMdPdJCfVENO%2FE71ZoMM98S4V67ihTo7hDW75aJaU5V2XpU99JrsLPEF%3Bfe30749da12b4aab179b7fa95c4f7c20f46fda2cc50228293a47a337f1b3b734&_={int(_time) + 4}&sceneval=2&g_login_type=1&callback=jsonpCBKE&g_ty=ls'
-        headers, url = buildURL(ck, url)
-        r = requests.get(url, headers=headers, timeout=30, verify=False).text
-        getResult(r)
         tuanId, isOpenTuan, surplusOpenTuanNum, encryptPin = QueryActiveConfig(ck)
-        return tuanId
+        if surplusOpenTuanNum != 0:
+            _time = stimestamp()
+            url = f'https://m.jingxi.com/dreamfactory/tuan/CreateTuan?activeId={activeId}&isOpenApp=1&_time={_time}&_stk=_time%2CactiveId%2CisOpenApp&_ste=1&h5st=20210717213421615%3B4316088645437162%3B10001%3Btk01w692e1a35a8nelBVM0N0NEliPUhE8RRHmMdPdJCfVENO%2FE71ZoMM98S4V67ihTo7hDW75aJaU5V2XpU99JrsLPEF%3Bfe30749da12b4aab179b7fa95c4f7c20f46fda2cc50228293a47a337f1b3b734&_={int(_time) + 4}&sceneval=2&g_login_type=1&callback=jsonpCBKE&g_ty=ls'
+            headers, url = buildURL(ck, url)
+            r = requests.get(url, headers=headers, timeout=30, verify=False).text
+            getResult(r)
+            return tuanId, surplusOpenTuanNum
+        else:
+            return False, surplusOpenTuanNum
     except Exception as e:
         print("CreateTuan Error", e)
 
@@ -466,11 +512,11 @@ def JoinTuan(ck, tuanId, u, suser, user):
         data = getResult(r)
         ret = data['ret']
         if ret == 0:
-            msg(f"用户{u}【{user}】=>【{suser}】:{data['msg']}  加团成功谢谢你~")
+            print(f"用户{u}【{user}】=>【{suser}】:{data['msg']}  加团成功谢谢你~")
             cookiesList.remove(ck)
             return False
         elif ret == 10209:
-            msg(f"【{suser}】:{data['msg']}")
+            print(f"【{suser}】:{data['msg']}")
             return True
         elif ret == 10005:
             print(f"用户{u}【{user}】=>【{suser}】:{data['msg']}")
@@ -480,6 +526,7 @@ def JoinTuan(ck, tuanId, u, suser, user):
             return False
     except Exception as e:
         print("JoinTuan Error", e)
+
 
 
 def start():
@@ -494,6 +541,7 @@ def start():
         print("提示：你还没设置开团的账号，变量：export jxgc_kaituan=\"用户1&用户2\"")
         print(f"本次默认给【账号1】{userNameList[0]}开团")
         jxgc_kaituan.append(userNameList[0])
+    getactiveId()
     for ckname in jxgc_kaituan:
         try:
             ckNum = userNameList.index(ckname)
@@ -504,21 +552,38 @@ def start():
                 print(f"请检查被助力账号【{ckname}】名称是否正确？提示：助力名字可填pt_pin的值、也可以填账号名。")
                 continue
         userName = userNameList[ckNum]
-
+        s = 1
         for i in range(3):
             print(f"【{userNameList[ckNum]}】开始第{i+1}次开团")
-            tuanId = CreateTuan(cookiesList[ckNum])
-            u = 1
-            for i in cookiesList:
-                if i == cookiesList[ckNum]:
-                    u += 1
-                    continue
-                if JoinTuan(i, tuanId, u, suser=userName, user=userNameList[cookiesList.index(i)]):
-                    Award(cookiesList[ckNum], tuanId)
+            tuanId, surplusOpenTuanNum = CreateTuan(cookiesList[ckNum])
+            if i+1 == 1:
+                s_label = surplusOpenTuanNum
+            else:
+                if surplusOpenTuanNum == s_label:
+                    print(f'好友没有助力机会了')
                     break
-                u += 1
+            if tuanId:
+                u = 1
+                for i in cookiesList:
+                    if i == cookiesList[ckNum]:
+                        u += 1
+                        continue
+                    if JoinTuan(i, tuanId, u, suser=userName, user=userNameList[cookiesList.index(i)]):
+                        Award(cookiesList[ckNum], tuanId)
+                        break
+                    u += 1
+            else:
+                print(f'用户【{userName}】，今天已完成所有团。')
+                break
+            s += 1
     try:
-        if '获取电力' in msg_info:
+        u = 1
+        for name in countElectric.keys():
+            if u == 1:
+                msg("\n###【本次统计 {}】###\n".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+            msg(f"账号【{name}】\n\t└成功领取电力:{countElectric[name]}")
+            u += 1
+        if '成功领取电力' in msg_info:
             send(scriptName, msg_info)
     except:
         pass
