@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
+#签到领现金-助力
 '''
 项目名称: JD-Script / jd_cash
 Author: Curtin
@@ -7,7 +8,7 @@ Author: Curtin
 Date: 2021/7/4 上午09:35
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update 2021.7.24 14:02
+update 2021.7.24 18:02
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
@@ -208,12 +209,12 @@ getCk = getJDCookie()
 getCk.getCookie()
 
 # 获取v4环境 特殊处理
-if os.path.exists('/jd/config/config.sh'):
+if os.path.exists(v4f):
     try:
-        with open('/jd/config/config.sh', 'r', encoding='utf-8') as f:
+        with open(v4f, 'r', encoding='utf-8') as f:
             curenv = locals()
             for i in f.readlines():
-                r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$', re.M | re.S | re.I)
+                r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#!&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$', re.M | re.S | re.I)
                 r = r.findall(i)
                 if len(r) > 0:
                     for i in r:

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
+#全民抢京豆（7.22-7.31)
 '''
 项目名称: JD-Script / jd_qjd
 Author: Curtin
@@ -116,25 +117,54 @@ class msg(object):
         ###################
 msg("").main()
 ##############
-
-## 获取cookie
+def getEnvs(label):
+    try:
+        if label == 'True' or label == 'yes' or label == 'true' or label == 'Yes':
+            return True
+        elif label == 'False' or label == 'no' or label == 'false' or label == 'No':
+            return False
+    except Exception as e:
+        pass
+    try:
+        if '.' in label:
+            return float(label)
+        elif '&' in label:
+            return label.split('&')
+        elif '@' in label:
+            return label.split('@')
+        else:
+            return int(label)
+    except:
+        return label
 class getJDCookie(object):
     # 适配各种平台环境ck
+
     def getckfile(self):
-        if os.path.exists(pwd + 'JDCookies.txt'):
-            return pwd + 'JDCookies.txt'
-        elif os.path.exists('/ql/config/env.sh'):
+        global v4f
+        curf = pwd + 'JDCookies.txt'
+        v4f = '/jd/config/config.sh'
+        ql_new = '/ql/config/env.sh'
+        ql_old = '/ql/config/cookie.sh'
+        if os.path.exists(curf):
+            with open(curf, "r", encoding="utf-8") as f:
+                cks = f.read()
+                f.close()
+            r = re.compile(r"pt_key=.*?pt_pin=.*?;", re.M | re.S | re.I)
+            cks = r.findall(cks)
+            if len(cks) > 0:
+                return curf
+            else:
+                pass
+        if os.path.exists(ql_new):
             print("当前环境青龙面板新版")
-            return '/ql/config/env.sh'
-        elif os.path.exists('/ql/config/cookie.sh'):
+            return ql_new
+        elif os.path.exists(ql_old):
             print("当前环境青龙面板旧版")
-            return '/ql/config/env.sh'
-        elif os.path.exists('/jd/config/config.sh'):
+            return ql_old
+        elif os.path.exists(v4f):
             print("当前环境V4")
-            return '/jd/config/config.sh'
-        elif os.path.exists(pwd + 'JDCookies.txt'):
-            return pwd + 'JDCookies.txt'
-        return pwd + 'JDCookies.txt'
+            return v4f
+        return curf
 
     # 获取cookie
     def getCookie(self):
@@ -153,7 +183,10 @@ class getJDCookie(object):
                             print("当前获取使用 JDCookies.txt 的cookie")
                         cookies = ''
                         for i in cks:
-                            cookies += i
+                            if 'pt_key=xxxx' in i:
+                                pass
+                            else:
+                                cookies += i
                         return
             else:
                 with open(pwd + 'JDCookies.txt', "w", encoding="utf-8") as f:
@@ -232,13 +265,27 @@ class getJDCookie(object):
             exit(4)
 getCk = getJDCookie()
 getCk.getCookie()
-##############
+# 获取v4环境 特殊处理
+if os.path.exists(v4f):
+    try:
+        with open(v4f, 'r', encoding='utf-8') as f:
+            curenv = locals()
+            for i in f.readlines():
+                r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#!&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$', re.M | re.S | re.I)
+                r = r.findall(i)
+                if len(r) > 0:
+                    for i in r:
+                        if i[0] != 'JD_COOKIE':
+                            curenv[i[0]] = getEnvs(i[1])
+    except:
+        pass
 
 if "qjd_zlzh" in os.environ:
     if len(os.environ["qjd_zlzh"]) > 1:
         qjd_zlzh = os.environ["qjd_zlzh"]
         qjd_zlzh = qjd_zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 qjd_zlzh:", qjd_zlzh)
+
 
 def userAgent():
     """

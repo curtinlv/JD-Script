@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
+#京喜工厂开团
 '''
 项目名称: JD-Script / jd_jxgc_tuan
 Author: Curtin
@@ -205,12 +206,12 @@ getCk = getJDCookie()
 getCk.getCookie()
 
 # 获取v4环境 特殊处理
-if os.path.exists('/jd/config/config.sh'):
+if os.path.exists(v4f):
     try:
-        with open('/jd/config/config.sh', 'r', encoding='utf-8') as f:
+        with open(v4f, 'r', encoding='utf-8') as f:
             curenv = locals()
             for i in f.readlines():
-                r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$', re.M | re.S | re.I)
+                r = re.compile(r'^export\s(.*?)=[\'\"]?([\w\.\-@#!&=_,\[\]\{\}\(\)]{1,})+[\'\"]{0,1}$', re.M | re.S | re.I)
                 r = r.findall(i)
                 if len(r) > 0:
                     for i in r:
