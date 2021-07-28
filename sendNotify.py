@@ -135,7 +135,10 @@ def telegram_bot(title, content):
             return
         print("tg服务启动")
         if TG_API_HOST:
-            url = f"{TG_API_HOST}/bot{TG_BOT_TOKEN}/sendMessage"
+            if 'http' in TG_API_HOST:
+                url = f"{TG_API_HOST}/bot{TG_BOT_TOKEN}/sendMessage"
+            else:
+                url = f"https://{TG_API_HOST}/bot{TG_BOT_TOKEN}/sendMessage"
         else:
             url = f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage"
 
