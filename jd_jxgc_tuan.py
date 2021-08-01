@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
-#京喜工厂开团
 '''
 项目名称: JD-Script / jd_jxgc_tuan
 Author: Curtin
@@ -10,6 +9,8 @@ Date: 2021/7/17 下午9:40
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 update 2021.7.24 14:30
+建议cron: 0 0,7,10 * * *  python3 jd_jxgc_tuan.py
+new Env('京喜工厂开团');
 '''
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
 cookies = ''

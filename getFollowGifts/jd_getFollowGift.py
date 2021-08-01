@@ -5,6 +5,8 @@
 Author: Curtin
 功能：
 Date: 2021/6/6 上午7:57
+建议cron: 0 9 * * *  python3 jd_getFollowGift.py
+new Env('关注有礼');
 '''
 ##################################
 #cookie填写，注意：#ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
