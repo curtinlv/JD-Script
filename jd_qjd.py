@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
-#全民抢京豆（7.22-7.31)
+#全民抢京豆（8.6-8.16)
 '''
 项目名称: JD-Script / jd_qjd
 Author: Curtin
-功能：全民抢京豆（7.22-7.31）：https://h5.m.jd.com/rn/3MQXMdRUTeat9xqBSZDSCCAE9Eqz/index.html?has_native=0
+功能：全民抢京豆（8.6-8.16）：https://h5.m.jd.com/rn/3MQXMdRUTeat9xqBSZDSCCAE9Eqz/index.html?has_native=0
     满160豆需要20人助力，每个用户目前只能助力2次不同的用户。
 Date: 2021/7/3 上午10:02
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 update: 2021.7.24 14:21
 建议cron: 0 0 * * *  python3 jd_qjd.py
-new Env('全民抢京豆');
+new Env('全民抢京豆 8.6-8.16');
 * 修复了助力活动不存在、增加了随机UA（如果未定义ua则启用随机UA）
 * 新增推送
 * 修复0点不能开团
 * 兼容pin为中文转码编码
 '''
-print("全民抢京豆(7.22-7.31）--活动已结束\nTG交流 https://t.me/topstyle996\nTG频道 https://t.me/TopStyle2021")
-exit(0)
+# print("全民抢京豆(7.22-7.31）--活动已结束\nTG交流 https://t.me/topstyle996\nTG频道 https://t.me/TopStyle2021")
+# exit(0)
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
 cookies = ''
 qjd_zlzh = ['Your JD_User', '买买买']
