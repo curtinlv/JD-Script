@@ -10,7 +10,7 @@ Date: 2021/7/3 上午10:02
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 update: 2021.7.24 14:21
-建议cron: 0 0 * * *  python3 jd_qjd.py
+建议cron: 0 0 6-16 8 *  python3 jd_qjd.py
 new Env('全民抢京豆 8.6-8.16');
 * 修复了助力活动不存在、增加了随机UA（如果未定义ua则启用随机UA）
 * 新增推送
