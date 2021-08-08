@@ -37,7 +37,7 @@ from hashlib import sha256, sha512, md5
 import hmac
 
 appId = 10001
-activeId = 'T_zZaWP6by9yA1wehxM4mg%3D%3D'
+activeId = 'Xj2_3G-hQ4GRLCsLqIxFeQ%3D%3D'
 
 countElectric = {}
 def userAgent():
@@ -243,7 +243,7 @@ def getactiveId():
         "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Mobile Safari/537.36"
     }
     result = requests.get(url, headers, timeout=30).text
-    r = re.compile(r'activeId=(T_.*?),')
+    r = re.compile(r'activeId=(Xj2_.*?),')
     r = r.findall(result)
     if len(r) > 0:
         activeId = r[0]
