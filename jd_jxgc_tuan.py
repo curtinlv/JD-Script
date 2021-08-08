@@ -8,7 +8,7 @@ cron: 10 0,7 * * *
 Date: 2021/7/17 下午9:40
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update 2021.7.24 14:30
+update 2021.8.8 12:30
 建议cron: 0 0,7,10 * * *  python3 jd_jxgc_tuan.py
 new Env('京喜工厂开团');
 '''
