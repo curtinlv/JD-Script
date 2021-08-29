@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
-#京喜工厂开团
 '''
 项目名称: JD-Script / jd_jxgc_tuan
 Author: Curtin
@@ -9,7 +8,9 @@ cron: 10 0,7 * * *
 Date: 2021/7/17 下午9:40
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-update 2021.7.24 14:30
+update 2021.8.8 12:30
+建议cron: 0 0,7,10 * * *  python3 jd_jxgc_tuan.py
+new Env('京喜工厂开团');
 '''
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
 cookies = ''
@@ -36,7 +37,7 @@ from hashlib import sha256, sha512, md5
 import hmac
 
 appId = 10001
-activeId = 'T_zZaWP6by9yA1wehxM4mg%3D%3D'
+activeId = 'Xj2_3G-hQ4GRLCsLqIxFeQ%3D%3D'
 
 countElectric = {}
 def userAgent():
@@ -140,9 +141,9 @@ class getJDCookie(object):
         except Exception as e:
             print(f"【getCookie Error】{e}")
 
-    # 检测cookie格式是否正确
+        # 检测cookie格式是否正确
     def getUserInfo(self, ck, pinName, userNum):
-        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback=GetJDUserInfoUnion'
+        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback='
         headers = {
             'Cookie': ck,
             'Accept': '*/*',
@@ -154,12 +155,17 @@ class getJDCookie(object):
             'Accept-Language': 'zh-cn'
         }
         try:
-            resp = requests.get(url=url, verify=False, headers=headers, timeout=60).text
-            r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
-            result = r.findall(resp)
-            userInfo = json.loads(result[0])
-            nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
-            return ck, nickname
+            if sys.platform == 'ios':
+                resp = requests.get(url=url, verify=False, headers=headers, timeout=60).json()
+            else:
+                resp = requests.get(url=url, headers=headers, timeout=60).json()
+            if resp['retcode'] == "0":
+                nickname = resp['data']['userInfo']['baseInfo']['nickname']
+                return ck, nickname
+            else:
+                context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
+                print(context)
+                return ck, False
         except Exception:
             context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
             print(context)
@@ -242,7 +248,7 @@ def getactiveId():
         "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Mobile Safari/537.36"
     }
     result = requests.get(url, headers, timeout=30).text
-    r = re.compile(r'activeId=(T_.*?),')
+    r = re.compile(r'activeId=(Xj2_.*?),')
     r = r.findall(result)
     if len(r) > 0:
         activeId = r[0]

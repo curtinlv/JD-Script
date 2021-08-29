@@ -9,6 +9,8 @@ Date: 2021/7/4 上午09:35
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 update 2021.7.24 18:02
+建议cron: 0 0 * * *  python3 jd_cashHelp.py
+new Env('签到领现金-助力');
 '''
 
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
@@ -142,9 +144,9 @@ class getJDCookie(object):
         except Exception as e:
             print(f"【getCookie Error】{e}")
 
-    # 检测cookie格式是否正确
+        # 检测cookie格式是否正确
     def getUserInfo(self, ck, pinName, userNum):
-        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback=GetJDUserInfoUnion'
+        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback='
         headers = {
             'Cookie': ck,
             'Accept': '*/*',
@@ -156,12 +158,17 @@ class getJDCookie(object):
             'Accept-Language': 'zh-cn'
         }
         try:
-            resp = requests.get(url=url, verify=False, headers=headers, timeout=60).text
-            r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
-            result = r.findall(resp)
-            userInfo = json.loads(result[0])
-            nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
-            return ck, nickname
+            if sys.platform == 'ios':
+                resp = requests.get(url=url, verify=False, headers=headers, timeout=60).json()
+            else:
+                resp = requests.get(url=url, headers=headers, timeout=60).json()
+            if resp['retcode'] == "0":
+                nickname = resp['data']['userInfo']['baseInfo']['nickname']
+                return ck, nickname
+            else:
+                context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
+                print(context)
+                return ck, False
         except Exception:
             context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
             print(context)

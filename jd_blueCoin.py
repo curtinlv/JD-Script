@@ -1,6 +1,5 @@
 #!/bin/env python3
 # -*- coding: utf-8 -*
-#东东超市商品兑换
 '''
 项目名称: JD-Script / jd_blueCoin
 Author: Curtin
@@ -10,6 +9,7 @@ update: 2021/7/24 18:30
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 建议cron: 59 23 * * *  python3 jd_blueCoin.py
+new Env('东东超市商品兑换');
 '''
 ################【参数】######################
 # ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
@@ -133,9 +133,9 @@ class getJDCookie(object):
         except Exception as e:
             printT(f"【getCookie Error】{e}")
 
-    # 检测cookie格式是否正确
+        # 检测cookie格式是否正确
     def getUserInfo(self, ck, pinName, userNum):
-        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback=GetJDUserInfoUnion'
+        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback='
         headers = {
             'Cookie': ck,
             'Accept': '*/*',
@@ -147,15 +147,20 @@ class getJDCookie(object):
             'Accept-Language': 'zh-cn'
         }
         try:
-            resp = requests.get(url=url, verify=False, headers=headers, timeout=60).text
-            r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
-            result = r.findall(resp)
-            userInfo = json.loads(result[0])
-            nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
-            return ck, nickname
+            if sys.platform == 'ios':
+                resp = requests.get(url=url, verify=False, headers=headers, timeout=60).json()
+            else:
+                resp = requests.get(url=url, headers=headers, timeout=60).json()
+            if resp['retcode'] == "0":
+                nickname = resp['data']['userInfo']['baseInfo']['nickname']
+                return ck, nickname
+            else:
+                context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
+                print(context)
+                return ck, False
         except Exception:
             context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
-            printT(context)
+            print(context)
             return ck, False
 
     def iscookie(self):
