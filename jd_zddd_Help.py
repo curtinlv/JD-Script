@@ -209,7 +209,7 @@ def zhuli(ck, username, code):
         if resp.json()['data']:
             print(username, "助力完成~")
     except:
-        print(username, "助力失败~", resp.json())
+        print(username, "助力失败~")
 
 def start():
     cookiesList, userNameList, pinNameList = getCk.iscookie()
