@@ -124,6 +124,7 @@ class getJDCookie(object):
         }
         try:
             if sys.platform == 'ios':
+                requests.packages.urllib3.disable_warnings()
                 resp = requests.get(url=url, verify=False, headers=headers, timeout=60).json()
             else:
                 resp = requests.get(url=url, headers=headers, timeout=60).json()
