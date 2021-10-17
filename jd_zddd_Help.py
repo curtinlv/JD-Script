@@ -10,7 +10,7 @@ TG频道 https://t.me/TopStyle2021
 cron: 0 0 * * *
 '''
 
-# 种豆得豆助力码 ENV环境变量设置 PLANT_BEAN_SHARECODES="code1&code2&code3"
+# 种豆得豆助力码 ENV环境变量设置 export PLANT_BEAN_SHARECODES="code1&code2&code3"
 zddd_code = ["htk72lxpnunzixkrhxvd4gjj3a3h7wlwy7o5jii", ]
 
 # UA 可自定义你的，注意格式: 【 jdapp;iPhone;10.0.4;14.2;9fb54498b32e17dfc5717744b5eaecda8366223c;network/wifi;ADID/2CF597D0-10D8-4DF8-C5A2-61FD79AC8035;model/iPhone11,1;addressid/7785283669;appBuild/167707;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/null;supportJDSHWK/1 】
@@ -24,7 +24,7 @@ except Exception as e:
     print(e, "\n缺少requests 模块，请执行命令安装：python3 -m pip install requests")
     exit(3)
 from urllib.parse import unquote
-requests.packages.urllib3.disable_warnings()
+# requests.packages.urllib3.disable_warnings()
 pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
 ###
 uuid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 40))
@@ -205,7 +205,7 @@ def zhuli(ck, username, code):
         'Accept-Language': 'zh-cn'
     }
     try:
-        resp = requests.get(url=url, headers=headers, verify=False, timeout=30)
+        resp = requests.get(url=url, headers=headers,  timeout=30)
         if resp.json()['data']:
             print(username, "助力完成~")
     except:
