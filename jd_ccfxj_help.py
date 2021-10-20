@@ -179,9 +179,9 @@ getCk.getCookie()
 
 if "ccfxj_help" in os.environ:
     if len(os.environ["ccfxj_help"]) > 1:
-        ccfxj_help_str = os.environ["ccfxj_help"]
-        if '&' in ccfxj_help_str:
-            ccfxj_help = ccfxj_help_str.split('&')
+        ccfxj_help = os.environ["ccfxj_help"]
+        if '&' in ccfxj_help:
+            ccfxj_help = ccfxj_help.split('&')
         print("已获取并使用Env环境 ccfxj_help:", ccfxj_help)
 if not isinstance(ccfxj_help, list):
     ccfxj_help = ccfxj_help.split(" ")
