@@ -8,6 +8,7 @@ Date: 2021/10/17 下午12:12
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 cron: 0 0 * * *
+new Env('种豆得豆-助力.py');
 '''
 
 # 种豆得豆助力码 ENV环境变量设置 export PLANT_BEAN_SHARECODES="code1&code2&code3"
