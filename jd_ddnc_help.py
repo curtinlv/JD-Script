@@ -10,9 +10,9 @@ TG频道 https://t.me/TopStyle2021
 cron: 0 0 * * *
 new Env('东东农场-助力');
 '''
-# 是否按ck顺序助力, true: 指定助力账号不生效 ，默认false
-ddnc_isOrder = "true"
-# 东东农场助力名单(当ddnc_isOrder = "false" 才生效), ENV 环境设置 export ddnc_help_list="Curtinlv&用户2&用户3"
+# 是否按ck顺序助力, true: 按顺序助力 false：按指定用户助力，默认true
+ddnc_isOrder="true"
+# 东东农场助力名单(当ddnc_isOrder="false" 才生效), ENV 环境设置 export ddnc_help_list="Curtinlv&用户2&用户3"
 ddnc_help_list = ["Curtinlv", "用户2", "用户3"]
 
 # UA 可自定义你的, 默认随机生成UA。
