@@ -321,8 +321,8 @@ def start():
                     continue
             masterName = userNameList[ckNum]
             shareCode = getShareCode(cookiesList[ckNum])
+            msg(f"开始助力 {masterName}")
             for ck, nickname in zip(cookiesList, userNameList):
-                msg(f"{nickname} 助力 {masterName}")
                 if nickname == masterName:
                     print(f"{masterName} 不能助力自己，跳过~")
                     continue
