@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_ddnc_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_ddnc_help.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,8 +83,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2333">
-              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="270">
+              <caret line="290" column="35" selection-start-line="290" selection-start-column="35" selection-end-line="290" selection-end-column="35" />
               <folding>
                 <element signature="e#341#359#0" expanded="true" />
                 <element signature="e#1325#6542#0" />
@@ -554,21 +555,7 @@
       <workItem from="1634441815818" duration="7755000" />
       <workItem from="1634734713955" duration="5163000" />
       <workItem from="1634741815604" duration="439000" />
-      <workItem from="1634957947277" duration="11459000" />
-    </task>
-    <task id="LOCAL-00108" summary="修复env填写变量问题">
-      <created>1624796301417</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1624796301417</updated>
-    </task>
-    <task id="LOCAL-00109" summary="修复env填写变量问题">
-      <created>1624802362676</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1624802362676</updated>
+      <workItem from="1634957947277" duration="12452000" />
     </task>
     <task id="LOCAL-00110" summary="已修复首次不能开团Bug">
       <created>1625109870924</created>
@@ -899,11 +886,25 @@
       <option name="project" value="LOCAL" />
       <updated>1634741929949</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <task id="LOCAL-00157" summary="新增测试：东东农场 好友助力">
+      <created>1634990114689</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1634990114691</updated>
+    </task>
+    <task id="LOCAL-00158" summary="新增测试：东东农场 好友助力">
+      <created>1634990937201</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1634990937201</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="444063000" />
+    <option name="totallyTimeSpent" value="445056000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -923,7 +924,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.17512691" side_tool="true" weight="0.3404864" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.3568406" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.2538787" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.4583921" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -956,7 +957,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="全民抢京豆（7.2-7.15）" />
     <MESSAGE value="全民抢京豆（7.2-7.15）:已修复一些问题" />
     <MESSAGE value="修复获取cookie获取顺序为txt优先" />
     <MESSAGE value="修复了助力活动不存在、增加了随机UA（如果定义ua则启用随机UA）" />
@@ -981,7 +981,8 @@
     <MESSAGE value="新增测试：种豆得豆好友助力" />
     <MESSAGE value="新增测试：城城分现金助力 活动入口：15.0:/￥WAAD60EE92byb0%，☃そ點①點ひ领哯唫！" />
     <MESSAGE value="新增测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增测试" />
+    <MESSAGE value="新增测试：东东农场 好友助力" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增测试：东东农场 好友助力" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1403,8 +1404,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2333">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="270">
+          <caret line="290" column="35" selection-start-line="290" selection-start-column="35" selection-end-line="290" selection-end-column="35" />
           <folding>
             <element signature="e#341#359#0" expanded="true" />
             <element signature="e#1325#6542#0" />

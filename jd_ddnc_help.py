@@ -286,9 +286,9 @@ def ddnc_help(ck, nickname, shareCode, masterName):
         # masterUserName = response['helpResult']['masterUserInfo']['nickName']
         help_result = response['helpResult']['code']
         if help_result == "0":
-            print(f"\t└👌 助力成功～")
+            print(f"\t└👌{nickname} 助力成功～")
         elif help_result == "8":
-            print(f"\t└😆 已没有助力机会~  ")
+            print(f"\t└😆{nickname} 已没有助力机会~  ")
         elif help_result == "10":
             msg(f"\t└☺️ {masterName} 今天好友助力已满～")
             # awardInviteFriendForFarm(ck)
