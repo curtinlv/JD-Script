@@ -10,8 +10,11 @@ TG频道 https://t.me/TopStyle2021
 cron: 0 0 * * *
 new Env('东东农场-助力');
 '''
-# 东东农场助力名单, ENV 环境设置 export ddnc_help_list="Curtinlv&用户2&用户3"
+# 是否按ck顺序助力, true: 指定助力账号不生效 ，默认false
+ddnc_isOrder = "true"
+# 东东农场助力名单(当ddnc_isOrder = "false" 才生效), ENV 环境设置 export ddnc_help_list="Curtinlv&用户2&用户3"
 ddnc_help_list = ["Curtinlv", "用户2", "用户3"]
+
 # UA 可自定义你的, 默认随机生成UA。
 UserAgent = ''
 
@@ -174,7 +177,9 @@ class getJDCookie(object):
 
 getCk = getJDCookie()
 getCk.getCookie()
-
+if "ddnc_isOrder" in os.environ:
+    if len(os.environ["ddnc_isOrder"]) > 1:
+        ddnc_isOrder = os.environ["ddnc_isOrder"]
 if "ddnc_help_list" in os.environ:
     if len(os.environ["ddnc_help_list"]) > 1:
         ddnc_help_list = os.environ["ddnc_help_list"]
@@ -307,28 +312,46 @@ def start():
         print(scriptName)
         global cookiesList, userNameList, pinNameList, ckNum
         cookiesList, userNameList, pinNameList = getCk.iscookie()
-        if not ddnc_help_list:
-            print("您未配置助力的账号，\n助力账号名称：可填用户名 或 pin的值不要; \nenv 设置 export ddnc_help_list=\"Curtinlv&用户2\"  多账号&分隔\n本次退出。")
-            sys.exit(0)
-        for ckname in ddnc_help_list:
-            try:
-                ckNum = userNameList.index(ckname)
-            except Exception as e:
+        if ddnc_isOrder == "true":
+            for ck,user in zip(cookiesList,userNameList):
+                msg(f"开始助力 {user}")
                 try:
-                    ckNum = pinNameList.index(unquote(ckname))
-                except:
-                    msg(f"请检查被助力账号【{ckname}】名称是否正确？提示：助力名字可填pt_pin的值、也可以填账号名。")
+                    shareCode = getShareCode(ck)
+                except Exception as e:
+                    print(e)
                     continue
-            masterName = userNameList[ckNum]
-            shareCode = getShareCode(cookiesList[ckNum])
-            msg(f"开始助力 {masterName}")
-            for ck, nickname in zip(cookiesList, userNameList):
-                if nickname == masterName:
-                    print(f"{masterName} 不能助力自己，跳过~")
-                    continue
-                result = ddnc_help(ck, nickname, shareCode, masterName)
-                if result:
-                    break
+                for ck, nickname in zip(cookiesList, userNameList):
+                    if nickname == user:
+                        print(f"\t└😓{user} 不能助力自己，跳过~")
+                        continue
+                    result = ddnc_help(ck, nickname, shareCode, user)
+                    if result:
+                        break
+        elif ddnc_isOrder == "false":
+            if not ddnc_help_list:
+                print("您未配置助力的账号，\n助力账号名称：可填用户名 或 pin的值不要; \nenv 设置 export ddnc_help_list=\"Curtinlv&用户2\"  多账号&分隔\n本次退出。")
+                sys.exit(0)
+            for ckname in ddnc_help_list:
+                try:
+                    ckNum = userNameList.index(ckname)
+                except Exception as e:
+                    try:
+                        ckNum = pinNameList.index(unquote(ckname))
+                    except:
+                        msg(f"请检查被助力账号【{ckname}】名称是否正确？提示：助力名字可填pt_pin的值、也可以填账号名。")
+                        continue
+                masterName = userNameList[ckNum]
+                shareCode = getShareCode(cookiesList[ckNum])
+                msg(f"开始助力 {masterName}")
+                for ck, nickname in zip(cookiesList, userNameList):
+                    if nickname == masterName:
+                        print(f"\t└😓{masterName} 不能助力自己，跳过~")
+                        continue
+                    result = ddnc_help(ck, nickname, shareCode, masterName)
+                    if result:
+                        break
+        else:
+            print("请检查ddnc_isOrder 变量参数是否正确填写。")
         send(scriptName, msg_info)
     except Exception as e:
         print(e)
