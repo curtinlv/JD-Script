@@ -268,9 +268,9 @@ def qryViewkitCallbackResult(header, taskToken):
     body = 'body={"dataSource":"newshortAward","method":"getTaskAward","reqParams":"%7B%5C%22taskToken%5C%22%3A%5C%22' + taskToken + '%5C%22%7D","sdkVersion":"1.0.0","clientLanguage":"zh","onlyTimeId":' + str(t) + ',"riskParam":{"platform":"3","orgType":"2","openId":"-1","pageClickKey":"Babel_VKCoupon","eid":"","fp":"-1","shshshfp":"","shshshfpa":"","shshshfpb":"","childActivityUrl":"","userArea":"-1","client":"","clientVersion":"","uuid":"","osVersion":"","brand":"","model":"","networkType":"","jda":"-1"}}'
     resp = requests.post(url=url, headers=header, data=body).json()
     if 'success' in resp['msg']:
-        print("\t└☺️", resp['toast']['subTitle'])
+        print("\t\t└☺️", resp['toast']['subTitle'])
     else:
-        print("\t└😓", resp)
+        print("\t\t└😓", resp)
 
 def task(ck):
     header = buildHeaders(ck)
@@ -292,10 +292,11 @@ def task(ck):
                         print(f"\t└开始 {o['shopName']}")
                         followShop(header, shopId)
                         travel_collectScore(header, taskId, taskToken, secretp)
-                        print("\t└停留8秒~")
+                        print("\t\t└停留8秒~")
                         time.sleep(8)
                         # qryCompositeMaterials(header, id)
                         qryViewkitCallbackResult(header, taskToken)
+
 
 
 # 好友邀请助力
@@ -313,7 +314,6 @@ def friendsHelp(ck, inviteId, secretp, nickname):
         else:
             print(f"\t└😯用户【{nickname}】{result}")
         if bizCode == -201:
-            print(f"\t└👌用户【{nickname}】助力任务已完成。")
             return True
         else:
             return False
@@ -361,6 +361,7 @@ def start():
                     print(f"\t└😓{masterName} 不能助力自己，跳过~")
                     continue
                 if friendsHelp(ck, sharecode, getHomeData(buildHeaders(ck)), nickname):
+                    print(f"\t└👌用户【{masterName}】助力任务已完成。")
                     break
             task(c)
     except Exception as e:
