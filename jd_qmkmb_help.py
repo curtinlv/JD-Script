@@ -322,7 +322,7 @@ def start():
             for i,u in zip(cookiesList,userNameList):
                 rid, total = getrid(i)
                 msg(f"账户🧧[{u}]:本场收益红包:{total}")
-            msg("活动入口：京豆app-领券中心-锦鲤红包。")
+            msg("\n【活动入口】：京豆app-领券中心-锦鲤红包。")
         elif qmkhb_isOrder == "false":
             if not qmkhb_help:
                 print("您未配置助力的账号，\n助力账号名称：可填用户名 或 pin的值不要; \nenv 设置 export qmkhb_help=\"Curtinlv&用户2\"  多账号&分隔\n本次退出。")
@@ -347,7 +347,7 @@ def start():
                     friendhelp(ck, rid, nickname)
                 rid, total = getrid(cookiesList[ckNum])
                 msg(f"账户🧧[{masterName}]:本场收益红包:{total}")
-            msg("活动入口：京豆app-领券中心-锦鲤红包。")
+            msg("\n【活动入口】：京豆app-领券中心-锦鲤红包。")
         else:
             print("请检查qmkhb_isOrder 变量参数是否正确填写。")
         if isNotice:

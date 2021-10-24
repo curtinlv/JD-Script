@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="新增测试：东东农场 好友助力">
-      <change beforePath="$PROJECT_DIR$/jd_ddnc_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_ddnc_help.py" afterDir="false" />
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="新增测试：1、全民开红包（锦鲤红包）助力；2、isNotice=True|False （是否开启通知推送服务）。">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_qmkmb_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_qmkmb_help.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="325" column="60" selection-start-line="325" selection-start-column="60" selection-end-line="325" selection-end-column="60" />
+            <state relative-caret-position="300">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -41,11 +42,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_qmkmb_help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="277" column="18" lean-forward="true" selection-start-line="277" selection-start-column="18" selection-end-line="277" selection-end-column="18" />
+            <state relative-caret-position="124">
+              <caret line="324" column="44" selection-start-line="324" selection-start-column="44" selection-end-line="324" selection-end-column="44" />
               <folding>
                 <element signature="e#491#509#0" expanded="true" />
                 <element signature="e#828#2413#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jd_ccfxj_help.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding>
+                <element signature="e#1757#6974#0" />
+                <element signature="e#8106#9729#0" />
               </folding>
             </state>
           </provider>
@@ -166,10 +180,10 @@
         <option value="$PROJECT_DIR$/JDCookies_test.txt" />
         <option value="$PROJECT_DIR$/jd_zddd.py" />
         <option value="$PROJECT_DIR$/jd_zddd_Help.py" />
-        <option value="$PROJECT_DIR$/jd_ccfxj_help.py" />
         <option value="$PROJECT_DIR$/test_json.py" />
         <option value="$PROJECT_DIR$/JDCookies.txt" />
         <option value="$PROJECT_DIR$/jd_ddnc_help.py" />
+        <option value="$PROJECT_DIR$/jd_ccfxj_help.py" />
         <option value="$PROJECT_DIR$/jd_qmkmb_help.py" />
       </list>
     </option>
@@ -470,21 +484,7 @@
       <workItem from="1634441815818" duration="7755000" />
       <workItem from="1634734713955" duration="5163000" />
       <workItem from="1634741815604" duration="439000" />
-      <workItem from="1634957947277" duration="20723000" />
-    </task>
-    <task id="LOCAL-00113" summary="全民抢京豆（7.2-7.15）">
-      <created>1625291809660</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1625291809660</updated>
-    </task>
-    <task id="LOCAL-00114" summary="全民抢京豆（7.2-7.15）:已修复一些问题">
-      <created>1625292320861</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1625292320861</updated>
+      <workItem from="1634957947277" duration="21892000" />
     </task>
     <task id="LOCAL-00115" summary="全民抢京豆（7.2-7.15）:已修复一些问题">
       <created>1625296449413</created>
@@ -815,11 +815,25 @@
       <option name="project" value="LOCAL" />
       <updated>1634992739178</updated>
     </task>
-    <option name="localTasksCounter" value="162" />
+    <task id="LOCAL-00162" summary="新增测试：全民开红包-好友助力">
+      <created>1635070096310</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1635070096310</updated>
+    </task>
+    <task id="LOCAL-00163" summary="新增测试：1、全民开红包（锦鲤红包）助力；2、isNotice=True|False （是否开启通知推送服务）。">
+      <created>1635070610359</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1635070610359</updated>
+    </task>
+    <option name="localTasksCounter" value="164" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="453327000" />
+    <option name="totallyTimeSpent" value="454496000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -834,12 +848,12 @@
     <frame x="0" y="28" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.20100144" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.20100144" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.17512691" side_tool="true" weight="0.3404864" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.21861777" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.08180536" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.4583921" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -872,8 +886,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="全民抢京豆（7.2-7.15）:已修复一些问题" />
-    <MESSAGE value="修复获取cookie获取顺序为txt优先" />
     <MESSAGE value="修复了助力活动不存在、增加了随机UA（如果定义ua则启用随机UA）" />
     <MESSAGE value="新增通知服务" />
     <MESSAGE value="修复pushplus 推送加" />
@@ -897,7 +909,9 @@
     <MESSAGE value="新增测试：城城分现金助力 活动入口：15.0:/￥WAAD60EE92byb0%，☃そ點①點ひ领哯唫！" />
     <MESSAGE value="新增测试" />
     <MESSAGE value="新增测试：东东农场 好友助力" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增测试：东东农场 好友助力" />
+    <MESSAGE value="新增测试：全民开红包-好友助力" />
+    <MESSAGE value="新增测试：1、全民开红包（锦鲤红包）助力；2、isNotice=True|False （是否开启通知推送服务）。" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增测试：1、全民开红包（锦鲤红包）助力；2、isNotice=True|False （是否开启通知推送服务）。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -939,12 +953,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/jd_ddnc_help.py</url>
-          <line>20</line>
+          <line>21</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/jd_qmkmb_help.py</url>
-          <line>21</line>
+          <line>22</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
@@ -1266,13 +1280,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jd_zddd_Help.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="44" column="29" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_json.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
@@ -1306,8 +1313,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_ccfxj_help.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="11" selection-end-column="25" />
+        <state relative-caret-position="240">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
             <element signature="e#1757#6974#0" />
             <element signature="e#8106#9729#0" />
@@ -1315,17 +1322,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jd_zddd_Help.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2201">
+          <caret line="44" column="29" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="325" column="60" selection-start-line="325" selection-start-column="60" selection-end-line="325" selection-end-column="60" />
+        <state relative-caret-position="300">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_qmkmb_help.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="277" column="18" lean-forward="true" selection-start-line="277" selection-start-column="18" selection-end-line="277" selection-end-column="18" />
+        <state relative-caret-position="124">
+          <caret line="324" column="44" selection-start-line="324" selection-start-column="44" selection-end-line="324" selection-end-column="44" />
           <folding>
             <element signature="e#491#509#0" expanded="true" />
             <element signature="e#828#2413#0" />
