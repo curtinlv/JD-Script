@@ -3,12 +3,16 @@
 '''
 项目名称: JD-Script / jd_hyj 
 Author: Curtin
-功能：环游记-好友助力，默认按顺序助力，每个号6次助力机会
+功能：环游记
+    1、好友助力，默认按顺序助力，每个号6次助力机会
+    2、浏览并关注任务
+    3、待完成
 Date: 2021/10/24 下午6:52
+Update: 2021/10/24 下午11:52
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 cron: 0 0,23 * 10-11 *
-new Env('环游记-好友助力');
+new Env('环游记 for Curtin');
 '''
 
 
@@ -16,7 +20,7 @@ new Env('环游记-好友助力');
 UserAgent = ''
 
 import os, re, sys
-import random
+import random, json, time
 try:
     import requests
 except Exception as e:
@@ -205,11 +209,11 @@ def buildHeaders(ck):
     }
     return headers
 
-def getHomeData(ck):
+def getHomeData(header):
     try:
         url = 'https://api.m.jd.com/client.action?functionId=travel_getHomeData'
         body = 'functionId=travel_getHomeData&body={"inviteId":""}&client=wh5&clientVersion=1.0.0'
-        resp = requests.post(url=url, headers=buildHeaders(ck), data=body, timeout=10).json()
+        resp = requests.post(url=url, headers=header, data=body, timeout=10).json()
         secretp = resp['data']['result']['homeMainInfo']['secretp']
         return secretp
     except:
@@ -224,8 +228,77 @@ def getinviteId(ck):
     except:
         return 'ZXASTT018v_53RR4Y9lHfIBub1AFjRWn6u7zB55awQ'
 
+# 获取任务list
+def travel_getTaskDetail(header):
+    try:
+        url = 'https://api.m.jd.com/client.action?functionId=travel_getTaskDetail'
+        body = 'functionId=travel_getTaskDetail&body={}&client=wh5&clientVersion=1.0.0'
+        resp = requests.post(url=url, headers=header, data=body).json()
+        taskVos = resp['data']['result']['taskVos']
+        return taskVos
+    except:
+        return None
+# 完成任务
+def travel_collectScore(header, taskId, taskToken, secretp):
+    try:
+        url = 'https://api.m.jd.com/client.action?functionId=travel_collectScore'
+        body = 'functionId=travel_collectScore&body={' + f'"taskId":"{taskId}","taskToken":"{taskToken}","actionType":1,' + f'%22ss%22:%22%7B%5C%22extraData%5C%22:%7B%5C%22log%5C%22:%5C%22%5C%22,%5C%22sceneid%5C%22:%5C%22HYJhPageh5%5C%22%7D,%5C%22secretp%5C%22:%5C%22{secretp}%5C%22,%5C%22random%5C%22:%5C%22%5C%22%7D%22%7D' + '&client=wh5&clientVersion=1.0.0'
+        resp = requests.post(url=url, headers=header, data=body).json()
+    except:
+        pass
+    # print("##完成结果：", resp)
+# 关注店铺
+def followShop(header, shopId):
+    try:
+        url = 'https://api.m.jd.com/client.action?functionId=followShop'
+        body = 'functionId=followShop&body={"shopId":"'+ shopId + '","follow":true,"type":"0"}&client=wh5&clientVersion=1.0.0'
+        resp = requests.post(url=url, headers=header, data=body).json()
+        print("\t└",resp['msg'])
+    except:
+        pass
+def qryCompositeMaterials(header, id):
+    url = 'https://api.m.jd.com/client.action?functionId=qryCompositeMaterials'
+    body = f'functionId=qryCompositeMaterials&body=%7B%22qryParam%22:%22%5B%7B%5C%22type%5C%22:%5C%22advertGroup%5C%22,%5C%22mapTo%5C%22:%5C%22taskPanelBanner%5C%22,%5C%22id%5C%22:%5C%22{id}%5C%22%7D%5D' +'","activityId":"2vVU4E7JLH9gKYfLQ5EVW6eN2P7B","pageId":"","reqSrc":"","applyKey":"jd_star"}&client=wh5&clientVersion=1.0.0&uuid='
+    resp = requests.post(url=url, headers=header, data=body).json()
+    print(resp)
+
+def qryViewkitCallbackResult(header, taskToken):
+    t = round(time.time() * 1000)
+    url = 'https://api.m.jd.com/client.action?functionId=qryViewkitCallbackResult&client=wh5'
+    body = 'body={"dataSource":"newshortAward","method":"getTaskAward","reqParams":"%7B%5C%22taskToken%5C%22%3A%5C%22' + taskToken + '%5C%22%7D","sdkVersion":"1.0.0","clientLanguage":"zh","onlyTimeId":' + str(t) + ',"riskParam":{"platform":"3","orgType":"2","openId":"-1","pageClickKey":"Babel_VKCoupon","eid":"","fp":"-1","shshshfp":"","shshshfpa":"","shshshfpb":"","childActivityUrl":"","userArea":"-1","client":"","clientVersion":"","uuid":"","osVersion":"","brand":"","model":"","networkType":"","jda":"-1"}}'
+    resp = requests.post(url=url, headers=header, data=body).json()
+    if 'success' in resp['msg']:
+        print("\t└☺️", resp['toast']['subTitle'])
+    else:
+        print("\t└😓", resp)
+
+def task(ck):
+    header = buildHeaders(ck)
+    taskVos = travel_getTaskDetail(header)
+    secretp = getHomeData(header)
+    for t in taskVos:
+        t_status = t['status']
+        if t_status == 1:
+            taskId = t['taskId']
+            taskType = t['taskType']
+            if taskType == 7: # 浏览关注
+                print("\n☺️###开始浏览关注8s任务")
+                browseShopVo = t['browseShopVo']
+                for o in browseShopVo:
+                    if o['status'] == 1:
+                        taskToken = o['taskToken']
+                        shopId = o['shopId']
+                        id = o['advGroupId']
+                        print(f"\t└开始 {o['shopName']}")
+                        followShop(header, shopId)
+                        travel_collectScore(header, taskId, taskToken, secretp)
+                        print("\t└停留8秒~")
+                        time.sleep(8)
+                        # qryCompositeMaterials(header, id)
+                        qryViewkitCallbackResult(header, taskToken)
 
 
+# 好友邀请助力
 def friendsHelp(ck, inviteId, secretp, nickname):
     try:
         url = 'https://api.m.jd.com/client.action?functionId=travel_collectScore'
@@ -247,22 +320,52 @@ def friendsHelp(ck, inviteId, secretp, nickname):
     except:
         pass
 
+# 膨胀红包领取
+def travel_pk_receiveAward(ck):
+    try:
+        url = 'https://api.m.jd.com/client.action?functionId=travel_pk_receiveAward'
+        body = 'functionId=travel_pk_receiveAward&body={}&client=wh5&clientVersion=1.0.0'
+        resp = requests.post(url=url, headers=buildHeaders(ck), data=body, timeout=10).json()
+        print("👌成功领取红包🧧：",resp['data']['result']['value'])
+    except:
+        pass
+# 膨胀红包助力
+def travel_pk_collectPkExpandScore(ck, inviteId, secretp):
+    url = 'https://api.m.jd.com/client.action?functionId=travel_pk_collectPkExpandScore'
+    # body = 'functionId=travel_pk_collectPkExpandScore&body={"ss":"{\"extraData\":{\"log\":\"\",\"sceneid\":\"HYGJZYh5\"},\"secretp\":\"E7CRMI6DTcSTrabHO4r8_5la-GQ\",\"random\":\"35074436\"}","inviteId":"PKASTT018v_53RR4Y9lHfIBub1ACjRWnIaRzT0jeQOc"}&client=wh5&clientVersion=1.0.0'
+    body = 'functionId=travel_pk_collectPkExpandScore&body={"ss":"%7B%5C%22extraData%5C%22:%7B%5C%22log%5C%22:%5C%22%5C%22,%5C%22sceneid%5C%22:%5C%22HYGJZYh5%5C%22%7D,%5C%22secretp%5C%22:%5C%22' + secretp + '%5C%22,%5C%22random%5C%22:%5C%22%5C%22%7D","inviteId":"' + inviteId + '"}&client=wh5&clientVersion=1.0.0'
+    resp = requests.post(url=url, headers=buildHeaders(ck), data=body, timeout=10).json()
+    bizCode = resp['data']['bizCode']
+    bizMsg = resp['data']['bizMsg']
+    print(f"\t└{bizMsg}")
+    if bizCode == 103:
+        return True
+    else:
+        return False
+
 def start():
     try:
-        scriptName = '### 环游记-好友助力 ###'
+        scriptName = '### 环游记 ###'
         print(scriptName)
         cookiesList, userNameList, pinNameList = getCk.iscookie()
+        # for ck in cookiesList:
+        #     ss = 'PKASTT018v_53RR4Y9lHfIBub1ACjRWnIaRzT0jeQOc'
+        #     if travel_pk_collectPkExpandScore(ck, ss, getHomeData(ck)):
+        #         travel_pk_receiveAward(ck)
+        # exit(3)
         for c,masterName in zip(cookiesList,userNameList):
-            print(f"### ☺️开始助力 {masterName}")
+            print(f"\n### ☺️开始助力 {masterName}")
             sharecode = getinviteId(c)
             for ck,nickname in zip(cookiesList,userNameList):
                 if nickname == masterName:
                     print(f"\t└😓{masterName} 不能助力自己，跳过~")
                     continue
-                if friendsHelp(ck, sharecode, getHomeData(ck), nickname):
+                if friendsHelp(ck, sharecode, getHomeData(buildHeaders(ck)), nickname):
                     break
+            task(c)
     except Exception as e:
         print(e)
 
 if __name__ == '__main__':
     start()
+
