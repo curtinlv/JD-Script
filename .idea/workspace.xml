@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="新增测试：1、全民开红包（锦鲤红包）助力；2、isNotice=True|False （是否开启通知推送服务）。">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jd_qmkmb_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_qmkmb_help.py" afterDir="false" />
-    </list>
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_qmkmb_help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="324" column="44" selection-start-line="324" selection-start-column="44" selection-end-line="324" selection-end-column="44" />
+            <state relative-caret-position="4200">
+              <caret line="299" column="44" lean-forward="true" selection-start-line="299" selection-start-column="8" selection-end-line="299" selection-end-column="44" />
               <folding>
                 <element signature="e#491#509#0" expanded="true" />
                 <element signature="e#828#2413#0" />
@@ -52,15 +49,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jd_ccfxj_help.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jd_hyj_help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="195">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
               <folding>
-                <element signature="e#1757#6974#0" />
-                <element signature="e#8106#9729#0" />
+                <element signature="e#496#514#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JDCookies.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="233" selection-start-column="233" selection-end-column="233" />
             </state>
           </provider>
         </entry>
@@ -78,10 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>requests_session</find>
-      <find>147</find>
-      <find>unquote</find>
-      <find>helpCode</find>
       <find>smtg_obtainPrize</find>
       <find>qgtime</find>
       <find>msg</find>
@@ -108,6 +109,10 @@
       <find>TypeError: 'function' object is not iterable</find>
       <find>374536093</find>
       <find>qmkhb_help_list</find>
+      <find>secretp</find>
+      <find>inviteId</find>
+      <find>ZXASTT028Z1_cl4-8INRW9rJrQH-3oUxd6t1GFjRWn6u7zB55awQ</find>
+      <find>ZXASTT018v_53RR4Y9lHfIBub1AFjRWn6u7zB55awQ</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -134,8 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/unBindCard/SMS.js" />
-        <option value="$PROJECT_DIR$/unBindCard/获取sid.js" />
         <option value="$PROJECT_DIR$/unBindCard/check.js" />
         <option value="$PROJECT_DIR$/unBindCard/fp.js" />
         <option value="$PROJECT_DIR$/unBindCard/requireCaptcha.js" />
@@ -181,10 +184,12 @@
         <option value="$PROJECT_DIR$/jd_zddd.py" />
         <option value="$PROJECT_DIR$/jd_zddd_Help.py" />
         <option value="$PROJECT_DIR$/test_json.py" />
-        <option value="$PROJECT_DIR$/JDCookies.txt" />
         <option value="$PROJECT_DIR$/jd_ddnc_help.py" />
         <option value="$PROJECT_DIR$/jd_ccfxj_help.py" />
         <option value="$PROJECT_DIR$/jd_qmkmb_help.py" />
+        <option value="$PROJECT_DIR$/jd_hyj.py" />
+        <option value="$PROJECT_DIR$/JDCookies.txt" />
+        <option value="$PROJECT_DIR$/jd_hyj_help.py" />
       </list>
     </option>
   </component>
@@ -268,7 +273,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.jd_ddnc_help">
+  <component name="RunManager" selected="Python.jd_hyj_help">
     <configuration name="jd_ccfxj_help" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="JD-Script" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -313,6 +318,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="jd_hyj_help" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="JD-Script" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jd_hyj_help.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="jd_qmkmb_help" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="JD-Script" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -327,28 +354,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jd_qmkmb_help.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="jd_zddd" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="JD-Script" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jd_zddd_Help.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -381,11 +386,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.jd_hyj_help" />
         <item itemvalue="Python.jd_ddnc_help" />
         <item itemvalue="Python.jd_qmkmb_help" />
         <item itemvalue="Python.test_json" />
         <item itemvalue="Python.jd_ccfxj_help" />
-        <item itemvalue="Python.jd_zddd" />
       </list>
     </recent_temporary>
   </component>
@@ -484,14 +489,7 @@
       <workItem from="1634441815818" duration="7755000" />
       <workItem from="1634734713955" duration="5163000" />
       <workItem from="1634741815604" duration="439000" />
-      <workItem from="1634957947277" duration="21892000" />
-    </task>
-    <task id="LOCAL-00115" summary="全民抢京豆（7.2-7.15）:已修复一些问题">
-      <created>1625296449413</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1625296449414</updated>
+      <workItem from="1634957947277" duration="27694000" />
     </task>
     <task id="LOCAL-00116" summary="全民抢京豆（7.2-7.15）:已修复一些问题">
       <created>1625298089954</created>
@@ -829,11 +827,18 @@
       <option name="project" value="LOCAL" />
       <updated>1635070610359</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="新增测试：1、全民开红包（锦鲤红包）助力；2、isNotice=True|False （是否开启通知推送服务）。">
+      <created>1635071268851</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1635071268851</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="454496000" />
+    <option name="totallyTimeSpent" value="460298000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -848,12 +853,12 @@
     <frame x="0" y="28" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.20100144" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.20100144" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.17512691" side_tool="true" weight="0.3404864" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.08180536" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.12976022" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.4583921" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -993,14 +998,12 @@
     <SUITE FILE_PATH="coverage/JD_Script$getJDCookie.coverage" NAME="getJDCookie Coverage Results" MODIFIED="1624157684693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getJDCookie" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard.coverage" NAME="jd_OpenCard Coverage Results" MODIFIED="1626970351145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard_v1_1_2.coverage" NAME="jd_OpenCard_v1.1.2 Coverage Results" MODIFIED="1622254390986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard/History" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_hyj_help.coverage" NAME="jd_hyj_help Coverage Results" MODIFIED="1635077247837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$test.coverage" NAME="test Coverage Results" MODIFIED="1626628583718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_ccfxj_help.coverage" NAME="jd_ccfxj_help Coverage Results" MODIFIED="1634739015435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_qjd.coverage" NAME="jd_qjd Coverage Results" MODIFIED="1625335468197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/getFollowGifts/test.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/getFollowGifts/getShopHomeActiviryInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -1297,28 +1300,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JDCookies.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jd_zjd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="22" selection-start-line="22" selection-end-line="32" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jd_ccfxj_help.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="e#1757#6974#0" />
-            <element signature="e#8106#9729#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1336,13 +1321,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jd_ccfxj_help.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="2" selection-start-column="3" selection-end-line="12" />
+          <folding>
+            <element signature="e#1757#6974#0" />
+            <element signature="e#8106#9729#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JDCookies.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="233" selection-start-column="233" selection-end-column="233" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jd_qmkmb_help.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="324" column="44" selection-start-line="324" selection-start-column="44" selection-end-line="324" selection-end-column="44" />
+        <state relative-caret-position="4200">
+          <caret line="299" column="44" lean-forward="true" selection-start-line="299" selection-start-column="8" selection-end-line="299" selection-end-column="44" />
           <folding>
             <element signature="e#491#509#0" expanded="true" />
             <element signature="e#828#2413#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_hyj_help.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#496#514#0" expanded="true" />
           </folding>
         </state>
       </provider>
