@@ -12,7 +12,7 @@ Update: 2021/10/24 下午11:52
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 cron: 0 0,23 * 10-11 *
-new Env('环游记 for Curtin');
+new Env('环游记');
 '''
 
 
