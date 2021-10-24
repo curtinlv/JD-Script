@@ -7,7 +7,7 @@ Author: Curtin
 Date: 2021/10/24 下午6:52
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-cron: 0 0,23 * * *
+cron: 0 0,23 * 10-11 *
 new Env('环游记-好友助力');
 '''
 
