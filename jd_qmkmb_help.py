@@ -15,7 +15,8 @@ new Env('全民开红包-助力');
 qmkhb_isOrder="true"
 # 助力名单(当qmkhb_isOrder="false" 才生效), ENV 环境设置 export qmkhb_help="Curtinlv&用户2&用户3"
 qmkhb_help = ["Curtinlv", "用户2", "用户3"]
-
+#是否开启通知，Ture：发送通知，False：不发送
+isNotice=True
 # UA 可自定义你的, 默认随机生成UA。
 UserAgent = ''
 
@@ -349,7 +350,8 @@ def start():
             msg("活动入口：京豆app-领券中心-锦鲤红包。")
         else:
             print("请检查qmkhb_isOrder 变量参数是否正确填写。")
-        send(scriptName, msg_info)
+        if isNotice:
+            send(scriptName, msg_info)
     except Exception as e:
         print("start",e)
 
