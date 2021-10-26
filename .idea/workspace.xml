@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jd_qmkmb_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_qmkmb_help.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_hyj.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_hyj.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_hyj.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+            <state relative-caret-position="182">
+              <caret line="371" column="41" selection-start-line="371" selection-start-column="41" selection-end-line="371" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -461,14 +461,7 @@
       <workItem from="1634957947277" duration="42464000" />
       <workItem from="1635094918002" duration="4000" />
       <workItem from="1635162661151" duration="7836000" />
-      <workItem from="1635250220472" duration="980000" />
-    </task>
-    <task id="LOCAL-00124" summary="修复pushplus 推送加">
-      <created>1625502922451</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1625502922452</updated>
+      <workItem from="1635250220472" duration="2592000" />
     </task>
     <task id="LOCAL-00125" summary="更新">
       <created>1625917286903</created>
@@ -806,11 +799,18 @@
       <option name="project" value="LOCAL" />
       <updated>1635174314410</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="新增测试：环游记-膨胀红包助力">
+      <created>1635251231056</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1635251231057</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="483888000" />
+    <option name="totallyTimeSpent" value="485500000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -830,7 +830,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.17512691" side_tool="true" weight="0.3404864" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.24823695" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.32722145" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.4583921" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -863,7 +863,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="优化通知服务" />
     <MESSAGE value="兼容pin为中文转码编码" />
     <MESSAGE value="Revert &quot;东东超市商品兑换&quot;&#10;&#10;This reverts commit 1b1be66f" />
     <MESSAGE value="东东超市商品兑换" />
@@ -888,7 +887,8 @@
     <MESSAGE value="环游记&#10;    1、好友助力，默认按顺序助力，每个号6次助力机会&#10;    2、浏览并关注任务&#10;    3、待完成" />
     <MESSAGE value="update" />
     <MESSAGE value="新增测试：东东萌宠-好友助力" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增测试：东东萌宠-好友助力" />
+    <MESSAGE value="新增测试：环游记-膨胀红包助力" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增测试：环游记-膨胀红包助力" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -942,7 +942,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JD_Script$jd_hyj.coverage" NAME="jd_hyj Coverage Results" MODIFIED="1635251010972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_hyj.coverage" NAME="jd_hyj Coverage Results" MODIFIED="1635253012436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_qmkmb_help.coverage" NAME="jd_qmkmb_help Coverage Results" MODIFIED="1635094363181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_zjd.coverage" NAME="jd_zjd Coverage Results" MODIFIED="1626527896564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$checkCK.coverage" NAME="checkCK Coverage Results" MODIFIED="1629041152360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -1319,8 +1319,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_hyj.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+        <state relative-caret-position="182">
+          <caret line="371" column="41" selection-start-line="371" selection-start-column="41" selection-end-line="371" selection-end-column="41" />
         </state>
       </provider>
     </entry>
