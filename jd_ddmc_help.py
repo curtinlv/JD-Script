@@ -303,7 +303,8 @@ def ddmc(ck, shareCode, user):
         body = 'functionId=slaveHelp&body={"shareCode":"' + shareCode + '"}&client=wh5&clientVersion=1.0.0'
         resp = requests.post(url=host_api, headers=buildHeaders(ck), data=body, timeout=10).json()
         if resp['resultCode'] == '0':
-            print(f"\t└[{user}] 助力结果：{resp['message']}")
+            if resp['result']['helpStatus'] == 0:
+                print(f"\t└[{user}] 助力结果：{resp['message']}")
             if resp['result']['helpStatus'] == 2:
                 return True
             else:
