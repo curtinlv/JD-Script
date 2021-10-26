@@ -352,6 +352,8 @@ def start():
             print("请检查qmkhb_isOrder 变量参数是否正确填写。")
         if isNotice:
             send(scriptName, msg_info)
+        else:
+            print("\n", scriptName, "\n", msg_info)
     except Exception as e:
         print("start",e)
 
