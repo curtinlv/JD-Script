@@ -173,6 +173,11 @@ class getJDCookie(object):
         global cookies
         ckfile = self.getckfile()
         try:
+            if "JD_COOKIE" in os.environ:
+                if len(os.environ["JD_COOKIE"]) > 10:
+                    cookies = os.environ["JD_COOKIE"]
+                    print("已获取并使用Env环境 Cookie")
+                    
             if os.path.exists(ckfile):
                 with open(ckfile, "r", encoding="utf-8") as f:
                     cks = f.read()
@@ -195,10 +200,7 @@ class getJDCookie(object):
                     cks = "#多账号换行，以下示例：（通过正则获取此文件的ck，理论上可以自定义名字标记ck，也可以随意摆放ck）\n账号1【Curtinlv】cookie1;\n账号2【TopStyle】cookie2;"
                     f.write(cks)
                     f.close()
-            if "JD_COOKIE" in os.environ:
-                if len(os.environ["JD_COOKIE"]) > 10:
-                    cookies = os.environ["JD_COOKIE"]
-                    print("已获取并使用Env环境 Cookie")
+            
         except Exception as e:
             print(f"【getCookie Error】{e}")
 
@@ -273,7 +275,7 @@ class getJDCookie(object):
 getCk = getJDCookie()
 getCk.getCookie()
 # 获取v4环境 特殊处理
-if os.path.exists(v4f):
+if os.path.exists(v4f) and "JD_COOKIE" not in os.environ:
     try:
         with open(v4f, 'r', encoding='utf-8') as f:
             curenv = locals()
