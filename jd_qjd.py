@@ -20,9 +20,10 @@ new Env('全民抢京豆 10.29-11.12');
 # print("全民抢京豆(10.29-11.12）--活动已结束\nTG交流 https://t.me/topstyle996\nTG频道 https://t.me/TopStyle2021")
 # exit(0)
 #ck 优先读取【JDCookies.txt】 文件内的ck  再到 ENV的 变量 JD_COOKIE='ck1&ck2' 最后才到脚本内 cookies=ck
-cookies = ''
-qjd_zlzh = ['Your JD_User', '买买买']
-
+cookies=''
+qjd_zlzh=['Your JD_User', '买买买']
+#是否开启通知，ture：发送通知，false：不发送 。如关闭通知：export qjd_isNotice="false"
+qjd_isNotice="true"
 
 #####
 
@@ -278,7 +279,9 @@ if "qjd_zlzh" in os.environ:
         qjd_zlzh = os.environ["qjd_zlzh"]
         qjd_zlzh = qjd_zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 qjd_zlzh:", qjd_zlzh)
-
+if "qjd_isNotice" in os.environ:
+    if len(os.environ["qjd_isNotice"]) > 1:
+        qjd_isNotice = os.environ["qjd_isNotice"]
 
 def userAgent():
     """
@@ -409,7 +412,8 @@ def start():
         msg(f"账号【{i}】已抢京豆: {userCount[i]}")
     msg(f"## 今日累计获得 {beanCount} 京豆")
     try:
-        send(scriptName, msg_info)
+        if qjd_isNotice == "true":
+            send(scriptName, msg_info)
     except:
         pass
 
