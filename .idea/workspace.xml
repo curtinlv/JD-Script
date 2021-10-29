@@ -42,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_ddmc_help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="310" column="28" selection-start-line="310" selection-start-column="28" selection-end-line="310" selection-end-column="28" />
+            <state relative-caret-position="82">
+              <caret line="194" selection-start-line="194" selection-end-line="196" selection-end-column="49" />
               <folding>
                 <element signature="e#503#521#0" expanded="true" />
               </folding>
@@ -54,10 +54,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_qjd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="379" column="12" lean-forward="true" selection-start-line="379" selection-start-column="12" selection-end-line="379" selection-end-column="12" />
+            <state relative-caret-position="91">
+              <caret line="263" column="10" lean-forward="true" selection-start-line="263" selection-start-column="10" selection-end-line="263" selection-end-column="10" />
               <folding>
                 <element signature="e#2165#3788#0" />
+                <element signature="e#3843#4373#0" />
+                <element signature="e#4405#9560#0" />
                 <element signature="e#6784#8119#0" />
               </folding>
             </state>
@@ -77,7 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>msg</find>
       <find>timestamp</find>
       <find>当前没货了</find>
       <find>getBool</find>
@@ -107,6 +108,7 @@
       <find>ZXASTT018v_53RR4Y9lHfIBub1AFjRWn6u7zB55awQ</find>
       <find>travel_collectScore</find>
       <find>getHomeData</find>
+      <find>qjd_isNotice</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -487,21 +489,7 @@
       <workItem from="1635094918002" duration="4000" />
       <workItem from="1635162661151" duration="7836000" />
       <workItem from="1635250220472" duration="3256000" />
-      <workItem from="1635513157287" duration="199000" />
-    </task>
-    <task id="LOCAL-00127" summary="优化通知服务">
-      <created>1625919709264</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1625919709264</updated>
-    </task>
-    <task id="LOCAL-00128" summary="兼容pin为中文转码编码">
-      <created>1626186091744</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1626186091746</updated>
+      <workItem from="1635513157287" duration="1093000" />
     </task>
     <task id="LOCAL-00129" summary="Revert &quot;东东超市商品兑换&quot;&#10;&#10;This reverts commit 1b1be66f">
       <created>1626450072545</created>
@@ -832,11 +820,25 @@
       <option name="project" value="LOCAL" />
       <updated>1635253446936</updated>
     </task>
-    <option name="localTasksCounter" value="176" />
+    <task id="LOCAL-00176" summary="全民抢京豆 10.29-11.12">
+      <created>1635513477842</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1635513477843</updated>
+    </task>
+    <task id="LOCAL-00177" summary="新增通知服务控制开关：export qjd_isNotice=&quot;false&quot;">
+      <created>1635514985038</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1635514985038</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="486363000" />
+    <option name="totallyTimeSpent" value="487257000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -851,12 +853,12 @@
     <frame x="0" y="28" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.21244635" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.21244635" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.17512691" side_tool="true" weight="0.3404864" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" weight="0.3568406" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.348378" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.4583921" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -889,8 +891,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="东东超市商品兑换" />
-    <MESSAGE value="东东超市商品兑换-更新了" />
     <MESSAGE value="修复V4环境读取变量问题" />
     <MESSAGE value="end" />
     <MESSAGE value="修复v4环境为什么卡住？" />
@@ -914,7 +914,9 @@
     <MESSAGE value="新增测试：环游记-膨胀红包助力" />
     <MESSAGE value="Delete 环游记-膨胀红包助力" />
     <MESSAGE value="东东萌宠打印日志优化处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="东东萌宠打印日志优化处理" />
+    <MESSAGE value="全民抢京豆 10.29-11.12" />
+    <MESSAGE value="新增通知服务控制开关：export qjd_isNotice=&quot;false&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增通知服务控制开关：export qjd_isNotice=&quot;false&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1001,7 +1003,7 @@
     <SUITE FILE_PATH="coverage/JD_Script$jd_hyj_help.coverage" NAME="jd_hyj_help Coverage Results" MODIFIED="1635163719479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$test.coverage" NAME="test Coverage Results" MODIFIED="1626628583718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_ccfxj_help.coverage" NAME="jd_ccfxj_help Coverage Results" MODIFIED="1634739015435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JD_Script$jd_qjd.coverage" NAME="jd_qjd Coverage Results" MODIFIED="1635513423172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_qjd.coverage" NAME="jd_qjd Coverage Results" MODIFIED="1635514875910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/getFollowGifts/test.py">
@@ -1331,8 +1333,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_ddmc_help.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="310" column="28" selection-start-line="310" selection-start-column="28" selection-end-line="310" selection-end-column="28" />
+        <state relative-caret-position="82">
+          <caret line="194" selection-start-line="194" selection-end-line="196" selection-end-column="49" />
           <folding>
             <element signature="e#503#521#0" expanded="true" />
           </folding>
@@ -1341,10 +1343,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_qjd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="379" column="12" lean-forward="true" selection-start-line="379" selection-start-column="12" selection-end-line="379" selection-end-column="12" />
+        <state relative-caret-position="91">
+          <caret line="263" column="10" lean-forward="true" selection-start-line="263" selection-start-column="10" selection-end-line="263" selection-end-column="10" />
           <folding>
             <element signature="e#2165#3788#0" />
+            <element signature="e#3843#4373#0" />
+            <element signature="e#4405#9560#0" />
             <element signature="e#6784#8119#0" />
           </folding>
         </state>
