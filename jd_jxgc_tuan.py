@@ -414,17 +414,29 @@ class msg(object):
 msg("").main()
 ##############
 
-def getResult(text):
+def getResult(text, a=0):
+    if a == 0:
+        label = 0
+    else:
+        label = a
     try:
         r = re.compile(r'try\s{jsonp.*?\((.*?)\)', re.M | re.S | re.I)
         r = r.findall(text)
         if len(r) > 0:
             return json.loads(r[0])
         else:
-            return text
+            if a < 5:
+                label += 1
+                getResult(text, label)
+            else:
+                return text
     except Exception as e:
         print(e)
-        return text
+        if a < 5:
+            label += 1
+            getResult(text, label)
+        else:
+            return text
 def buildURL(ck, url):
     headers = {
         'Cookie': ck,
@@ -482,10 +494,11 @@ def QueryAllTuan(ck):
 def QueryActiveConfig(ck):
     try:
         _time = stimestamp()
-        url = f'https://m.jingxi.com/dreamfactory/tuan/QueryActiveConfig?activeId={activeId}&tuanId=&_time={_time}&_stk=_time%2CactiveId%2CtuanId&_ste=1&h5st=20210717213423401%3B4316088645437162%3B10001%3Btk01w692e1a35a8nelBVM0N0NEliPUhE8RRHmMdPdJCfVENO%2FE71ZoMM98S4V67ihTo7hDW75aJaU5V2XpU99JrsLPEF%3Bfd20eeaf2e88c127d898c14c6c941e80097a01c7d235c405316a08ab70709e20&_={int(_time) + 4}&sceneval=2&g_login_type=1&callback=jsonpCBKF&g_ty=ls'
+        # url = f'https://m.jingxi.com/dreamfactory/tuan/QueryActiveConfig?activeId={activeId}&tuanId=&_time={_time}&_stk=_time%2CactiveId%2CtuanId&_ste=1&h5st=20210717213423401%3B4316088645437162%3B10001%3Btk01w692e1a35a8nelBVM0N0NEliPUhE8RRHmMdPdJCfVENO%2FE71ZoMM98S4V67ihTo7hDW75aJaU5V2XpU99JrsLPEF%3Bfd20eeaf2e88c127d898c14c6c941e80097a01c7d235c405316a08ab70709e20&_={int(_time) + 4}&sceneval=2&g_login_type=1&callback=jsonpCBKF&g_ty=ls'
+        url = f'https://m.jingxi.com/dreamfactory/tuan/QueryActiveConfig?activeId={activeId}&tuanId=&_time={_time}&_stk=_time%2CactiveId%2CtuanId&_ste=1&h5st=20210717213423401%3B4316088645437162%3B10001%3Btk01w692e1a35a8nelBVM0N0NEliPUhE8RRHmMdPdJCfVENO%2FE71ZoMM98S4V67ihTo7hDW75aJaU5V2XpU99JrsLPEF%3Bfd20eeaf2e88c127d898c14c6c941e80097a01c7d235c405316a08ab70709e20&_={int(_time) + 4}&sceneval=2&g_login_type=1'
         headers, url = buildURL(ck, url)
-        r = requests.get(url, headers=headers, timeout=30, verify=False).text
-        data = getResult(r)
+        data = requests.get(url, headers=headers, timeout=30, verify=False).json()
+        # data = getResult(r)
         tuanId = data['data']['userTuanInfo']['tuanId']
         isOpenTuan = data['data']['userTuanInfo']['isOpenTuan']
         surplusOpenTuanNum = data['data']['userTuanInfo']['surplusOpenTuanNum']
@@ -525,7 +538,9 @@ def CreateTuan(ck):
             url = f'https://m.jingxi.com/dreamfactory/tuan/CreateTuan?activeId={activeId}&isOpenApp=1&_time={_time}&_stk=_time%2CactiveId%2CisOpenApp&_ste=1&h5st=20210717213421615%3B4316088645437162%3B10001%3Btk01w692e1a35a8nelBVM0N0NEliPUhE8RRHmMdPdJCfVENO%2FE71ZoMM98S4V67ihTo7hDW75aJaU5V2XpU99JrsLPEF%3Bfe30749da12b4aab179b7fa95c4f7c20f46fda2cc50228293a47a337f1b3b734&_={int(_time) + 4}&sceneval=2&g_login_type=1&callback=jsonpCBKE&g_ty=ls'
             headers, url = buildURL(ck, url)
             r = requests.get(url, headers=headers, timeout=30, verify=False).text
-            getResult(r)
+            data = getResult(r)
+            if data['ret'] == 10204:
+                print(f"\t{data['msg']}")
             return tuanId, surplusOpenTuanNum
         else:
             return tuanId, surplusOpenTuanNum
