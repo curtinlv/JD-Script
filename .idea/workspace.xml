@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="京喜工厂开团：修复提示活动过期问题。">
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/msg.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getFollowGifts/JDCookies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/getFollowGifts/JDCookies.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" beforeDir="false" afterPath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,40 +31,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jd_hyj_help.py">
+        <entry file="file://$PROJECT_DIR$/jd_cookie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+            <state relative-caret-position="10">
+              <caret line="19" selection-start-line="19" selection-end-line="19" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jd_ddmc_help.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2895">
-              <caret line="194" selection-start-line="194" selection-end-line="196" selection-end-column="49" />
-              <folding>
-                <element signature="e#503#521#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jd_qjd.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="274" column="14" selection-start-line="274" selection-start-column="14" selection-end-line="274" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jd_zddd_Help.py">
+        <entry file="file://$PROJECT_DIR$/jd_ddgc.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="44" column="29" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="29" />
+              <caret line="48" column="8" lean-forward="true" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -73,31 +51,48 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_jxgc_tuan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="591" column="28" lean-forward="true" selection-start-line="591" selection-start-column="28" selection-end-line="591" selection-end-column="28" />
+            <state relative-caret-position="-527">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
               <folding>
-                <element signature="e#1722#1752#0" expanded="true" />
+                <element signature="e#2809#7964#0" />
+                <element signature="e#8048#8520#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
+        <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-750">
-              <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+            <state relative-caret-position="205">
+              <caret line="205" column="18" lean-forward="true" selection-start-line="205" selection-start-column="18" selection-end-line="205" selection-end-column="18" />
               <folding>
-                <element signature="e#182#220#0" expanded="true" />
+                <element signature="e#2454#7671#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/msg.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+              <folding>
+                <element signature="e#180#195#0" expanded="true" />
+                <element signature="e#521#2322#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sendNotify.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+              <folding>
+                <element signature="e#47#57#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,29 +101,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_json.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="30" column="48" selection-start-line="30" selection-end-line="31" />
-              <folding>
-                <element signature="e#188#203#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/getFollowGifts/JDCookies.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JDCookies.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="2764" selection-start-column="2764" selection-end-column="2764" />
+            <state relative-caret-position="74">
+              <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -146,12 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jxgc_kaituan</find>
-      <find>成功领取电力</find>
-      <find>msg_info</find>
-      <find>shareCode</find>
-      <find>TypeError: 'function' object is not iterable</find>
-      <find>374536093</find>
       <find>qmkhb_help_list</find>
       <find>secretp</find>
       <find>inviteId</find>
@@ -176,6 +144,12 @@
       <find>QueryActiveConfig</find>
       <find>quote</find>
       <find>sign=</find>
+      <find>getUserInfo</find>
+      <find>没有可用Cookie</find>
+      <find>JDCookies_test</find>
+      <find>getCk</find>
+      <find>iscookie</find>
+      <find>getJDCookie</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -202,8 +176,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/unBindCard/fp.js" />
-        <option value="$PROJECT_DIR$/unBindCard/requireCaptcha.js" />
         <option value="$PROJECT_DIR$/unBindCard/memberCloseAccount.js" />
         <option value="$PROJECT_DIR$/gzyl/getShopHomeActiviryInfo.js" />
         <option value="$PROJECT_DIR$/gzyl/test.html" />
@@ -232,7 +204,6 @@
         <option value="$PROJECT_DIR$/ok_cookies.txt" />
         <option value="$PROJECT_DIR$/jd_zjd.py" />
         <option value="$PROJECT_DIR$/config.sh" />
-        <option value="$PROJECT_DIR$/sendNotify.py" />
         <option value="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" />
         <option value="$PROJECT_DIR$/jd_ddgc.py" />
         <option value="$PROJECT_DIR$/checkCK.py" />
@@ -241,7 +212,6 @@
         <option value="$PROJECT_DIR$/JDCookies_test.txt" />
         <option value="$PROJECT_DIR$/jd_zddd.py" />
         <option value="$PROJECT_DIR$/jd_zddd_Help.py" />
-        <option value="$PROJECT_DIR$/jd_ddnc_help.py" />
         <option value="$PROJECT_DIR$/jd_ccfxj_help.py" />
         <option value="$PROJECT_DIR$/jd_hyj_help.py" />
         <option value="$PROJECT_DIR$/jd_qmkmb_help.py" />
@@ -251,8 +221,12 @@
         <option value="$PROJECT_DIR$/JDCookies.txt" />
         <option value="$PROJECT_DIR$/jd_jxgc_tuan.py" />
         <option value="$PROJECT_DIR$/getFollowGifts/JDCookies.txt" />
-        <option value="$PROJECT_DIR$/test_json.py" />
         <option value="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" />
+        <option value="$PROJECT_DIR$/jd_ddnc_help.py" />
+        <option value="$PROJECT_DIR$/sendNotify.py" />
+        <option value="$PROJECT_DIR$/jd_cookie.py" />
+        <option value="$PROJECT_DIR$/msg.py" />
+        <option value="$PROJECT_DIR$/test_json.py" />
       </list>
     </option>
   </component>
@@ -291,11 +265,6 @@
               <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
               <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="JD-Script" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JD-Script" type="462c0819:PsiDirectoryNode" />
-              <item name="getFollowGifts" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -316,10 +285,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/getJDCookie" />
       <recent name="$PROJECT_DIR$/getJDCookie/dist" />
       <recent name="$PROJECT_DIR$/OpenCard/dist" />
       <recent name="$PROJECT_DIR$/OpenCard" />
-      <recent name="$PROJECT_DIR$/gzyl" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -341,8 +310,30 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.jd_getFollowGift">
-    <configuration name="jd_ddmc_help" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.test_json">
+    <configuration name="getJDCookie" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="JD-Script" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/getJDCookie" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/getJDCookie/getJDCookie.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="jd_cookie" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="JD-Script" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -355,7 +346,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jd_ddmc_help.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jd_cookie.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -364,7 +355,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="jd_getFollowGift" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="jd_fanli" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="JD-Script" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -372,12 +363,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/getFollowGifts" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/43466b855a625403563c706f81a099a5/Message/MessageTemp/5d130a3dfbd10f1eb7393a0ed1e53076/File" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/43466b855a625403563c706f81a099a5/Message/MessageTemp/5d130a3dfbd10f1eb7393a0ed1e53076/File/jd_fanli.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -386,29 +377,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="jd_jxgc_tuan" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="JD-Script" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jd_jxgc_tuan.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="jd_qjd" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="msg" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="JD-Script" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -421,7 +390,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jd_qjd.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/msg.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -454,11 +423,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.jd_getFollowGift" />
         <item itemvalue="Python.test_json" />
-        <item itemvalue="Python.jd_jxgc_tuan" />
-        <item itemvalue="Python.jd_qjd" />
-        <item itemvalue="Python.jd_ddmc_help" />
+        <item itemvalue="Python.msg" />
+        <item itemvalue="Python.jd_cookie" />
+        <item itemvalue="Python.getJDCookie" />
+        <item itemvalue="Python.jd_fanli" />
       </list>
     </recent_temporary>
   </component>
@@ -563,14 +532,9 @@
       <workItem from="1635250220472" duration="3256000" />
       <workItem from="1635513157287" duration="1704000" />
       <workItem from="1635606534838" duration="9472000" />
-      <workItem from="1636160121543" duration="2662000" />
-    </task>
-    <task id="LOCAL-00132" summary="东东超市商品兑换-更新了">
-      <created>1626455793261</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1626455793261</updated>
+      <workItem from="1636160121543" duration="5225000" />
+      <workItem from="1636194956567" duration="1612000" />
+      <workItem from="1636255269230" duration="7711000" />
     </task>
     <task id="LOCAL-00133" summary="东东超市商品兑换-更新了">
       <created>1626455842823</created>
@@ -908,11 +872,18 @@
       <option name="project" value="LOCAL" />
       <updated>1635615989357</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="修复关注有礼，已更新部分店铺">
+      <created>1636162941272</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1636162941274</updated>
+    </task>
+    <option name="localTasksCounter" value="182" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="500002000" />
+    <option name="totallyTimeSpent" value="511888000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -927,12 +898,36 @@
     <frame x="0" y="28" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.22389127" />
+      <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
+      <window_info id="Favorites" order="2" sideWeight="0.17512691" side_tool="true" weight="0.3404864" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" weight="0.5726375" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.4583921" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49785408" weight="0.32891566" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49213162" weight="0.4471086" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.33619457" side_tool="true" weight="0.37292817" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.7939914" visible="true" weight="0.26375178" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.795422" weight="0.32507738" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49928468" weight="0.32872927" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32904148" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32904148" />
+    </layout>
+    <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.21816881" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.17512691" side_tool="true" weight="0.3404864" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.5119887" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.31170663" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.4583921" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -949,7 +944,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32904148" />
       <window_info anchor="right" id="Database" order="4" weight="0.32904148" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -965,7 +960,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="end" />
     <MESSAGE value="修复v4环境为什么卡住？" />
     <MESSAGE value="[更新]自动更新activeId、领取电力；优化助力代码逻辑..." />
     <MESSAGE value="修改v4环境异常问题" />
@@ -990,7 +984,8 @@
     <MESSAGE value="全民抢京豆 10.29-11.12" />
     <MESSAGE value="新增通知服务控制开关：export qjd_isNotice=&quot;false&quot;" />
     <MESSAGE value="京喜工厂开团：修复提示活动过期问题。" />
-    <option name="LAST_COMMIT_MESSAGE" value="京喜工厂开团：修复提示活动过期问题。" />
+    <MESSAGE value="修复关注有礼，已更新部分店铺" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复关注有礼，已更新部分店铺" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1055,15 +1050,18 @@
     <SUITE FILE_PATH="coverage/JD_Script$jd_ddnc_help.coverage" NAME="jd_ddnc_help Coverage Results" MODIFIED="1635069911279" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_zjd_test.coverage" NAME="jd_zjd_test Coverage Results" MODIFIED="1625110632510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_cashHelp.coverage" NAME="jd_cashHelp Coverage Results" MODIFIED="1627122841172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_fanli.coverage" NAME="jd_fanli Coverage Results" MODIFIED="1636180424956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/43466b855a625403563c706f81a099a5/Message/MessageTemp/5d130a3dfbd10f1eb7393a0ed1e53076/File" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_blueCoin.coverage" NAME="jd_blueCoin Coverage Results" MODIFIED="1634446098382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JD_Script$jd_cookie.coverage" NAME="jd_cookie Coverage Results" MODIFIED="1636282980611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_dreamfactory_tuan_test.coverage" NAME="jd_dreamfactory_tuan_test Coverage Results" MODIFIED="1626711997851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_buleCoin.coverage" NAME="jd_buleCoin Coverage Results" MODIFIED="1621062166911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuleCoin" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_jxgc_tuan.coverage" NAME="jd_jxgc_tuan Coverage Results" MODIFIED="1635615947163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad_v1_0_2.coverage" NAME="jd_OpenCrad_v1.0.2 Coverage Results" MODIFIED="1621063108766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad/History" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCrad_v1_0_4_Beta.coverage" NAME="jd_OpenCrad_v1.0.4_Beta Coverage Results" MODIFIED="1621100489726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCrad" />
-    <SUITE FILE_PATH="coverage/JD_Script$test_json.coverage" NAME="test_json Coverage Results" MODIFIED="1636162587439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JD_Script$test_json.coverage" NAME="test_json Coverage Results" MODIFIED="1636285421021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_dreamfactory_tuan.coverage" NAME="jd_dreamfactory_tuan Coverage Results" MODIFIED="1626605810893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_zddd.coverage" NAME="jd_zddd Coverage Results" MODIFIED="1634451526089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JD_Script$msg.coverage" NAME="msg Coverage Results" MODIFIED="1636285300211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1622809928089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gzyl" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_getFollowGift.coverage" NAME="jd_getFollowGift Coverage Results" MODIFIED="1636162708750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getFollowGifts" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard_test.coverage" NAME="jd_OpenCard_test Coverage Results" MODIFIED="1624087581162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard" />
@@ -1071,7 +1069,7 @@
     <SUITE FILE_PATH="coverage/JD_Script$sha256.coverage" NAME="sha256 Coverage Results" MODIFIED="1626628220808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_lxj.coverage" NAME="jd_lxj Coverage Results" MODIFIED="1625372483409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_ddmc_help.coverage" NAME="jd_ddmc_help Coverage Results" MODIFIED="1635253278113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JD_Script$getJDCookie.coverage" NAME="getJDCookie Coverage Results" MODIFIED="1624157684693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getJDCookie" />
+    <SUITE FILE_PATH="coverage/JD_Script$getJDCookie.coverage" NAME="getJDCookie Coverage Results" MODIFIED="1636201409354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/getJDCookie" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard.coverage" NAME="jd_OpenCard Coverage Results" MODIFIED="1626970351145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_OpenCard_v1_1_2.coverage" NAME="jd_OpenCard_v1.1.2 Coverage Results" MODIFIED="1622254390986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpenCard/History" />
     <SUITE FILE_PATH="coverage/JD_Script$jd_hyj_help.coverage" NAME="jd_hyj_help Coverage Results" MODIFIED="1635163719479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -1080,27 +1078,6 @@
     <SUITE FILE_PATH="coverage/JD_Script$jd_qjd.coverage" NAME="jd_qjd Coverage Results" MODIFIED="1635514875910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpenCard/start-v4.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="16" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpenCard/start.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="29" lean-forward="true" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/log/shopid-2021-05-23.txt" />
     <entry file="file://$PROJECT_DIR$/OpenCard/OpenCardConfig.ini">
       <provider selected="true" editor-type-id="text-editor">
@@ -1211,36 +1188,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sendNotify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2085">
-          <caret line="140" column="76" selection-start-line="137" selection-start-column="12" selection-end-line="140" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jd_ddgc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1802">
-          <caret line="48" column="8" lean-forward="true" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ok_cookies.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="47" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getJDCookie/getJDCookie.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JDCookies_test.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -1273,13 +1222,6 @@
             <element signature="e#8883#10506#0" />
             <element signature="e#10559#11957#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/checkCK.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2325">
-          <caret line="156" selection-start-line="156" selection-end-line="156" />
         </state>
       </provider>
     </entry>
@@ -1318,13 +1260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jd_hyj.py" />
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/decoder.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1340,12 +1275,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/getFollowGifts/JDCookies.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jd_ddmc_help.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2895">
+        <state relative-caret-position="2910">
           <caret line="194" selection-start-line="194" selection-end-line="196" selection-end-column="49" />
           <folding>
             <element signature="e#503#521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8880">
+          <caret line="592" column="35" selection-start-line="592" selection-start-column="35" selection-end-line="592" selection-end-column="35" />
+          <folding>
+            <element signature="e#1722#1752#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+          <folding>
+            <element signature="e#182#220#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1357,60 +1319,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getFollowGifts/JDCookies.txt">
+    <entry file="file://$PROJECT_DIR$/getJDCookie/getJDCookie.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="1635">
+          <caret line="109" column="27" lean-forward="true" selection-start-line="109" selection-start-column="27" selection-end-line="109" selection-end-column="27" />
+          <folding>
+            <element signature="e#593#608#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/43466b855a625403563c706f81a099a5/Message/MessageTemp/5d130a3dfbd10f1eb7393a0ed1e53076/File/jd_fanli.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
+          <folding>
+            <element signature="e#116#126#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_qjd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
+        <state relative-caret-position="632">
           <caret line="274" column="14" selection-start-line="274" selection-start-column="14" selection-end-line="274" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/checkCK.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2325">
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_zddd_Help.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="44" column="29" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="29" />
+        <state relative-caret-position="88">
+          <caret line="55" column="31" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ok_cookies.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jd_jxgc_tuan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="-527">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#2809#7964#0" />
+            <element signature="e#8048#8520#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
+    <entry file="file://$PROJECT_DIR$/jd_ddgc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-750">
-          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+        <state relative-caret-position="15">
+          <caret line="48" column="8" lean-forward="true" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="205" column="18" lean-forward="true" selection-start-line="205" selection-start-column="18" selection-end-line="205" selection-end-column="18" />
           <folding>
-            <element signature="e#182#220#0" expanded="true" />
+            <element signature="e#2454#7671#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sendNotify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding>
+            <element signature="e#47#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_cookie.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="19" selection-start-line="19" selection-end-line="19" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_json.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="30" column="48" selection-start-line="30" selection-end-line="31" />
-          <folding>
-            <element signature="e#188#203#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="74">
+          <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py">
+    <entry file="file://$PROJECT_DIR$/msg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="591" column="28" lean-forward="true" selection-start-line="591" selection-start-column="28" selection-end-line="591" selection-end-column="28" />
+        <state relative-caret-position="145">
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
           <folding>
-            <element signature="e#1722#1752#0" expanded="true" />
+            <element signature="e#180#195#0" expanded="true" />
+            <element signature="e#521#2322#0" />
           </folding>
         </state>
       </provider>
