@@ -86,15 +86,15 @@ class getJDCookie(object):
             print(f"【getCookie Error】{e}")
 
         # 检测cookie格式是否正确
+
     def getUserInfo(self, ck, pinName, userNum):
-        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback='
+        url = 'https://wq.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder'
         headers = {
             'Cookie': ck,
             'Accept': '*/*',
             'Connection': 'close',
             'Referer': 'https://home.m.jd.com/myJd/home.action',
             'Accept-Encoding': 'gzip, deflate, br',
-            'Host': 'me-api.jd.com',
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Mobile/15E148 Safari/604.1',
             'Accept-Language': 'zh-cn'
         }
@@ -104,7 +104,8 @@ class getJDCookie(object):
                 resp = requests.get(url=url, verify=False, headers=headers, timeout=60).json()
             else:
                 resp = requests.get(url=url, headers=headers, timeout=60).json()
-            if resp['retcode'] == "0":
+
+            if resp['retcode'] == 0:
                 nickname = resp['data']['userInfo']['baseInfo']['nickname']
                 return ck, nickname
             else:
