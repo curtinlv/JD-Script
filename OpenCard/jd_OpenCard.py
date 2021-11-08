@@ -719,30 +719,59 @@ def isUpdate():
         message("请检查您的环境/版本是否正常！")
         time.sleep(10)
         exit(666)
-
+#
+# def getUserInfo(ck, pinName, userNum):
+#     url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback=GetJDUserInfoUnion'
+#     headers = {
+#         'Cookie': ck,
+#         'Accept': '*/*',
+#         'Connection': 'close',
+#         'Referer': 'https://home.m.jd.com/myJd/home.action',
+#         'Accept-Encoding': 'gzip, deflate, br',
+#         'Host': 'me-api.jd.com',
+#         'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Mobile/15E148 Safari/604.1',
+#         'Accept-Language': 'zh-cn'
+#     }
+#     try:
+#         resp = requests.get(url=url, verify=False, headers=headers, timeout=60).text
+#         r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
+#         result = r.findall(resp)
+#         userInfo = json.loads(result[0])
+#         nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
+#         return ck, nickname
+#     except Exception:
+#         context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
+#         message(context)
+#         send("【JD入会领豆】Cookie 已失效！", context)
+#         return ck, False
 def getUserInfo(ck, pinName, userNum):
-    url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback=GetJDUserInfoUnion'
+    url = 'https://wq.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder'
     headers = {
         'Cookie': ck,
         'Accept': '*/*',
         'Connection': 'close',
         'Referer': 'https://home.m.jd.com/myJd/home.action',
         'Accept-Encoding': 'gzip, deflate, br',
-        'Host': 'me-api.jd.com',
         'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Mobile/15E148 Safari/604.1',
         'Accept-Language': 'zh-cn'
     }
     try:
-        resp = requests.get(url=url, verify=False, headers=headers, timeout=60).text
-        r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
-        result = r.findall(resp)
-        userInfo = json.loads(result[0])
-        nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
-        return ck, nickname
+        if sys.platform == 'ios':
+            requests.packages.urllib3.disable_warnings()
+            resp = requests.get(url=url, verify=False, headers=headers, timeout=60).json()
+        else:
+            resp = requests.get(url=url, headers=headers, timeout=60).json()
+
+        if resp['retcode'] == 0:
+            nickname = resp['data']['userInfo']['baseInfo']['nickname']
+            return ck, nickname
+        else:
+            context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
+            print(context)
+            return ck, False
     except Exception:
         context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
-        message(context)
-        send("【JD入会领豆】Cookie 已失效！", context)
+        print(context)
         return ck, False
 
 # 设置Headers
