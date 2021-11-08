@@ -33,6 +33,7 @@ except:
 from urllib.parse import unquote
 # requests.packages.urllib3.disable_warnings()
 pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
+requests.packages.urllib3.disable_warnings()
 ###
 uuid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 40))
 addressid = ''.join(random.sample('1234567898647', 10))

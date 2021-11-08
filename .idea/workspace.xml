@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="更新cookie检测接口">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" beforeDir="false" afterPath="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" afterDir="false" />
+    <list default="true" id="fb0e53d5-be56-448f-92f0-cbaaa78554f3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/jd_cookie.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_cookie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_ddmc_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_ddmc_help.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_qjd.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_qjd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jd_zddd_Help.py" beforeDir="false" afterPath="$PROJECT_DIR$/jd_zddd_Help.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_cookie.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="89" selection-start-line="89" selection-end-line="117" selection-end-column="28" />
+            <state relative-caret-position="173">
+              <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -54,11 +55,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jd_jxgc_tuan.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-228">
+              <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="766" column="31" lean-forward="true" selection-start-line="766" selection-start-column="31" selection-end-line="766" selection-end-column="31" />
+            <state relative-caret-position="105">
+              <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
               <folding>
                 <element signature="e#4923#4953#0" expanded="true" />
               </folding>
@@ -69,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_ddmc_help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state relative-caret-position="256">
+              <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
               <folding>
                 <element signature="e#503#517#0" expanded="true" />
               </folding>
@@ -78,23 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2685">
-              <caret line="180" column="40" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_json.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-              <folding>
-                <element signature="e#283#289#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="263">
+              <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -102,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_qjd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="45" selection-start-line="45" selection-end-line="50" selection-end-column="15" />
+            <state relative-caret-position="260">
+              <caret line="51" column="44" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
               <folding>
                 <element signature="e#892#910#0" expanded="true" />
                 <element signature="e#1313#2936#0" />
@@ -117,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_blueCoin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+            <state relative-caret-position="176">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -138,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jd_zddd_Help.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="91" column="30" lean-forward="true" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+            <state relative-caret-position="308">
+              <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
               <folding>
                 <element signature="e#722#740#0" expanded="true" />
               </folding>
@@ -188,8 +186,8 @@
       <find>iscookie</find>
       <find>getJDCookie</find>
       <find>pinNameList</find>
-      <find>JD_COOKIE_CHECK</find>
       <find>getUserInfo</find>
+      <find>JD_COOKIE_CHECK</find>
     </findStrings>
     <replaceStrings>
       <replace>查询该店入会礼包中没有送豆，不入会</replace>
@@ -257,16 +255,16 @@
         <option value="$PROJECT_DIR$/msg.py" />
         <option value="$PROJECT_DIR$/getJDCookie/getJDCookie.py" />
         <option value="$PROJECT_DIR$/test_json.py" />
-        <option value="$PROJECT_DIR$/jd_cookie.py" />
-        <option value="$PROJECT_DIR$/jd_qjd.py" />
-        <option value="$PROJECT_DIR$/jd_ddnc_help.py" />
-        <option value="$PROJECT_DIR$/jd_zddd_Help.py" />
-        <option value="$PROJECT_DIR$/jd_ddmc_help.py" />
         <option value="$PROJECT_DIR$/jd_qmkmb_help.py" />
-        <option value="$PROJECT_DIR$/jd_blueCoin.py" />
         <option value="$PROJECT_DIR$/jd_jxgc_tuan.py" />
         <option value="$PROJECT_DIR$/getFollowGifts/jd_getFollowGift.py" />
         <option value="$PROJECT_DIR$/OpenCard/jd_OpenCard.py" />
+        <option value="$PROJECT_DIR$/jd_cookie.py" />
+        <option value="$PROJECT_DIR$/jd_qjd.py" />
+        <option value="$PROJECT_DIR$/jd_zddd_Help.py" />
+        <option value="$PROJECT_DIR$/jd_blueCoin.py" />
+        <option value="$PROJECT_DIR$/jd_ddmc_help.py" />
+        <option value="$PROJECT_DIR$/jd_ddnc_help.py" />
       </list>
     </option>
   </component>
@@ -585,14 +583,7 @@
       <workItem from="1636160121543" duration="5225000" />
       <workItem from="1636194956567" duration="1612000" />
       <workItem from="1636255269230" duration="8715000" />
-      <workItem from="1636374523371" duration="3242000" />
-    </task>
-    <task id="LOCAL-00137" summary="end">
-      <created>1627109125310</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1627109125310</updated>
+      <workItem from="1636374523371" duration="3975000" />
     </task>
     <task id="LOCAL-00138" summary="修复v4环境为什么卡住？">
       <created>1627109161963</created>
@@ -930,11 +921,18 @@
       <option name="project" value="LOCAL" />
       <updated>1636377310347</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <task id="LOCAL-00186" summary="更新cookie检测接口">
+      <created>1636377794564</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1636377794565</updated>
+    </task>
+    <option name="localTasksCounter" value="187" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="516134000" />
+    <option name="totallyTimeSpent" value="516867000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -949,12 +947,12 @@
     <frame x="0" y="28" width="1440" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.2267525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8248731" visible="true" weight="0.2267525" />
       <window_info id="Structure" order="1" sideWeight="0.5013812" side_tool="true" weight="0.24981685" />
       <window_info id="Favorites" order="2" sideWeight="0.17512691" side_tool="true" weight="0.3404864" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49642345" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.36248237" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6638054" visible="true" weight="0.36248237" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49713877" weight="0.4583921" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1011,7 +1009,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="兼容TG_API_HOST可有或无http" />
     <MESSAGE value="更新：新增适配面板读取cron、脚本名称" />
     <MESSAGE value="修复京喜工厂开团-七夕" />
     <MESSAGE value="更新cookie检测问题" />
@@ -1036,7 +1033,8 @@
     <MESSAGE value="通知服务获取方法" />
     <MESSAGE value="更改检测用户接口" />
     <MESSAGE value="2021-11-08：1、修复cookie检测接口；2、增加cookie检测开关 JD_COOKIE_CHECK=&quot;false&quot;。" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-11-08：1、修复cookie检测接口；2、增加cookie检测开关 JD_COOKIE_CHECK=&quot;false&quot;。" />
+    <MESSAGE value="更新cookie检测接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新cookie检测接口" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1397,29 +1395,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jd_zddd_Help.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="91" column="30" lean-forward="true" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
-          <folding>
-            <element signature="e#722#740#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jd_qjd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="45" selection-start-line="45" selection-end-line="50" selection-end-column="15" />
-          <folding>
-            <element signature="e#892#910#0" expanded="true" />
-            <element signature="e#1313#2936#0" />
-            <element signature="e#2991#3521#0" />
-            <element signature="e#10226#12736#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jd_qmkmb_help.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1427,47 +1402,6 @@
           <folding>
             <element signature="e#530#548#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jd_blueCoin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2685">
-          <caret line="180" column="40" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jd_ddmc_help.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding>
-            <element signature="e#503#517#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jd_jxgc_tuan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#2246#2776#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jd_cookie.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="89" selection-start-line="89" selection-end-line="117" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1485,11 +1419,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpenCard/jd_OpenCard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="766" column="31" lean-forward="true" selection-start-line="766" selection-start-column="31" selection-end-line="766" selection-end-column="31" />
+        <state relative-caret-position="105">
+          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding>
             <element signature="e#4923#4953#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_cookie.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_qjd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="51" column="44" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
+          <folding>
+            <element signature="e#892#910#0" expanded="true" />
+            <element signature="e#1313#2936#0" />
+            <element signature="e#2991#3521#0" />
+            <element signature="e#10226#12736#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_zddd_Help.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+          <folding>
+            <element signature="e#722#740#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_blueCoin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_ddmc_help.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+          <folding>
+            <element signature="e#503#517#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_jxgc_tuan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-228">
+          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jd_ddnc_help.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
         </state>
       </provider>
     </entry>

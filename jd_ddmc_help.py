@@ -35,7 +35,7 @@ except:
     sys.exit(3)
 from urllib.parse import unquote
 ##############
-
+requests.packages.urllib3.disable_warnings()
 # requests.packages.urllib3.disable_warnings()
 pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
 host_api = 'https://api.m.jd.com/client.action'
