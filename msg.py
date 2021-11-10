@@ -56,10 +56,8 @@ class msg(object):
         if a == 0:
             a += 1
         try:
-            # url = 'https://gitee.com/curtinlv/Public/raw/master/sendNotify.py'
             url = 'https://ghproxy.com/https://raw.githubusercontent.com/curtinlv/JD-Script/main/sendNotify.py'
             response = requests.get(url)
-            print(response.text)
             if 'curtinlv' in response.text:
                 with open('sendNotify.py', "w+", encoding="utf-8") as f:
                     f.write(response.text)
