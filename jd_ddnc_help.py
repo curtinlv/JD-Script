@@ -175,7 +175,7 @@ def ddnc_help(ck, nickname, shareCode, masterName):
         elif help_result == "8":
             print(f"\t└😆{nickname} 已没有助力机会~  ")
         elif help_result == "10":
-            print(f"\t└☺️ {masterName} 今天好友助力已满～")
+            msg(f"\t└☺️ {masterName} 今天好友助力已满～")
             return True
         else:
             print(f"\t└😄 {nickname} 助力 {masterName} ")
