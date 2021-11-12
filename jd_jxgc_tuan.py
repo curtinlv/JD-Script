@@ -36,7 +36,7 @@ try:
     from jd_cookie import getJDCookie
     getCk = getJDCookie()
 except:
-    print("请先下载依赖脚本，\n下载链接：https://ghproxy.com/https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_cookie.py")
+    print("请先下载依赖脚本，\n下载链接：https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_tool_dl.py")
     sys.exit(3)
 from urllib.parse import unquote, quote
 import json

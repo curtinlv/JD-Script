@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*
 '''
 项目名称: JD-Script / jd_ddmc_help 
-Author: Curtin
+Author: Curtinr
 功能：东东萌宠-助力
 Date: 2021/11/08 下午9:30
 TG交流 https://t.me/topstyle996
@@ -31,7 +31,7 @@ try:
     from jd_cookie import getJDCookie
     getCk = getJDCookie()
 except:
-    print("请先下载依赖脚本，\n下载链接：https://ghproxy.com/https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_cookie.py")
+    print("请先下载依赖脚本，\n下载链接：https://ghproxy.com/https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_tool_dl.py")
     sys.exit(3)
 from urllib.parse import unquote
 ##############
