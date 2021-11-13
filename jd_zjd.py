@@ -20,141 +20,32 @@ zlzh = ['Curtinlv', '买买买', '东哥']
 
 
 
-import os, re
+import os,sys
 try:
     import requests
 except Exception as e:
     print(e, "\n缺少requests 模块，请执行命令安装：python3 -m pip install requests")
     exit(3)
-from urllib.parse import unquote
-import json
+try:
+    from jd_cookie import getJDCookie
+    getCk = getJDCookie()
+except:
+    print("请先下载依赖脚本，\n下载链接：https://ghproxy.com/https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_tool_dl.py")
+    sys.exit(3)
 import time
+
 requests.packages.urllib3.disable_warnings()
 pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
 t = time.time()
 aNum = 0
 beanCount = 0
-class getJDCookie(object):
-    # 适配各种平台环境ck
-    def getckfile(self):
-        if os.path.exists('/ql/config/env.sh'):
-            print("当前环境青龙面板新版")
-            return '/ql/config/env.sh'
-        elif os.path.exists('/ql/config/cookie.sh'):
-            print("当前环境青龙面板旧版")
-            return '/ql/config/env.sh'
-        elif os.path.exists('/jd/config/config.sh'):
-            print("当前环境V4")
-            return '/jd/config/config.sh'
-        elif os.path.exists(pwd + 'JDCookies.txt'):
-            return pwd + 'JDCookies.txt'
-        else:
-            return pwd + 'JDCookies.txt'
-    # 获取cookie
-    def getCookie(self):
-        global cookies
-        ckfile = self.getckfile()
-        try:
-            if os.path.exists(ckfile):
-                with open(ckfile, "r", encoding="utf-8") as f:
-                    cks = f.read()
-                    f.close()
-                if 'pt_key=' in cks and 'pt_pin=' in cks:
-                    r = re.compile(r"pt_key=.*?pt_pin=.*?;", re.M | re.S | re.I)
-                    cks = r.findall(cks)
-                    if len(cks) > 0:
-                        cookies = ''
-                        for i in cks:
-                            cookies += i
-            else:
-                with open(pwd + 'JDCookies.txt', "w", encoding="utf-8") as f:
-                    cks = "#多账号换行，以下示例：（通过正则获取此文件的ck，理论上可以自定义名字标记ck，也可以随意摆放ck）\n账号1【Curtinlv】cookie1;\n账号2【TopStyle】cookie2;"
-                    f.write(cks)
-                    f.close()
-                pass
-        except Exception as e:
-            print(f"【getCookie Error】{e}")
 
-    # 检测cookie格式是否正确
-    def getUserInfo(self, ck, pinName, userNum):
-        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback=GetJDUserInfoUnion'
-        headers = {
-            'Cookie': ck,
-            'Accept': '*/*',
-            'Connection': 'close',
-            'Referer': 'https://home.m.jd.com/myJd/home.action',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Host': 'me-api.jd.com',
-            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Mobile/15E148 Safari/604.1',
-            'Accept-Language': 'zh-cn'
-        }
-        try:
-            resp = requests.get(url=url, verify=False, headers=headers, timeout=60).text
-            r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
-            result = r.findall(resp)
-            userInfo = json.loads(result[0])
-            nickname = userInfo['data']['userInfo']['baseInfo']['nickname']
-            return ck, nickname
-        except Exception:
-            context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
-            print(context)
-            return ck, False
-
-    def iscookie(self):
-        """
-        :return: cookiesList,userNameList,pinNameList
-        """
-        cookiesList = []
-        userNameList = []
-        pinNameList = []
-        if 'pt_key=' in cookies and 'pt_pin=' in cookies:
-            r = re.compile(r"pt_key=.*?pt_pin=.*?;", re.M | re.S | re.I)
-            result = r.findall(cookies)
-            if len(result) >= 1:
-                print("您已配置{}个账号".format(len(result)))
-                u = 1
-                for i in result:
-                    r = re.compile(r"pt_pin=(.*?);")
-                    pinName = r.findall(i)
-                    pinName = unquote(pinName[0])
-                    # 获取账号名
-                    ck, nickname = self.getUserInfo(i, pinName, u)
-                    if nickname != False:
-                        cookiesList.append(ck)
-                        userNameList.append(nickname)
-                        pinNameList.append(pinName)
-                    else:
-                        u += 1
-                        continue
-                    u += 1
-                if len(cookiesList) > 0 and len(userNameList) > 0:
-                    return cookiesList, userNameList, pinNameList
-                else:
-                    print("没有可用Cookie，已退出")
-                    exit(3)
-            else:
-                print("cookie 格式错误！...本次操作已退出")
-                exit(4)
-        else:
-            print("cookie 格式错误！...本次操作已退出")
-            exit(4)
-
-
-
-# 获取系统ENV环境参数优先使用 适合Ac、云服务等环境
-# JD_COOKIE=cookie （多账号&分隔）
-if "JD_COOKIE" in os.environ:
-    if len(os.environ["JD_COOKIE"]) > 10:
-        cookies = os.environ["JD_COOKIE"]
-        print("已获取并使用Env环境 Cookie")
 if "zlzh" in os.environ:
     if len(os.environ["zlzh"]) > 1:
         zlzh = os.environ["zlzh"]
         zlzh = zlzh.replace('[', '').replace(']', '').replace('\'', '').replace(' ', '').split(',')
         print("已获取并使用Env环境 zlzh:", zlzh)
 
-getCk = getJDCookie()
-getCk.getCookie()
 
 # 开启助力任务
 def starAssist(sid, headers):
@@ -245,15 +136,15 @@ def assist(ck, sid, eid, aid, user, name, a):
 
 #开始互助
 def start():
-    global header,cookiesList, userNameList, pinNameList
+    global header,cookiesList, userNameList
     print("微信小程序-赚京豆-瓜分助力")
-    cookiesList, userNameList, pinNameList = getCk.iscookie()
+    cookiesList, userNameList = getCk.iscookie()
     for ckname in zlzh:
         try:
             ckNum = userNameList.index(ckname)
         except Exception as e:
             try:
-                ckNum = pinNameList.index(ckname)
+                ckNum = userNameList.index(ckname)
             except:
                 print("请检查助力账号名称是否正确？提示：助力名字可填pt_pin的值、也可以填用户名。")
                 exit(9)
