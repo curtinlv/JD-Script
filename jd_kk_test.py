@@ -110,6 +110,7 @@ def getMyPing(ck):
         pin = resp.json()['data']['pin']
         secretPin = resp.json()['data']['secretPin']
         userid = resp.json()['data']['id']
+        yunMidImageUrl = resp.json()['data']['yunMidImageUrl']
     except Exception as e:
         print("建议请稍等再试~", e)
         sys.exit(1)
@@ -129,7 +130,7 @@ def getMyPing(ck):
         'Accept-Language': 'zh-CN,zh-Hans;q=0.9',
         'Accept': 'application/json'
     }
-    return headers, pin, secretPin, userid
+    return headers, pin, secretPin, userid, yunMidImageUrl
 
 def accessLog(headers, body):
     url = 'https://cjhydz-isv.isvjcloud.com/common/accessLog'
@@ -140,7 +141,7 @@ def accessLog(headers, body):
         print('\t└accessLog ---> error')
 
 def getOpenCardAllStatuesNew(ck):
-    headers, pin, secretPin, userid = getMyPing(ck)
+    headers, pin, secretPin, userid, yunMidImageUrl = getMyPing(ck)
     url = 'https://cjhydz-isv.isvjcloud.com/microDz/invite/activity/wx/getOpenCardAllStatuesNew'
     body = f'activityId={activityId}&pin={secretPin}&isInvited=1'
     resp = requests.post(url=url, headers=headers, data=body).json()
@@ -202,16 +203,18 @@ def bindWithVender(ck, inviterNickName, inviter):
 
 
 def getActivityInfo(ck):
-    headers, pin, secretPin, userid = getMyPing(ck)
+    headers, pin, secretPin, userid, yunMidImageUrl = getMyPing(ck)
     url = 'https://cjhydz-isv.isvjcloud.com/microDz/invite/activity/wx/getActivityInfo'
     body = f'activityId={activityId}'
     resp = requests.post(url, headers=headers, data=body).json()
     # print(resp)
 def isInvited(ck):
-    headers, pin, secretPin, userid = getMyPing(ck)
+    headers, pin, secretPin, userid, yunMidImageUrl = getMyPing(ck)
     url = 'https://cjhydz-isv.isvjcloud.com/microDz/invite/activity/wx/isInvited'
     body = f'activityId={activityId}&pin={secretPin}'
     resp = requests.post(url=url, headers=headers, data=body).json()
+    print(resp)
+    # exit(3)
     # print(resp)
 
 def inviteRecord(headers, inviter):
@@ -221,32 +224,32 @@ def inviteRecord(headers, inviter):
     # print(resp)
 
 
-def acceptInvite(headers, pin, secretPin, inviter, inviterNick):
+def acceptInvite(headers, pin, secretPin, inviter, inviterNick, yunMidImageUrl):
     inviteRecord(headers, inviter)
     body = f'venderId=&code=99&pin={pin}&activityId={activityId}&pageUrl=https%3A%2F%2Fcjhydz-isv.isvjcloud.com%2FmicroDz%2Finvite%2Factivity%2Fwx%2Fview%2Findex%2F5986361%3FactivityId%3D{activityId}%26inviter%3D{inviter}%26inviterImg%3D%26inviterNickName%3D{inviterNick}%26shareuserid4minipg%3D{inviter}%26shopid%3D599119%26lng%3D%26lat%3D%26sid%3D%26un_area%3D&subType='
     accessLog(headers, body)
     url = 'https://cjhydz-isv.isvjcloud.com/microDz/invite/activity/wx/acceptInvite'
-    body1 = f'activityId={activityId}&inviter={inviter}&inviterImg=&inviterNick={quote(inviterNick)}&invitee={secretPin}&inviteeImg=&inviteeNick={quote(pin)}'
+    body1 = f'activityId={activityId}&inviter={inviter}&inviterImg=&inviterNick={quote(inviterNick)}&invitee={secretPin}&inviteeImg={yunMidImageUrl}&inviteeNick={quote(pin)}'
     headers['Referer'] = f'https://cjhydz-isv.isvjcloud.com/microDz/invite/activity/wx/view/index/5986361?activityId={activityId}&inviter={inviter}&inviterImg=&inviterNickName={inviterNick}&shareuserid4minipg={inviter}&shopid=599119&lng=113.&lat=23.&sid=6ed3dcfe7c0bb6992246a5771fac1aaw&un_area=19_1601_3633_63243'
     resp = requests.post(url=url, headers=headers, data=body1).json()
     print(f"\t└{resp['errorMessage']}")
 
 
 def miniProgramShareInfo(ck):
-    headers, pin, secretPin, userid = getMyPing(ck)
+    headers, pin, secretPin, userid, yunMidImageUrl = getMyPing(ck)
     url = 'https://cjhydz-isv.isvjcloud.com/miniProgramShareInfo/getInfo?activityId=96475ceebdf0418ab524c9bc68a789e8'
     resp = requests.get(url=url, headers=headers).json()
     # print(resp)
 
 def getSimpleActInfoVo(ck):
-    headers, pin, secretPin, userid = getMyPing(ck)
+    headers, pin, secretPin, userid, yunMidImageUrl = getMyPing(ck)
     url = 'https://cjhydz-isv.isvjcloud.com/customer/getSimpleActInfoVo'
     body = f'activityId={activityId}'
     resp = requests.post(url=url, headers=headers, data=body).json()
     # print(resp)
 
 def getSystemConfig(ck):
-    headers, pin, secretPin, userid = getMyPing(ck)
+    headers, pin, secretPin, userid, yunMidImageUrl = getMyPing(ck)
     url = 'https://cjhydz-isv.isvjcloud.com/wxCommonInfo/getSystemConfig'
     body = f'activityId={activityId}'
     resp = requests.post(url=url, headers=headers, data=body).json()
@@ -256,7 +259,7 @@ def start():
     cookieList, nameList = getCk.iscookie()
     a = 1
     for ck, user in zip(cookieList, nameList):
-        headers, pin, secret, userid = getMyPing(ck)
+        headers, pin, secret, userid, yunMidImageUrl = getMyPing(ck)
         print(f"## 用户{a}【{user}】")
         getSystemConfig(ck)
         getSimpleActInfoVo(ck)
@@ -266,12 +269,12 @@ def start():
             MasterPin = pin
             Mastersecret = secret
             print(f"用户{a}[{pin}]>>助力>>>[Curtinlv]")
-            acceptInvite(headers, MasterPin, Mastersecret, 'kNwcKz%20y%20wjfE%2FyhJf7Ph2cLh8yR0FTTtPtNBwC7New%20Y72eTaNK0sHryLjn2YvU', 'Curtinlv')
+            acceptInvite(headers, MasterPin, Mastersecret, 'kNwcKz%20y%20wjfE%2FyhJf7Ph2cLh8yR0FTTtPtNBwC7New%20Y72eTaNK0sHryLjn2YvU', 'Curtinlv', yunMidImageUrl)
             bindWithVender(ck, MasterPin, Mastersecret)
             a += 1
             continue
         print(f"用户{a}[{pin}]>>助力>>>[{MasterPin}]")
-        acceptInvite(headers, pin, secret, Mastersecret, MasterPin)
+        acceptInvite(headers, pin, secret, Mastersecret, MasterPin, yunMidImageUrl)
         body = f'venderId=&code=99&pin={secret}%253D%253D&activityId={activityId}&pageUrl=https%3A%2F%2Fcjhydz-isv.isvjcloud.com%2FmicroDz%2Finvite%2Factivity%2Fwx%2Fview%2Findex%2F5986361%3FactivityId%3D{activityId}%26inviter%3D{Mastersecret}%26inviterImg%3Dhttp%3A%2F%2Fstorage.360buyimg.com%2Fi.imageUpload%2F31333435303133353830315f7031363134333838323331343238_mid.jpg%26inviterNickName%3D{MasterPin}%26shareuserid4minipg%3D{Mastersecret}%26shopid%3D599119%26lng%3D113.%26lat%3D23.%26sid%3D%26un_area%3D&subType='
         accessLog(headers,body)
         bindWithVender(ck, MasterPin, Mastersecret)
