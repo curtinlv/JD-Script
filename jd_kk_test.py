@@ -272,12 +272,14 @@ def start():
             acceptInvite(headers, MasterPin, Mastersecret, '2vlPNpSNPs2zwEu+07zbf8+iQEinB57W5aMO3vKdRy0Jah8sXZOcx4hozgiV81Rt697ulbLIDOIodMQ2RvALQQ==', 'Curtinlv', yunMidImageUrl)
             bindWithVender(ck, MasterPin, Mastersecret)
             a += 1
+            sleep(10)
             continue
         print(f"用户{a}[{pin}]>>助力>>>[{MasterPin}]")
         acceptInvite(headers, pin, secret, Mastersecret, MasterPin, yunMidImageUrl)
         body = f'venderId=&code=99&pin={secret}%253D%253D&activityId={activityId}&pageUrl=https%3A%2F%2Fcjhydz-isv.isvjcloud.com%2FmicroDz%2Finvite%2Factivity%2Fwx%2Fview%2Findex%2F5986361%3FactivityId%3D{activityId}%26inviter%3D{Mastersecret}%26inviterImg%3Dhttp%3A%2F%2Fstorage.360buyimg.com%2Fi.imageUpload%2F31333435303133353830315f7031363134333838323331343238_mid.jpg%26inviterNickName%3D{MasterPin}%26shareuserid4minipg%3D{Mastersecret}%26shopid%3D599119%26lng%3D113.%26lat%3D23.%26sid%3D%26un_area%3D&subType='
         accessLog(headers,body)
         bindWithVender(ck, MasterPin, Mastersecret)
+        sleep(10)
         a += 1
 if __name__ == '__main__':
    try:
