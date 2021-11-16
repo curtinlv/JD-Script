@@ -25,7 +25,7 @@ except:
     print("请先下载依赖脚本，\n下载链接：https://ghproxy.com/https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_tool_dl.py")
     sys.exit(3)
 
-if datetime.datetime.now() > datetime.datetime.strptime('2021-11-18', "%Y-%m-%d"):
+if datetime.datetime.now() > datetime.datetime.strptime('2021-11-16', "%Y-%m-%d"):
     print("品牌联合开卡 11.11-11.17---活动结束\n请删掉脚本：jd_kk_test.py")
     exit(3)
 
