@@ -316,7 +316,6 @@ def start():
         sleep(0.3)
         saveCandidate(header, pin, yunMidImageUrl, nickname)
         sleep(0.3)
-        activityContent(header, pin)
         print(f"## 用户{a}【{nickname}】")
         if a == 1:
             accessLogbody = f'venderId=1000014486&code=46&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzkjdz-isv.isvjcloud.com%2Fpool%2Fcaptain%2F1818505%3FactivityId%3Df88dd152fdc049f3b92aa58339b26345%26signUuid%3Daa092238064e438b92a40a949b7a5544%26shareuserid4minipg%3D{shareuserid4minipg}%26shopid%3D1000014486&subType=app&adSource='
@@ -334,6 +333,7 @@ def start():
         accessLogbody = f'venderId=1000014486&code=46&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzkjdz-isv.isvjcloud.com%2Fpool%2Fcaptain%2F1818505%3FactivityId%3Df88dd152fdc049f3b92aa58339b26345%26signUuid%3Daa092238064e438b92a40a949b7a5544%26shareuserid4minipg%3D{shareuserid4minipg}%26shopid%3D1000014486&subType=app&adSource='
         accessLog(header, accessLogbody)
         bindWithVender(ck)
+        activityContent(header, pin)
         sleep(3)
         a += 1
     for ck, user in zip(cookieList, nameList):
