@@ -305,6 +305,7 @@ def start():
         sleep(0.3)
         header, nickname, pin = getMyPing(shareuserid4minipg, cookie, token)
         if not header:
+            print(f"## 用户{a}【{user}】 异常，暂无法参加活动~")
             continue
         sleep(0.3)
         getSystemConfigForNew(header)
