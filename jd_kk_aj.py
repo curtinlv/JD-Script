@@ -334,8 +334,12 @@ def start():
         accessLog(header, accessLogbody)
         bindWithVender(ck)
         activityContent(header, pin)
+        if a > 80:
+            print("### 为防止溢出处理，请更换车头~")
+            break
         sleep(3)
         a += 1
+
     for ck, user in zip(cookieList, nameList):
         print("#"*20)
         msg(f"## 开始瓜分京豆[{user}]")
