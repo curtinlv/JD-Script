@@ -228,7 +228,7 @@ def activityContent(header, pin):
     url = 'https://lzkjdz-isv.isvjcloud.com/pool/activityContent'
     body = f'activityId={activityId}&pin={quote(pin)}&signUuid='
     resp = requests.post(url=url, headers=header, data=body).json()
-    print(json.dumps(resp, indent=4, ensure_ascii=False))
+    # print(json.dumps(resp, indent=4, ensure_ascii=False))
     signUuid = resp['data']['signUuid']
     try:
         successRetList = resp['data']['successRetList']
