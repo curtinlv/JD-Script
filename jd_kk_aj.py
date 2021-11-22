@@ -244,7 +244,7 @@ def activityContent(header, pin):
                         updateCaptain(header, captainId)
             msg(f"### 本次成功瓜分{count}次，获得{count * 100}豆 ###)")
             msg(f"### 累计成功瓜分{succ_num}次，获得{succ_num * 100}豆 ###")
-        if succ_num >20:
+        if succ_num > 20:
             msg(f"当前车头已经完成20次瓜分~")
     except:
         pass
@@ -291,7 +291,9 @@ def getCode():
             return 'wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP'
     except:
         return 'wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP'
-
+def mini(header):
+    url = 'https://lzkjdz-isv.isvjcloud.com/miniProgramShareInfo/getInfo?activityId=f88dd152fdc049f3b92aa58339b26345'
+    resp = requests.get(url=url, headers=header).json()
 
 
 def start():
@@ -312,6 +314,7 @@ def start():
             print(f"## 用户{a}【{user}】 异常，暂无法参加活动~")
             continue
         sleep(0.3)
+        mini(header)
         getSystemConfigForNew(header)
         sleep(0.3)
         getSimpleActInfoVo(header)
