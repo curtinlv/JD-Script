@@ -342,6 +342,7 @@ def start():
         saveCaptain(header, pin, yunMidImageUrl, nickname)
         print(f"## 用户{a}【{nickname}】")
         if a == 1:
+            sleep(1)
             signUuid = activityContent(header, pin)
             accessLogbody = f'venderId=1000014486&code=46&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzkjdz-isv.isvjcloud.com%2Fpool%2Fcaptain%2F1818505%3FactivityId%3Df88dd152fdc049f3b92aa58339b26345%26signUuid%3D{signUuid}%26shareuserid4minipg%3D{shareuserid4minipg}%26shopid%3D1000014486&subType=app&adSource='
             shareuserid4minipg = pin
@@ -354,7 +355,7 @@ def start():
         if user == Masternickname:
             a += 1
             continue
-        sleep(0.2)
+        sleep(1)
         activityContent(header, pin)
         print(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]")
         accessLogbody = f'venderId=1000014486&code=46&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzkjdz-isv.isvjcloud.com%2Fpool%2Fcaptain%2F1818505%3FactivityId%3Df88dd152fdc049f3b92aa58339b26345%26signUuid%3D{signUuid}%26shareuserid4minipg%3D{shareuserid4minipg}%26shopid%3D1000014486&subType=app&adSource='
