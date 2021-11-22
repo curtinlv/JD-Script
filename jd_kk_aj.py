@@ -228,6 +228,7 @@ def activityContent(header, pin):
     url = 'https://lzkjdz-isv.isvjcloud.com/pool/activityContent'
     body = f'activityId={activityId}&pin={quote(pin)}&signUuid='
     resp = requests.post(url=url, headers=header, data=body).json()
+    print(json.dumps(resp, indent=4, ensure_ascii=False))
     signUuid = resp['data']['signUuid']
     try:
         successRetList = resp['data']['successRetList']
@@ -339,8 +340,6 @@ def start():
         saveCandidate(header, pin, yunMidImageUrl, nickname)
         sleep(0.3)
         saveCaptain(header, pin, yunMidImageUrl, nickname)
-        sleep(0.2)
-        activityContent(header, pin)
         print(f"## 用户{a}【{nickname}】")
         if a == 1:
             signUuid = activityContent(header, pin)
@@ -355,7 +354,8 @@ def start():
         if user == Masternickname:
             a += 1
             continue
-
+        sleep(0.2)
+        activityContent(header, pin)
         print(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]")
         accessLogbody = f'venderId=1000014486&code=46&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzkjdz-isv.isvjcloud.com%2Fpool%2Fcaptain%2F1818505%3FactivityId%3Df88dd152fdc049f3b92aa58339b26345%26signUuid%3D{signUuid}%26shareuserid4minipg%3D{shareuserid4minipg}%26shopid%3D1000014486&subType=app&adSource='
         accessLog(header, accessLogbody)
