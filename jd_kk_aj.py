@@ -226,8 +226,9 @@ def updateCaptain(header, uuid):
 
 def activityContent(header, pin):
     url = 'https://lzkjdz-isv.isvjcloud.com/pool/activityContent'
-    body = f'activityId={activityId}&pin={quote(pin)}&signUuid={signUuid}'
+    body = f'activityId={activityId}&pin={quote(pin)}&signUuid='
     resp = requests.post(url=url, headers=header, data=body).json()
+    signUuid = resp['data']['signUuid']
     try:
         successRetList = resp['data']['successRetList']
         succ_num = len(successRetList)
@@ -243,11 +244,13 @@ def activityContent(header, pin):
                         print(f"开始瓜分{count}")
                         updateCaptain(header, captainId)
             msg(f"### 本次成功瓜分{count}次，获得{count * 100}豆 ###)")
-            msg(f"### 累计成功瓜分{succ_num}次，获得{succ_num * 100}豆 ###")
+            msg(f"### 累计成功瓜分{succ_num}次。###")
         if succ_num > 20:
             msg(f"当前车头已经完成20次瓜分~")
+
     except:
         pass
+    return signUuid
 
 def getUserInfo(header, pin):
     url = 'https://lzkjdz-isv.isvjcloud.com/wxActionCommon/getUserInfo'
@@ -286,21 +289,33 @@ def getCode():
         response = requests.get(url)
         code = response.text
         if response.status_code == 200 and len(code) > 30:
-            return code
+            share=code.split('&')[0]
+            sid=code.split('&')[1]
+            return share,sid
         else:
-            return 'wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP'
+            return 'wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP','89ea975bc4124c53985711913a343cbc'
     except:
-        return 'wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP'
+        return 'wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP','89ea975bc4124c53985711913a343cbc'
 def mini(header):
     url = 'https://lzkjdz-isv.isvjcloud.com/miniProgramShareInfo/getInfo?activityId=f88dd152fdc049f3b92aa58339b26345'
     resp = requests.get(url=url, headers=header).json()
 
 
+def saveCaptain(header, pin, pinImg, jdNick):
+    try:
+        url = 'https://lzkjdz-isv.isvjcloud.com/pool/saveCaptain'
+        body = f'activityId={activityId}&pin={quote(pin)}&pinImg={quote(pinImg)}&jdNick={quote(jdNick)}'
+        resp = requests.post(url=url, headers=header, data=body).json()
+    except:
+        pass
+    # print(resp)
+    # signUuid = resp['data']['signUuid']
+    # return signUuid
 def start():
-    global shareuserid4minipg, Masternickname
+    global shareuserid4minipg, Masternickname, signUuid
     scriptName='[安佳牛奶 11.1-11.30]'
     print(f"开始：{scriptName}")
-    shareuserid4minipg = getCode()
+    shareuserid4minipg, signUuid = getCode()
     cookieList, nameList = getCk.iscookie()
     a = 1
     # try:
@@ -323,9 +338,13 @@ def start():
         sleep(0.3)
         saveCandidate(header, pin, yunMidImageUrl, nickname)
         sleep(0.3)
+        saveCaptain(header, pin, yunMidImageUrl, nickname)
+        sleep(0.2)
+        activityContent(header, pin)
         print(f"## 用户{a}【{nickname}】")
         if a == 1:
-            accessLogbody = f'venderId=1000014486&code=46&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzkjdz-isv.isvjcloud.com%2Fpool%2Fcaptain%2F1818505%3FactivityId%3Df88dd152fdc049f3b92aa58339b26345%26signUuid%3Daa092238064e438b92a40a949b7a5544%26shareuserid4minipg%3D{shareuserid4minipg}%26shopid%3D1000014486&subType=app&adSource='
+            signUuid = activityContent(header, pin)
+            accessLogbody = f'venderId=1000014486&code=46&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzkjdz-isv.isvjcloud.com%2Fpool%2Fcaptain%2F1818505%3FactivityId%3Df88dd152fdc049f3b92aa58339b26345%26signUuid%3D{signUuid}%26shareuserid4minipg%3D{shareuserid4minipg}%26shopid%3D1000014486&subType=app&adSource='
             shareuserid4minipg = pin
             Masternickname = nickname
             print(f"用户{a}[{nickname}]>>助力>>>[Curtinlv]")
@@ -336,11 +355,12 @@ def start():
         if user == Masternickname:
             a += 1
             continue
+
         print(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]")
-        accessLogbody = f'venderId=1000014486&code=46&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzkjdz-isv.isvjcloud.com%2Fpool%2Fcaptain%2F1818505%3FactivityId%3Df88dd152fdc049f3b92aa58339b26345%26signUuid%3Daa092238064e438b92a40a949b7a5544%26shareuserid4minipg%3D{shareuserid4minipg}%26shopid%3D1000014486&subType=app&adSource='
+        accessLogbody = f'venderId=1000014486&code=46&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzkjdz-isv.isvjcloud.com%2Fpool%2Fcaptain%2F1818505%3FactivityId%3Df88dd152fdc049f3b92aa58339b26345%26signUuid%3D{signUuid}%26shareuserid4minipg%3D{shareuserid4minipg}%26shopid%3D1000014486&subType=app&adSource='
         accessLog(header, accessLogbody)
         bindWithVender(ck)
-        activityContent(header, pin)
+
         if a > 80:
             print("### 为防止溢出处理，请更换车头~")
             break
@@ -355,7 +375,7 @@ def start():
         token = isvObfuscator(ck)
         sleep(0.1)
         header, nickname, pin = getMyPing(shareuserid4minipg, cookie, token)
-        activityContent(header, pin)
+        signUuid = activityContent(header, pin)
         msg("活动入口：\n18:/#Y5FFl0yKLN29vX%，⭐集结战队，召唤好友免费赢京豆！\n\nTG交流 https://t.me/topstyle996\nTG频道 https://t.me/TopStyle2021")
         break
     # except Exception as e:
