@@ -230,7 +230,8 @@ def activityContent(header, pin):
     resp = requests.post(url=url, headers=header, data=body).json()
     try:
         successRetList = resp['data']['successRetList']
-        if len(successRetList) > 0:
+        succ_num = len(successRetList)
+        if succ_num > 0:
             count = 0
             for i in successRetList:
                 sendStatus = i['sendStatus']
@@ -241,7 +242,10 @@ def activityContent(header, pin):
                         count += 1
                         print(f"开始瓜分{count}")
                         updateCaptain(header, captainId)
-            msg(f"### 本次成功瓜分{count}次，获得{count * 100}豆 ###\n### 累计成功瓜分{len(successRetList)}次，获得{len(successRetList) * 100}豆 ###")
+            msg(f"### 本次成功瓜分{count}次，获得{count * 100}豆 ###)")
+            msg(f"### 累计成功瓜分{succ_num}次，获得{succ_num * 100}豆 ###")
+        if succ_num >20:
+            msg(f"当前车头已经完成20次瓜分~")
     except:
         pass
 
