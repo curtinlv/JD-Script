@@ -471,7 +471,7 @@ def start():
                 insertCrmPageVisit(header, pin, i)
             bindWithVender(ck, venderIdList, channelList)
             for i in range(2):
-                sleep(1)
+                sleep(5)
                 startDraw(header, actorUuid, pin, user, i)
         else:
             print("\t😆任务已完成!")
