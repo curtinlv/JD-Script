@@ -301,7 +301,7 @@ def startDraw(header, actorUuid, pin, user, num):
     global countbean
     try:
         drawContent(header, pin)
-        sleep(3)
+        sleep(1)
         url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/startDraw'
         body = f'activityId={activityId}&actorUuid={actorUuid}&pin={quote(pin)}&type={num+1}'
         resp = requests.post(url=url, headers=header, data=body)
@@ -503,6 +503,7 @@ def start():
         allbean += countbean[k]
     msg(f"总获得: {allbean}")
     msg("*" * 50)
+    msg(footer)
     if isNotice == "true":
         send(hdtitle, msg_info)
 
