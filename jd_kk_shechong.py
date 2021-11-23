@@ -470,13 +470,13 @@ def start():
                 sleep(1)
                 insertCrmPageVisit(header, pin, i)
             bindWithVender(ck, venderIdList, channelList)
+            print("#去抽奖~")
             for i in range(2):
                 sleep(5)
                 startDraw(header, actorUuid, pin, user, i)
         else:
             print("\t😆任务已完成!")
         # 抽奖
-        print("#去抽奖~")
         # if score1 > 0 or score2 > 0:
         #     print("有抽奖机会")
         #     for i in range(2):
