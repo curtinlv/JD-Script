@@ -494,6 +494,7 @@ def start():
     # 抽奖
     a = 1
     shareUuid = '73361f819faf41898ca8b1cf958a3f13'
+    shareuserid4minipg='wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP'
     for ck, user in zip(cookieList, nameList):
         print(f"##☺️用户{a}【{user}】")
         cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
@@ -516,6 +517,7 @@ def start():
             startDraw(header, actorUuid, pin, user, i)
         if a == 1:
             shareUuid = actorUuid
+            shareuserid4minipg = pin
         a += 1
 
     msg("*"*50)
