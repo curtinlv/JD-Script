@@ -39,6 +39,7 @@ UserAgent = ''
 activityId='dzkmladn20211123A'
 
 countbean = {}
+allList = []
 ## 获取通知服务
 class msg(object):
     def __init__(self, m):
@@ -426,6 +427,37 @@ def isUpdate():
     except:
         return False, '奢宠会员-瓜分万元大奖 11.23-11.30', '', 'bc5f8aab60ad47ab8249c5a58c3e00d5&wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP', '\n开源免费使用 https://github.com/curtinlv/JD-Script\nTG频道 https://t.me/TopStyle2021'
 
+def getDrawRecordHasCoupon(headers, pin, actorUuid, user):
+    # try:
+    url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/taskact/openCardcommon/getDrawRecordHasCoupon'
+    body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}'
+    resp = requests.post(url=url, headers=headers, data=body).json()
+    allcount = {}
+    if resp['result']:
+        data = resp['data']
+        a = 0
+        for i in data:
+            if a == 0:
+                a = 1
+                allcount['id'] = user
+            # print(i)
+            # print(json.dumps(i, indent=4, ensure_ascii=False))
+            if '京豆' in i['infoName']:
+                beanNum = re.findall(r'(\d+)', i['infoName'])[0]
+                try:
+                    allcount[i['value'] + '京豆'] += int(beanNum)
+                except:
+                    allcount[i['value'] + '京豆'] = int(beanNum)
+            else:
+                try:
+                    allcount['礼品'] += '###' + i['value']
+                except:
+                    allcount['礼品'] = i['value']
+        allList.append(allcount)
+    # except:
+    #     pass
+
+
 def start():
     global shareuserid4minipg, Masternickname, shareUuid
     isok, hdtitle, readme, code, footer = isUpdate()
@@ -476,13 +508,6 @@ def start():
                 startDraw(header, actorUuid, pin, user, i)
         else:
             print("\t😆任务已完成!")
-        # 抽奖
-        # if score1 > 0 or score2 > 0:
-        #     print("有抽奖机会")
-        #     for i in range(2):
-        #         startDraw(header, actorUuid, pin, user, i)
-        # else:
-        #     print("\t😆您的抽奖次数不足!")
         for i in range(2):
             startDraw(header, actorUuid, pin, user, i)
         if a == 1:
@@ -495,14 +520,62 @@ def start():
         print(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]{shareUuid}")
         sleep(1)
         a += 1
-    msg("*"*50)
-    msg("本次统计：")
+    # 抽奖
+    a = 1
+    shareUuid = 'bc5f8aab60ad47ab8249c5a58c3e00d5'
+    shareuserid4minipg = 'wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP'
+    for ck, user in zip(cookieList, nameList):
+        print(f"##☺️用户{a}【{user}】")
+        cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
+        sleep(0.2)
+        token = isvObfuscator(ck)
+        sleep(0.1)
+        try:
+            header, nickname, pin, AUTH_C_USER = getMyPing(shareUuid, shareuserid4minipg, cookie, token)
+        except:
+            print(f"️##😭用户{a}【{user}】暂无法参加活动~")
+            a += 1
+            continue
+        sleep(0.3)
+        yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
+        header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
+        actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
+        getDrawRecordHasCoupon(header, pin, actorUuid, user)
+        venderIdList, channelList, score1, score2 = checkOpenCard(header, actorUuid, shareUuid, pin)
+        bindWithVender(ck, venderIdList, channelList)
+        for i in range(2):
+            startDraw(header, actorUuid, pin, user, i)
+        if a == 1:
+            shareUuid = actorUuid
+            shareuserid4minipg = pin
+        a += 1
+    msg("*" * 40)
+    msg("### 【本次】")
     allbean = 0
     for k in countbean:
         msg(f"用户[{k}], 获得京豆:{countbean[k]}")
         allbean += countbean[k]
-    msg(f"总获得: {allbean}")
-    msg("*" * 50)
+    msg("=" * 40)
+    msg("### 【累计】")
+    allUserBean = 0
+    for c in allList:
+        usetBean = 0
+        try:
+            msg(f"用户{nameList.index(c['id']) + 1} [{c['id']}]累计获得京豆:")
+            for i in c:
+                if i == 'id':
+                    continue
+                msg(f"\t└{i}: {c[i]}")
+                if '京豆' in i:
+                    usetBean += c[i]
+                    allUserBean += c[i]
+            msg(f"\t└累计获得京豆: {usetBean}")
+        except:
+            continue
+        msg('-' * 20)
+    msg(f"本次总获得: {allbean} 京豆")
+    msg(f"累计总获得: {allUserBean} 京豆")
+    msg("*" * 40)
     msg(footer)
     if isNotice == "true":
         send(hdtitle, msg_info)
