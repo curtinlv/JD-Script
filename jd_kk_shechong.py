@@ -450,9 +450,9 @@ def getDrawRecordHasCoupon(headers, pin, actorUuid, user):
                     allcount[i['value'] + '京豆'] = int(beanNum)
             else:
                 try:
-                    allcount['礼品'] += '###' + i['value']
+                    allcount['礼品'] += '###' + i['infoName']
                 except:
-                    allcount['礼品'] = i['value']
+                    allcount['礼品'] = i['infoName']
         allList.append(allcount)
     # except:
     #     pass
