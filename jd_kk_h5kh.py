@@ -492,7 +492,7 @@ def start():
         sleep(1)
         a += 1
     # 抽奖
-    a = 0
+    a = 1
     shareUuid = '73361f819faf41898ca8b1cf958a3f13'
     for ck, user in zip(cookieList, nameList):
         print(f"##☺️用户{a}【{user}】")
@@ -507,8 +507,11 @@ def start():
             a += 1
             continue
         sleep(0.3)
+
         yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
         actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
+        venderIdList, channelList, score1, score2 = checkOpenCard(header, actorUuid, shareUuid, pin)
+        bindWithVender(ck, venderIdList, channelList)
         for i in range(2):
             startDraw(header, actorUuid, pin, user, i)
         if a == 1:
