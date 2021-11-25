@@ -497,6 +497,7 @@ def start():
             token = isvObfuscator(ck)
         except:
             print(f"️##😭用户{a}【{user}】获取token异常, ip有可能给限制了~")
+            a += 1
             continue
         sleep(0.1)
         try:
