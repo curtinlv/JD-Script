@@ -546,6 +546,7 @@ def start():
     shareUuid = '73361f819faf41898ca8b1cf958a3f13'
     shareuserid4minipg='wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP'
     for ck, user in zip(cookieList, nameList):
+        sleep(1)
         print(f"##☺️用户{a}【{user}】")
         cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
         sleep(0.2)
