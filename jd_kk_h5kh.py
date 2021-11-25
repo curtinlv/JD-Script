@@ -25,7 +25,7 @@ try:
     from jd_cookie import getJDCookie
     getCk = getJDCookie()
 except:
-    printf("请先下载依赖脚本后执行一次，\n下载链接：https://ghproxy.com/https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_tool_dl.py")
+    print("请先下载依赖脚本后执行一次，\n下载链接：https://ghproxy.com/https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_tool_dl.py")
     sys.exit(3)
 
 # 是否发送通知
