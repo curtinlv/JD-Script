@@ -495,6 +495,7 @@ def start():
     a = 0
     shareUuid = '73361f819faf41898ca8b1cf958a3f13'
     for ck, user in zip(cookieList, nameList):
+        print(f"##☺️用户{a}【{user}】")
         cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
         sleep(0.2)
         token = isvObfuscator(ck)
@@ -517,7 +518,6 @@ def start():
     msg("*"*50)
     msg("本次统计：")
     allbean = 0
-
     for k in countbean:
         msg(f"用户[{k}], 获得京豆:{countbean[k]}")
         allbean += countbean[k]
