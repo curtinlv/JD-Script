@@ -576,22 +576,25 @@ def start():
     for k in countbean:
         msg(f"用户[{k}], 获得京豆:{countbean[k]}")
         allbean += countbean[k]
-    msg(f"总获得: {allbean}")
     msg("=" * 40)
     msg("### 【累计】")
     allUserBean = 0
     for c in allList:
         usetBean = 0
-        msg(f"用户{nameList.index(c['id'])+1} [{c['id']}]累计获得京豆:")
-        for i in c:
-            if i == 'id':
-                continue
-            msg(f"\t└{i}: {c[i]}")
-            if '京豆' in i:
-                usetBean += c[i]
-                allUserBean += c[i]
-        msg(f"\t└累计获得京豆: {usetBean}")
+        try:
+            msg(f"用户{nameList.index(c['id'])+1} [{c['id']}]累计获得京豆:")
+            for i in c:
+                if i == 'id':
+                    continue
+                msg(f"\t└{i}: {c[i]}")
+                if '京豆' in i:
+                    usetBean += c[i]
+                    allUserBean += c[i]
+            msg(f"\t└累计获得京豆: {usetBean}")
+        except:
+            continue
         msg('-'*20)
+    msg(f"本次总获得: {allbean} 京豆")
     msg(f"累计总获得: {allUserBean} 京豆")
     msg("*" * 40)
     msg(footer)
