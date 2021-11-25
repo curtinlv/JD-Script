@@ -507,45 +507,48 @@ def start():
             a += 1
             continue
         sleep(0.3)
-        yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
-        sleep(0.3)
-        header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
-        sleep(0.3)
-        actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
-        # 关注
-        sleep(0.3)
-        followShop(header, actorUuid, pin, shareUuid, user)
-        # 加购
-        sleep(0.3)
-        saveTask(header, pin, actorUuid, user)
-        print("#去完成开卡任务~")
-        # 开卡
-        venderIdList, channelList, score1, score2 = checkOpenCard(header, actorUuid, shareUuid, pin)
-        if len(venderIdList) > 0:
-            for i in range(10):
-                sleep(1)
-                insertCrmPageVisit(header, pin, i)
-            bindWithVender(ck, venderIdList, channelList)
-            print("#去抽奖~")
+        try:
+            yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
+            sleep(0.3)
+            header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
+            sleep(0.3)
+            actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
+            # 关注
+            sleep(0.3)
+            followShop(header, actorUuid, pin, shareUuid, user)
+            # 加购
+            sleep(0.3)
+            saveTask(header, pin, actorUuid, user)
+            print("#去完成开卡任务~")
+            # 开卡
+            venderIdList, channelList, score1, score2 = checkOpenCard(header, actorUuid, shareUuid, pin)
+            if len(venderIdList) > 0:
+                for i in range(10):
+                    sleep(1)
+                    insertCrmPageVisit(header, pin, i)
+                bindWithVender(ck, venderIdList, channelList)
+                print("#去抽奖~")
+                # for i in range(2):
+                #     sleep(1)
+                startDraw(header, actorUuid, pin, user)
+            else:
+                print("\t😆任务已完成!")
+
+
             # for i in range(2):
-            #     sleep(1)
-            startDraw(header, actorUuid, pin, user)
-        else:
-            print("\t😆任务已完成!")
-
-
-        # for i in range(2):
-        #     startDraw(header, actorUuid, pin, user, i)
-        if a == 1:
-            print(f"用户{a}[{nickname}]>助力>>[Author]{shareUuid}")
-            shareuserid4minipg = pin
-            shareUuid = actorUuid
-            Masternickname = nickname
+            #     startDraw(header, actorUuid, pin, user, i)
+            if a == 1:
+                print(f"用户{a}[{nickname}]>助力>>[Author]{shareUuid}")
+                shareuserid4minipg = pin
+                shareUuid = actorUuid
+                Masternickname = nickname
+                a += 1
+                continue
+            print(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]{shareUuid}")
+            sleep(1)
             a += 1
+        except:
             continue
-        print(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]{shareUuid}")
-        sleep(1)
-        a += 1
     # 抽奖
     a = 1
     shareUuid = '73361f819faf41898ca8b1cf958a3f13'
@@ -567,20 +570,22 @@ def start():
             print(f"️##😭用户{a}【{user}】暂无法参加活动~")
             a += 1
             continue
-        sleep(0.3)
-        yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
-        header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
-        actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
-        getDrawRecordHasCoupon(header, pin, actorUuid, user)
-        venderIdList, channelList, score1, score2 = checkOpenCard(header, actorUuid, shareUuid, pin)
-        bindWithVender(ck, venderIdList, channelList)
-        # for i in range(2):
-        startDraw(header, actorUuid, pin, user)
-        if a == 1:
-            shareUuid = actorUuid
-            shareuserid4minipg = pin
-        a += 1
-        sleep(0.5)
+        try:
+            sleep(0.3)
+            yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
+            header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
+            actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
+            getDrawRecordHasCoupon(header, pin, actorUuid, user)
+            venderIdList, channelList, score1, score2 = checkOpenCard(header, actorUuid, shareUuid, pin)
+            bindWithVender(ck, venderIdList, channelList)
+            # for i in range(2):
+            startDraw(header, actorUuid, pin, user)
+            if a == 1:
+                shareUuid = actorUuid
+                shareuserid4minipg = pin
+            a += 1
+        except:
+            continue
     msg("*"*40)
     msg("### 【本次】")
     allbean = 0
