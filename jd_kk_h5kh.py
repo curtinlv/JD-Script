@@ -137,7 +137,7 @@ def isvObfuscator(ck):
 
 def buildheaders(ck, shareUuid, shareuserid4minipg):
     sid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 32))
-    url = f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/4963678?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid=1000377493&sid={sid}&un_area='
+    url = f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/5339006?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid=1000377493&sid={sid}&un_area='
     headers = {
         'Accept-Encoding': 'gzip, deflate, br',
         'Cookie': ck,
@@ -163,7 +163,7 @@ def getMyPing(shareUuid, shareuserid4minipg, cookie, token):
         'User-Agent': userAgent(),
         'Cookie': cookie,
         'Host': 'lzdz1-isv.isvjcloud.com',
-        'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/4963678?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid=1000377493&sid={sid}&un_area=',
+        'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/5339006?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid=1000377493&sid={sid}&un_area=',
         'Accept-Language': 'zh-cn',
         'Accept': 'application/json'
     }
@@ -184,7 +184,7 @@ def getMyPing(shareUuid, shareuserid4minipg, cookie, token):
             'User-Agent': userAgent(),
             'Cookie': LZ_TOKEN_KEY+LZ_TOKEN_VALUE + AUTH_C_USER + '__jd_ref_cls=Mnpm_ComponentApplied; mba_muid=16376427422281457677509.801.1637642928827; mba_sid=801.14; __jda=60969652.16376427422281457677509.1637642742.1637642742.1637642742.1; __jdb=60969652.5.16376427422281457677509|1.1637642742; __jdc=60969652; __jdv=60969652%7Ckong%7Ct_2011739974_%7Cjingfen%7C394dd4aa2cef4f9cbf65939ceda8cc4c%7C1637577535593; pre_seq=7; pre_session=809409cbd5bb8a0fa8fff41378c1afe91b8075ad|2225',
             'Host': 'lzdz1-isv.isvjcloud.com',
-            'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/4963678?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid=1000377493&sid={sid}&un_area=19_1601_3633_63243',            'Accept-Language': 'zh-cn',
+            'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/5339006?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid=1000377493&sid={sid}&un_area=19_1601_3633_63243',            'Accept-Language': 'zh-cn',
             'Accept': 'application/json'
         }
         return headers, nickname, secretPin, AUTH_C_USER
@@ -209,7 +209,7 @@ def accessLog(headers,pin, shareUuid, shareuserid4minipg, AUTH_C_USER):
             'User-Agent': userAgent(),
             'Cookie': LZ_TOKEN_KEY + LZ_TOKEN_VALUE + AUTH_C_USER,
             'Host': 'lzdz1-isv.isvjcloud.com',
-            'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/4963678?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid=1000377493&sid={sid}&un_area=',
+            'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/5339006?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid=1000377493&sid={sid}&un_area=',
             'Accept-Language': 'zh-cn',
             'Accept': 'application/json'
             # 'Content-Length': '295'
