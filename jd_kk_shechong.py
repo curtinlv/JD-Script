@@ -30,9 +30,15 @@ except:
 
 # 是否发送通知
 isNotice = "true"
-
+def printf(*args):
+    text = ''
+    for i in args:
+        text += i
+    print(text)
+    sys.stdout.flush()
+    
 if datetime.datetime.now() > datetime.datetime.strptime('2021-12-01', "%Y-%m-%d"):
-    print("奢宠会员 11.1-11.30---活动结束\n请删掉脚本：jd_kk_aj.py")
+    printf("奢宠会员 11.1-11.30---活动结束\n请删掉脚本：jd_kk_shechong.py")
     exit(3)
 
 UserAgent = ''
@@ -189,7 +195,7 @@ def getMyPing(shareUuid, shareuserid4minipg, cookie, token):
         }
         return headers, nickname, secretPin, AUTH_C_USER
     except Exception as e:
-        # print("建议请稍等再试~", e)
+        # printf("建议请稍等再试~", e)
         return False, False, False
 
 def accessLog(headers,pin, shareUuid, shareuserid4minipg, AUTH_C_USER):
@@ -214,10 +220,10 @@ def accessLog(headers,pin, shareUuid, shareuserid4minipg, AUTH_C_USER):
             'Accept': 'application/json'
             # 'Content-Length': '295'
         }
-        print('\t└accessLog ---> success')
+        printf('\t└accessLog ---> success')
         return headers
     else:
-        print('\t└accessLog ---> error')
+        printf('\t└accessLog ---> error')
 
 
 def activityContent(header, pin, shareUuid, pinImg, nick):
@@ -229,7 +235,7 @@ def activityContent(header, pin, shareUuid, pinImg, nick):
     body = f'activityId={activityId}&pin={quote(pin)}&pinImg={pinImg}&nick={quote(nick)}&cjyxPin=&cjhyPin=&shareUuid={shareUuid}'
     resp = requests.post(url=url, headers=header, data=body).json()
     try:
-        # print(json.dumps(resp, indent=4, ensure_ascii=False))
+        # printf(json.dumps(resp, indent=4, ensure_ascii=False))
         actorUuid = resp['data']['actorUuid']
         shareTitle = resp['data']['shareTitle']
         return actorUuid, shareTitle
@@ -249,7 +255,7 @@ def checkOpenCard(header, actorUuid,shareUuid, pin):
     url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/checkOpenCard'
     body = f'activityId={activityId}&actorUuid={actorUuid}&shareUuid={shareUuid}&pin={quote(pin)}'
     resp = requests.post(url=url, headers=header, data=body).json()
-    # print(json.dumps(resp, indent=4, ensure_ascii=False))
+    # printf(json.dumps(resp, indent=4, ensure_ascii=False))
     openCard1 = resp['data']['openCard1']
     openCard2 = resp['data']['openCard2']
     score1 = resp['data']['score1']
@@ -281,18 +287,18 @@ def saveTask(header, pin, actorUuid, user):
     global countbean
     url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/saveTask'
     body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}&taskType=2&taskValue=100015195341'
-    print("#去完成加购任务~")
+    printf("#去完成加购任务~")
     resp = requests.post(url=url, headers=header, data=body).json()
-    # print(resp)
+    # printf(resp)
     if resp['result']:
         bean = resp['data']['addBeanNum']
-        print(f"\t☺️加购获得: {bean} 豆 ")
+        printf(f"\t☺️加购获得: {bean} 豆 ")
         try:
             countbean[user] += resp['data']['addBeanNum']
         except:
             countbean[user] = resp['data']['addBeanNum']
     else:
-        print(f"\t😆{resp['errorMessage']}")
+        printf(f"\t😆{resp['errorMessage']}")
 def drawContent(header, pin):
     url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/taskact/openCardcommon/drawContent'
     body = f'activityId={activityId}&pin={quote(pin)}'
@@ -309,15 +315,15 @@ def startDraw(header, actorUuid, pin, user, num):
         resp = resp.json()
         if resp['result']:
             if resp['data']['drawOk']:
-                print(f"\t☺️抽奖获得: {resp['data']['name']} ️")
+                printf(f"\t☺️抽奖获得: {resp['data']['name']} ️")
                 try:
                     countbean[user] += 30
                 except:
                     countbean[user] = 30
             else:
-                print(f"\t😭抽奖获得: {resp['data']['name']} ")
+                printf(f"\t😭抽奖获得: {resp['data']['name']} ")
         else:
-            print(f"\t😆{resp['errorMessage']}")
+            printf(f"\t😆{resp['errorMessage']}")
     except:
         pass
 
@@ -326,36 +332,36 @@ def followShop(header, actorUuid, pin, shareUuid, user):
     global countbean
     url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/followShop'
     body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}&taskType=23&taskValue=1000004123&shareUuid={shareUuid}'
-    print("#去完成关注任务~")
+    printf("#去完成关注任务~")
     resp = requests.post(url=url, headers=header, data=body).json()
-    # print(resp)
+    # printf(resp)
     if resp['result']:
         if resp['data']['sendStatus']:
-            print(f"\t☺️关注获得: {resp['data']['addBeanNum']} 豆️")
+            printf(f"\t☺️关注获得: {resp['data']['addBeanNum']} 豆️")
             try:
                 countbean[user] += resp['data']['addBeanNum']
             except:
                 countbean[user] = resp['data']['addBeanNum']
         else:
-            print(f"\t😭关注获得: {resp['data']['addBeanNum']} 豆 ")
+            printf(f"\t😭关注获得: {resp['data']['addBeanNum']} 豆 ")
     else:
-        print(f"\t😆{resp['errorMessage']}")
+        printf(f"\t😆{resp['errorMessage']}")
 
 def insertCrmPageVisit(header, pin, num):
     url = 'https://lzdz1-isv.isvjcloud.com/crm/pageVisit/insertCrmPageVisit'
     body = f'venderId=1000004123&elementId=%E5%8E%BB%E5%BC%80%E{num}%8D%A15&pageId=dzkmladn20211123A&pin={quote(pin)}'
     resp = requests.post(url=url, headers=header, data=body)
     if resp.status_code == 200:
-        print(f'\t└模拟点击去开卡{num+1} ---> success')
+        printf(f'\t└模拟点击去开卡{num+1} ---> success')
     else:
-        print(f'\t└模拟点击去开卡{num+1} ---> error')
+        printf(f'\t└模拟点击去开卡{num+1} ---> error')
 
 def getShopOpenCardInfo(ck, venderId, channe, headers):
     url = f'https://api.m.jd.com/client.action?appid=jd_shop_member&functionId=getShopOpenCardInfo&body=%7B%22venderId%22%3A%22{venderId}%22%2C%22payUpShop%22%3Atrue%2C%22channel%22%3A{channe}%7D&client=H5&clientVersion=9.2.0&uuid=88888'
     sleep(0.5)
     resp = requests.get(url=url, headers=headers).json()
     venderCardName = resp['result']['shopMemberCardInfo']['venderCardName']  # 店铺名称
-    print(f'\t去开卡：{venderCardName}')
+    printf(f'\t去开卡：{venderCardName}')
     if resp['result']['interestsRuleList']:
         activityId = resp['result']['interestsRuleList'][0]['interestsInfo']['activityId']
         return activityId
@@ -381,7 +387,7 @@ def bindWithVender(ck, venderIdList, channelList):
             bindWithVender_url = f'https://api.m.jd.com/client.action?appid=jd_shop_member&functionId=bindWithVender&body=%7B%22venderId%22%3A%22{v}%22%2C%22bindByVerifyCodeFlag%22%3A1%2C%22registerExtend%22%3A%7B%7D%2C%22writeChildFlag%22%3A0%2C%22channel%22%3A{c}%7D&client=H5&clientVersion=9.2.0&uuid=88888'
         resp = requests.get(url=bindWithVender_url, headers=headers).json()
         if resp['success']:
-            print(f"\t\t└{resp['message']}")
+            printf(f"\t\t└{resp['message']}")
         else:
             pass
 
@@ -405,7 +411,7 @@ def gettext(url):
             return gettext(url)
         return resp
     except Exception as e:
-        print(e)
+        printf(e)
 
 def isUpdate():
     global hdtitle, isEnable, readme, code, footer
@@ -440,8 +446,8 @@ def getDrawRecordHasCoupon(headers, pin, actorUuid, user):
             if a == 0:
                 a = 1
                 allcount['id'] = user
-            # print(i)
-            # print(json.dumps(i, indent=4, ensure_ascii=False))
+            # printf(i)
+            # printf(json.dumps(i, indent=4, ensure_ascii=False))
             if '京豆' in i['infoName']:
                 beanNum = re.findall(r'(\d+)', i['infoName'])[0]
                 try:
@@ -462,29 +468,29 @@ def start():
     global shareuserid4minipg, Masternickname, shareUuid
     isok, hdtitle, readme, code, footer = isUpdate()
     if not isok and readme:
-        print(readme)
+        printf(readme)
         exit(0)
-    print(f"开始：【{hdtitle}】")
+    printf(f"开始：【{hdtitle}】")
     shareUuid = code.split("&")[0]
     shareuserid4minipg = code.split("&")[1]
     cookieList, nameList = getCk.iscookie()
     a = 1
     # try:
     for ck, user in zip(cookieList, nameList):
-        print(f"##☺️用户{a}【{user}】")
+        printf(f"##☺️用户{a}【{user}】")
         try:
             cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
             sleep(0.2)
             token = isvObfuscator(ck)
         except:
-            print(f"️##😭用户{a}【{user}】获取token异常, ip有可能给限制了~")
+            printf(f"️##😭用户{a}【{user}】获取token异常, ip有可能给限制了~")
             a += 1
             continue
         sleep(0.1)
         try:
             header, nickname, pin, AUTH_C_USER = getMyPing(shareUuid, shareuserid4minipg, cookie, token)
         except:
-            print(f"️##😭用户{a}【{user}】暂无法参加活动~")
+            printf(f"️##😭用户{a}【{user}】暂无法参加活动~")
             a += 1
             continue
         try:
@@ -500,7 +506,7 @@ def start():
             # 加购
             sleep(0.3)
             saveTask(header, pin, actorUuid, user)
-            print("#去完成开卡任务~")
+            printf("#去完成开卡任务~")
             # 开卡
             venderIdList, channelList, score1, score2 = checkOpenCard(header, actorUuid, shareUuid, pin)
             if len(venderIdList) > 0:
@@ -508,22 +514,22 @@ def start():
                     sleep(1)
                     insertCrmPageVisit(header, pin, i)
                 bindWithVender(ck, venderIdList, channelList)
-                print("#去抽奖~")
+                printf("#去抽奖~")
                 for i in range(2):
                     sleep(5)
                     startDraw(header, actorUuid, pin, user, i)
             else:
-                print("\t😆任务已完成!")
+                printf("\t😆任务已完成!")
             for i in range(2):
                 startDraw(header, actorUuid, pin, user, i)
             if a == 1:
-                print(f"用户{a}[{nickname}]>助力>>[Author]{shareUuid}")
+                printf(f"用户{a}[{nickname}]>助力>>[Author]{shareUuid}")
                 shareuserid4minipg = pin
                 shareUuid = actorUuid
                 Masternickname = nickname
                 a += 1
                 continue
-            print(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]{shareUuid}")
+            printf(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]{shareUuid}")
             a += 1
         except:
             continue
@@ -532,20 +538,20 @@ def start():
     shareUuid = 'bc5f8aab60ad47ab8249c5a58c3e00d5'
     shareuserid4minipg = 'wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP'
     for ck, user in zip(cookieList, nameList):
-        print(f"##☺️用户{a}【{user}】")
+        printf(f"##☺️用户{a}【{user}】")
         try:
             cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
             sleep(0.2)
             token = isvObfuscator(ck)
         except:
-            print(f"️##😭用户{a}【{user}】获取token异常, ip有可能给限制了~")
+            printf(f"️##😭用户{a}【{user}】获取token异常, ip有可能给限制了~")
             a += 1
             continue
         sleep(0.1)
         try:
             header, nickname, pin, AUTH_C_USER = getMyPing(shareUuid, shareuserid4minipg, cookie, token)
         except:
-            print(f"️##😭用户{a}【{user}】暂无法参加活动~")
+            printf(f"️##😭用户{a}【{user}】暂无法参加活动~")
             a += 1
             continue
         sleep(0.3)
