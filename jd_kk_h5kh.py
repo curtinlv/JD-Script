@@ -508,8 +508,8 @@ def start():
             a += 1
             continue
         sleep(0.3)
-
         yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
+        header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
         actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
         venderIdList, channelList, score1, score2 = checkOpenCard(header, actorUuid, shareUuid, pin)
         bindWithVender(ck, venderIdList, channelList)
