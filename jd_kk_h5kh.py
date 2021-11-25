@@ -40,6 +40,7 @@ activityId='dzkwdlt20211125A'
 activityshopid='1000377493'
 
 countbean = {}
+allList= []
 ## 获取通知服务
 class msg(object):
     def __init__(self, m):
@@ -298,13 +299,31 @@ def drawContent(header, pin):
     body = f'activityId={activityId}&pin={quote(pin)}'
     resp = requests.post(url=url, headers=header, data=body)
 
-def startDraw(header, actorUuid, pin, user, num):
+def startDraw(header, actorUuid, pin, user):
     global countbean
     try:
         drawContent(header, pin)
         sleep(1)
         url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/startDraw'
-        body = f'activityId={activityId}&actorUuid={actorUuid}&pin={quote(pin)}&type={num+1}'
+        body = f'activityId={activityId}&actorUuid={actorUuid}&pin={quote(pin)}&type=1'
+        resp = requests.post(url=url, headers=header, data=body)
+        resp = resp.json()
+        if resp['result']:
+            if resp['data']['drawOk']:
+                print(f"\t☺️抽奖获得: {resp['data']['name']} ️")
+                try:
+                    countbean[user] += 30
+                except:
+                    countbean[user] = 30
+            else:
+                print(f"\t😭抽奖获得: {resp['data']['name']} ")
+        else:
+            # print(f"\t😆{resp['errorMessage']}")
+            pass
+        drawContent(header, pin)
+        sleep(1)
+        url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/startDraw'
+        body = f'activityId={activityId}&actorUuid={actorUuid}&pin={quote(pin)}&type=2'
         resp = requests.post(url=url, headers=header, data=body)
         resp = resp.json()
         if resp['result']:
@@ -427,6 +446,37 @@ def isUpdate():
     except:
         return False, '黑五狂欢-大牌好物等你购 11.25-12.01', '', '73361f819faf41898ca8b1cf958a3f13&wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP', '\n开源免费使用 https://github.com/curtinlv/JD-Script\nTG频道 https://t.me/TopStyle2021'
 
+def getDrawRecordHasCoupon(headers, pin, actorUuid, user):
+    try:
+        url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/taskact/openCardcommon/getDrawRecordHasCoupon'
+        body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}'
+        resp = requests.post(url=url, headers=headers, data=body).json()
+        allcount = {}
+        if resp['result']:
+            data = resp['data']
+            a = 0
+            for i in data:
+                if a == 0:
+                    a = 1
+                    allcount['id'] = user
+                # print(i)
+                # print(json.dumps(i, indent=4, ensure_ascii=False))
+                if '京豆' in i['infoName']:
+                    beanNum = re.findall(r'(\d+)', i['infoName'])[0]
+                    try:
+                        allcount[i['value'] + '京豆'] += int(beanNum)
+                    except:
+                        allcount[i['value'] + '京豆'] = int(beanNum)
+                else:
+                    try:
+                        allcount['礼品'] += '###' + i['value']
+                    except:
+                        allcount['礼品'] = i['value']
+            allList.append(allcount)
+    except:
+        pass
+
+
 def start():
     global shareuserid4minipg, Masternickname, shareUuid
     isok, hdtitle, readme, code, footer = isUpdate()
@@ -472,15 +522,15 @@ def start():
                 insertCrmPageVisit(header, pin, i)
             bindWithVender(ck, venderIdList, channelList)
             print("#去抽奖~")
-            for i in range(2):
-                sleep(1)
-                startDraw(header, actorUuid, pin, user, i)
+            # for i in range(2):
+            #     sleep(1)
+            startDraw(header, actorUuid, pin, user)
         else:
             print("\t😆任务已完成!")
 
 
-        for i in range(2):
-            startDraw(header, actorUuid, pin, user, i)
+        # for i in range(2):
+        #     startDraw(header, actorUuid, pin, user, i)
         if a == 1:
             print(f"用户{a}[{nickname}]>助力>>[Author]{shareUuid}")
             shareuserid4minipg = pin
@@ -511,23 +561,39 @@ def start():
         yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
         header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
         actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
+        getDrawRecordHasCoupon(header, pin, actorUuid, user)
         venderIdList, channelList, score1, score2 = checkOpenCard(header, actorUuid, shareUuid, pin)
         bindWithVender(ck, venderIdList, channelList)
-        for i in range(2):
-            startDraw(header, actorUuid, pin, user, i)
+        # for i in range(2):
+        startDraw(header, actorUuid, pin, user)
         if a == 1:
             shareUuid = actorUuid
             shareuserid4minipg = pin
         a += 1
-
-    msg("*"*50)
-    msg("本次统计：")
+    msg("*"*40)
+    msg("### 【本次】")
     allbean = 0
     for k in countbean:
         msg(f"用户[{k}], 获得京豆:{countbean[k]}")
         allbean += countbean[k]
     msg(f"总获得: {allbean}")
-    msg("*" * 50)
+    msg("=" * 40)
+    msg("### 【累计】")
+    allUserBean = 0
+    for c in allList:
+        usetBean = 0
+        msg(f"用户{nameList.index(c['id'])+1} [{c['id']}]累计获得京豆:")
+        for i in c:
+            if i == 'id':
+                continue
+            msg(f"\t└{i}: {c[i]}")
+            if '京豆' in i:
+                usetBean += c[i]
+                allUserBean += c[i]
+        msg(f"\t└累计获得京豆: {usetBean}")
+        msg('-'*20)
+    msg(f"累计总获得: {allUserBean} 京豆")
+    msg("*" * 40)
     msg(footer)
     if isNotice == "true":
         send(hdtitle, msg_info)
