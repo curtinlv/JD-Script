@@ -129,7 +129,7 @@ def isvObfuscator(ck):
 
     body = 'body={"url":"https:\/\/lzdz1-isv.isvjcloud.com","id":""}&build=167870&client=apple&clientVersion=10.2.4&d_brand=apple&d_model=iPhone10,3&ef=1&eid=&ep={"ciphertype":5,"cipher":{"screen":"CJOyDIeyDNC2","wifiBssid":"","osVersion":"CJGkCm==","area":"","openudid":"ENK5DNK5Y2TuDWTsEQOmZwO4ZwZwDNOzDzrtCWPwZJunYtqmDzVrZK==","uuid":"aQf1ZRdxb2r4ovZ1EJZhcxYlVNZSZz09"},"ts":1637642895,"hdid":"=","version":"1.0.3","appname":"com.360buy.jdmobile","ridx":-1}&ext={"prstate":"0"}&isBackground=N&joycious=93&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&partner=TF&rfs=0000&scope=10&sign=cbc51d94bb4d6efdac7b6af9dc3637a1&st=1637642927932&sv=101&uemps=0-0&'
 
-    resp = requests.post(url=url, headers=headers, data=body).json()
+    resp = requests.post(url=url, headers=headers, timeout=30, data=body).json()
     if resp['code'] == '0':
         return resp['token']
     else:
@@ -169,7 +169,7 @@ def getMyPing(shareUuid, shareuserid4minipg, cookie, token):
         'Accept': 'application/json'
     }
     body = f'userId=1000377493&token={token}&fromType=APP'
-    resp = requests.post(url=url, headers=headers, data=body)
+    resp = requests.post(url=url, headers=headers, timeout=30, data=body)
     try:
         nickname = resp.json()['data']['nickname']
         secretPin = resp.json()['data']['secretPin']
@@ -197,7 +197,7 @@ def accessLog(headers,pin, shareUuid, shareuserid4minipg, AUTH_C_USER):
     sid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 32))
     accbody = f'venderId=1000377493&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/5339006?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={quote(shareuserid4minipg)}&shopid=1000377493&sid=&un_area=&subType=app&adSource=null'
     url = 'https://lzdz1-isv.isvjcloud.com/common/accessLogWithAD'
-    resp = requests.post(url=url, headers=headers, data=accbody)
+    resp = requests.post(url=url, headers=headers, timeout=30, data=accbody)
     if resp.status_code == 200:
         LZ_TOKEN_KEY = re.findall(r'(LZ_TOKEN_KEY=.*?;)', resp.headers['Set-Cookie'])[0]
         LZ_TOKEN_VALUE = re.findall(r'(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])[0]
@@ -450,7 +450,7 @@ def getDrawRecordHasCoupon(headers, pin, actorUuid, user):
     try:
         url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/taskact/openCardcommon/getDrawRecordHasCoupon'
         body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}'
-        resp = requests.post(url=url, headers=headers, data=body).json()
+        resp = requests.post(url=url, headers=headers, timeout=30, data=body).json()
         allcount = {}
         if resp['result']:
             data = resp['data']
