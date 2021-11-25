@@ -592,7 +592,7 @@ def start():
     for k in countbean:
         msg(f"用户[{k}], 获得京豆:{countbean[k]}")
         allbean += countbean[k]
-    msg("=" * 40)
+    msg("*" * 40)
     msg("### 【累计】")
     allUserBean = 0
     for c in allList:
