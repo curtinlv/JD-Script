@@ -493,7 +493,11 @@ def start():
         print(f"##☺️用户{a}【{user}】")
         cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
         sleep(0.2)
-        token = isvObfuscator(ck)
+        try:
+            token = isvObfuscator(ck)
+        except:
+            print(f"️##😭用户{a}【{user}】获取token异常, ip有可能给限制了~")
+            continue
         sleep(0.1)
         try:
             header, nickname, pin, AUTH_C_USER = getMyPing(shareUuid, shareuserid4minipg, cookie, token)
@@ -546,11 +550,14 @@ def start():
     shareUuid = '73361f819faf41898ca8b1cf958a3f13'
     shareuserid4minipg='wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP'
     for ck, user in zip(cookieList, nameList):
-        sleep(1)
         print(f"##☺️用户{a}【{user}】")
         cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
         sleep(0.2)
-        token = isvObfuscator(ck)
+        try:
+            token = isvObfuscator(ck)
+        except:
+            print(f"️##😭用户{a}【{user}】获取token异常, ip有可能给限制了~")
+            continue
         sleep(0.1)
         try:
             header, nickname, pin, AUTH_C_USER = getMyPing(shareUuid, shareuserid4minipg, cookie, token)
@@ -571,6 +578,7 @@ def start():
             shareUuid = actorUuid
             shareuserid4minipg = pin
         a += 1
+        sleep(0.5)
     msg("*"*40)
     msg("### 【本次】")
     allbean = 0
