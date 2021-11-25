@@ -7,7 +7,7 @@ Author: Curtin
 Date: 2021/11/23 下午20:10
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-cron: 30 0,6,12,15,20 23-30 11 *
+cron: 20 0,6,12,15,20 23-30 11 *
 new Env('黑五狂欢-大牌好物等你购 11.25-12.01')
 活动入口：
 '''
