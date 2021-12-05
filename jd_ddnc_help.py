@@ -193,26 +193,30 @@ def start():
         cookiesList, userNameList = getCk.iscookie()
         if ddnc_isOrder == "true":
             for ck,user in zip(cookiesList,userNameList):
-                m_ck = ck
-                print(f"开始助力 {user}")
                 try:
-                    shareCode = getShareCode(ck)
-                except Exception as e:
-                    print(e)
-                    continue
-                for ck, nickname in zip(cookiesList, userNameList):
-                    if nickname == user:
-                        print(f"\t└😓{user} 不能助力自己，跳过~")
+                    m_ck = ck
+                    print(f"开始助力 {user}")
+                    try:
+                        shareCode = getShareCode(ck)
+                    except Exception as e:
+                        print(e)
                         continue
-                    result = ddnc_help(ck, nickname, shareCode, user)
-                    if farmA(m_ck):
-                        getSuccess(m_ck, user)
-                    if result:
-                        for n in range(4):
-                            if farmA(m_ck):
-                                time.sleep(2)
-                                getSuccess(m_ck, user)
-                        break
+                    for ck, nickname in zip(cookiesList, userNameList):
+                        if nickname == user:
+                            print(f"\t└😓{user} 不能助力自己，跳过~")
+                            continue
+                        result = ddnc_help(ck, nickname, shareCode, user)
+                        if farmA(m_ck):
+                            getSuccess(m_ck, user)
+                        if result:
+                            for n in range(4):
+                                if farmA(m_ck):
+                                    time.sleep(2)
+                                    getSuccess(m_ck, user)
+                            break
+                except:
+                    continue
+
         elif ddnc_isOrder == "false":
             if not ddnc_help_list:
                 print("您未配置助力的账号，\n助力账号名称：可填用户名 或 pin的值不要; \nenv 设置 export ddnc_help_list=\"Curtinlv&用户2\"  多账号&分隔\n本次退出。")
@@ -230,25 +234,27 @@ def start():
                 shareCode = getShareCode(cookiesList[ckNum])
                 print(f"开始助力 {masterName}")
                 for ck, nickname in zip(cookiesList, userNameList):
-                    if nickname == masterName:
-                        print(f"\t└😓{masterName} 不能助力自己，跳过~")
+                    try:
+                        if nickname == masterName:
+                            print(f"\t└😓{masterName} 不能助力自己，跳过~")
+                            continue
+                        result = ddnc_help(ck, nickname, shareCode, masterName)
+                        if farmA(cookiesList[ckNum]):
+                            getSuccess(cookiesList[ckNum], masterName)
+                        if result:
+                            for n in range(4):
+                                if farmA(cookiesList[ckNum]):
+                                    time.sleep(2)
+                                    getSuccess(cookiesList[ckNum], masterName)
+                            break
+                    except:
                         continue
-                    result = ddnc_help(ck, nickname, shareCode, masterName)
-                    if farmA(cookiesList[ckNum]):
-                        getSuccess(cookiesList[ckNum], masterName)
-                    if result:
-                        for n in range(4):
-                            if farmA(cookiesList[ckNum]):
-                                time.sleep(2)
-                                getSuccess(cookiesList[ckNum], masterName)
-                        break
-
         else:
             print("😓请检查ddnc_isOrder 变量参数是否正确填写。")
-        print("*"*30)
+        msg("*"*30)
         for i in count:
             msg(f"💧账号【{i}】本次助力收获水滴:{count[i]}g 💧")
-        print("*" * 30)
+        msg("*" * 30)
         if isNotice:
             send(scriptName, msg_info)
     except Exception as e:
