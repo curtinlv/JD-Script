@@ -5,11 +5,11 @@
 Author: Curtin
 功能：JD入会开卡领取京豆
 CreateDate: 2021/5/4 下午1:47
-UpdateTime: 2021/6/19
+UpdateTime: 2022/1/1
 建议cron: 2 8,15 * * *  python3 jd_OpenCard.py
 new Env('开卡有礼');
 '''
-version = 'v1.2.2'
+version = 'v1.3.1'
 readmes = """
 # JD入会领豆小程序
 ![JD入会领豆小程序](https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCrad/resultCount.png)
@@ -58,6 +58,9 @@ readmes = """
        2 8 * * * sh /home/curtin/JD-Script/OpenCard/start_2.sh
 
 ## `【更新记录】`
+    2022.1.1: (v1.3.1)
+        * 修复cookie检测接口
+        * 增加cookie检测开关
     2021.6.19: (v1.2.2)
         * 修复多线程报错
     2021.6.14: (v1.2.1)
