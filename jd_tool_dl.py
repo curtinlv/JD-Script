@@ -43,7 +43,7 @@ def getTool(toolName, a=0):
             print(f"下载失败：{toolName}")
 
 if __name__ == '__main__':
-    file_name = ['jd_cookie.py', 'msg.py', 'sendNotify.py']
+    file_name = ['jd_cookie.py', 'sendNotify.py']
     for f in file_name:
         if os.path.exists(f):
             os.remove(f)

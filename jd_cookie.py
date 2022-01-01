@@ -20,7 +20,7 @@
 export JD_COOKIE_CHECK="false"
 
 '''
-import os, re, sys
+import os, re, sys, json
 try:
     import requests
 except Exception as e:
@@ -88,15 +88,16 @@ class getJDCookie(object):
         # 检测cookie格式是否正确
 
     def getUserInfo(self, ck, pinName, userNum):
-        url = 'https://wq.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder'
+        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&_=&sceneval=2&g_login_type=1'
         headers = {
-            'Cookie': ck,
-            'Accept': '*/*',
-            'Connection': 'close',
-            'Referer': 'https://home.m.jd.com/myJd/home.action',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Mobile/15E148 Safari/604.1',
-            'Accept-Language': 'zh-cn'
+            'Cookie' : ck,
+            'Accept' : '*/*',
+            'Connection' : 'keep-alive',
+            'Referer' : 'https://home.m.jd.com/',
+            'Accept-Encoding' : 'gzip, deflate, br',
+            'Host' : 'me-api.jd.com',
+            'User-Agent' : 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1',
+            'Accept-Language' : 'zh-CN,zh-Hans;q=0.9'
         }
         try:
             if sys.platform == 'ios':
@@ -104,8 +105,8 @@ class getJDCookie(object):
                 resp = requests.get(url=url, verify=False, headers=headers, timeout=60).json()
             else:
                 resp = requests.get(url=url, headers=headers, timeout=60).json()
-
-            if resp['retcode'] == 0:
+            # print(json.dumps(resp, indent=4 , ensure_ascii=False))
+            if resp['retcode'] == "0":
                 nickname = resp['data']['userInfo']['baseInfo']['nickname']
                 return ck, nickname
             else:
