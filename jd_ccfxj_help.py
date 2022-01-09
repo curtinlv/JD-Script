@@ -167,7 +167,7 @@ def getInviteId(ck):
             roundNumList.append(i['roundNum'])
         return inviteId, poolMoney, cityCodeList, roundNumList
     except:
-        return "oev_XKwNZWFLYxOrCpeJ977LiD9Y", "0", [], []
+        return "", "0", [], []
 
 def zhuli(ck, inviteId, user):
     global outCK
@@ -231,6 +231,7 @@ def start():
                 zhuli(ck, invid, user_a)
             city_receiveCash(m_ck)
     else:
+        count_ck, count_u = [], []
         if not ccfxj_help:
             print("您未配置助力的账号，\n助力账号名称：可填用户名 或 pin的值不要; \nenv 设置 export ccfxj_help=\"Curtinlv&用户2\"  多账号&分隔\n本次退出。")
             sys.exit(0)
@@ -250,6 +251,8 @@ def start():
                 print(f"账号异常【{ckname}】，无法获取助力码，请手动分享~")
                 continue
             msg(f"### 本次助力车头：{userName}")
+            count_ck.append(cookiesList[ckNum])
+            count_u.append(ckname)
             z_cookiesList, z_userNameList = delckValue(z_cookiesList, z_userNameList)
             for ck,user in zip(z_cookiesList,z_userNameList):
                 if userName == user:
@@ -258,9 +261,14 @@ def start():
             city_receiveCash(cookiesList[ckNum])
     msg("城城分现金当前余额：")
     msg("*"*40)
-    for ck,user in zip(cookiesList,userNameList):
-        invid, poolMoney, cityCodeList, roundNumList = getInviteId(ck)
-        msg(f"用户[{user}]\t待提现{poolMoney}")
+    if ccfxj_isOrder == "true":
+        for ck,user in zip(cookiesList,userNameList):
+            invid, poolMoney, cityCodeList, roundNumList = getInviteId(ck)
+            msg(f"用户[{user}]\t待提现{poolMoney}")
+    else:
+        for ck,user in zip(count_ck,count_u):
+            invid, poolMoney, cityCodeList, roundNumList = getInviteId(ck)
+            msg(f"用户[{user}]\t待提现{poolMoney}")
     msg("*" * 40)
     msg("\n***************\n城城分现金入口：\n25:/￥81H1VBRi2hU6z%☆")
     if isNotice == "true":
