@@ -46,6 +46,9 @@
        2 8 * * * sh /home/curtin/JD-Script/OpenCard/start_2.sh
 
 ## `【更新记录】`
+    2022.1.1: (v1.3.1)
+        * 修复cookie检测接口
+        * 增加cookie检测开关
     2021.6.19: (v1.2.2)
         * 修复多线程报错
     2021.6.14: (v1.2.1)
@@ -137,7 +140,7 @@
 ###### 关注公众号【TopStyle】回复：shopid
 ![TopStyle](https://gitee.com/curtinlv/img/raw/master/gzhcode.jpg)
 # 
-    @Last Version: v1.2.2
+    @Last Version: v1.3.1
 
     @Last Time: 2021-06-19 13:55
 
