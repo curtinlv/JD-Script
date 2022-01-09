@@ -34,7 +34,7 @@ if "JD_COOKIE_CHECK" in os.environ:
     if len(os.environ["JD_COOKIE_CHECK"]) > 1:
         JD_COOKIE_CHECK = os.environ["JD_COOKIE_CHECK"]
 else:
-    JD_COOKIE_CHECK = "true"
+    JD_COOKIE_CHECK = "false"
 
 class getJDCookie(object):
     # 适配各种平台环境ck

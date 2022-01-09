@@ -17,6 +17,10 @@ ccfxj_help=["Curtinlv", ]
 isNotice=True
 # UA 可自定义你的，注意格式: 【 jdapp;iPhone;10.0.4;14.2;9fb54498b32e17dfc5717744b5eaecda8366223c;network/wifi;ADID/2CF597D0-10D8-4DF8-C5A2-61FD79AC8035;model/iPhone11,1;addressid/7785283669;appBuild/167707;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/null;supportJDSHWK/1 】
 UserAgent = ''
+ccfxj_isOrder="true"
+
+countM = {}
+outCK = []
 
 import os, re, sys
 import random
@@ -26,6 +30,14 @@ except Exception as e:
     print(e, "\n缺少requests 模块，请执行命令安装：python3 -m pip install requests")
     exit(3)
 from urllib.parse import unquote
+
+try:
+    from jd_cookie import getJDCookie
+    getCk = getJDCookie()
+except:
+    print("请先下载依赖脚本，\n下载链接：https://ghproxy.com/https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_tool_dl.py")
+    sys.exit(3)
+
 # requests.packages.urllib3.disable_warnings()
 pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
 uuid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 40))
@@ -39,144 +51,9 @@ ADID = ''.join(random.sample('0987654321ABCDEF', 8)) + '-' + ''.join(
 ###
 
 
-class getJDCookie(object):
-    # 适配各种平台环境ck
-
-    def getckfile(self):
-        global v4f
-        curf = pwd + 'JDCookies.txt'
-        v4f = '/jd/config/config.sh'
-        ql_new = '/ql/config/env.sh'
-        ql_old = '/ql/config/cookie.sh'
-        if os.path.exists(curf):
-            with open(curf, "r", encoding="utf-8") as f:
-                cks = f.read()
-                f.close()
-            r = re.compile(r"pt_key=.*?pt_pin=.*?;", re.M | re.S | re.I)
-            cks = r.findall(cks)
-            if len(cks) > 0:
-                return curf
-            else:
-                pass
-        if os.path.exists(ql_new):
-            print("当前环境青龙面板新版")
-            return ql_new
-        elif os.path.exists(ql_old):
-            print("当前环境青龙面板旧版")
-            return ql_old
-        elif os.path.exists(v4f):
-            print("当前环境V4")
-            return v4f
-        return curf
-
-    # 获取cookie
-    def getCookie(self):
-        global cookies
-        ckfile = self.getckfile()
-        try:
-            if os.path.exists(ckfile):
-                with open(ckfile, "r", encoding="utf-8") as f:
-                    cks = f.read()
-                    f.close()
-                if 'pt_key=' in cks and 'pt_pin=' in cks:
-                    r = re.compile(r"pt_key=.*?pt_pin=.*?;", re.M | re.S | re.I)
-                    cks = r.findall(cks)
-                    if len(cks) > 0:
-                        if 'JDCookies.txt' in ckfile:
-                            print("当前获取使用 JDCookies.txt 的cookie")
-                        cookies = ''
-                        for i in cks:
-                            if 'pt_key=xxxx' in i:
-                                pass
-                            else:
-                                cookies += i
-                        return
-            else:
-                with open(pwd + 'JDCookies.txt', "w", encoding="utf-8") as f:
-                    cks = "#多账号换行，以下示例：（通过正则获取此文件的ck，理论上可以自定义名字标记ck，也可以随意摆放ck）\n账号1【Curtinlv】cookie1;\n账号2【TopStyle】cookie2;"
-                    f.write(cks)
-                    f.close()
-            if "JD_COOKIE" in os.environ:
-                if len(os.environ["JD_COOKIE"]) > 10:
-                    cookies = os.environ["JD_COOKIE"]
-                    print("已获取并使用Env环境 Cookie")
-        except Exception as e:
-            print(f"【getCookie Error】{e}")
-
-        # 检测cookie格式是否正确
-
-    def getUserInfo(self, ck, pinName, userNum):
-        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder&channel=4&isHomewhite=0&sceneval=2&sceneval=2&callback='
-        headers = {
-            'Cookie': ck,
-            'Accept': '*/*',
-            'Connection': 'close',
-            'Referer': 'https://home.m.jd.com/myJd/home.action',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Host': 'me-api.jd.com',
-            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Mobile/15E148 Safari/604.1',
-            'Accept-Language': 'zh-cn'
-        }
-        try:
-            if sys.platform == 'ios':
-                requests.packages.urllib3.disable_warnings()
-                resp = requests.get(url=url, verify=False, headers=headers, timeout=60).json()
-            else:
-                resp = requests.get(url=url, headers=headers, timeout=60).json()
-            if resp['retcode'] == "0":
-                nickname = resp['data']['userInfo']['baseInfo']['nickname']
-                return ck, nickname
-            else:
-                context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
-                print(context)
-                return ck, False
-        except Exception:
-            context = f"账号{userNum}【{pinName}】Cookie 已失效！请重新获取。"
-            print(context)
-            return ck, False
-
-    def iscookie(self):
-        """
-        :return: cookiesList,userNameList,pinNameList
-        """
-        cookiesList = []
-        userNameList = []
-        pinNameList = []
-        if 'pt_key=' in cookies and 'pt_pin=' in cookies:
-            r = re.compile(r"pt_key=.*?pt_pin=.*?;", re.M | re.S | re.I)
-            result = r.findall(cookies)
-            if len(result) >= 1:
-                print("您已配置{}个账号".format(len(result)))
-                u = 1
-                for i in result:
-                    r = re.compile(r"pt_pin=(.*?);")
-                    pinName = r.findall(i)
-                    pinName = unquote(pinName[0])
-                    # 获取账号名
-                    ck, nickname = self.getUserInfo(i, pinName, u)
-                    if nickname != False:
-                        cookiesList.append(ck)
-                        userNameList.append(nickname)
-                        pinNameList.append(pinName)
-                    else:
-                        u += 1
-                        continue
-                    u += 1
-                if len(cookiesList) > 0 and len(userNameList) > 0:
-                    return cookiesList, userNameList, pinNameList
-                else:
-                    print("没有可用Cookie，已退出")
-                    exit(3)
-            else:
-                print("cookie 格式错误！...本次操作已退出")
-                exit(4)
-        else:
-            print("cookie 格式错误！...本次操作已退出")
-            exit(4)
-
-
-getCk = getJDCookie()
-getCk.getCookie()
+if "ccfxj_isOrder" in os.environ:
+    if len(os.environ["ccfxj_isOrder"]) > 1:
+        ccfxj_isOrder = os.environ["ccfxj_isOrder"]
 
 if "ccfxj_help" in os.environ:
     if len(os.environ["ccfxj_help"]) > 1:
@@ -264,58 +141,121 @@ def buid_header(ck):
         'Content-Type': 'application/x-www-form-urlencoded',
         'Host': 'api.m.jd.com',
         'Connection': 'keep-alive',
-        'User-Agent': userAgent(),
-        'Referer': 'https://bunearth.m.jd.com/babelDiy/Zeus/x4pWW6pvDwW7DjxMmBbnzoub8J/index.html?inviteId=&encryptedPin=&lng=113.&lat=23.&sid=&un_area=',
+        'User-Agent': 'jdapp;iPhone;10.2.4;;;M/5.0;appBuild/167870;jdSupportDarkMode/0;ef/1;ep/%7B%22ciphertype%22%3A5%2C%22cipher%22%3A%7B%22ud%22%3A%22ENK5DNK5Y2TuDWTsEQOmZwO4ZwZwDNOzDzrtCWPwZJunYtqmDzVrZK%3D%3D%22%2C%22sv%22%3A%22CJGkCm%3D%3D%22%2C%22iad%22%3A%22%22%7D%2C%22ts%22%3A1641688257%2C%22hdid%22%3A%22JM9F1ywUPwflvMIpYPok0tt5k9kW4ArJEU3lfLhxBqw%3D%22%2C%22version%22%3A%221.0.3%22%2C%22appname%22%3A%22com.360buy.jdmobile%22%2C%22ridx%22%3A-1%7D;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1;',
+        'Referer': 'https://bunearth.m.jd.com/babelDiy/Zeus/x4pWW6pvDwW7DjxMmBbnzoub8J/index.html?inviteId=oev_XKwNZWFLYxOrCpeJ977LiD9Y&encryptedPin=RnFgy28NOT3fwtQUrIByXZNawkwqxlr3&sid=221a60c654ad1bc111e2fdee34aaa7cw&un_area=19_1607_6736_62140',
         'Accept-Language': 'zh-cn'
     }
     return headers
 
 def getInviteId(ck):
-    url = 'https://api.m.jd.com/client.action'
-    body = 'functionId=city_getHomeData&body={"lbsCity":"19","realLbsCity":"1601","inviteId":"","headImg":"","userName":"","taskChannel":"1"}&client=wh5&clientVersion=1.0.0&uuid=' + uuid
-    resp = requests.post(url=url, headers=buid_header(ck), data=body, timeout=30).json()
-    userActBaseInfo = resp['data']['result']['userActBaseInfo']
-    inviteId = userActBaseInfo['inviteId']
-    poolMoney = userActBaseInfo['poolMoney']
-    msg(f"当前助力池：{poolMoney} 元")
-    return inviteId, poolMoney
+    try:
+        url = 'https://api.m.jd.com/client.action'
+        body = 'functionId=city_getHomeDatav1&body={"lbsCity":"19","realLbsCity":"1601","inviteId":"","headImg":"","userName":"","taskChannel":"1","location":"113.,23.","safeStr":""}&client=wh5&clientVersion=1.0.0'
+        resp = requests.post(url=url, headers=buid_header(ck), data=body, timeout=30).json()
+        userActBaseInfo = resp['data']['result']['userActBaseInfo']
+        mainInfos = resp['data']['result']['mainInfos']
+        inviteId = userActBaseInfo['inviteId']
+        poolMoney = userActBaseInfo['poolMoney']
+        cityCodeList, roundNumList = [], []
+        for i in mainInfos:
+            cityCodeList.append(i['cityCode'])
+            roundNumList.append(i['roundNum'])
+        return inviteId, poolMoney, cityCodeList, roundNumList
+    except:
+        return "oev_XKwNZWFLYxOrCpeJ977LiD9Y", "0", [], []
 
 def zhuli(ck, inviteId, user):
+    global outCK
     url = 'https://api.m.jd.com/client.action'
-    body = 'functionId=city_getHomeData&body={"lbsCity":"19","realLbsCity":"1601","inviteId":"' + inviteId + '","headImg":"","userName":"","taskChannel":"1"}&client=wh5&clientVersion=1.0.0&uuid=' + uuid
+    body = 'functionId=city_getHomeDatav1&body={"lbsCity":"19","realLbsCity":"1601","inviteId":"' + inviteId + '","headImg":"","userName":"","taskChannel":"1","location":"113.,23.","safeStr":"{}"}&client=wh5&clientVersion=1.0.0&uuid='
     resp = requests.post(url=url, headers=buid_header(ck), data=body, timeout=30).json()
+    import json
     try:
         m = resp['data']['result']['toasts'][0]['msg']
-        print(f"{user}--{m}")
+        status = resp['data']['result']['toasts'][0]['status']
+        if status == "3":
+            outCK.append(ck)
     except:
-        print(f"{user}--助力失败")
+        print(f"\t{user}--助力失败")
+
+
+def city_receiveCash(ck):
+    try:
+        invid, poolMoney, cityCodeList, roundNumList = getInviteId(ck)
+        for roundNum in roundNumList:
+            url = 'https://api.m.jd.com/client.action'
+            body = 'functionId=city_receiveCash&body={"cashType":1,"roundNum":' + str(roundNum) + '}&client=wh5&clientVersion=1.0.0&uuid='
+            resp = requests.post(url=url, headers=buid_header(ck), data=body, timeout=30).json()
+    except:
+        pass
+
+def delckValue(z_cookiesList, z_userNameList):
+    for i in outCK:
+        try:
+            ckNum = cookiesList.index(i)
+            print(f"\t{z_userNameList[ckNum]} 已没有助力机会。")
+            z_cookiesList.pop(ckNum)
+            z_userNameList.pop(ckNum)
+        except:
+            continue
+    return z_cookiesList, z_userNameList
 
 
 def start():
     scriptName = '### 城城分现金-助力 ###'
     print(scriptName)
     global cookiesList, userNameList, pinNameList, ckNum
-    cookiesList, userNameList, pinNameList = getCk.iscookie()
-    if not  ccfxj_help:
-        print("您未配置助力的账号，\n助力账号名称：可填用户名 或 pin的值不要; \nenv 设置 export ccfxj_help=\"Curtinlv&用户2\"  多账号&分隔\n本次退出。")
-        sys.exit(0)
-    for ckname in ccfxj_help:
-        try:
-            ckNum = userNameList.index(ckname)
-        except Exception as e:
+    cookiesList, userNameList = getCk.iscookie()
+    z_cookiesList,z_userNameList = [], []
+    for c,u in zip(cookiesList,userNameList):
+        z_cookiesList.append(c)
+        z_userNameList.append(u)
+    if ccfxj_isOrder == "true":
+        for ck, user in zip(cookiesList, userNameList):
+            m_ck = ck
             try:
-                ckNum = pinNameList.index(unquote(ckname))
+                invid, poolMoney, cityCodeList, roundNumList = getInviteId(m_ck)
             except:
-                print(f"请检查被助力账号【{ckname}】名称是否正确？提示：助力名字可填pt_pin的值、也可以填账号名。")
+                print(f"账号异常【{user}】，无法获取助力码，请手动分享~")
                 continue
-        userName = userNameList[ckNum]
-        invid, poolMoney = getInviteId(cookiesList[ckNum])
-        msg(f"### 本次助力车头：{userName}")
-        for ck,user in zip(cookiesList,userNameList):
-            zhuli(ck, invid, user)
+            print(f"### 开始助力 {user}\t当前金额 {poolMoney}\t助力码 {invid}")
+            z_cookiesList, z_userNameList = delckValue(z_cookiesList, z_userNameList)
+            for ck, user_a in zip(z_cookiesList, z_userNameList):
+                if user == user_a:
+                    continue
+                zhuli(ck, invid, user_a)
+            city_receiveCash(m_ck)
+    else:
+        if not ccfxj_help:
+            print("您未配置助力的账号，\n助力账号名称：可填用户名 或 pin的值不要; \nenv 设置 export ccfxj_help=\"Curtinlv&用户2\"  多账号&分隔\n本次退出。")
+            sys.exit(0)
+        for ckname in ccfxj_help:
+            try:
+                ckNum = userNameList.index(ckname)
+            except Exception as e:
+                try:
+                    ckNum = userNameList.index(unquote(ckname))
+                except:
+                    print(f"请检查被助力账号【{ckname}】名称是否正确？提示：助力名字可填pt_pin的值、也可以填账号名。")
+                    continue
+            userName = userNameList[ckNum]
+            try:
+                invid, poolMoney, cityCodeList, roundNumList = getInviteId(cookiesList[ckNum])
+            except:
+                print(f"账号异常【{ckname}】，无法获取助力码，请手动分享~")
+                continue
+            msg(f"### 本次助力车头：{userName}")
+            z_cookiesList, z_userNameList = delckValue(z_cookiesList, z_userNameList)
+            for ck,user in zip(z_cookiesList,z_userNameList):
+                zhuli(ck, invid, user)
+            city_receiveCash(cookiesList[ckNum])
 
-    invid, poolMoney = getInviteId(cookiesList[ckNum])
-    msg("\n***************\n城城分现金入口：\n15.0:/￥WAAD60EE92byb0%，☃そ點①點ひ领哯唫！")
+    msg("*"*40)
+    for ck,user in zip(cookiesList,userNameList):
+        invid, poolMoney, cityCodeList, roundNumList = getInviteId(ck)
+        msg(f"用户[{user}]\t待提现{poolMoney}")
+    msg("*" * 40)
+    msg("\n***************\n城城分现金入口：\n25:/￥81H1VBRi2hU6z%☆")
     if isNotice:
         send(scriptName, msg_info)
 
