@@ -248,6 +248,8 @@ def start():
             msg(f"### 本次助力车头：{userName}")
             z_cookiesList, z_userNameList = delckValue(z_cookiesList, z_userNameList)
             for ck,user in zip(z_cookiesList,z_userNameList):
+                if userName == user:
+                    continue
                 zhuli(ck, invid, user)
             city_receiveCash(cookiesList[ckNum])
     msg("城城分现金当前余额：")
