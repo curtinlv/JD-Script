@@ -281,11 +281,15 @@ def drawShopGift(cookie, data):
             'Accept-Language': 'zh-Hans-CN;q=1',
             'Accept': '*/*'
         }
+        n = 1
         while True:
             response = requests.post(url, headers=headers, data=body, timeout=60)
             if response.status_code != 403:
                 break
             else:
+                if n == 5:
+                    break
+                n += 1
                 print("狗东限制ip，休眠60秒...")
                 sys.stdout.flush()
                 time.sleep(60)
