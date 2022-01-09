@@ -8,8 +8,9 @@ Date: 2021/10/20 下午8:59
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 说明：仅测试使用，目前只助力，需要手动领取提现。
-cron: 0 0 * * *
-new Env('城城分现金助力-助力.py');
+cron: 0 0 9-21 * *
+new Env('城城分现金助力(1.9-1.21)');
+update 2022.1.9
 '''
 ## 助力账号名称：可填用户名 或 pin的值不要; env 设置 export ccfxj_help="Curtinlv&用户2"  多账号&分隔
 ccfxj_help=["Curtinlv", ]
@@ -249,7 +250,7 @@ def start():
             for ck,user in zip(z_cookiesList,z_userNameList):
                 zhuli(ck, invid, user)
             city_receiveCash(cookiesList[ckNum])
-
+    msg("城城分现金当前余额：")
     msg("*"*40)
     for ck,user in zip(cookiesList,userNameList):
         invid, poolMoney, cityCodeList, roundNumList = getInviteId(ck)
