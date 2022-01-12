@@ -334,12 +334,13 @@ def drawContent(header, pin):
 
 def startDraw(header, actorUuid, pin, user,winery):
     global countbean
-    for drawType in range(4):
-        try:
+    try:
+        for drawType in range(4):
+            drawType += 1
             drawContent(header, pin)
             sleep(1)
             url = startDraw_url
-            body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}b&winery={winery}&drawType={drawType + 1}'
+            body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}b&winery={winery}&drawType={drawType}'
             resp = requests.post(url=url, headers=header, data=body)
             resp = resp.json()
             if resp['result']:
@@ -347,12 +348,13 @@ def startDraw(header, actorUuid, pin, user,winery):
                     printf(f"\t☺️[{user}]抽奖获得: {resp['data']['name']} ️")
                 else:
                     printf(f"\t😭抽奖获得: {resp['data']['name']} ")
-                return True
+                # return True
             else:
                 printf(f"\t😆{resp['errorMessage']}")
-                return False
-        except:
-            return False
+                # return False
+        return True
+    except:
+        return False
 
 #
 def followShop(header, actorUuid, pin, shareUuid, user):
@@ -554,20 +556,16 @@ def start():
                     sleep(1)
                     insertCrmPageVisit(header, pin, i)
                 bindWithVender(ck, venderIdList, channelList)
-                printf("#去抽奖~")
-                try:
-                    for i in range(13):
-                        sleep(1)
-                        startDraw(header, actorUuid, pin, user, i+1)
-                except:
-                    pass
+                # printf("#去抽奖~")
+                # try:
+                #     for i in range(13):
+                #         sleep(1)
+                #         startDraw(header, actorUuid, pin, user, i+1)
+                # except:
+                #     pass
             else:
-                printf("\t😆任务已完成!")
+                printf("\t😆开卡任务已完成!")
 
-
-            # for i in range(2):
-            #     startDraw(header, actorUuid, pin, user, i)
-            # print("助力码:shareuserid4minipg",shareuserid4minipg,"shareUuid",shareUuid)
             if a == 1:
                 printf(f"用户{a}[{nickname}]>助力>>[Author]{shareUuid}")
                 shareuserid4minipg = pin
@@ -575,6 +573,7 @@ def start():
                 Masternickname = nickname
                 Masterheader = header
                 a += 1
+                print(f"[{nickname}]的助力码:{shareUuid}")
                 continue
             printf(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]{shareUuid}")
             sleep(1)
@@ -584,7 +583,8 @@ def start():
             continue
     # 用户1抽奖
     try:
-        for i in range(4):
+        print("用户1抽奖")
+        for i in range(13):
             sleep(1)
             startDraw(Masterheader, shareUuid, shareuserid4minipg, Masternickname, i + 1)
     except:
