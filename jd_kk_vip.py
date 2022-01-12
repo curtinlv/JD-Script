@@ -351,7 +351,7 @@ def startDraw(header, actorUuid, pin, user,winery):
                 # return True
             else:
                 printf(f"\t😆{resp['errorMessage']}")
-                # return False
+                return False
         return True
     except:
         return False
@@ -586,7 +586,9 @@ def start():
         print("用户1抽奖")
         for i in range(13):
             sleep(1)
-            startDraw(Masterheader, shareUuid, shareuserid4minipg, Masternickname, i + 1)
+            result = startDraw(Masterheader, shareUuid, shareuserid4minipg, Masternickname, i + 1)
+            if not result:
+                break
     except:
         pass
     # end
