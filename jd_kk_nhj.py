@@ -35,7 +35,7 @@ get_url = 'https://gitee.com/curtinlv/Public/raw/master/kk/nhj.json'
 
 # 是否发送通知, 关闭通知：export kk_vip_isNotice="false"
 isNotice = "true"
-# 设置休眠最大时长 ，如60秒，export kk_vip_isNotice="60"
+# 设置休眠最大时长 ，如60秒，export kk_vip_sleep="60"
 kk_vip_sleep = 30
 
 allUserBean = {}
@@ -45,7 +45,7 @@ if "isNotice" in os.environ:
         isNotice = os.environ["kk_vip_isNotice"]
 
 if "kk_vip_sleep" in os.environ:
-    if len(os.environ["kk_vip_sleep_"]) > 1:
+    if len(os.environ["kk_vip_sleep"]) > 1:
         kk_vip_sleep = float(os.environ["kk_vip_sleep"])
 
 
