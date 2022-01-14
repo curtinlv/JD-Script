@@ -9,7 +9,7 @@ TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 cron: 20 11,20 14-21 1 *
 new Env('超级年货节 惊喜不打烊1.14-1.21')
-活动入口：28:/￥320HVBpVk2U27%，会员邀新赢万元年货大礼包
+活动入口：20:/#239s57fgLQaxO@，嚯！囤大牌年货，赢惊喜大奖
 https://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity/5719961?activityId=dzlhkkkbblnt20220114&shareUuid=33df44d05fd54de391a30f8e6df273bf&adsource=null&shareuserid4minipg=wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP&shopid=1000001195&
 
 '''
@@ -629,7 +629,7 @@ def start():
     for ck, user in zip(cookieList, nameList):
         try:
             printf(f"##☺️账号{a}[{user}]，您好!")
-            printf(f"\t└助力：{one_name} {one_shareUuid}")
+            printf(f"\t└助力：[{one_name}] 助力码：{one_shareUuid}")
             try:
                 cookie = buildheaders(ck, one_shareUuid, one_shareuserid4minipg)
                 wait_time(1, 1)
