@@ -263,28 +263,32 @@ def getMyPing(cookie, token):
         return False, False, False
 
 def accessLog(headers,pin, shareUuid, shareuserid4minipg):
-    sid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 32))
-    accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl={pageUrl}{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={quote(shareuserid4minipg)}&shopid={activityshopid}&sid=&un_area=&subType=app&adSource=null'
-    accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzdz1-isv.isvjcloud.com%2Fdingzhi%2Fcustomized%2Fcommon%2Factivity%3FactivityId={activityId}&sid={sid}&un_area=&subType=app&adSource='
-    url = accessLogWithAD_url
-    resp = requests.post(url=url, headers=headers, timeout=30, data=accbody)
-    if resp.status_code == 200:
-        LZ_TOKEN = re.findall(r'(LZ_TOKEN_KEY=.*?;).*?(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])
-        headers = {
-            'X-Requested-With': 'XMLHttpRequest',
-            'Connection': 'keep-alive',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Origin': 'https://lzdz1-isv.isvjcloud.com',
-            'User-Agent': userAgent(),
-            'Cookie': LZ_TOKEN[0][0] + LZ_TOKEN[0][1],
-            'Host': 'lzdz1-isv.isvjcloud.com',
-            'Referer': buildheaders_url,
-            'Accept-Language': 'zh-cn',
-            'Accept': 'application/json'
-        }
-        return headers
-    else:
+    try:
+        sid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 32))
+        # accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl={pageUrl}{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={quote(shareuserid4minipg)}&shopid={activityshopid}&sid=&un_area=&subType=app&adSource=null'
+        accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzdz1-isv.isvjcloud.com%2Fdingzhi%2Fcustomized%2Fcommon%2Factivity%3FactivityId={activityId}&sid={sid}&un_area=&subType=app&adSource='
+        url = accessLogWithAD_url
+        resp = requests.post(url=url, headers=headers, timeout=30, data=accbody)
+        if resp.status_code == 200:
+            LZ_TOKEN = re.findall(r'(LZ_TOKEN_KEY=.*?;).*?(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])
+            headers = {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Connection': 'keep-alive',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Origin': 'https://lzdz1-isv.isvjcloud.com',
+                'User-Agent': userAgent(),
+                'Cookie': LZ_TOKEN[0][0] + LZ_TOKEN[0][1],
+                'Host': 'lzdz1-isv.isvjcloud.com',
+                'Referer': buildheaders_url,
+                'Accept-Language': 'zh-cn',
+                'Accept': 'application/json'
+            }
+            return headers
+        else:
+            return headers
+    except Exception as e:
+        printf(e)
         return headers
 
 def writePersonInfo(header, pin):
@@ -319,7 +323,7 @@ def assist(header, pin,shareUuid):
         pass
     else:
         pass
-
+    wait_time(2, 3)
     url = assist_status_url
     body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
     resp = requests.post(url=url, headers=header, timeout=30, data=body)
@@ -338,7 +342,7 @@ def activityContent(header, pin, shareUuid, pinImg, nick, shareuserid4minipg, ag
     body = f'activityId={activityId}&pin={quote(pin)}&pinImg={pinImg}&nick={quote(nick)}&cjyxPin=&cjhyPin=&shareUuid='
     header['Cookie'] += f'AUTH_C_USER={quote(pin)};'
     # header['Content-Length'] = 329
-    header['Referer'] = f'https://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&'
+    header['Referer'] = f'https://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={quote(shareuserid4minipg)}&shopid={activityshopid}&'
     try:
         resp = requests.post(url=url, headers=header, data=body)
         if resp.status_code == 200:
@@ -648,73 +652,74 @@ def start():
     cookieList, nameList = getCk.iscookie()
     a = 1
     for ck, user in zip(cookieList, nameList):
+        # try:
+        printf(f"##☺️账号{a}[{user}]，您好!")
+        printf(f"\t└助力：[{one_name}] 助力码：{one_shareUuid}")
         try:
-            printf(f"##☺️账号{a}[{user}]，您好!")
-            printf(f"\t└助力：[{one_name}] 助力码：{one_shareUuid}")
-            try:
-                cookie = buildheaders(ck, one_shareUuid, one_shareuserid4minipg)
-                wait_time(1, 1)
-                token = isvObfuscator(ck)
-            except:
-                printf(f"️##😭账号{a}【{user}】获取token异常, ip有可能给限制了~")
-                a += 1
-                continue
-            wait_time(1, 2)
-            try:
-                header, nickname, pin = getMyPing(cookie, token)
-            except:
-                printf(f"️##😭账号{a}【{user}】暂无法参加活动~")
-                a += 1
-                continue
-            wait_time(1, 3)
-            # try:
-            yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
-            wait_time(1, 3)
-            header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
-            wait_time(1, 2)
-            # 关注
-            followShop(header, pin, user)
-            wait_time(1, 2)
-            # 加购
-            addCart(header, pin, user)
-            wait_time(2, 4)
-            #领券获取金币
-            wait_time(2, 4)
-            sendAllCoupon(header, pin, user)
-            # 开卡
-            printf("#去完成开卡任务~")
-            venderIdList, channelList, allShopID = checkOpenCard(header, pin)
-            wait_time(1, 3)
-            bindWithVender(ck, venderIdList, channelList, pin, header)
-            wait_time(1, 2)
-            assist(header, pin, one_shareUuid)
-            # 浏览任务
-            browseShops(header, pin, allShopID[random.randint(0, 9)])
-            # for i in allShopID:
-                # wait_time(10, 11, "浏览任务")
-                # browseShops(header, pin, i)
-            wait_time(2, 3)
-            # 抽奖
-            header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
-            wait_time(1, 2)
-            actorUuid, shareTitle, score = activityContent(header, pin, one_shareUuid, yunMidImageUrl, nickname, one_shareuserid4minipg)
-            # printf(score)
-            if score > 100:
-                wait_time(2, 4, "点击抽奖")
-                draw(header, pin, actorUuid, user)
-            if a == 1:
-                if actorUuid == 0:
-                    printf("账号一获取助力码失败~，请重新尝试运行。")
-                    exit(1)
-                one_shareUuid = actorUuid
-                one_shareuserid4minipg = pin
-                one_name = user
-            a += 1
-            wait_time(kk_vip_sleep, kk_vip_sleep, "###休息一会")
-        except Exception as e:
-            printf(f"ERROR MAIN {e}")
+            cookie = buildheaders(ck, one_shareUuid, one_shareuserid4minipg)
+            wait_time(1, 1)
+            token = isvObfuscator(ck)
+        except:
+            printf(f"️##😭账号{a}【{user}】获取token异常, ip有可能给限制了~")
             a += 1
             continue
+        wait_time(1, 2)
+        try:
+            header, nickname, pin = getMyPing(cookie, token)
+        except:
+            printf(f"️##😭账号{a}【{user}】暂无法参加活动~")
+            a += 1
+            continue
+        wait_time(1, 3)
+        # try:
+        yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
+        wait_time(1, 3)
+        header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
+        wait_time(1, 2)
+        # 关注
+        followShop(header, pin, user)
+        wait_time(1, 2)
+        # 加购
+        addCart(header, pin, user)
+        wait_time(2, 4)
+        #领券获取金币
+        wait_time(2, 4)
+        sendAllCoupon(header, pin, user)
+        # 开卡
+        printf("#去完成开卡任务~")
+        venderIdList, channelList, allShopID = checkOpenCard(header, pin)
+        wait_time(1, 3)
+        bindWithVender(ck, venderIdList, channelList, pin, header)
+        # 浏览任务
+        browseShops(header, pin, allShopID[random.randint(0, 9)])
+        # for i in allShopID:
+            # wait_time(10, 11, "浏览任务")
+            # browseShops(header, pin, i)
+        wait_time(2, 3)
+        # 抽奖
+        # header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
+        wait_time(1, 2)
+        actorUuid, shareTitle, score = activityContent(header, pin, one_shareUuid, yunMidImageUrl, nickname, one_shareuserid4minipg)
+        # printf(score)
+        if score > 100:
+            wait_time(2, 4, "点击抽奖")
+            draw(header, pin, actorUuid, user)
+        if a == 1:
+            if actorUuid == 0:
+                printf("账号一获取助力码失败~，请重新尝试运行。")
+                exit(1)
+            one_shareUuid = actorUuid
+            one_shareuserid4minipg = pin
+            one_name = user
+        wait_time(1, 2)
+        assist(header, pin, one_shareUuid)
+        a += 1
+        wait_time(kk_vip_sleep, kk_vip_sleep, "###休息一会")
+        # except Exception as e:
+
+        #     printf(f"ERROR MAIN {e}")
+        #     a += 1
+        #     continue
 
     a = 1
     printf("\n【收获统计】")
