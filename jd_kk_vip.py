@@ -163,7 +163,6 @@ def isvObfuscator(ck):
 
 def buildheaders(ck, shareUuid, shareuserid4minipg):
     sid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 32))
-    # url = f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area='
     url = buildheaders_url + f'shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area='
     headers = {
         'Accept-Encoding': 'gzip, deflate, br',
@@ -176,9 +175,11 @@ def buildheaders(ck, shareUuid, shareuserid4minipg):
     }
     resp = requests.get(url, headers)
     LZ_TOKEN = re.findall(r'(LZ_TOKEN_KEY=.*?;).*?(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])
-    return LZ_TOKEN[0][0]+LZ_TOKEN[0][1]
+    LZ_TOKEN_KEY = re.findall(r'(LZ_TOKEN_KEY=.*?;)', resp.headers['Set-Cookie'])[0]
+    LZ_TOKEN_VALUE = re.findall(r'(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])[0]
+    return LZ_TOKEN[0][0]+LZ_TOKEN[0][1], LZ_TOKEN_KEY, LZ_TOKEN_VALUE
 
-def getMyPing(shareUuid, shareuserid4minipg, cookie, token):
+def getMyPing(shareUuid, shareuserid4minipg, cookie, token,LZ_TOKEN_KEY, LZ_TOKEN_VALUE):
     sid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 32))
     url = getMyPing_url
     headers = {
@@ -190,8 +191,8 @@ def getMyPing(shareUuid, shareuserid4minipg, cookie, token):
         'User-Agent': userAgent(),
         'Cookie': cookie,
         'Host': 'lzdz1-isv.isvjcloud.com',
-        'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area=',
-        'Accept-Language': 'zh-cn',
+        'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/majorsuit/memberday/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area=',
+        'Accept-Language': 'zh-CN,zh-Hans;q=0.9',
         'Accept': 'application/json'
     }
     body = f'userId={activityshopid}&token={token}&fromType=APP'
@@ -199,9 +200,9 @@ def getMyPing(shareUuid, shareuserid4minipg, cookie, token):
     try:
         nickname = resp.json()['data']['nickname']
         secretPin = resp.json()['data']['secretPin']
-        LZ_TOKEN_KEY = re.findall(r'(LZ_TOKEN_KEY=.*?;)', resp.headers['Set-Cookie'])[0]
-        LZ_TOKEN_VALUE = re.findall(r'(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])[0]
-        AUTH_C_USER = re.findall(r'(AUTH_C_USER=.*?;)', resp.headers['Set-Cookie'])[0]
+        # LZ_TOKEN_KEY = re.findall(r'(LZ_TOKEN_KEY=.*?;)', resp.headers['Set-Cookie'])[0]
+        # LZ_TOKEN_VALUE = re.findall(r'(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])[0]
+        # AUTH_C_USER = re.findall(r'(AUTH_C_USER=.*?;)', resp.headers['Set-Cookie'])[0]
         headers = {
             'X-Requested-With': 'XMLHttpRequest',
             'Connection': 'keep-alive',
@@ -209,19 +210,22 @@ def getMyPing(shareUuid, shareuserid4minipg, cookie, token):
             'Content-Type': 'application/x-www-form-urlencoded',
             'Origin': 'https://lzdz1-isv.isvjcloud.com',
             'User-Agent': userAgent(),
-            'Cookie': LZ_TOKEN_KEY+LZ_TOKEN_VALUE + AUTH_C_USER + '__jd_ref_cls=Mnpm_ComponentApplied; mba_muid=16376427422281457677509.801.1637642928827; mba_sid=801.14; __jda=60969652.16376427422281457677509.1637642742.1637642742.1637642742.1; __jdb=60969652.5.16376427422281457677509|1.1637642742; __jdc=60969652; __jdv=60969652%7Ckong%7Ct_2011739974_%7Cjingfen%7C394dd4aa2cef4f9cbf65939ceda8cc4c%7C1637577535593; pre_seq=7; pre_session=809409cbd5bb8a0fa8fff41378c1afe91b8075ad|2225',
+            # 'Cookie': LZ_TOKEN_KEY+LZ_TOKEN_VALUE + AUTH_C_USER + '__jd_ref_cls=Mnpm_ComponentApplied; mba_muid=16376427422281457677509.801.1637642928827; mba_sid=801.14; __jda=60969652.16376427422281457677509.1637642742.1637642742.1637642742.1; __jdb=60969652.5.16376427422281457677509|1.1637642742; __jdc=60969652; __jdv=60969652%7Ckong%7Ct_2011739974_%7Cjingfen%7C394dd4aa2cef4f9cbf65939ceda8cc4c%7C1637577535593; pre_seq=7; pre_session=809409cbd5bb8a0fa8fff41378c1afe91b8075ad|2225',
+            'Cookie': LZ_TOKEN_KEY+LZ_TOKEN_VALUE,
             'Host': 'lzdz1-isv.isvjcloud.com',
-            'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area=19_1601_3633_63243',            'Accept-Language': 'zh-cn',
+            'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/zyinvite/active/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area=19_1601_3633_63243',
+            'Accept-Language': 'zh-cn',
             'Accept': 'application/json'
         }
-        return headers, nickname, secretPin, AUTH_C_USER
+
+        return headers, nickname, secretPin
     except Exception as e:
         # printf("建议请稍等再试~", e)
         return False, False, False
 
 def accessLog(headers,pin, shareUuid, shareuserid4minipg, AUTH_C_USER):
     sid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 32))
-    accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={quote(shareuserid4minipg)}&shopid={activityshopid}&sid=&un_area=&subType=app&adSource=null'
+    accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl=https://lzdz1-isv.isvjcloud.com/dingzhi/zyinvite/active/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={quote(shareuserid4minipg)}&shopid={activityshopid}&sid=&un_area=&subType=app&adSource=null'
     url = accessLogWithAD_url
     resp = requests.post(url=url, headers=headers, timeout=30, data=accbody)
     if resp.status_code == 200:
@@ -236,7 +240,7 @@ def accessLog(headers,pin, shareUuid, shareuserid4minipg, AUTH_C_USER):
             'User-Agent': userAgent(),
             'Cookie': LZ_TOKEN_KEY + LZ_TOKEN_VALUE + AUTH_C_USER,
             'Host': 'lzdz1-isv.isvjcloud.com',
-            'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area=',
+            'Referer': f'https://lzdz1-isv.isvjcloud.com/dingzhi/zyinvite/active/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area=',
             'Accept-Language': 'zh-cn',
             'Accept': 'application/json'
             # 'Content-Length': '295'
@@ -328,34 +332,34 @@ def drawContent(header, pin):
     body = f'activityId={activityId}&pin={quote(pin)}'
     resp = requests.post(url=url, headers=header, data=body)
 
-def startDraw(header, actorUuid, pin, user,drawType):
+def startDraw(header, actorUuid, pin, user,winery):
     global countbean
     try:
-        drawContent(header, pin)
-        sleep(1)
-        url = startDraw_url
-        body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}b&winery=1&drawType={drawType}'
-        resp = requests.post(url=url, headers=header, data=body)
-        resp = resp.json()
-        if resp['result']:
-            if resp['data']['drawOk']:
-                printf(f"\t☺️[{user}]抽奖获得: {resp['data']['name']} ️")
-                # try:
-                #     countbean[user] += 30
-                # except:
-                #     countbean[user] = 30
+        for drawType in range(4):
+            drawType += 1
+            drawContent(header, pin)
+            sleep(1)
+            url = startDraw_url
+            body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}b&winery={winery}&drawType={drawType}'
+            resp = requests.post(url=url, headers=header, data=body)
+            resp = resp.json()
+            if resp['result']:
+                if resp['data']['drawOk']:
+                    printf(f"\t☺️[{user}]抽奖获得: {resp['data']['name']} ️")
+                else:
+                    printf(f"\t😭抽奖获得: {resp['data']['name']} ")
+                # return True
             else:
-                printf(f"\t😭抽奖获得: {resp['data']['name']} ")
-        else:
-            # printf(f"\t😆{resp['errorMessage']}")
-            pass
+                printf(f"\t😆{resp['errorMessage']}")
+                return False
+        return True
     except:
-        pass
+        return False
 
 #
 def followShop(header, actorUuid, pin, shareUuid, user):
     global countbean
-    url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/followShop'
+    url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/zyinvite/active/followShop'
     body = f'activityId={activityId}&pin={quote(pin)}&actorUuid={actorUuid}&taskType=23&taskValue={activityshopid}&shareUuid={shareUuid}'
     printf("#去完成关注任务~")
     resp = requests.post(url=url, headers=header, data=body).json()
@@ -491,7 +495,7 @@ def getDrawRecordHasCoupon(headers, pin, actorUuid, user):
                         allcount[i['value'] + '京豆'] = int(beanNum)
                 else:
                     try:
-                        allcount['礼品'] += '###' + i['infoName']
+                        allcount['礼品'] += '+' + i['infoName']
                     except:
                         allcount['礼品'] = i['infoName']
             allList.append(allcount)
@@ -516,7 +520,7 @@ def start():
     for ck, user in zip(cookieList, nameList):
         printf(f"##☺️用户{a}【{user}】")
         try:
-            cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
+            cookie, LZ_TOKEN_KEY, LZ_TOKEN_VALUE = buildheaders(ck, shareUuid, shareuserid4minipg)
             sleep(0.2)
             token = isvObfuscator(ck)
         except:
@@ -525,16 +529,16 @@ def start():
             continue
         sleep(0.1)
         try:
-            header, nickname, pin, AUTH_C_USER = getMyPing(shareUuid, shareuserid4minipg, cookie, token)
+            header, nickname, pin = getMyPing(shareUuid, shareuserid4minipg, cookie, token,LZ_TOKEN_KEY, LZ_TOKEN_VALUE)
         except:
-            printf(f"️##😭用户{a}【{user}】暂无法参加活动~")
+            printf(f"️##😭用户{a}【{user}】暂无法参加活动，或请检查账号cookie是否有效~")
             a += 1
             continue
         sleep(0.3)
         try:
             yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
-            sleep(0.3)
-            header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
+            # sleep(0.3)
+            # header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
             sleep(0.3)
             actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
             # 关注
@@ -552,20 +556,15 @@ def start():
                     sleep(1)
                     insertCrmPageVisit(header, pin, i)
                 bindWithVender(ck, venderIdList, channelList)
-                printf("#去抽奖~")
-                try:
-                    for i in range(4):
-                        sleep(1)
-                        startDraw(header, actorUuid, pin, user , i+1)
-                except:
-                    pass
+                # printf("#去抽奖~")
+                # try:
+                #     for i in range(13):
+                #         sleep(1)
+                #         startDraw(header, actorUuid, pin, user, i+1)
+                # except:
+                #     pass
             else:
-                printf("\t😆任务已完成!")
-
-
-            # for i in range(2):
-            #     startDraw(header, actorUuid, pin, user, i)
-            # print("助力码:shareuserid4minipg",shareuserid4minipg,"shareUuid",shareUuid)
+                printf("\t😆开卡任务已完成!")
             if a == 1:
                 printf(f"用户{a}[{nickname}]>助力>>[Author]{shareUuid}")
                 shareuserid4minipg = pin
@@ -573,18 +572,23 @@ def start():
                 Masternickname = nickname
                 Masterheader = header
                 a += 1
+                print(f"[{nickname}]的助力码:{shareUuid}")
                 continue
             printf(f"用户{a}[{nickname}]>>助力>>>[{Masternickname}]{shareUuid}")
             sleep(1)
             a += 1
             print(f"[{nickname}]的助力码:{shareUuid}")
         except:
+            a += 1
             continue
     # 用户1抽奖
     try:
-        for i in range(4):
+        print("用户1抽奖")
+        for i in range(13):
             sleep(1)
-            startDraw(Masterheader, shareUuid, shareuserid4minipg, Masternickname, i + 1)
+            result = startDraw(Masterheader, shareUuid, shareuserid4minipg, Masternickname, i + 1)
+            if not result:
+                break
     except:
         pass
     # end
@@ -595,7 +599,7 @@ def start():
     for ck, user in zip(cookieList, nameList):
         printf(f"##☺️用户{a}【{user}】")
         try:
-            cookie = buildheaders(ck, shareUuid, shareuserid4minipg)
+            cookie, LZ_TOKEN_KEY, LZ_TOKEN_VALUE = buildheaders(ck, shareUuid, shareuserid4minipg)
             sleep(0.2)
             token = isvObfuscator(ck)
         except:
@@ -604,15 +608,15 @@ def start():
             continue
         sleep(0.1)
         try:
-            header, nickname, pin, AUTH_C_USER = getMyPing(shareUuid, shareuserid4minipg, cookie, token)
+            header, nickname, pin = getMyPing(shareUuid, shareuserid4minipg, cookie, token,LZ_TOKEN_KEY, LZ_TOKEN_VALUE)
             sleep(0.3)
             yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
-            sleep(0.3)
-            header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
+            # sleep(0.3)
+            # header = accessLog(header, pin, shareUuid, shareuserid4minipg, AUTH_C_USER)
             sleep(0.3)
             actorUuid, shareTitle = activityContent(header, pin, shareUuid, yunMidImageUrl, nickname)
         except:
-            printf(f"️##😭用户{a}【{user}】暂无法参加活动~")
+            printf(f"️##😭用户{a}【{user}】暂无法参加活动，或请检查账号cookie是否有效~")
             a += 1
             continue
         if a == 1:
@@ -629,6 +633,7 @@ def start():
     msg("*" * 40)
     msg("### 【累计】")
     allUserBean = 0
+    liwuCount = ''
     for c in allList:
         usetBean = 0
         try:
@@ -640,12 +645,16 @@ def start():
                 if '京豆' in i:
                     usetBean += c[i]
                     allUserBean += c[i]
+                if '+' in i:
+                    liwuCount += c[i]
             msg(f"\t└累计获得京豆: {usetBean}")
         except:
             continue
         msg('-'*20)
     msg(f"本次总获得: {allbean} 京豆")
     msg(f"累计总获得: {allUserBean} 京豆")
+    if liwuCount:
+        msg(f"恭喜您获得礼物: {liwuCount}")
     msg("*" * 40)
     msg(footer)
     if isNotice == "true":
