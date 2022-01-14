@@ -3,7 +3,7 @@
 '''
 项目名称: JD-Script / 测试
 Author: Curtin
-功能：自动完成所有任务，如没完成，多跑几次。
+功能：自动完成所有任务，如没完成，多跑几次，账号一助力Curtinlv，其余助力账号一
 Date: 2022/1/15 05:30
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
@@ -94,7 +94,7 @@ record_url = 'https://lzdz1-isv.isvjcloud.com/dingzhi/linkgame/draw/record'
 # token
 isvObfuscator_body = f'body=%7B%22url%22:%22https:%5C/%5C/lzdz1-isv.isvjcloud.com%22,%22id%22:%22%22%7D&build=167870&client=apple&clientVersion=10.2.4&d_brand=apple&d_model=iPhone10,3&ef=1&ep=%7B%22ciphertype%22:5,%22cipher%22:%7B%22screen%22:%22CJOyDIeyDNC2%22,%22wifiBssid%22:%22{random_num}=%22,%22osVersion%22:%22CJGkCm==%22,%22area%22:%22CJvpCJYmCV8zDtCzXzYzCtGz%22,%22openudid%22:%22ENK5DNK5Y2TuDWTsEQOmZwO4ZwZwDNOzDzrtCWPwZJunYtqmDzVrZK==%22,%22uuid%22:%22%22%7D,%22ts%22:1642168167,%22hdid%22:%22JM9F1ywUPwflvMIpYPok0tt5k9kW4ArJEU3lfLhxBqw=%22,%22version%22:%221.0.3%22,%22appname%22:%22com.360buy.jdmobile%22,%22ridx%22:-1%7D&ext=%7B%22prstate%22:%220%22%7D&isBackground=N&partner=TF&rfs=0000&scope=01&sign=6d8df3d5ca7c31c71f759394f4a9b385&st=1642168175902&sv=120'
 # 获取请求头
-buildheaders_url = f'https://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity/{random_num}?activityId={activityId}&'
+buildheaders_url = f'https://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activityhttps://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity/{random_num}?activityId={activityId}&'
 
 
 def printf(*args):
@@ -205,7 +205,8 @@ def isvObfuscator(ck):
 
 def buildheaders(ck, shareUuid, shareuserid4minipg):
     sid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 32))
-    url = buildheaders_url + f'shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area='
+    # url = buildheaders_url + f'shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid={activityshopid}&sid={sid}&un_area='
+    url = f'https://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity/{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={shareuserid4minipg}&shopid=undefined&sid={sid}&un_area='
     headers = {
         'Accept-Encoding': 'gzip, deflate, br',
         'Cookie': ck,
