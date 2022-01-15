@@ -45,7 +45,7 @@ if "isNotice" in os.environ:
         isNotice = os.environ["kk_vip_isNotice"]
 
 if "kk_vip_sleep" in os.environ:
-    if len(os.environ["kk_vip_sleep"]) > 1:
+    if len(os.environ["kk_vip_sleep"]) > 0:
         kk_vip_sleep = float(os.environ["kk_vip_sleep"])
 
 
