@@ -35,7 +35,7 @@ get_url = 'https://gitee.com/curtinlv/Public/raw/master/kk/xcly.json'
 # 是否发送通知, 关闭通知：export kk_vip_isNotice="false"
 isNotice = "true"
 # 设置休眠最大时长 ，如60秒，export kk_vip_sleep="60"
-kk_vip_sleep = 3
+kk_vip_sleep = 20
 
 allUserBean = {}
 
