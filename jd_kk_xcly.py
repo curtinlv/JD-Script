@@ -3,7 +3,7 @@
 '''
 项目名称: JD-Script / 测试
 Author: Curtin
-功能：自动完成所有任务，如没完成，多跑几次，账号一助力Curtinlv，其余助力账号一
+功能：自动完成所有任务，如没完成，多跑几次，账号一助力Curtinlv，其余助力账号一，（活动每天限制邀请10人，每助力10次换一次车头，仅适用账号大于10的）
 Date: 2022/1/15 05:30
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
