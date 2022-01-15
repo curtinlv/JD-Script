@@ -711,6 +711,7 @@ def start():
                 one_shareuserid4minipg = pin
                 one_name = user
             wait_time(1, 2)
+            printf(f"## {user} 的助力码 {actorUuid}")
             assist(header, pin, one_shareUuid)
             if not a == len(cookieList):
                 a += 1
