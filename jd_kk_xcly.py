@@ -35,7 +35,7 @@ get_url = 'https://gitee.com/curtinlv/Public/raw/master/kk/xcly.json'
 # 是否发送通知, 关闭通知：export kk_vip_isNotice="false"
 isNotice = "true"
 # 设置休眠最大时长 ，如60秒，export kk_vip_sleep="60"
-kk_vip_sleep = 30
+kk_vip_sleep = 3
 
 allUserBean = {}
 
@@ -582,6 +582,8 @@ def start():
     one_shareuserid4minipg = code.split("&")[1]
     cookieList, nameList = getCk.iscookie()
     a = 1
+    one_shareUuid_list,one_shareUuid_name,one_shareuserid4minipg_list = [],[],[]
+    labelNum = 0
     for ck, user in zip(cookieList, nameList):
         try:
             printf(f"##☺️账号{a}[{user}]，您好!")
@@ -608,6 +610,10 @@ def start():
             header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
             wait_time(1, 2)
             actorUuid, shareTitle = activityContent(header, pin, one_shareUuid, yunMidImageUrl, nickname,one_shareuserid4minipg)
+            if not actorUuid == 0:
+                one_shareUuid_list.append(actorUuid)
+                one_shareUuid_name.append(user)
+                one_shareuserid4minipg_list.append(pin)
             # 开卡
             printf("#去完成开卡任务~")
             wait_time(1, 2)
@@ -628,6 +634,14 @@ def start():
                 one_shareUuid = actorUuid
                 one_shareuserid4minipg = pin
                 one_name = user
+            # 活动每天限制邀请10人，每助力10次换一次车头，仅适用账号大于10的。
+            if a % 10 == 0:
+                labelNum += 1
+                printf(f"************************\n## 活动每天限制邀请10人，每助力10次换一次车头(按ck顺序)")
+                one_shareUuid = one_shareUuid_list[labelNum]
+                one_shareuserid4minipg = one_shareuserid4minipg_list[labelNum]
+                one_name = one_shareUuid_name[labelNum]
+                printf(f"## 助力第{labelNum+1}轮，已更换助力号[{one_name}] 助力码 {one_shareUuid} \n************************")
             printf(f"## {user} 的助力码 {actorUuid}")
             if not a == len(cookieList):
                 a += 1
