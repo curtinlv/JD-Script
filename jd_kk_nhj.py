@@ -447,17 +447,16 @@ def record(header, pin, actorUuid,user):
                             try:
                                 allUserBean[f"{user}"] += int(beanNum)
                             except:
-                                allUserBean[f"{user}"] += int(beanNum)
+                                allUserBean[f"{user}"] = int(beanNum)
                         else:
                             try:
                                 allUserBean[f'{user}_yes'] += '+' + i['infoName']
                             except:
                                 allUserBean[f'{user}_yes'] = i['infoName']
             else:
-                # printf(f"\t😭 没中奖~ [{resp['data']['name']} ]")
-                pass
+                printf(resp.text)
     except Exception as e:
-        printf(f"draw [{e}]")
+        printf(f"record [{e}]")
 
 # 关注
 def followShop(header, pin, user):
@@ -713,8 +712,9 @@ def start():
                 one_name = user
             wait_time(1, 2)
             assist(header, pin, one_shareUuid)
-            a += 1
-            wait_time(kk_vip_sleep, kk_vip_sleep, "###休息一会")
+            if not a == len(cookieList):
+                a += 1
+                wait_time(kk_vip_sleep, kk_vip_sleep, "###休息一会")
         except Exception as e:
             printf(f"ERROR MAIN {e}")
             if a == 1:
@@ -768,7 +768,7 @@ def start():
             continue
 
     msg("*" * 40)
-    allUserBean = 0
+    allBean = 0
     allJiangpin = ""
     n = 0
     a = 1
@@ -778,7 +778,7 @@ def start():
             for m in allUserBean:
                 if m == u:
                     msg(f"\t\t└获得京豆: {allUserBean[u]}")
-                    allUserBean += allUserBean[u]
+                    allBean += allUserBean[u]
                 if m == f'{u}_yes':
                     msg(f"\t\t└获得奖品: {allUserBean[f'{u}_yes']}")
                     allJiangpin += "+" + allUserBean[f'{u}_yes']
@@ -788,14 +788,14 @@ def start():
             a += 1
             n += 1
             continue
-    if allUserBean > 0:
-        msg(f"总获得京豆: {allUserBean} ")
+    if allBean > 0:
+        msg(f"总获得京豆: {allBean} ")
     if allJiangpin:
         msg(f"总获得奖品: {allJiangpin}")
     msg("*" * 40)
     msg(footer)
     if isNotice == "true":
-        send(hdtitle, msg_info)
+        send(shareTitle, msg_info)
 
 if __name__ == '__main__':
     start()
