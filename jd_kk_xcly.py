@@ -628,6 +628,7 @@ def start():
                 one_shareUuid = actorUuid
                 one_shareuserid4minipg = pin
                 one_name = user
+            printf(f"## {user} 的助力码 {actorUuid}")
             if not a == len(cookieList):
                 a += 1
                 wait_time(kk_vip_sleep, kk_vip_sleep, "###休息一会")
