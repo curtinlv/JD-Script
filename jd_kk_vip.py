@@ -9,7 +9,8 @@ TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
 cron: 20 0,6,12,15,20 10-28 1 *
 new Env('会员邀新赢万元礼包1.10-1.28')
-活动入口：28:/￥320HVBpVk2U27%，会员邀新赢万元年货大礼包
+活动入口：https://lzdz1-isv.isvjcloud.com/dingzhi/majorsuit/memberday/activity/1131759?activityId=dz2112100001448501&shareUuid=666fa61fec9a40aeb6b9368895a331eb&adsource=null&shareuserid4minipg=wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP&shopid=1000014485&sid=a5733e7cb49561529aac98f4366b2f4e&un_area=
+
 '''
 import requests
 import os
@@ -472,7 +473,7 @@ def isUpdate():
         else:
             return False, hdtitle, readme, code, footer
     except:
-        return False, '会员邀新赢万元年货大礼包1.10-1.28', '', f'{master_shareUuid}&{master_shareuserid4minipg}', '\n开源免费使用 https://github.com/curtinlv/JD-Script\nTG频道 https://t.me/TopStyle2021'
+        return False, '会员邀新赢万元年货大礼包1.10-1.28', '', f'{master_shareUuid}&{master_shareuserid4minipg}', '\nTG频道 https://t.me/TopStyle2021\n活动入口：https://lzdz1-isv.isvjcloud.com/dingzhi/majorsuit/memberday/activity/1131759?activityId=dz2112100001448501&shareUuid=666fa61fec9a40aeb6b9368895a331eb&adsource=null&shareuserid4minipg=wqdHuFdMJj0bcG7ysk0r8mwklxRrP5C78lmKjh9Mn4avAmNuF4i+OHS9NlRdtagP&shopid=1000014485&sid=a5733e7cb49561529aac98f4366b2f4e&un_area='
 
 def getDrawRecordHasCoupon(headers, pin, actorUuid, user):
     try:
