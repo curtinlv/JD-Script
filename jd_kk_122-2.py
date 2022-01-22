@@ -391,7 +391,8 @@ def activityContent(header, pin, shareUuid, pinImg, nick, shareuserid4minipg, ag
         if agin > 6:
             return 0, '', 0
         else:
-            wait_time(30, 60, f"获取助力码失败，尝试重新获取{agin}")
+            # wait_time(30, 60, f"获取助力码失败，尝试重新获取{agin}")
+            wait_time(10, 30)
             agin += 1
             return activityContent(header, pin, shareUuid, pinImg, nick, shareuserid4minipg, agin=agin)
         # printf(f"activityContent {e}")
