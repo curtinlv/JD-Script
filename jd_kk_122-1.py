@@ -438,8 +438,6 @@ def checkOpenCard(header, pin, agin=1):
             wait_time(3, 30)
             agin += 1
             return checkOpenCard(header, pin, agin=agin)
-
-
 # 抽奖
 def draw(header, pin, actorUuid, user, agin=1):
     url = draw_url
@@ -450,21 +448,26 @@ def draw(header, pin, actorUuid, user, agin=1):
         resp = requests.post(url=url, headers=header, data=body)
         # printf(resp.status_code)
         if resp.status_code == 200:
+            LZ_TOKEN = re.findall(r'(LZ_TOKEN_KEY=.*?;).*?(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])
+            header['Cookie'] = LZ_TOKEN[0][0] + LZ_TOKEN[0][1] + f'AUTH_C_USER={quote(pin)};'
             resp = resp.json()
             if resp['data']['drawOk']:
                 printf(f"\t☺️[{user}]抽奖获得: {resp['data']['name']}️")
             else:
                 printf(f"\t😭 没中奖~ [{resp['data']['name']}] {resp['data']['errorMessage']}")
+            return header
         else:
             printf(f"{resp.text}")
+            return None
     except Exception as e:
         if agin > 6:
             printf(f"draw, {e}")
-            return
+            return None
         else:
             wait_time(3, 30)
             agin += 1
             return draw(header, pin, actorUuid, user, agin=agin)
+
 
 # 奖品统计
 def record(header, pin, actorUuid,user, agin=1):
@@ -818,8 +821,10 @@ def start():
             actorUuid, shareTitle, score = activityContent(header, pin, one_shareUuid, yunMidImageUrl, nickname, one_shareuserid4minipg)
             # printf(score)
             if score > 100:
-                wait_time(2, 4, "点击抽奖")
-                draw(header, pin, actorUuid, user)
+                for i in range(int(score / 100)):
+                    wait_time(2, 4, f"点击抽奖{i+1}")
+                    if header:
+                        header = draw(header, pin, actorUuid, user)
             if a == 1:
                 if actorUuid == 0:
                     printf("账号一获取助力码失败~，请重新尝试运行。")
