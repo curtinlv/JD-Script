@@ -326,19 +326,23 @@ def insertCrmPageVisit(header, pin,shop_value):
 # 助力
 def assist(header, pin,shareUuid, agin=1):
     try:
-        # url = assist_status_url
-        # body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
-        # resp = requests.post(url=url, headers=header, timeout=30, data=body)
-        # if resp.status_code == 200:
-        #     pass
-        # else:
-        #     pass
-        # wait_time(3, 10)
+        url = assist_status_url
+        body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
+        resp = requests.post(url=url, headers=header, timeout=30, data=body)
+        if resp.status_code == 200:
+            LZ_TOKEN = re.findall(r'(LZ_TOKEN_KEY=.*?;).*?(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])
+            header['Cookie'] = LZ_TOKEN[0][0] + LZ_TOKEN[0][1] + f'AUTH_C_USER={quote(pin)};'
+        else:
+            pass
+        wait_time(1, 2)
+
         url = assist_url
         body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
         resp = requests.post(url=url, headers=header, timeout=30, data=body)
         if resp.status_code == 200:
-            pass
+            if resp.json()['result']:
+                if resp.json()['data']['status'] == 200:
+                    printf("助力成功~")
         else:
             pass
     except Exception as e:
