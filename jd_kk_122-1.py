@@ -554,9 +554,7 @@ def goodsCode(header, pin, user, agin=1):
 def browseShops(header, pin, shop_value, agin=1):
     try:
         insertCrmPageVisit(header, pin, f'%E5%95%86%E5%93%81{shop_value}')
-        wait_time(1, 2)
         writePersonInfo(header, pin)
-        wait_time(2, 3, "模拟浏览任务")
         url = browseShops_url
         body = f'activityId={activityId}&pin={quote(pin)}&value={shop_value}'
         resp = requests.post(url=url, headers=header, data=body)
@@ -802,7 +800,7 @@ def start():
             goodsCodeList = ['100017224819', '100022439326', '100031711544', '100030236452', '100002554682', '100027621102', '10033879578686', '10839629659', '100006955496','100017224833','100029814570','100024975580','100024658178','100007346824','100027714810','10031892728476','20396208227','100006970791']
             printf(f"#去做浏览任务")
             for i in goodsCodeList:
-                wait_time(2, 3, "浏览任务")
+                wait_time(0, 1, f"浏览任务{i}")
                 browseShops(header, pin, i)
             printf(f"已完成浏览任务")
             wait_time(2, 3)
