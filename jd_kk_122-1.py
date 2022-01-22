@@ -273,8 +273,8 @@ def getMyPing(cookie, token, agin=1):
 def accessLog(headers,pin, shareUuid, shareuserid4minipg):
     try:
         sid = ''.join(random.sample('123456789abcdef123456789abcdef123456789abcdef123456789abcdef', 32))
-        # accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl={pageUrl}{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={quote(shareuserid4minipg)}&shopid={activityshopid}&sid=&un_area=&subType=app&adSource=null'
-        accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzdz1-isv.isvjcloud.com%2Fdingzhi%2Fcustomized%2Fcommon%2Factivity%3FactivityId={activityId}&sid={sid}&un_area=&subType=app&adSource='
+        accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl={quote(pageUrl)}{random_num}?activityId={activityId}&shareUuid={shareUuid}&adsource=null&shareuserid4minipg={quote(shareuserid4minipg)}&shopid={activityshopid}&sid=&un_area=&subType=app&adSource=null'
+        # accbody = f'venderId={activityshopid}&code=99&pin={quote(pin)}&activityId={activityId}&pageUrl=https%3A%2F%2Flzdz1-isv.isvjcloud.com%2Fdingzhi%2Fcustomized%2Fcommon%2Factivity%3FactivityId={activityId}&sid={sid}&un_area=&subType=app&adSource='
         url = accessLogWithAD_url
         resp = requests.post(url=url, headers=headers, timeout=30, data=accbody)
         if resp.status_code == 200:
