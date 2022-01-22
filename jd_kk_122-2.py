@@ -455,6 +455,7 @@ def draw(header, pin, actorUuid, user, agin=1):
             LZ_TOKEN = re.findall(r'(LZ_TOKEN_KEY=.*?;).*?(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])
             header['Cookie'] = LZ_TOKEN[0][0] + LZ_TOKEN[0][1] + f'AUTH_C_USER={quote(pin)};'
             resp = resp.json()
+            print(resp)
             if resp['data']['drawOk']:
                 printf(f"\t☺️[{user}]抽奖获得: {resp['data']['name']}️")
             else:
