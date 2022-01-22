@@ -326,7 +326,7 @@ def insertCrmPageVisit(header, pin,shop_value):
 # 助力
 def assist(header, pin,shareUuid, agin=1):
     try:
-        url = assist_url
+        url = assist_status_url
         body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
         resp = requests.post(url=url, headers=header, timeout=30, data=body)
         if resp.status_code == 200:
@@ -334,7 +334,7 @@ def assist(header, pin,shareUuid, agin=1):
         else:
             pass
         wait_time(3, 10)
-        url = assist_status_url
+        url = assist_url
         body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
         resp = requests.post(url=url, headers=header, timeout=30, data=body)
         if resp.status_code == 200:
@@ -760,80 +760,80 @@ def start():
     cookieList, nameList = getCk.iscookie()
     a = 1
     for ck, user in zip(cookieList, nameList):
-        # try:
-        printf(f"##☺️账号{a}[{user}]，您好!")
-        printf(f"\t└助力：[{one_name}] 助力码：{one_shareUuid}")
         try:
-            cookie = buildheaders(ck, one_shareUuid, one_shareuserid4minipg)
-            wait_time(1, 1)
-            token = isvObfuscator(ck)
-        except:
-            printf(f"️##😭账号{a}【{user}】获取token异常, ip有可能给限制了~")
+            printf(f"##☺️账号{a}[{user}]，您好!")
+            printf(f"\t└助力：[{one_name}] 助力码：{one_shareUuid}")
+            try:
+                cookie = buildheaders(ck, one_shareUuid, one_shareuserid4minipg)
+                wait_time(1, 1)
+                token = isvObfuscator(ck)
+            except:
+                printf(f"️##😭账号{a}【{user}】获取token异常, ip有可能给限制了~")
+                a += 1
+                continue
+            wait_time(1, 2)
+            try:
+                header, nickname, pin = getMyPing(cookie, token)
+            except:
+                printf(f"️##😭账号{a}【{user}】暂无法参加活动~")
+                a += 1
+                continue
+            wait_time(1, 3)
+            # try:
+            yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
+            wait_time(1, 3)
+            header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
+            wait_time(1, 2)
+            # 关注
+            followShop(header, pin, user)
+            wait_time(1, 2)
+            # 加购
+            addCart(header, pin, user)
+            wait_time(2, 4)
+            #领券获取金币
+            wait_time(2, 4)
+            sendAllCoupon(header, pin, user)
+            # 开卡
+            printf("#去完成开卡任务~")
+            venderIdList, channelList, allShopID = checkOpenCard(header, pin)
+            wait_time(1, 3)
+            bindWithVender(ck, venderIdList, channelList, pin, header)
+            # 浏览任务
+            goodsCodeList = goodsCode(header, pin, user)
+            print('goodsCodeList',goodsCodeList)
+            printf(f"#去做浏览任务")
+            for i in goodsCodeList:
+                wait_time(2, 3, "浏览任务")
+                browseShops(header, pin, i)
+            printf(f"已完成浏览任务")
+            wait_time(2, 3)
+            # 抽奖
+            # header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
+            wait_time(1, 2)
+            actorUuid, shareTitle, score = activityContent(header, pin, one_shareUuid, yunMidImageUrl, nickname, one_shareuserid4minipg)
+            # printf(score)
+            if score > 100:
+                wait_time(2, 4, "点击抽奖")
+                draw(header, pin, actorUuid, user)
+            if a == 1:
+                if actorUuid == 0:
+                    printf("账号一获取助力码失败~，请重新尝试运行。")
+                    exit(1)
+                one_shareUuid = actorUuid
+                one_shareuserid4minipg = pin
+                one_name = user
+            wait_time(1, 2)
+            printf(f"## {user} 的助力码 {actorUuid}")
+            assist(header, pin, one_shareUuid)
+            if not a == len(cookieList):
+                a += 1
+                wait_time(kk_vip_sleep, kk_vip_sleep, "###休息一会")
+        except Exception as e:
+            printf(f"ERROR MAIN {e}")
+            if a == 1:
+                exit(0)
             a += 1
             continue
-        wait_time(1, 2)
-        try:
-            header, nickname, pin = getMyPing(cookie, token)
-        except:
-            printf(f"️##😭账号{a}【{user}】暂无法参加活动~")
-            a += 1
-            continue
-        wait_time(1, 3)
-        # try:
-        yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
-        wait_time(1, 3)
-        header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
-        wait_time(1, 2)
-        # 关注
-        followShop(header, pin, user)
-        wait_time(1, 2)
-        # 加购
-        addCart(header, pin, user)
-        wait_time(2, 4)
-        #领券获取金币
-        wait_time(2, 4)
-        sendAllCoupon(header, pin, user)
-        # 开卡
-        printf("#去完成开卡任务~")
-        venderIdList, channelList, allShopID = checkOpenCard(header, pin)
-        wait_time(1, 3)
-        bindWithVender(ck, venderIdList, channelList, pin, header)
-        # 浏览任务
-        goodsCodeList = goodsCode(header, pin, user)
-        print('goodsCodeList',goodsCodeList)
-        printf(f"#去做浏览任务")
-        for i in goodsCodeList:
-            wait_time(2, 3, "浏览任务")
-            browseShops(header, pin, i)
-        printf(f"已完成浏览任务")
-        wait_time(2, 3)
-        # 抽奖
-        # header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
-        wait_time(1, 2)
-        actorUuid, shareTitle, score = activityContent(header, pin, one_shareUuid, yunMidImageUrl, nickname, one_shareuserid4minipg)
-        # printf(score)
-        if score > 100:
-            wait_time(2, 4, "点击抽奖")
-            draw(header, pin, actorUuid, user)
-        if a == 1:
-            if actorUuid == 0:
-                printf("账号一获取助力码失败~，请重新尝试运行。")
-                exit(1)
-            one_shareUuid = actorUuid
-            one_shareuserid4minipg = pin
-            one_name = user
-        wait_time(1, 2)
-        printf(f"## {user} 的助力码 {actorUuid}")
-        assist(header, pin, one_shareUuid)
-        if not a == len(cookieList):
-            a += 1
-            wait_time(kk_vip_sleep, kk_vip_sleep, "###休息一会")
-        # except Exception as e:
-        #     printf(f"ERROR MAIN {e}")
-        #     if a == 1:
-        #         exit(0)
-        #     a += 1
-        #     continue
 
     a = 1
     printf("\n【收获统计】")
