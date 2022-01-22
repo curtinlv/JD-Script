@@ -326,14 +326,14 @@ def insertCrmPageVisit(header, pin,shop_value):
 # 助力
 def assist(header, pin,shareUuid, agin=1):
     try:
-        url = assist_status_url
-        body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
-        resp = requests.post(url=url, headers=header, timeout=30, data=body)
-        if resp.status_code == 200:
-            pass
-        else:
-            pass
-        wait_time(3, 10)
+        # url = assist_status_url
+        # body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
+        # resp = requests.post(url=url, headers=header, timeout=30, data=body)
+        # if resp.status_code == 200:
+        #     pass
+        # else:
+        #     pass
+        # wait_time(3, 10)
         url = assist_url
         body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
         resp = requests.post(url=url, headers=header, timeout=30, data=body)
