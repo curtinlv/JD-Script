@@ -299,10 +299,10 @@ def accessLog(headers,pin, shareUuid, shareuserid4minipg):
         printf(e)
         return headers
 
-def writePersonInfo(header, pin):
+def writePersonInfo(header, pin, at):
     try:
         url = writePersonInfo_url
-        body = f'jdActivityId={jdActivityId}&pin={quote(pin)}&actionType=5&venderId={activityshopid}&activityId={activityId}'
+        body = f'jdActivityId={jdActivityId}&pin={quote(pin)}&actionType={at}&venderId={activityshopid}&activityId={activityId}'
         resp = requests.post(url=url, headers=header, timeout=30, data=body)
         if resp.status_code == 200:
             pass
@@ -323,8 +323,8 @@ def insertCrmPageVisit(header, pin,shop_value):
     else:
         pass
 
-# 助力
-def assist(header, pin,shareUuid, agin=1):
+# assist_status
+def assist_status(header, pin,shareUuid, agin=1):
     try:
         url = assist_status_url
         body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
@@ -334,8 +334,20 @@ def assist(header, pin,shareUuid, agin=1):
             header['Cookie'] = LZ_TOKEN[0][0] + LZ_TOKEN[0][1] + f'AUTH_C_USER={quote(pin)};'
         else:
             pass
-        wait_time(1, 2)
+        return header
+    except Exception as e:
+        if agin > 6:
+            print(f"assist {e}")
+            return header
+        else:
+            wait_time(3, 10)
+            agin += 1
+            return assist_status(header, pin,shareUuid, agin=agin)
 
+# 助力
+def assist(header, pin,shareUuid, agin=1):
+    try:
+        header = assist_status(header, pin, shareUuid)
         url = assist_url
         body = f'activityId={activityId}&pin={quote(pin)}&shareUuid={shareUuid}'
         resp = requests.post(url=url, headers=header, timeout=30, data=body)
@@ -348,7 +360,7 @@ def assist(header, pin,shareUuid, agin=1):
     except Exception as e:
         if agin > 6:
             print(f"assist {e}")
-            return 0, '', 0
+            return None
         else:
             wait_time(3, 10)
             agin += 1
@@ -563,10 +575,15 @@ def goodsCode(header, pin, user, agin=1):
 
 
 # 浏览
-def browseShops(header, pin, shop_value, agin=1):
+def browseShops(header, pin, shop_value, at, agin=1):
     try:
-        insertCrmPageVisit(header, pin, f'%E5%95%86%E5%93%81{shop_value}')
-        writePersonInfo(header, pin)
+        elementId=''
+        if at == '5':
+            elementId = f'%E5%95%86%E5%93%81{shop_value}'
+        elif at == '4':
+            elementId = f'%E5%BA%97%E9%93%BA{shop_value}'
+        insertCrmPageVisit(header, pin, elementId)
+        writePersonInfo(header, pin, at)
         url = browseShops_url
         body = f'activityId={activityId}&pin={quote(pin)}&value={shop_value}'
         resp = requests.post(url=url, headers=header, data=body)
@@ -833,9 +850,16 @@ def start():
             for i in goodsCodeList:
                 wait_time(1, 2, f"浏览任务{i}")
                 if header:
-                    header = browseShops(header, pin, i)
+                    header = browseShops(header, pin, i, '5')
             printf(f"已完成浏览任务")
             wait_time(2, 3)
+            # printf(f"#去做底部浏览店铺任务")
+            # for i in allShopID:
+            #     wait_time(1, 2, f"浏览任务{i}")
+            #     if header:
+            #         header = browseShops(header, pin, i, '4')
+            # printf(f"已完成底部浏览店铺任务")
+            # wait_time(2, 3)
             # 抽奖
             # header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
             wait_time(1, 2)
