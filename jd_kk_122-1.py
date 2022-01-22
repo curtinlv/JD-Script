@@ -302,7 +302,7 @@ def accessLog(headers,pin, shareUuid, shareuserid4minipg):
 def writePersonInfo(header, pin):
     try:
         url = writePersonInfo_url
-        body = f'jdActivityId={jdActivityId}&pin={quote(pin)}&actionType=4&venderId={activityshopid}&activityId={activityId}'
+        body = f'jdActivityId={jdActivityId}&pin={quote(pin)}&actionType=5&venderId={activityshopid}&activityId={activityId}'
         resp = requests.post(url=url, headers=header, timeout=30, data=body)
         if resp.status_code == 200:
             pass
@@ -535,8 +535,8 @@ def goodsCode(header, pin, user, agin=1):
         body = f'activityId={activityId}&pin={quote(pin)}'
         resp = requests.post(url=url, headers=header, data=body).json()
         if resp['result']:
-            followShopList = resp['data']['followShopList']
-            for i in followShopList:
+            addCartList = resp['data']['addCartList']
+            for i in addCartList:
                 if i['status'] == 0:
                     goodsCodeList.append(i['goodsCode'])
         return goodsCodeList
@@ -559,22 +559,29 @@ def browseShops(header, pin, shop_value, agin=1):
         body = f'activityId={activityId}&pin={quote(pin)}&value={shop_value}'
         resp = requests.post(url=url, headers=header, data=body)
         if resp.status_code == 200:
+            LZ_TOKEN = re.findall(r'(LZ_TOKEN_KEY=.*?;).*?(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])
+            header['Cookie'] = LZ_TOKEN[0][0] + LZ_TOKEN[0][1]
             resp = resp.json()
             if resp['result']:
                 addScore = resp['data']['addScore']
                 addBeanNum = resp['data']['addBeanNum']
                 if addScore > 0:
                     printf(f"\t☺️浏览获得{shop_value}: {resp['data']['addScore']} 金币️")
+                else:
+                    printf(f"{resp}")
                 if addBeanNum > 0:
                     printf(f"\t☺️浏览获得{shop_value}: {resp['data']['addScore']} 京豆️")
+
             else:
                 printf(f"\t😆{resp['errorMessage']}")
+            return header
         else:
             printf(f"\t😆browseShops[{resp.text}]")
+            return None
     except Exception as e:
         if agin > 6:
             printf(f"browseShops, {e}")
-            return
+            return None
         else:
             wait_time(3, 30)
             agin += 1
@@ -797,11 +804,12 @@ def start():
             wait_time(1, 3)
             bindWithVender(ck, venderIdList, channelList, pin, header)
             # 浏览任务
-            goodsCodeList = ['100017224819', '100022439326', '100031711544', '100030236452', '100002554682', '100027621102', '10033879578686', '10839629659', '100006955496','100017224833','100029814570','100024975580','100024658178','100007346824','100027714810','10031892728476','20396208227','100006970791']
+            goodsCodeList = goodsCode(header, pin, user)
             printf(f"#去做浏览任务")
             for i in goodsCodeList:
                 wait_time(0, 1, f"浏览任务{i}")
-                browseShops(header, pin, i)
+                if header:
+                    header = browseShops(header, pin, i)
             printf(f"已完成浏览任务")
             wait_time(2, 3)
             # 抽奖
@@ -835,7 +843,7 @@ def start():
     a = 1
     printf("\n【收获统计】")
     scoreTotalList, myRankList, userList, scoreList = [],[],[],[]
-    one_shareUuid = master_shareUuid
+    one_shareUuid = code
     one_shareuserid4minipg = master_shareuserid4minipg
     for ck, user in zip(cookieList, nameList):
         try:
@@ -856,7 +864,7 @@ def start():
                 continue
             wait_time(0, 1)
             # try:
-            # yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
+            assist(header, pin, one_shareUuid)
             wait_time(0, 1)
             actorUuid, shareTitle, score = activityContent(header, pin, one_shareUuid, '', nickname, one_shareuserid4minipg)
             # 获取金牌信息、排行榜
