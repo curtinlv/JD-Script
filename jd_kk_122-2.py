@@ -847,7 +847,7 @@ def start():
             bindWithVender(ck, venderIdList, channelList, pin, header)
             # 浏览任务
             goodsCodeList = goodsCode(header, pin, user)
-            printf(f"#去做浏览任务")
+            printf("\t😆已完成浏览任务")
             for i in goodsCodeList:
                 wait_time(1, 2, f"浏览任务{i}")
                 if header:
@@ -919,7 +919,6 @@ def start():
                     a += 1
                     continue
             wait_time(0, 1)
-            assist(header, pin, one_shareUuid)
             wait_time(0, 1)
             actorUuid, shareTitle, score = activityContent(header, pin, one_shareUuid, '', nickname, one_shareuserid4minipg)
             # 获取金牌信息、排行榜
@@ -930,6 +929,7 @@ def start():
             userList.append(user)
             # 奖品
             record(header, pin, actorUuid, user)
+            assist(header, pin, one_shareUuid)
             if a == 1:
                 one_shareUuid = actorUuid
                 one_shareuserid4minipg = pin

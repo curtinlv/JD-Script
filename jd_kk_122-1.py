@@ -851,7 +851,7 @@ def start():
                 wait_time(0, 1, f"浏览任务{i}")
                 if header:
                     header = browseShops(header, pin, i, '5')
-            printf(f"已完成浏览任务")
+            printf("\t😆已完成浏览任务")
             wait_time(2, 3)
             # printf(f"#去做底部浏览店铺任务")
             # for i in allShopID:
@@ -919,7 +919,6 @@ def start():
                     continue
             wait_time(0, 1)
             # try:
-            assist(header, pin, one_shareUuid)
             wait_time(0, 1)
             actorUuid, shareTitle, score = activityContent(header, pin, one_shareUuid, '', nickname, one_shareuserid4minipg)
             # 获取金牌信息、排行榜
@@ -930,6 +929,7 @@ def start():
             userList.append(user)
             # 奖品
             record(header, pin, actorUuid, user)
+            assist(header, pin, one_shareUuid)
             if a == 1:
                 one_shareUuid = actorUuid
                 one_shareuserid4minipg = pin
