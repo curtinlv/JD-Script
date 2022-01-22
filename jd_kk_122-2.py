@@ -829,6 +829,8 @@ def start():
                     wait_time(2, 4, f"点击抽奖{i+1}")
                     if header:
                         header = draw(header, pin, actorUuid, user)
+                    else:
+                        break
             if a == 1:
                 if actorUuid == 0:
                     printf("账号一获取助力码失败~，请重新尝试运行。")
