@@ -468,7 +468,7 @@ def draw(header, pin, actorUuid, user, agin=1):
         if resp.status_code == 200:
             LZ_TOKEN = re.findall(r'(LZ_TOKEN_KEY=.*?;).*?(LZ_TOKEN_VALUE=.*?;)', resp.headers['Set-Cookie'])
             header['Cookie'] = LZ_TOKEN[0][0] + LZ_TOKEN[0][1] + f'AUTH_C_USER={quote(pin)};'
-            resp = resp.json()
+            # resp = resp.json()
             print(resp)
             if resp['result']:
                 if resp['data']['drawOk']:
