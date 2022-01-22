@@ -566,11 +566,11 @@ def browseShops(header, pin, shop_value, agin=1):
                 addScore = resp['data']['addScore']
                 addBeanNum = resp['data']['addBeanNum']
                 if addScore > 0:
-                    printf(f"\t☺️浏览获得{shop_value}: {resp['data']['addScore']} 金币️")
+                    printf(f"\t☺️浏览获得: {resp['data']['addScore']} 金币️")
                 else:
                     printf(f"{resp}")
                 if addBeanNum > 0:
-                    printf(f"\t☺️浏览获得{shop_value}: {resp['data']['addScore']} 京豆️")
+                    printf(f"\t☺️浏览获得: {resp['data']['addScore']} 京豆️")
 
             else:
                 printf(f"\t😆{resp['errorMessage']}")
