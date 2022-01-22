@@ -262,11 +262,11 @@ def getMyPing(cookie, token, agin=1):
         return headers, nickname, secretPin
     except Exception as e:
         # printf("建议请稍等再试~", e)
-        if agin > 6:
+        if agin > 4:
             print(f"getMyPing {e}")
             return False, False, False
         else:
-            wait_time(5, 30)
+            wait_time(2, 3)
             agin += 1
             return getMyPing(cookie, token, agin=agin)
 
@@ -396,9 +396,9 @@ def getUserInfo(header, pin, agin=1):
     except Exception as e:
         if agin > 6:
             printf(f"getUserInfo, {e}")
-            return '', '', ''
+            return False, '', ''
         else:
-            wait_time(3, 30)
+            wait_time(3, 3)
             agin += 1
             return getUserInfo(header, pin, agin=agin)
 
@@ -437,7 +437,7 @@ def checkOpenCard(header, pin, agin=1):
             printf(f"checkOpenCard, {e}")
             return [], [], allShopID
         else:
-            wait_time(3, 30)
+            wait_time(3, 3)
             agin += 1
             return checkOpenCard(header, pin, agin=agin)
 
@@ -472,7 +472,7 @@ def draw(header, pin, actorUuid, user, agin=1):
             printf(f"draw, {e}")
             return None
         else:
-            wait_time(3, 30)
+            wait_time(3, 3)
             agin += 1
             return draw(header, pin, actorUuid, user, agin=agin)
 
@@ -507,7 +507,7 @@ def record(header, pin, actorUuid,user, agin=1):
             printf(f"record, {e}")
             return
         else:
-            wait_time(3, 30)
+            wait_time(3, 3)
             agin += 1
             return record(header, pin, actorUuid,user, agin=agin)
 
@@ -533,7 +533,7 @@ def followShop(header, pin, user, agin=1):
             printf(f"followShop, {e}")
             return
         else:
-            wait_time(3, 30)
+            wait_time(3, 3)
             agin += 1
             return followShop(header, pin, user, agin=agin)
 
@@ -555,7 +555,7 @@ def goodsCode(header, pin, user, agin=1):
             printf(f"goodsCode_url, {e}")
             return goodsCodeList
         else:
-            wait_time(3, 30)
+            wait_time(3, 3)
             agin += 1
             return goodsCode(header, pin, user, agin=agin)
 
@@ -593,7 +593,7 @@ def browseShops(header, pin, shop_value, agin=1):
             printf(f"browseShops, {e}")
             return None
         else:
-            wait_time(3, 30)
+            wait_time(3, 3)
             agin += 1
             return browseShops(header, pin, shop_value, agin=agin)
 
@@ -787,15 +787,27 @@ def start():
                 a += 1
                 continue
             wait_time(1, 2)
-            try:
-                header, nickname, pin = getMyPing(cookie, token)
-            except:
-                printf(f"️##😭账号{a}【{user}】暂无法参加活动~")
-                a += 1
-                continue
+            header, nickname, pin = getMyPing(cookie, token)
+            if not header:
+                if a == 1:
+                    printf(f"️##😭账号{a}【{user}】暂无法参加活动~")
+                    exit(2)
+                else:
+                    printf(f"{user}:账号异常，不能参加活动")
+                    a += 1
+                    continue
+
             wait_time(1, 3)
             # try:
             yunMidImageUrl, pin, nickname = getUserInfo(header, pin)
+            if not yunMidImageUrl:
+                if a == 1:
+                    printf(f"{user}:请检查账号是否正常~")
+                    exit(2)
+                else:
+                    printf(f"{user}:账号异常，不能参加活动")
+                    a += 1
+                    continue
             wait_time(1, 3)
             header = accessLog(header, pin, one_shareUuid, one_shareuserid4minipg)
             wait_time(1, 2)
@@ -870,12 +882,15 @@ def start():
                 a += 1
                 continue
             wait_time(0, 1)
-            try:
-                header, nickname, pin = getMyPing(cookie, token)
-            except:
-                printf(f"️##😭账号{a}【{user}】暂无法参加活动~")
-                a += 1
-                continue
+            header, nickname, pin = getMyPing(cookie, token)
+            if not header:
+                if a == 1:
+                    printf(f"️##😭账号{a}【{user}】暂无法参加活动~")
+                    exit(2)
+                else:
+                    printf(f"{user}:账号异常，不能参加活动")
+                    a += 1
+                    continue
             wait_time(0, 1)
             assist(header, pin, one_shareUuid)
             wait_time(0, 1)
