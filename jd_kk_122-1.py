@@ -799,8 +799,7 @@ def start():
             wait_time(1, 3)
             bindWithVender(ck, venderIdList, channelList, pin, header)
             # 浏览任务
-            goodsCodeList = goodsCode(header, pin, user)
-            print('goodsCodeList',goodsCodeList)
+            goodsCodeList = ['100017224819', '100022439326', '100031711544', '100030236452', '100002554682', '100027621102', '10033879578686', '10839629659', '100006955496','100017224833','100029814570','100024975580','100024658178','100007346824','100027714810','10031892728476','20396208227','100006970791']
             printf(f"#去做浏览任务")
             for i in goodsCodeList:
                 wait_time(2, 3, "浏览任务")
