@@ -537,7 +537,7 @@ def goodsCode(header, pin, user, agin=1):
         if resp['result']:
             followShopList = resp['data']['followShopList']
             for i in followShopList:
-                if i['status'] == 1:
+                if i['status'] == 0:
                     goodsCodeList.append(i['goodsCode'])
         return goodsCodeList
     except Exception as e:
