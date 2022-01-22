@@ -527,6 +527,28 @@ def followShop(header, pin, user, agin=1):
             agin += 1
             return followShop(header, pin, user, agin=agin)
 
+# 获取浏览商品
+def goodsCode(header, pin, user, agin=1):
+    goodsCodeList = []
+    try:
+        url = goodsCode_url
+        body = f'activityId={activityId}&pin={quote(pin)}'
+        resp = requests.post(url=url, headers=header, data=body).json()
+        if resp['result']:
+            followShopList = resp['data']['followShopList']
+            for i in followShopList:
+                if i['status'] == 1:
+                    goodsCodeList.append(i['goodsCode'])
+        return goodsCodeList
+    except Exception as e:
+        if agin > 6:
+            printf(f"goodsCode_url, {e}")
+            return goodsCodeList
+        else:
+            wait_time(3, 30)
+            agin += 1
+            return goodsCode(header, pin, user, agin=agin)
+
 
 # 浏览
 def browseShops(header, pin, shop_value, agin=1):
@@ -777,8 +799,8 @@ def start():
         wait_time(1, 3)
         bindWithVender(ck, venderIdList, channelList, pin, header)
         # 浏览任务
-        goodsCodeList = ['100017224819', '100022439326', '100031711544', '100030236452', '100002554682', '100027621102', '10033879578686', '10839629659', '100006955496','100017224833','100029814570','100024975580','100024658178','100007346824','100027714810','10031892728476','20396208227','100006970791']
-        # browseShops(header, pin, allShopID[random.randint(0, 8)])
+        goodsCodeList = goodsCode(header, pin, user)
+        print('goodsCodeList',goodsCodeList)
         printf(f"#去做浏览任务")
         for i in goodsCodeList:
             wait_time(2, 3, "浏览任务")
