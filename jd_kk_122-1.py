@@ -968,7 +968,7 @@ def start():
     msg("*" * 40)
     msg(footer)
     if isNotice == "true":
-        send(shareTitle, msg_info)
+        send(hdtitle, msg_info)
 
 if __name__ == '__main__':
     start()
