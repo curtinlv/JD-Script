@@ -773,7 +773,7 @@ def isUpdate():
         else:
             return False, hdtitle, readme, code, footer
     except:
-        return False, f'{g_name}', '', f'{master_shareUuid}&{master_shareuserid4minipg}', 'TG频道 https://t.me/TopStyle2021\n活动入口：20:/#239s57fgLQaxO@，嚯！囤大牌年货，赢惊喜大奖'
+        return False, f'{g_name}', '', f'{master_shareUuid}&{master_shareuserid4minipg}', 'TG频道 https://t.me/TopStyle2021\n活动入口：https://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity/5063373?activityId=dzlhkkkbblnt20220121&=&shareUuid=5c1e7599b34c4100bbc5b8968178591b'
 
 
 
