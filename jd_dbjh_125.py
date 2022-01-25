@@ -7,7 +7,7 @@ Author: Curtin
 Date: 2022/1/25 下午8:55
 TG交流 https://t.me/topstyle996
 TG频道 https://t.me/TopStyle2021
-cron: 20 0,6,12,15,20 * * *
+cron: 20 6,12,15,20 * * *
 new Env('大牌集合-瓜分千万豆1.24-2.14')
 活动入口：21:/￥63GVM0oHoBMud￥，☂来京东，更超值
 '''
@@ -469,7 +469,7 @@ def draw(header, userId, buyerNick, actId, missionType="draw", agin=1):
                 if data['data']['status'] == 200:
                     printf(f"\t{data['data']['data']['remark']}")
                 else:
-                    printf(f"\t{data['data']['data']}")
+                    printf(f"\t{data['data']}")
             else:
                 printf(f"\t{data['errorMessage']}")
         else:
@@ -517,7 +517,7 @@ def isUpdate():
 def start():
     global one_code,one_name
     hdtitle, code, footer  = isUpdate()
-    printf(f"**************************************\n开始【{hdtitle}{footer}\n**************************************\n")
+    printf(f"**************************************\n开始【{hdtitle}】{footer}\n**************************************\n")
     one_code = f"{code}"
     one_name = f"Author"
     if datetime.datetime.now() > datetime.datetime.strptime('2022-2-15', "%Y-%m-%d"):
@@ -567,7 +567,8 @@ def start():
                     draw(header, userId, buyerNick, actId)
             else:
                 printf(f"{user}参加活动失败, 或请检测ck是否正常!")
-            wait_time(kk_vip_sleep, kk_vip_sleep+1, "休息一会,")
+            a += 1
+            wait_time(kk_vip_sleep, kk_vip_sleep+5, "休息一会,")
         except Exception as e:
             printf(f"start error [{user}请检测ck是否正常!] [{e}]")
             a += 1
