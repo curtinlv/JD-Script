@@ -517,7 +517,7 @@ def isUpdate():
 def start():
     global one_code,one_name
     hdtitle, code, footer  = isUpdate()
-    printf(f"开始【{hdtitle}】\n{footer}")
+    printf(f"**************************************\n开始【{hdtitle}{footer}\n**************************************\n")
     one_code = f"{code}"
     one_name = f"Author"
     if datetime.datetime.now() > datetime.datetime.strptime('2022-2-15', "%Y-%m-%d"):
@@ -567,7 +567,7 @@ def start():
                     draw(header, userId, buyerNick, actId)
             else:
                 printf(f"{user}参加活动失败, 或请检测ck是否正常!")
-            wait_time(10, kk_vip_sleep+10, "休息一会,")
+            wait_time(kk_vip_sleep, kk_vip_sleep+1, "休息一会,")
         except Exception as e:
             printf(f"start error [{user}请检测ck是否正常!] [{e}]")
             a += 1
