@@ -205,8 +205,9 @@ def isvObfuscator(ck):
         return ''
 
 def relationBind(header, userId, buyerNick, actId, inviterNick, missionType="relationBind", agin=1):
+    label = False
     try:
-        url = 'https://jinggengjcq-isv.isvjcloud.com/dm/front/openCardNew/complete/mission?mix_nick=2vlPNpSNPs2zwEu+07zbf6dhC12DrJZtU0Au44plDIH6KQBqoSsMRH7bKRnAtRam529g8bx6o1Gf1z4w1cMs7A=='
+        url = f'https://jinggengjcq-isv.isvjcloud.com/dm/front/openCardNew/complete/mission?mix_nick={buyerNick}'
 
         body = {
             "jsonRpc": "2.0",
@@ -233,16 +234,28 @@ def relationBind(header, userId, buyerNick, actId, inviterNick, missionType="rel
             if data['success']:
                 if data['data']['status'] == 200:
                     printf(f"\t{data['data']['data']['remark']}")
+                    label = True
+                if data['data']['status'] == 500:
+                    if agin > 20:
+                        printf(f"[{missionType} post error]: {e}")
+                        return label
+                    else:
+                        wait_time(10, 30)
+                        agin += 1
+                        return relationBind(header, userId, buyerNick, actId, inviterNick, missionType="relationBind",
+                                            agin=agin)
                 else:
-                    printf(f"\t{data['data']['data']}")
+                    printf(f"\t{data['data']}")
+                    label = True
             else:
                 printf(f"\t{data['errorMessage']}")
         else:
             printf(f"[{missionType} post error]: {r.status_code} {r.text}")
+        return label
     except Exception as e:
-        if agin > 6:
+        if agin > 20:
             printf(f"[{missionType} post error]: {e}")
-            return
+            return label
         else:
             wait_time(3, 10)
             agin += 1
@@ -542,7 +555,9 @@ def start():
             userId, actId, nickName, buyerNick = getact(ck, header)
             if buyerNick:
                 printf(f"Hi, {nickName}。你的助力码[{buyerNick}]")
-                relationBind(header, userId, buyerNick, actId, one_code)
+                if not relationBind(header, userId, buyerNick, actId, one_code):
+                    if a == 1:
+                        wait_time(60, 300, "网络异常，请休息一会再试")
                 if a == 1:
                     printf(f"仅账号1助力作者 {one_code}")
                     one_code = f"{buyerNick}"
