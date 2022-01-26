@@ -556,8 +556,8 @@ def start():
             if buyerNick:
                 printf(f"Hi, {nickName}。你的助力码[{buyerNick}]")
                 if not relationBind(header, userId, buyerNick, actId, one_code):
-                    if a == 1:
-                        wait_time(60, 300, "网络异常，请休息一会再试")
+                    wait_time(60, 300, "网络异常，请休息一会再试")
+                    exit(8)
                 if a == 1:
                     printf(f"仅账号1助力作者 {one_code}")
                     one_code = f"{buyerNick}"
