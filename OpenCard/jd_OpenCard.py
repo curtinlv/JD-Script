@@ -193,7 +193,7 @@ openCardBean = 0
 sleepNum = 0.0
 record = True
 onlyRecord = False
-memory = True
+memory = False
 printlog = True
 isRemoteSid = True
 Concurrent = True
@@ -315,7 +315,7 @@ if "memory" in os.environ:
         memory = getBool(os.environ["memory"])
         print("已获取并使用Env环境 memory:", memory)
     elif not memory:
-        memory = True
+        memory = False
 # 是否启用远程shopid
 if "isRemoteSid" in os.environ:
     if len(os.environ["isRemoteSid"]) > 1:
